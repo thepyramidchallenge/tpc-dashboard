@@ -33,9 +33,9 @@ window.TPC_DASHBOARD = {
    * Natalie = the rest (learning platform, data layer, content).
    * --------------------------------------------------------------------- */
   owners: {
-    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general / 網站重建及整體 UI", color: "#3f8aa6" },
-    natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content / 學習平台、資料層、內容", color: "#b89cff" },
-    both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#9aa7ad" },
+    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general / 網站重建及整體 UI", color: "#1f7a96" },
+    natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content / 學習平台、資料層、內容", color: "#6d4fd6" },
+    both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#5a6570" },
   },
 
   // The single most important thing to know before starting work today.
@@ -180,14 +180,14 @@ window.TPC_DASHBOARD = {
 
     %% ---- platform ----
     subgraph PLAT["tpc-online-platform — Practice / Test SPA · owner: Natalie"]
-      app["App shell<br/>(Home · Practice · Result · Report · Admin)"]:::wip
+      app["App shell<br/>(Home · Practice · Result · Report · Admin)"]:::plat
       adapter{{"Backend interface<br/>(data-access adapter)"}}:::iface
     end
 
     %% ---- backend ----
     subgraph BE["Backend"]
       auth["Managed Auth<br/>Firebase / Supabase · Google sign-in"]:::be
-      sheets[("Google Sheets<br/>via Apps Script JSON API<br/>(now)")]:::be
+      sheets[("Google Sheets<br/>via Apps Script JSON API<br/>(now)")]:::store
       future[("Firestore / Supabase<br/>(flip adapter when<br/>tests scale to 100s)")]:::future
     end
 
@@ -203,13 +203,20 @@ window.TPC_DASHBOARD = {
     adapter --> sheets
     adapter -.->|migration| future
 
-    classDef actor fill:#fdf7e7,stroke:#b07d00,color:#5c4a16,stroke-width:1px;
-    classDef live fill:#eaf4f8,stroke:#2b6478,color:#1d4a5a;
-    classDef wip fill:#eaf4f8,stroke:#3f8aa6,color:#1d4a5a,stroke-dasharray:4 3;
-    classDef ref fill:#f1f3f5,stroke:#aab1b8,color:#5a6570;
-    classDef iface fill:#fdf7e7,stroke:#b07d00,color:#5c4a16;
-    classDef be fill:#eaf4f8,stroke:#2b6478,color:#1d4a5a;
-    classDef future fill:#f6f7f9,stroke:#aab1b8,color:#6a727c,stroke-dasharray:4 3;
+    %% owner-tinted regions: teal = Max, violet = Natalie, neutral = infra
+    style MKT  fill:#f1f9fb,stroke:#bcdae4,stroke-width:1.5px
+    style PLAT fill:#f7f4fe,stroke:#dcd2f8,stroke-width:1.5px
+    style BE   fill:#f7f8fa,stroke:#dfe3e8,stroke-width:1.5px
+
+    classDef actor fill:#fff1cc,stroke:#e0a100,stroke-width:2px,color:#5c4400;
+    classDef live  fill:#d4ebf2,stroke:#1f7a96,stroke-width:2px,color:#0e3d4d;
+    classDef wip   fill:#d4ebf2,stroke:#1f7a96,stroke-width:2px,color:#0e3d4d,stroke-dasharray:5 3;
+    classDef ref   fill:#eceff2,stroke:#97a3ad,stroke-width:1.5px,color:#3e4750;
+    classDef plat  fill:#e7e0fb,stroke:#6d4fd6,stroke-width:2px,color:#34246e;
+    classDef iface fill:#efe7fc,stroke:#6d4fd6,stroke-width:2px,color:#34246e;
+    classDef be    fill:#dce7f5,stroke:#3e63b5,stroke-width:2px,color:#1e3666;
+    classDef store fill:#d6f0de,stroke:#2e9d57,stroke-width:2px,color:#14502c;
+    classDef future fill:#eef0f2,stroke:#aab1b8,stroke-width:1.5px,color:#69727c,stroke-dasharray:5 3;
   `,
 
   /* --- changelog --------------------------------------------------------
@@ -217,6 +224,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
+      summary: "Reworked the colour scheme for readability — system map is now colour-coded by owner/layer (Max=teal, Natalie=violet, backend=blue/green)." },
     { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
       summary: "Switched the dashboard to a light/white theme." },
     { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",

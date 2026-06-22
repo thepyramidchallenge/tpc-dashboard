@@ -255,9 +255,10 @@
   if(window.mermaid){
     mermaid.initialize({ startOnLoad:false, theme:"base", securityLevel:"loose",
       themeVariables:{ fontFamily:"-apple-system,Segoe UI,sans-serif", fontSize:"13px",
-        primaryColor:"#eaf4f8", primaryTextColor:"#1c2024", primaryBorderColor:"#2b6478",
-        lineColor:"#9aa7ad", textColor:"#2c333a",
-        clusterBkg:"#f6f7f9", clusterBorder:"#dfe3e8", titleColor:"#3a4148" } });
+        primaryColor:"#d4ebf2", primaryTextColor:"#1c2024", primaryBorderColor:"#1f7a96",
+        lineColor:"#73808d", textColor:"#2c333a",
+        clusterBkg:"#f7f8fa", clusterBorder:"#dfe3e8", titleColor:"#3a4148",
+        edgeLabelBackground:"#eef1f4" } });
     mermaid.run({ nodes:[$("map")] }).catch(function(err){
       $("map").parentElement.innerHTML = '<div style="color:#ff7a7a;padding:14px">System map failed to render (Mermaid). '+
         'Check the <code>systemMap</code> syntax in data.js, or your internet connection (Mermaid loads from CDN).<br><br>'+esc(err&&err.message||err)+'</div>';
