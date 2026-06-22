@@ -24,7 +24,7 @@ window.TPC_DASHBOARD = {
   meta: {
     updated:   "2026-06-22",
     updatedBy: "Claude (Opus 4.8)",
-    note:      "Initial dashboard draft for team review.",
+    note:      "Live at hkycaa.github.io/tpc-dashboard · light theme.",
   },
 
   /* --- people / ownership 分工 ------------------------------------------
@@ -203,13 +203,13 @@ window.TPC_DASHBOARD = {
     adapter --> sheets
     adapter -.->|migration| future
 
-    classDef actor fill:#1a1a1a,stroke:#ffd368,color:#ffd368,stroke-width:1px;
-    classDef live fill:#13313c,stroke:#2b6478,color:#dbeef5;
-    classDef wip fill:#13313c,stroke:#3f8aa6,color:#dbeef5,stroke-dasharray:4 3;
-    classDef ref fill:#222,stroke:#666,color:#bbb;
-    classDef iface fill:#2a2412,stroke:#ffd368,color:#ffe9a8;
-    classDef be fill:#13313c,stroke:#2b6478,color:#dbeef5;
-    classDef future fill:#1a1a1a,stroke:#666,color:#999,stroke-dasharray:4 3;
+    classDef actor fill:#fdf7e7,stroke:#b07d00,color:#5c4a16,stroke-width:1px;
+    classDef live fill:#eaf4f8,stroke:#2b6478,color:#1d4a5a;
+    classDef wip fill:#eaf4f8,stroke:#3f8aa6,color:#1d4a5a,stroke-dasharray:4 3;
+    classDef ref fill:#f1f3f5,stroke:#aab1b8,color:#5a6570;
+    classDef iface fill:#fdf7e7,stroke:#b07d00,color:#5c4a16;
+    classDef be fill:#eaf4f8,stroke:#2b6478,color:#1d4a5a;
+    classDef future fill:#f6f7f9,stroke:#aab1b8,color:#6a727c,stroke-dasharray:4 3;
   `,
 
   /* --- changelog --------------------------------------------------------
@@ -218,7 +218,9 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
-      summary: "Added ownership (分工: Max = pyramid-site + UI, Natalie = platform), bilingual labels, and published the dashboard online." },
+      summary: "Switched the dashboard to a light/white theme." },
+    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
+      summary: "Added ownership (分工: Max = pyramid-site + UI, Natalie = platform), bilingual labels, and published the dashboard online at hkycaa.github.io/tpc-dashboard." },
     { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
       summary: "Created the workspace dashboard (system map, roadmap, board, changelog) as the daily source of truth." },
   ],
