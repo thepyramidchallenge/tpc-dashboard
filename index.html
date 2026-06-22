@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Pyramid Challenge — Workspace Dashboard</title>
+
+<!-- Mermaid (renders the system map). Loaded from CDN; needs internet on first
+     load. To work fully offline, download mermaid.min.js next to this file and
+     change the src below to "./mermaid.min.js". -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#121212; --panel-2:#181818; --line:#262626;
+    --ink:#ececec; --muted:#8a8a8a; --teal:#3f8aa6; --teal-deep:#2b6478;
+    --gold:#ffd368; --green:#5fcf80; --red:#ff7a7a; --slate:#9aa7ad;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Microsoft JhengHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1d1d1d;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:#d7d7d7}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+
+  /* header */
+  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}
+  .brand{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:26px;letter-spacing:.3px}
+  .brand .py{color:var(--gold)}
+  .brand .sub{color:var(--muted);font-family:inherit;font-weight:400;font-size:13px;display:block;margin-top:2px;letter-spacing:0}
+  .meta{margin-left:auto;text-align:right;color:var(--muted);font-size:12.5px;line-height:1.6}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* focus banner */
+  .focus{margin:22px 0 8px;background:linear-gradient(180deg,#16110055,#12120000);border:1px solid #4a3c12;border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px}
+  .focus .lbl{color:var(--gold);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+  .focus p{margin:5px 0 0;color:#f0e6c8}
+
+  h2.sec{font-family:Georgia,serif;font-size:18px;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  h2.sec .dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  h2.sec .zh{font-family:"PingFang HK","Microsoft JhengHei",sans-serif;font-size:14px;color:var(--muted);font-weight:400}
+
+  /* owners legend 分工 */
+  .owners{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+  .owners .ow{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:12.5px}
+  .owners .ow .nm{font-weight:700}
+  .owners .ow .sc{color:var(--muted)}
+  .owners .ow .swatch{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+  .owners .lbl{align-self:center;color:var(--muted);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-right:2px}
+
+  /* owner badge */
+  .obadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:1px 8px;border-radius:20px;border:1px solid}
+  .obadge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+  /* project cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:15px 16px}
+  .card .hd{display:flex;align-items:center;gap:9px;margin-bottom:3px}
+  .card .nm{font-weight:700;font-size:15.5px}
+  .card .tg{color:var(--muted);font-size:12px;margin-bottom:9px}
+  .card .role{color:#cfcfcf;font-size:13px;margin:0 0 11px}
+  .kv{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .kv b{color:#cdcdcd;font-weight:600}
+  .kv code{font-size:11.5px;display:inline-block;margin-top:2px;white-space:pre-wrap}
+
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:20px;border:1px solid}
+  .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+  .s-active{color:var(--teal);border-color:#274b58;background:#0e2730}
+  .s-stable{color:var(--green);border-color:#2c5238;background:#0e2417}
+  .s-blocked{color:var(--red);border-color:#5a2c2c;background:#2a1212}
+  .s-planned{color:var(--slate);border-color:#33393c;background:#16191a}
+
+  /* system map */
+  .mapbox{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:10px;overflow:auto}
+  .mapbox .mermaid{text-align:center}
+  .maphint{color:var(--muted);font-size:12px;margin:8px 2px 0}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .road .card .rt{font-weight:700;font-size:14px;margin-bottom:2px}
+  .road .card .rp{color:var(--muted);font-size:11.5px;margin-bottom:10px}
+  .ritem{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:13px;border-top:1px solid #1d1d1d}
+  .ritem:first-of-type{border-top:0}
+  .mark{flex:0 0 auto;width:15px;height:15px;border-radius:50%;border:1.5px solid var(--muted);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#0a0a0a}
+  .m-done{background:var(--green);border-color:var(--green)}
+  .m-active{border-color:var(--teal);background:#0e2730;box-shadow:0 0 0 2px #0e273055}
+  .m-hold{border-color:#777;border-style:dashed}
+  .m-done + .lab{color:var(--muted);text-decoration:line-through;text-decoration-color:#3a3a3a}
+  .m-active + .lab{color:#fff;font-weight:600}
+  .m-hold + .lab{color:var(--muted);font-style:italic}
+
+  /* board */
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .col{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px}
+  .col h3{margin:0 0 11px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+  .col.now h3{color:var(--teal)} .col.next h3{color:var(--gold)} .col.blocked h3{color:var(--red)}
+  .col h3 .ct{margin-left:auto;color:var(--muted);font-weight:600;letter-spacing:0}
+  .ti{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin-bottom:8px}
+  .ti .tt{font-weight:600;font-size:13.5px}
+  .ti .tp{font-size:11px;color:var(--teal);margin:2px 0}
+  .ti .tn{font-size:12px;color:var(--muted)}
+  .col.blocked .ti{border-left:2px solid var(--red)}
+
+  /* changelog */
+  .log{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .le{display:grid;grid-template-columns:96px 150px 1fr;gap:12px;padding:10px 15px;border-top:1px solid #1d1d1d;font-size:13px}
+  .le:first-child{border-top:0}
+  .le .d{color:var(--muted);font-variant-numeric:tabular-nums}
+  .le .w{color:var(--slate)}
+  .le .pj{display:inline-block;font-size:10.5px;color:var(--teal)}
+
+  details.proto{margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:0 16px}
+  details.proto summary{cursor:pointer;padding:13px 0;font-weight:600;color:var(--gold);font-size:13.5px}
+  details.proto[open]{padding-bottom:14px}
+  details.proto ol{margin:0 0 4px;padding-left:20px;color:#cfcfcf;font-size:13px;line-height:1.7}
+  details.proto code{font-size:12px}
+
+  footer{margin-top:40px;color:#555;font-size:11.5px;text-align:center}
+  @media(max-width:720px){.board{grid-template-columns:1fr}.le{grid-template-columns:78px 1fr}.le .w{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <div class="brand">The <span class="py">Pyramid</span> Challenge
+        <span class="sub">Workspace dashboard · daily source of truth</span>
+      </div>
+    </div>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <div class="focus">
+    <span class="lbl">Today's focus · 今日重點</span>
+    <p id="focus"></p>
+  </div>
+
+  <div class="owners" id="owners"></div>
+
+  <h2 class="sec"><span class="dot"></span>Projects <span class="zh">項目</span></h2>
+  <div class="grid" id="projects"></div>
+
+  <h2 class="sec"><span class="dot"></span>System map <span class="zh">系統圖</span></h2>
+  <div class="mapbox"><pre class="mermaid" id="map"></pre></div>
+  <div class="maphint">Architecture &amp; data flow / 架構與資料流. Edit the <code>systemMap</code> string in <code>data.js</code> when the structure changes.</div>
+
+  <h2 class="sec"><span class="dot"></span>Roadmap &amp; rollout <span class="zh">路線圖</span></h2>
+  <div class="road" id="roadmap"></div>
+
+  <h2 class="sec"><span class="dot"></span>Now · Next · Blocked <span class="zh">進行中 · 下一步 · 受阻</span></h2>
+  <div class="board" id="board"></div>
+
+  <h2 class="sec"><span class="dot"></span>Changelog <span class="zh">更新記錄</span></h2>
+  <div class="log" id="changelog"></div>
+
+  <details class="proto">
+    <summary>▸ How to keep this dashboard current (agent + human protocol)</summary>
+    <ol>
+      <li>Open <code>dashboard/data.js</code> — that's the only file you edit.</li>
+      <li>Stamp <code>meta.updated</code> / <code>meta.updatedBy</code>.</li>
+      <li>Set <code>focus</code> to the single most important thing right now.</li>
+      <li>Update each project's <code>status</code>/<code>health</code> and the <code>board</code> (move cards Now ↔ Next ↔ Blocked).</li>
+      <li>Flip <code>roadmap</code> item <code>state</code>: <code>todo → active → done</code>.</li>
+      <li>Edit <code>systemMap</code> <em>only</em> if the architecture changed.</li>
+      <li>Prepend one <code>changelog</code> line for the session.</li>
+      <li>Commit in the <code>tpc-workspace</code> repo. Reload this page to verify.</li>
+    </ol>
+  </details>
+
+  <footer>Static HTML · no build step · open by double-click. Data lives in <code>data.js</code>.</footer>
+</div>
+
+<!-- data.js assigns window.TPC_DASHBOARD; it must load BEFORE the renderer below -->
+<script src="./data.js"></script>
+<script>
+(function(){
+  var D = window.TPC_DASHBOARD;
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  if(!D){ document.body.innerHTML = '<div class="wrap" style="color:#ff7a7a">Could not load <code>data.js</code>. Make sure it sits next to index.html.</div>'; return; }
+
+  var OW = D.owners || {};
+  function ownerBadge(key){
+    var o = OW[key]; if(!o) return "";
+    var c = esc(o.color||"#9aa7ad");
+    return '<span class="obadge" style="color:'+c+';border-color:'+c+'55;background:'+c+'14">'+esc(o.name)+'</span>';
+  }
+
+  /* header */
+  $("meta").innerHTML =
+    "Updated 更新 <b>"+esc(D.meta.updated)+"</b><br>by "+esc(D.meta.updatedBy)+
+    (D.meta.note ? "<br><span style='color:#666'>"+esc(D.meta.note)+"</span>" : "");
+  $("focus").textContent = D.focus || "";
+
+  /* owners legend 分工 */
+  $("owners").innerHTML = '<span class="lbl">Owners 分工</span>' + Object.keys(OW).map(function(k){
+    var o = OW[k];
+    return '<div class="ow"><span class="swatch" style="background:'+esc(o.color)+'"></span>'+
+           '<span class="nm">'+esc(o.name)+'</span><span class="sc">— '+esc(o.scope)+'</span></div>';
+  }).join("");
+
+  /* projects */
+  $("projects").innerHTML = (D.projects||[]).map(function(p){
+    var repo = /github\.com/.test(p.repo) ? '<a href="https://'+esc(p.repo)+'" target="_blank">'+esc(p.repo)+'</a>' : esc(p.repo);
+    return '<div class="card">'+
+      '<div class="hd"><span class="nm">'+esc(p.name)+'</span>'+
+      '<span class="pill s-'+esc(p.health||p.status)+'">'+esc(p.status)+'</span></div>'+
+      '<div class="tg">'+esc(p.tag)+(p.owner?' · '+ownerBadge(p.owner):'')+'</div>'+
+      '<p class="role">'+esc(p.role)+'</p>'+
+      '<div class="kv"><b>Next 下一步:</b> '+esc(p.next)+'</div>'+
+      '<div class="kv"><b>Repo 倉庫:</b> '+repo+'</div>'+
+      '<div class="kv"><b>Run 執行:</b><br><code>'+esc(p.run)+'</code></div>'+
+    '</div>';
+  }).join("");
+
+  /* roadmap */
+  var glyph = { done:"✓", active:"", hold:"❚❚", todo:"" };
+  $("roadmap").innerHTML = (D.roadmap||[]).map(function(g){
+    var rows = (g.items||[]).map(function(it){
+      return '<div class="ritem"><span class="mark m-'+esc(it.state)+'">'+(glyph[it.state]||"")+'</span>'+
+             '<span class="lab">'+esc(it.label)+'</span></div>';
+    }).join("");
+    return '<div class="card"><div class="rt">'+esc(g.title)+'</div>'+
+           '<div class="rp">'+esc(g.project)+(g.owner?' · '+ownerBadge(g.owner):'')+'</div>'+rows+'</div>';
+  }).join("");
+
+  /* board */
+  function col(key,label){
+    var items = (D.board&&D.board[key])||[];
+    var cards = items.map(function(t){
+      return '<div class="ti"><div class="tt">'+esc(t.title)+(t.owner?' '+ownerBadge(t.owner):'')+'</div>'+
+             (t.project?'<div class="tp">'+esc(t.project)+'</div>':'')+
+             (t.note?'<div class="tn">'+esc(t.note)+'</div>':'')+'</div>';
+    }).join("") || '<div class="tn" style="color:#555">— none —</div>';
+    return '<div class="col '+key+'"><h3>'+label+'<span class="ct">'+items.length+'</span></h3>'+cards+'</div>';
+  }
+  $("board").innerHTML = col("now","Now 進行中") + col("next","Next 下一步") + col("blocked","Blocked 受阻");
+
+  /* changelog */
+  $("changelog").innerHTML = (D.changelog||[]).map(function(e){
+    return '<div class="le"><span class="d">'+esc(e.date)+'</span>'+
+           '<span class="w">'+esc(e.who)+(e.project?' · <span class="pj">'+esc(e.project)+'</span>':'')+'</span>'+
+           '<span>'+esc(e.summary)+'</span></div>';
+  }).join("");
+
+  /* system map */
+  $("map").textContent = (D.systemMap||"").trim();
+  if(window.mermaid){
+    mermaid.initialize({ startOnLoad:false, theme:"base", securityLevel:"loose",
+      themeVariables:{ fontFamily:"-apple-system,Segoe UI,sans-serif", fontSize:"13px",
+        primaryColor:"#13313c", primaryTextColor:"#dbeef5", primaryBorderColor:"#2b6478",
+        lineColor:"#5a6b71", textColor:"#cfcfcf" } });
+    mermaid.run({ nodes:[$("map")] }).catch(function(err){
+      $("map").parentElement.innerHTML = '<div style="color:#ff7a7a;padding:14px">System map failed to render (Mermaid). '+
+        'Check the <code>systemMap</code> syntax in data.js, or your internet connection (Mermaid loads from CDN).<br><br>'+esc(err&&err.message||err)+'</div>';
+    });
+  }
+})();
+</script>
+</body>
+</html>
