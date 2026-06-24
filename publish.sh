@@ -10,7 +10,10 @@
 #     bash dashboard/publish.sh
 # -----------------------------------------------------------------------------
 set -euo pipefail
-cd "$(git rev-parse --show-toplevel)"
+# Anchor to the tpc-workspace repo (this script's parent dir), so it works no
+# matter which project directory you call it from (e.g. bash ../dashboard/publish.sh).
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR/.."
 
 REMOTE=dashboard-pages
 PUBLIC_URL=https://github.com/HKYCAA/tpc-dashboard.git

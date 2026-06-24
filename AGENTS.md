@@ -27,8 +27,9 @@ update `dashboard/data.js`:
    architecture changed** (new service, new link, a migration that happened).
 7. **Changelog** — **prepend** one line:
    `{ date, who, project, summary }` (newest first; `project: ""` = workspace-wide).
-8. **Commit** in the `tpc-workspace` repo, then **publish** so the live site
-   updates: `bash dashboard/publish.sh`. Reload the page to verify.
+8. **Commit & push** — this folder is its own **standalone repo**
+   (`thepyramidchallenge/tpc-dashboard`): `git add -A && git commit -m "…" && git push`.
+   GitHub Pages redeploys automatically; reload the page to verify.
 
 Keep edits small and valid JS — a trailing comma or unclosed string will break
 rendering. If the page shows an error banner, re-check the last thing you edited.
@@ -47,13 +48,12 @@ rendering. If the page shows an error banner, re-check the last thing you edited
 
 ## Where it lives / online
 
-- **Source of truth:** `tpc-workspace` repo (PRIVATE) — `dashboard/`.
-- **Live site:** https://hkycaa.github.io/tpc-dashboard/ (public). It's a mirror
-  of `dashboard/`, published by `dashboard/publish.sh` (git subtree → the public
-  `HKYCAA/tpc-dashboard` repo). The public site is **publicly reachable** by URL
-  — keep credentials/secrets out of `data.js`.
-- Edit only in `tpc-workspace`; never edit the public mirror directly (it gets
-  overwritten on the next publish).
+- **Repo:** this is a **standalone** repo — `thepyramidchallenge/tpc-dashboard`
+  (public). It sits in the **offline** `TPC Root` workspace as `dashboard/`, but
+  it is its own git repo (push directly; no subtree mirror anymore).
+- **Live site:** https://thepyramidchallenge.github.io/tpc-dashboard/ (GitHub
+  Pages, served from `main`). The site is **publicly reachable** by URL — keep
+  credentials/secrets out of `data.js`.
 
 ## Offline note
 
