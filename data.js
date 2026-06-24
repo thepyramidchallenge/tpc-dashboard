@@ -40,9 +40,9 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS1 (Sheets data layer) is DONE & live on Cloud Run — " +
-    "next is WS2 (real Google auth) + WS0 (app scaffold) to turn the prototype into " +
-    "the real SPA. pyramid-site stays the parallel priority: visual parity → deploy.",
+    "tpc-online-platform WS1 (data layer) + WS2 (real Google sign-in via GIS + " +
+    "Cloud Run token verify) are DONE & live-tested — next is WS3 student screens / " +
+    "WS0 scaffold. pyramid-site stays the parallel priority: visual parity → deploy.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -67,8 +67,8 @@ window.TPC_DASHBOARD = {
       status: "active",
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
-      run:   "cd tpc-online-platform/prototype && python3 _serve.py   # http://127.0.0.1:5510",
-      next:  "Build the Phase-1 free Practice MVP — start WS0 setup → WS1 data layer.",
+      run:   "cd tpc-online-platform/prototype && python3 scripts/serve.py   # http://127.0.0.1:5510",
+      next:  "WS1 + WS2 done (data layer + real Google sign-in live). Next: WS3 student screens / WS0 scaffold.",
     },
     {
       id:    "mainpage",
@@ -107,8 +107,8 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS0 — repo + app skeleton",   project: "tpc-online-platform", owner: "natalie", note: "SPA scaffold + Firebase Auth project (Google sign-in) + hosting decision." },
-      { title: "WS2 — Auth & onboarding",     project: "tpc-online-platform", owner: "natalie", note: "Real Google Sign-In (Firebase/Supabase Auth) + first-login profile. Next now that the data layer is live." },
+      { title: "WS3 — App shell & student screens", project: "tpc-online-platform", owner: "natalie", note: "Connect the prototype screens: Home · Practice setup · Question runner · Result · Report · Profile." },
+      { title: "WS0 — app scaffold / framework call", project: "tpc-online-platform", owner: "natalie", note: "Keep vanilla prototype or rebuild (React/Vue)? OAuth client + GitHub Pages already set up via WS2." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -140,7 +140,7 @@ window.TPC_DASHBOARD = {
       items: [
         { label: "WS0 · Project setup",               state: "todo"   },
         { label: "WS1 · Data layer (Sheets + API + adapter)", state: "done" },
-        { label: "WS2 · Auth & onboarding",           state: "todo"   },
+        { label: "WS2 · Auth & onboarding",           state: "done"   },
         { label: "WS3 · App shell & student screens",  state: "todo"   },
         { label: "WS4 · Question engine",             state: "todo"   },
         { label: "WS5 · Admin & content",             state: "todo"   },
@@ -227,6 +227,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "WS2 DONE: real Google sign-in live + tested end-to-end. Vendor-neutral Google Identity Services on the frontend (TPC.auth adapter) → Cloud Run verifyGoogleToken verifies the ID token server-side; uid = Google sub; first-login writes Customers.Users. Admin role server-authoritative (ADMIN_EMAILS allow-list). Verified a real Google account signed up on production. Note: REQUIRE_AUTH still off (write lockdown is the one remaining toggle). No Firebase/Supabase dependency." },
     { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "WS1 DONE: full Sheets data layer live + tested. Backend pivoted Apps Script → Cloud Run (Node, asia-east2, project tpc-platform-2026) reading/writing all 3 workbooks via a service account. Verified end-to-end against real sheets — getQuestionSet, upsertUser, saveSession (server-side graded), listUserHistory all 200. Prototype apiUrl wired; reads (gviz) + writes (Cloud Run) both live." },
     { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
