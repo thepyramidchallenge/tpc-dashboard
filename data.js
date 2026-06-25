@@ -140,7 +140,9 @@ window.TPC_DASHBOARD = {
         { label: "WS1 · Data layer (Sheets + API + adapter)", state: "done" },
         { label: "WS2 · Auth & onboarding",           state: "done"   },
         { label: "WS3 · App shell & student screens",  state: "done"   },
+        { label: "WS3.1 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4 · Question engine",             state: "todo"   },
+        { label: "WS4.x · Mock / full-set exercises",  state: "todo"   },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
@@ -148,12 +150,12 @@ window.TPC_DASHBOARD = {
     {
       project: "tpc-online-platform",
       owner:   "natalie",
-      title:   "Later phases",
+      title:   "Phase 2 / 3 — later phases",
       items: [
-        { label: "Test Mode + ranking",              state: "todo"   },
-        { label: "Payments (Stripe / subscription)",  state: "todo"   },
-        { label: "Adaptive difficulty",               state: "todo"   },
-        { label: "Migrate Sheets → Firestore/Supabase", state: "todo" },
+        { label: "WS7 · Test Mode + ranking",          state: "todo"   },
+        { label: "WS8 · Reporting v2 & adaptive",      state: "todo"   },
+        { label: "WS9 · Accounts & monetization",      state: "todo"   },
+        { label: "Migrate Sheets → Firestore/Supabase (at WS7)", state: "todo" },
         { label: "AI question/image generation",      state: "hold"   },
       ],
     },
@@ -225,6 +227,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "Planning sync: docs/ROADMAP.md is now the detailed plan (WS0–WS9, WSx-0N task IDs, S/M/L effort, exit criteria, decision log); AGENT_HANDOFF.md slimmed to status/ops/risks (722→148 lines). Decision log resolved — mock = test-like Practice preset, accuracy = count-based % + marks score, AI gen = HOLD, public leaderboard = none, audio = defer. Dashboard roadmap aligned: added WS3.1 (done) + WS4.x mock; later phases renamed to WS7/WS8/WS9." },
     { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "WS3 DONE: React student app (prototype-v0.2) is production. Close-out review fixed B1 (one-practice-one-save), B4 (instant feedback = no timer), C1 (notification badge clears) and C3 cleanup. Gates closed — browser QA passed, production switched to the v0.2 build (deploy.sh → gh-pages), and REQUIRE_AUTH=true enforced on Cloud Run (rev tpc-api-00006-jsm; real-login save verified). Added a Vitest + Testing Library suite (138 pass, 1 skipped). Known gap: 69 per-choice crop images missing (deferred to WS4/WS5)." },
     { date: "2026-06-25", who: "Codex", project: "tpc-online-platform",
