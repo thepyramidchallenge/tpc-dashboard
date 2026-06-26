@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-06-25",
-    updatedBy: "Claude",
+    updated:   "2026-06-26",
+    updatedBy: "Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme.",
   },
 
@@ -40,8 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS3 (React student app, prototype-v0.2) is DONE & live in production with auth enforced and a passing test suite; " +
-    "next is WS4 — the pluggable question engine.",
+    "tpc-online-platform WS3.1/WS3.2 is DONE & live; WS4.1 question engine is mostly complete, with WS4.1-05 removeBookmark next.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -67,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS3 done & live (v0.2 in production, REQUIRE_AUTH=true, Vitest suite green). Next: WS4 question engine.",
+      next:  "WS3.1/WS3.2 done & live. WS4.1 contract/rendering/grading/image fallback done; next: WS4.1-05 removeBookmark, WS4.1-06 dedup, WS4.1-07 source hygiene.",
     },
     {
       id:    "mainpage",
@@ -106,7 +105,7 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4 — Question engine",        project: "tpc-online-platform", owner: "natalie", note: "Extract pluggable renderer+grader registry; verify all 40 K2/K3 seeds; bookmark persistence + dedup; generate 69 missing per-choice images." },
+      { title: "WS4.1 — Bookmark persistence", project: "tpc-online-platform", owner: "natalie", note: "Next open slice: WS4.1-05 removeBookmark end-to-end, then WS4.1-06 dedup and WS4.1-07 source/exposure hygiene." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -139,10 +138,10 @@ window.TPC_DASHBOARD = {
         { label: "WS0 · Project setup",               state: "done"   },
         { label: "WS1 · Data layer (Sheets + API + adapter)", state: "done" },
         { label: "WS2 · Auth & onboarding",           state: "done"   },
-        { label: "WS3 · App shell & student screens",  state: "done"   },
-        { label: "WS3.1 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
-        { label: "WS4 · Question engine",             state: "todo"   },
-        { label: "WS4.x · Mock / full-set exercises",  state: "todo"   },
+        { label: "WS3.1 · App shell & student screens", state: "done" },
+        { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
+        { label: "WS4.1 · Question engine",           state: "active" },
+        { label: "WS4.2 · Mock / full-set exercises", state: "todo" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
@@ -187,7 +186,7 @@ window.TPC_DASHBOARD = {
 
     %% ---- backend ----
     subgraph BE["Backend"]
-      auth["Managed Auth<br/>Firebase / Supabase · Google sign-in"]:::be
+      auth["Google Identity Services<br/>Cloud Run token verification"]:::be
       api["Cloud Run API<br/>(SheetsBackend · Node)<br/>asia-east2 · live"]:::be
       sheets[("Google Sheets<br/>Customers · Questions · Results<br/>(service account)")]:::store
       future[("Firestore / Supabase<br/>(flip adapter when<br/>tests scale to 100s)")]:::future
@@ -227,12 +226,14 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
+      summary: "Roadmap numbering sync: WS3.1 is app shell, WS3.2 is close-out, WS4.1 is question engine, and WS4.2 is mock/full-set work. Updated dependent roadmap references and dashboard labels; next platform task is WS4.1-05 removeBookmark end-to-end." },
     { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "Planning sync: docs/ROADMAP.md is now the detailed plan (WS0–WS9, WSx-0N task IDs, S/M/L effort, exit criteria, decision log); AGENT_HANDOFF.md slimmed to status/ops/risks (722→148 lines). Decision log resolved — mock = test-like Practice preset, accuracy = count-based % + marks score, AI gen = HOLD, public leaderboard = none, audio = defer. Dashboard roadmap aligned: added WS3.1 (done) + WS4.x mock; later phases renamed to WS7/WS8/WS9." },
+      summary: "Planning sync: docs/ROADMAP.md is now the detailed plan (WS0–WS9, WSx-0N task IDs, S/M/L effort, exit criteria, decision log); AGENT_HANDOFF.md slimmed to status/ops/risks (722→148 lines). Decision log resolved — mock = test-like Practice preset, accuracy = count-based % + marks score, AI gen = HOLD, public leaderboard = none, audio = defer. Dashboard roadmap aligned: added WS3.1/WS3.2 (done) + WS4.2 mock; later phases renamed to WS7/WS8/WS9." },
     { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "WS3 DONE: React student app (prototype-v0.2) is production. Close-out review fixed B1 (one-practice-one-save), B4 (instant feedback = no timer), C1 (notification badge clears) and C3 cleanup. Gates closed — browser QA passed, production switched to the v0.2 build (deploy.sh → gh-pages), and REQUIRE_AUTH=true enforced on Cloud Run (rev tpc-api-00006-jsm; real-login save verified). Added a Vitest + Testing Library suite (138 pass, 1 skipped). Known gap: 69 per-choice crop images missing (deferred to WS4/WS5)." },
+      summary: "WS3.2 DONE: React student app (prototype-v0.2) is production. Close-out review fixed B1 (one-practice-one-save), B4 (instant feedback = no timer), C1 (notification badge clears) and C3 cleanup. Gates closed — browser QA passed, production switched to the v0.2 build (deploy.sh → gh-pages), and REQUIRE_AUTH=true enforced on Cloud Run (rev tpc-api-00006-jsm; real-login save verified). Added a Vitest + Testing Library suite (138 pass, 1 skipped). Known gap: 69 per-choice crop images missing (deferred to WS5)." },
     { date: "2026-06-25", who: "Codex", project: "tpc-online-platform",
-      summary: "Started WS3 React rebuild: created prototype-v0.2 as a React + Vite + JavaScript static SPA, ported the student flow shell (sign-in/setup, Home, Practice setup, Quiz, Result, Report, Profile), preserved Cloud Run/GIS adapter boundaries, added bundled K2/K3 data/assets, and verified npm install/build plus local Chrome sign-in render." },
+      summary: "Started WS3.1 React rebuild: created prototype-v0.2 as a React + Vite + JavaScript static SPA, ported the student flow shell (sign-in/setup, Home, Practice setup, Quiz, Result, Report, Profile), preserved Cloud Run/GIS adapter boundaries, added bundled K2/K3 data/assets, and verified npm install/build plus local Chrome sign-in render." },
     { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "WS2 DONE: real Google sign-in live + tested end-to-end. Vendor-neutral Google Identity Services on the frontend (TPC.auth adapter) → Cloud Run verifyGoogleToken verifies the ID token server-side; uid = Google sub; first-login writes Customers.Users. Admin role server-authoritative (ADMIN_EMAILS allow-list). Verified a real Google account signed up on production. Note: REQUIRE_AUTH still off (write lockdown is the one remaining toggle). No Firebase/Supabase dependency." },
     { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
