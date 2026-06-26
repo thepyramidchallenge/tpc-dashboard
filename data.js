@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS3.1/WS3.2 is DONE & live; WS4.1-05 removeBookmark is implemented, with WS4.1-06 bookmark dedup next.",
+    "tpc-online-platform WS4.1 is closed and live-smoked; next platform focus is WS4.2 fixed QuestionSet practice plus WS5 content/admin approval.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS3.1/WS3.2 done & live. WS4.1 contract/rendering/grading/image fallback and removeBookmark persistence done; next: WS4.1-06 dedup, WS4.1-07 source hygiene.",
+      next:  "WS4.1 question engine is closed and live-smoked. Next: WS4.2 fixed QuestionSet practice, then WS5 content/admin approval so sheet questions become serveable.",
     },
     {
       id:    "mainpage",
@@ -105,7 +105,8 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4.1 — Bookmark dedup", project: "tpc-online-platform", owner: "natalie", note: "WS4.1-05 removeBookmark is implemented; next open slices are WS4.1-06 dedup and WS4.1-07 source/exposure hygiene." },
+      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Run a selected QuestionSet in fixed order through the existing runner with test-like defaults." },
+      { title: "WS5 — Content approval path", project: "tpc-online-platform", owner: "natalie", note: "Approve/author serveable sheet questions; current live policy returns 0 sheet questions until rows pass status/source/exposure gates." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -140,8 +141,8 @@ window.TPC_DASHBOARD = {
         { label: "WS2 · Auth & onboarding",           state: "done"   },
         { label: "WS3.1 · App shell & student screens", state: "done" },
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
-        { label: "WS4.1 · Question engine",           state: "active" },
-        { label: "WS4.2 · Mock / full-set exercises", state: "todo" },
+        { label: "WS4.1 · Question engine",           state: "done" },
+        { label: "WS4.2 · Mock / full-set exercises", state: "active" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
@@ -226,6 +227,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
+      summary: "Closed WS4.1: deployed Cloud Run revision tpc-api-00010-kqb and live-smoked source/exposure hygiene. listQuestions and getQuestionSet no longer return non-approved, real_seed, or globally exhausted rows; current sheet policy yields 0 serveable live questions, so the app falls back to bundled content until content approval." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
       summary: "Deployed WS4.1-05 live: Cloud Run revision tpc-api-00009-jgs is serving 100% traffic, public frontend gh-pages f6e11ff includes the bookmark toggle-off call, production read smoke passed, and unauthenticated write rejection remains enforced." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
