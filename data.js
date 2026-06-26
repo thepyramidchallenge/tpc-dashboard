@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS3.1/WS3.2 is DONE & live; WS4.1 question engine is mostly complete, with WS4.1-05 removeBookmark next.",
+    "tpc-online-platform WS3.1/WS3.2 is DONE & live; WS4.1-05 removeBookmark is implemented, with WS4.1-06 bookmark dedup next.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS3.1/WS3.2 done & live. WS4.1 contract/rendering/grading/image fallback done; next: WS4.1-05 removeBookmark, WS4.1-06 dedup, WS4.1-07 source hygiene.",
+      next:  "WS3.1/WS3.2 done & live. WS4.1 contract/rendering/grading/image fallback and removeBookmark persistence done; next: WS4.1-06 dedup, WS4.1-07 source hygiene.",
     },
     {
       id:    "mainpage",
@@ -105,7 +105,7 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4.1 — Bookmark persistence", project: "tpc-online-platform", owner: "natalie", note: "Next open slice: WS4.1-05 removeBookmark end-to-end, then WS4.1-06 dedup and WS4.1-07 source/exposure hygiene." },
+      { title: "WS4.1 — Bookmark dedup", project: "tpc-online-platform", owner: "natalie", note: "WS4.1-05 removeBookmark is implemented; next open slices are WS4.1-06 dedup and WS4.1-07 source/exposure hygiene." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -226,6 +226,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
+      summary: "Implemented WS4.1-05 removeBookmark end-to-end: Cloud Run now removes matching Results.Bookmarks rows with verified identity binding, the frontend calls removeBookmark when toggling off, and the smoke script verifies add/remove/list." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
       summary: "Roadmap numbering sync: WS3.1 is app shell, WS3.2 is close-out, WS4.1 is question engine, and WS4.2 is mock/full-set work. Updated dependent roadmap references and dashboard labels; next platform task is WS4.1-05 removeBookmark end-to-end." },
     { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
