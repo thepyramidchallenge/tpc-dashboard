@@ -106,6 +106,7 @@ window.TPC_DASHBOARD = {
     ],
     next: [
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Run a selected QuestionSet in fixed order through the existing runner with test-like defaults." },
+      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Route R3 here: fail closed on unknown question IDs and decide completed vs draft session storage before pilot/ranking." },
       { title: "WS5 — Content approval path", project: "tpc-online-platform", owner: "natalie", note: "Approve/author serveable sheet questions; current live policy returns 0 sheet questions until rows pass status/source/exposure gates." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -143,6 +144,7 @@ window.TPC_DASHBOARD = {
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
         { label: "WS4.2 · Mock / full-set exercises", state: "active" },
+        { label: "WS4.3 · Save/session integrity",    state: "todo" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
@@ -227,6 +229,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
+      summary: "Routed R3 out of WS4.1 into new WS4.3 Save/session integrity: completed-session save hardening, forged-score fallback removal, and draft/resume storage decisions before pilot or ranking data matters." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
       summary: "Hardened WS4.1 closure for R1: deployed Cloud Run revision tpc-api-00011-l5l with upsertQuestion admin-gated to verified ADMIN_EMAILS. Backend tests now cover missing, non-admin, unverified-admin, and verified-admin identities; live smoke rejects unauthenticated upsertQuestion and keeps source/exposure checks green." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
