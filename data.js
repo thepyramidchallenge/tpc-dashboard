@@ -228,6 +228,8 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
+      summary: "Hardened WS4.1 closure for R1: deployed Cloud Run revision tpc-api-00011-l5l with upsertQuestion admin-gated to verified ADMIN_EMAILS. Backend tests now cover missing, non-admin, unverified-admin, and verified-admin identities; live smoke rejects unauthenticated upsertQuestion and keeps source/exposure checks green." },
+    { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
       summary: "Closed WS4.1: deployed Cloud Run revision tpc-api-00010-kqb and live-smoked source/exposure hygiene. listQuestions and getQuestionSet no longer return non-approved, real_seed, or globally exhausted rows; current sheet policy yields 0 serveable live questions, so the app falls back to bundled content until content approval." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
       summary: "Deployed WS4.1-05 live: Cloud Run revision tpc-api-00009-jgs is serving 100% traffic, public frontend gh-pages f6e11ff includes the bookmark toggle-off call, production read smoke passed, and unauthenticated write rejection remains enforced." },
