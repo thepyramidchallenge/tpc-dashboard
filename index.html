@@ -122,6 +122,42 @@
 
   footer{margin-top:40px;color:var(--muted);font-size:11.5px;text-align:center}
   @media(max-width:720px){.board{grid-template-columns:1fr}.le{grid-template-columns:78px 1fr}.le .w{display:none}}
+
+  /* view switcher (Workspace ⇄ Business space) */
+  .viewnav{display:inline-flex;gap:4px;margin:18px 0 4px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:4px}
+  .viewnav button{appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 15px;border-radius:8px;display:inline-flex;align-items:center;gap:7px;transition:.12s}
+  .viewnav button .zh{font-size:11.5px;font-weight:400;opacity:.8}
+  .viewnav button .ic{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+  .viewnav button:hover{color:var(--ink)}
+  .viewnav button[aria-selected="true"]{background:var(--panel);color:var(--teal-deep);box-shadow:0 1px 2px rgba(20,40,50,.10)}
+  .viewnav button[aria-selected="true"] .ic{opacity:1}
+  .view[hidden]{display:none}
+
+  /* business sub-nav (document pills) */
+  .biznav{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 18px}
+  .biznav button{appearance:none;border:1px solid var(--line);background:var(--panel);cursor:pointer;font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 13px;border-radius:20px;transition:.12s}
+  .biznav button:hover{border-color:#bcdae4;color:var(--ink)}
+  .biznav button[aria-selected="true"]{background:#eaf4f8;border-color:#bcdae4;color:var(--teal-deep)}
+  .biznav button .zh{font-weight:400;opacity:.75;margin-left:4px}
+
+  /* rendered markdown */
+  .md-body{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:6px 30px 30px;font-size:14.5px;line-height:1.72;color:#2b3137;max-width:900px}
+  .md-body h1{font-family:Georgia,serif;font-size:25px;color:var(--teal-deep);margin:26px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--line)}
+  .md-body h2{font-family:Georgia,serif;font-size:19px;margin:30px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .md-body h3{font-size:16px;margin:24px 0 6px;color:var(--ink)}
+  .md-body p{margin:10px 0} .md-body ul,.md-body ol{margin:10px 0;padding-left:22px} .md-body li{margin:4px 0}
+  .md-body a{color:var(--teal);font-weight:600} .md-body strong{color:var(--ink)}
+  .md-body code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f0f2f4;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:#384149}
+  .md-body pre{background:#f7f8fa;border:1px solid var(--line);border-radius:9px;padding:13px 15px;overflow:auto}
+  .md-body pre code{background:0;border:0;padding:0;font-size:12.5px;color:#2c333a}
+  .md-body blockquote{margin:14px 0;padding:10px 16px;background:#fdf7e7;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;color:#5c4a16}
+  .md-body blockquote p{margin:4px 0}
+  .md-body table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13px}
+  .md-body th,.md-body td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  .md-body th{background:var(--panel-2);font-weight:700;color:var(--ink)}
+  .md-body tr:nth-child(even) td{background:#fafbfc}
+  .md-body hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+  .md-body .biz-error{color:#b4453c;background:#fcecec;border:1px solid #f0c4c4;border-radius:9px;padding:16px;max-width:none}
 </style>
 </head>
 <body>
@@ -130,11 +166,18 @@
   <header class="top">
     <div>
       <div class="brand">The <span class="py">Pyramid</span> Challenge
-        <span class="sub">Workspace dashboard · daily source of truth</span>
+        <span class="sub" id="brandsub">Workspace dashboard · daily source of truth</span>
       </div>
     </div>
     <div class="meta" id="meta"></div>
   </header>
+
+  <nav class="viewnav" role="tablist" aria-label="View">
+    <button id="tab-workspace" role="tab" aria-selected="true" onclick="TPCNAV.show('workspace')"><span class="ic"></span>Workspace <span class="zh">工作區</span></button>
+    <button id="tab-business" role="tab" aria-selected="false" onclick="TPCNAV.show('business')"><span class="ic"></span>Business space <span class="zh">商業大腦</span></button>
+  </nav>
+
+  <div id="view-workspace" class="view">
 
   <div class="focus">
     <span class="lbl">Today's focus · 今日重點</span>
@@ -173,7 +216,14 @@
     </ol>
   </details>
 
-  <footer>Static HTML · no build step · open by double-click. Data lives in <code>data.js</code>.</footer>
+  </div><!-- /view-workspace -->
+
+  <div id="view-business" class="view" hidden>
+    <nav class="biznav" id="biznav" aria-label="Business space documents"></nav>
+    <div class="md-body" id="biz-content"></div>
+  </div>
+
+  <footer>Static HTML · no build step. Workspace data in <code>data.js</code> · Business space renders <code>business/*.md</code>.</footer>
 </div>
 
 <!-- data.js assigns window.TPC_DASHBOARD; it must load BEFORE the renderer below.
@@ -267,6 +317,80 @@
         'Check the <code>systemMap</code> syntax in data.js, or your internet connection (Mermaid loads from CDN).<br><br>'+esc(err&&err.message||err)+'</div>';
     });
   }
+})();
+</script>
+
+<!-- Business space: renders the markdown in business/ so it stays the single
+     source of truth (no duplicated data object to drift). marked from CDN. -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script>
+window.TPCNAV = (function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var DOCS = [
+    { id:"CONSTITUTION",   label:"Constitution",   zh:"憲章" },
+    { id:"DECISIONS",      label:"Decisions",      zh:"決策" },
+    { id:"HYPOTHESES",     label:"Hypotheses",     zh:"假設" },
+    { id:"EXPERIMENTS",    label:"Experiments",    zh:"實驗" },
+    { id:"OPEN_QUESTIONS", label:"Open questions", zh:"待解" },
+    { id:"README",         label:"Guide",          zh:"指南" }
+  ];
+  var SUBS = {
+    workspace:"Workspace dashboard · daily source of truth",
+    business:"Business space · the why · 商業大腦"
+  };
+  var cache = {}, bizBuilt = false, curDoc = "CONSTITUTION";
+  function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  function buildBizNav(){
+    $("biznav").innerHTML = DOCS.map(function(d){
+      return '<button role="tab" data-doc="'+d.id+'" aria-selected="'+(d.id===curDoc)+'" onclick="TPCNAV.doc(\''+d.id+'\')">'+
+        esc(d.label)+'<span class="zh">'+esc(d.zh)+'</span></button>';
+    }).join("");
+  }
+
+  function renderDoc(id){
+    var el = $("biz-content");
+    if(cache[id]){ el.innerHTML = cache[id]; return; }
+    if(!window.marked){ el.innerHTML = '<div class="biz-error">Markdown renderer (marked) did not load — check your internet connection (it loads from a CDN).</div>'; return; }
+    el.innerHTML = '<p style="color:#888">Loading '+esc(id)+'…</p>';
+    fetch("./business/"+id+".md?t="+Date.now()).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status); return r.text();
+    }).then(function(md){
+      var html = marked.parse(md); cache[id] = html; if(curDoc===id) el.innerHTML = html;
+    }).catch(function(err){
+      el.innerHTML = '<div class="biz-error"><b>Could not load business/'+esc(id)+'.md</b><br>'+
+        'The Business space reads the markdown files, so the page must be <b>served</b> (the live GitHub Pages site, or a local server) — it will not work from a double-clicked <code>file://</code> page. '+
+        'The files are always readable directly in the repo under <code>business/</code>.<br><br><span style="color:#a06">'+esc(err&&err.message||err)+'</span></div>';
+    });
+  }
+
+  function doc(id){
+    curDoc = id;
+    var btns = $("biznav").querySelectorAll("button");
+    for(var i=0;i<btns.length;i++) btns[i].setAttribute("aria-selected", btns[i].getAttribute("data-doc")===id);
+    renderDoc(id);
+  }
+
+  function show(view){
+    var biz = view==="business";
+    $("view-workspace").hidden = biz;
+    $("view-business").hidden = !biz;
+    $("tab-workspace").setAttribute("aria-selected", String(!biz));
+    $("tab-business").setAttribute("aria-selected", String(biz));
+    var bs = $("brandsub"); if(bs) bs.textContent = SUBS[biz?"business":"workspace"];
+    try{ history.replaceState(null,"", biz?"#business":"#workspace"); }catch(e){}
+    if(biz && !bizBuilt){ bizBuilt = true; buildBizNav(); renderDoc(curDoc); }
+  }
+
+  // internal .md links inside rendered docs switch documents instead of navigating away
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest && e.target.closest("#biz-content a"); if(!a) return;
+    var m = (a.getAttribute("href")||"").match(/(?:^|\/)([A-Z_]+)\.md(?:#.*)?$/);
+    if(m && DOCS.some(function(d){return d.id===m[1];})){ e.preventDefault(); doc(m[1]); window.scrollTo(0,0); }
+  });
+
+  if(location.hash==="#business") show("business");
+  return { show:show, doc:doc };
 })();
 </script>
 </body>
