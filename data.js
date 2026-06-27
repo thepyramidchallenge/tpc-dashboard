@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-06-28",
-    updatedBy: "Claude (Opus 4.8)",
+    updatedBy: "Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.1 closed + live-smoked (real Google sign-in passed). Roadmap rearranged engineering-first → then Business Space: do WS4.3 (save integrity) → WS5 (admin/content) → WS4.2 (mock) → WS6 (pilot/launch); then Business-Space validation — WS2-07 region (D5), WS9-00 $99 report MVP (E1 north-star, D4), WS7-06 integrity logging day-1 (D6); WS7/WS8/WS9 subscription gated on E1/E2 (D7 'evidence gates build').",
+    "tpc-online-platform WS2-07 region/year-level capture is live (D5; backend tpc-api-00015-khx + public bundle index-PmkUqDvs.js). Next engineering order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 polish/pilot/launch; then Business-Space validation — WS7-06 integrity logging day-1 (D6) + WS9-00 $99 report MVP (E1 north-star, D4). WS7/WS8/WS9 subscription remains gated on E1/E2 (D7 'evidence gates build').",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.1 closed + live-smoked (real sign-in passed). Engineering-first order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
+      next:  "WS2-07 region capture is live. Engineering-first order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS7-06 log-only + WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap (WS4.2 →).",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS2-07 is live; next platform work is WS4.3 → WS5 → WS4.2 → WS6.",
     },
     {
       id:    "entrance-qr-scan",
@@ -132,7 +132,6 @@ window.TPC_DASHBOARD = {
       { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Engineering #1. Pre-pilot: WS4.3-01 forged-score fail-closed (R3) + WS4.3-03 failed completed-save retry/offline (R6). In-progress draft/resume (WS4.3-02/04) deferred — don't build a persistence system pre-pilot (codex)." },
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live policy serves 0 sheet questions until rows are approved." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
-      { title: "WS2-07 — Region capture (before pilot)", project: "tpc-online-platform", owner: "natalie", note: "Small onboarding add (D5): capture region + confirm year-level at sign-up. Do it BEFORE the pilot so we don't backfill region onto real users later (codex)." },
       { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
@@ -166,7 +165,7 @@ window.TPC_DASHBOARD = {
       items: [
         { label: "WS0 · Project setup",               state: "done"   },
         { label: "WS1 · Data layer (Sheets + API + adapter)", state: "done" },
-        { label: "WS2 · Auth & onboarding",           state: "done"   },
+        { label: "WS2 · Auth & onboarding incl. WS2-07 region capture", state: "done" },
         { label: "WS3.1 · App shell & student screens", state: "done" },
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
@@ -257,6 +256,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-28", who: "Codex", project: "tpc-online-platform",
+      summary: "WS2-07 region/year-level capture is live and passed user check: public frontend gh-pages 548f2ca serves bundle index-PmkUqDvs.js with Region setup UI; Cloud Run tpc-api-00015-khx serves 100% with recordLogin/lastLoginAt; live TPC Customers.Users header has region after yearLevel and lastLoginAt at the end; ROADMAP/HANDOFF updated to mark WS2-07 done." },
     { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "",
       summary: "Correction + reframe (founder): live events are NOT capacity-capped — HK incumbents run ~15–20k 人次/yr over 3 events profitably (scale via rooms/days/staff). Reframed D3 from 'live = structural loss-leader' to 'live ⇄ online: both coupled, no pre-committed lead, each must have a credible path to standalone break-even'; fixed the CONSTITUTION capacity line. Binding constraint = demand/brand + per-head CAC, not capacity." },
     { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
