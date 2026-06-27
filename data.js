@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-06-26",
+    updated:   "2026-06-27",
     updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme.",
   },
@@ -67,6 +67,30 @@ window.TPC_DASHBOARD = {
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
       next:  "WS4.1 question engine is closed and live-smoked. Next: WS4.2 fixed QuestionSet practice, then WS5 content/admin approval so sheet questions become serveable.",
+    },
+    {
+      id:    "tpc-online-platform-admin",
+      name:  "tpc-online-platform-admin",
+      owner: "natalie",
+      tag:   "Platform — full private repo",
+      role:  "FULL private project: React v0.2 frontend + Cloud Run backend + docs + sheets templates. The public tpc-online-platform is the published-frontend mirror of this.",
+      status: "active",
+      health: "active",
+      repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
+      run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap (WS4.2 →).",
+    },
+    {
+      id:    "entrance-qr-scan",
+      name:  "entrance-qr-scan",
+      owner: "both",
+      tag:   "Event ops — staff QR scanner",
+      role:  "Mobile-friendly QR scanner for staff check-in. GitHub Pages frontend + Google Apps Script backend writing scan/manual records to Sheets.",
+      status: "stable",
+      health: "stable",
+      repo:  "github.com/thepyramidchallenge/entrance-qr-scan",
+      run:   "open entrance-qr-scan/index.html   # frontend/ assets · backend = Apps Script (clasp)",
+      next:  "In use for event check-in. (Added during migration sync — adjust owner/status as needed.)",
     },
     {
       id:    "mainpage",
@@ -230,6 +254,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "",
+      summary: "Added the migrated repos to the board: tpc-online-platform-admin (full private project — frontend v0.2 + Cloud Run backend + docs) and entrance-qr-scan (staff check-in QR scanner). All repos now under the thepyramidchallenge org." },
     { date: "2026-06-26", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "Full WS1–4.1 risk review (verified against code, live backend, and tests). Catalogued R1–R12. Confirmed Codex's R1–R5 handling is sound: R1 admin-gate is correct and enforced live (POST upsertQuestion w/o token → rejected), R2 source/exposure deploy is live (listQuestions now returns 0 sheet rows; bundled fallback covers the app), R3 forged-score routed to WS4.3-01, R4 exposure cap honestly removed + routed to WS5-13, R5 read IDOR routed to WS6-14. Backend tests 4 pass. Flagged R3 + R5 as live-exploitable pre-pilot blockers, and R6–R12 (save-timeout hang, no error boundary, concurrent Sheets writes, etc.) for the next pass." },
     { date: "2026-06-26", who: "Codex", project: "tpc-online-platform",
