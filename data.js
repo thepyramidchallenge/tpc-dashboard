@@ -256,6 +256,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "ROADMAP physically reordered so sections read in execution order: WS4.2 (mock) section moved to after WS5 → Phase-1 now flows WS4.1 → WS4.3 → WS5 → WS4.2 → WS6 (gated WS7/8/9 under Phase 2/3). No task IDs changed and no closed [x] item moved — existing -0N suffixes already ascend within each workstream, so the section reorder is what makes the WSX-0N read in priority order. WS4.2's number stays below WS4.3/WS5 only because WS4.2-01 is closed/frozen (noted inline)." },
     { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "Roadmap rearranged engineering-first → then Business Space (synced across ROADMAP, AGENT_HANDOFF, dashboard). Task-level Priority order: Tier 1 engineering in dependency order (WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch); Tier 2 Business-Space validation (new WS2-07 region capture per D5; new WS9-00 $99 report MVP = E1 north-star per D4; WS7-06 integrity logging day-1 per D6); Tier 3 WS7/WS8/WS9-01+ subscription gated on E1/E2 (D7 'evidence gates build'). Also: real Google sign-in verified live end-to-end (the last open WS4.1 check); new WS6-15 first-time cold-start practice default routed. WS IDs kept stable so Business-Space D# links survive." },
     { date: "2026-06-27", who: "Codex", project: "tpc-online-platform",
