@@ -8,7 +8,7 @@ piece of evidence. Don't let them quietly disappear.
 ### Q1 — Who/what staffs the monthly content + report-QC floor?
 - The funnel's *entry* (free monthly challenge) needs fresh, high-quality
   questions **every month**, and each report batch needs ~2 days QC. AI question
-  generation is currently **HOLD** (ROADMAP WS5-06) precisely because quality
+  generation is currently **HOLD** (ROADMAP P25) precisely because quality
   isn't there yet. This recurring human/AI+QC cost is the real long-run floor
   (H5) and is tied to trust — over-automation risks the moat.
 - Gates: the whole funnel top; H3/H5 cost assumptions. Links: ROADMAP WS5.
@@ -20,7 +20,7 @@ piece of evidence. Don't let them quietly disappear.
   (b) the **numeric thresholds** (tab-switch count, time-away, response-time floor,
   profile-deviation) that map to High/Med/Low — calibrate from logged data, don't
   guess; (c) confirm the **camera/mic skip** recommended in D6.
-- Gates: D5, D6, H2, H6. Links: ROADMAP WS7-06.
+- Gates: D5, D6, H2, H6. Links: ROADMAP P24.
 
 ### Q3 — Exact online monthly cost, and its decline curve
 - H3/H5 hinge on cost. Track the real monthly all-in (labour + AI + infra + ads)
