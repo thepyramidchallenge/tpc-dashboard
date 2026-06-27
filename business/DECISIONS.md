@@ -43,19 +43,34 @@ go at the bottom; never reuse a number.
 - Links: E2 · D1
 - Revisit: after the trust-transfer bet (H2) resolves.
 
-### D3 — Live = credibility loss-leader; online + reports = the profit engine
-- Status: ACCEPTED (founder "buys" the reframe, 2026-06-27)
-- Updated: 2026-06-27
-- Body: Treat the live event primarily as the trust/verification layer, not the
-  early revenue layer. The structural profit pool is **online + reports**
-  (software-like, high margin); live mints the credibility that makes them sell.
-- Why: Season 2 unit economics — live is high-fixed-cost, demand-starved,
-  CAC≈ARPU, capacity-capped → structurally hard to profit. Online/report have
-  near-zero marginal cost and ~79–85% margin.
-- Evidence: Season 2 cost $90K vs revenue $60.7K (−$29.3K); ARPU $453; ads CAC
-  ≈ ARPU. Report line ~79% margin. (See H1, H3.)
-- Links: H3 · ROADMAP (live event is not in the WS plan; platform is)
-- Revisit: if the founder decides live must stand alone at break-even long-term.
+### D3 — Live ⇄ online: both must be viable; no pre-committed lead
+- Status: ACCEPTED (reframed 2026-06-28 — supersedes the earlier "live = structural loss-leader")
+- Updated: 2026-06-28
+- Body: Don't pre-assume which side breaks through first or which is "the main
+  dish". Live and online are **highly coupled and feed back** (live mints
+  credibility that lifts online attach; online lowers live's CAC + extends LTV),
+  and **each can break through on its own**. Stance: stay **open**, and hold both to
+  the same business-reality bar — **each must have a credible path to standalone
+  break-even** (no permanent subsidy). Let evidence reveal the lead.
+- Clarifications:
+  - "Capable of break-even" ≠ break-even every quarter — near-term sub-scale losses
+    while building demand/brand are *investment*, not failure (Constitution:
+    learn/validate first; revenue last). The test is the **trajectory** to viability.
+  - **Correction (2026-06-28):** live is **not** capacity-capped — it scales with
+    rooms/days/staff; HK incumbents run ~15–20k 人次/yr over 3 events *profitably*.
+    TPC's Season 2 loss was **low volume + CAC≈ARPU (no brand yet)**, not structural;
+    live can be standalone-profitable at volume.
+  - Measure each side **standalone**, but name the coupling so a result isn't
+    mis-attributed (e.g. online attach riding on live's credibility).
+- Why: incumbents prove live profits at volume; the binding constraint is
+  **demand/brand + per-head CAC**, not capacity (their brand makes marketing
+  near-free per head; TPC's $40k/134 is the brand-gap tax). TPC's edge is
+  **differentiation** (measurement / online / digitized live — higher margin, harder
+  to copy), not a paper-event volume war.
+- Evidence: Season 2 — cost $90K vs rev $60.7K (−$29.3K); ARPU $453; ads CAC≈ARPU;
+  report line ~79% margin (H1). Incumbents ~15–20k 人次/yr, profitable.
+- Links: H1 · H3 · D7 · D1
+- Revisit: as live and online each accumulate evidence on their path to break-even.
 
 ### D4 — Sequence monetization: transactional report **first**, subscription **after**
 - Status: ACCEPTED (recommended & uncontested, 2026-06-27)

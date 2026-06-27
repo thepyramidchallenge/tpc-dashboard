@@ -20,8 +20,8 @@ uncertainty.
 ## The product line (why each piece exists)
 
 - **Live competition** = the **credibility anchor** — physical, proctored, hard
-  to fake. High per-head margin but high fixed cost and capacity-capped
-  (~2,000/yr max). It *mints* trust.
+  to fake; high per-head margin. It *mints* trust. (Not capacity-capped — it scales
+  with rooms/days/staff; HK incumbents run ~15–20k 人次/yr profitably.)
 - **Online platform** = the **scale + low-CAC + repeat engine** — software
   economics (near-zero marginal cost), so it can be an independent income stream
   *and* lower the live event's CAC / extend LTV.

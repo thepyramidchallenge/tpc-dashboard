@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-06-27",
+    updated:   "2026-06-28",
     updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
@@ -254,6 +254,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "",
+      summary: "Correction + reframe (founder): live events are NOT capacity-capped — HK incumbents run ~15–20k 人次/yr over 3 events profitably (scale via rooms/days/staff). Reframed D3 from 'live = structural loss-leader' to 'live ⇄ online: both coupled, no pre-committed lead, each must have a credible path to standalone break-even'; fixed the CONSTITUTION capacity line. Binding constraint = demand/brand + per-head CAC, not capacity." },
     { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "",
       summary: "Constitution: added an 'evidence gates build — don't build ahead of validation' operating principle (no Phase-2+ iPad/subscription infra before E1/E2). Also wired all repo agent-entrypoints (admin CLAUDE.md, public README, pyramid-site CLAUDE.md) to point at the Business Space before product/strategy decisions." },
     { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "",
