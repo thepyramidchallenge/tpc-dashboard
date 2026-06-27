@@ -24,7 +24,7 @@ window.TPC_DASHBOARD = {
   meta: {
     updated:   "2026-06-28",
     updatedBy: "Claude (Opus 4.8)",
-    note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/. · Open roadmap tasks reindexed to global P## execution order (closed items keep WSx-0N) — crosswalk at top of ROADMAP.md.",
+    note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
   /* --- people / ownership 分工 ------------------------------------------
@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.1 closed + live-smoked (real Google sign-in passed). Roadmap rearranged engineering-first → then Business Space: do WS4.3 (save integrity) → WS5 (admin/content) → WS4.2 (mock) → WS6 (pilot/launch); then Business-Space validation — P22 region (D5), P23 $99 report MVP (E1 north-star, D4), P24 integrity logging day-1 (D6); WS7/WS8/WS9 subscription gated on E1/E2 (D7 'evidence gates build').",
+    "tpc-online-platform WS4.1 closed + live-smoked (real Google sign-in passed). Roadmap rearranged engineering-first → then Business Space: do WS4.3 (save integrity) → WS5 (admin/content) → WS4.2 (mock) → WS6 (pilot/launch); then Business-Space validation — WS2-07 region (D5), WS9-00 $99 report MVP (E1 north-star, D4), WS7-06 integrity logging day-1 (D6); WS7/WS8/WS9 subscription gated on E1/E2 (D7 'evidence gates build').",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.1 closed + live-smoked (real sign-in passed). Engineering-first order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (P23 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
+      next:  "WS4.1 closed + live-smoked (real sign-in passed). Engineering-first order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -129,11 +129,11 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Engineering-first #1. P01 forged-score fail-closed (R3), then completed-vs-draft storage + offline/failed-save UX (R6). Pre-pilot blockers." },
-      { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. Question list/editor/lifecycle (P04/P05/P06) + seed real QuestionSets (P07). Live policy serves 0 sheet questions until rows are approved." },
-      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on P07 sets." },
-      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, P20) → P21 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
-      { title: "P23 — $99 report MVP (E1 north-star)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (after engineering core). Sell a $99 one-off report off an online result via the existing Sheets→Affinity pipeline (D4). Validates report WTP (E1) before any subscription build. WS7/8/9 subscription gated on E1/E2 (D7)." },
+      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Engineering-first #1. WS4.3-01 forged-score fail-closed (R3), then completed-vs-draft storage + offline/failed-save UX (R6). Pre-pilot blockers." },
+      { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. Question list/editor/lifecycle (WS5-01/02/03) + seed real QuestionSets (WS5-04). Live policy serves 0 sheet questions until rows are approved." },
+      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
+      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
+      { title: "WS9-00 — $99 report MVP (E1 north-star)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (after engineering core). Sell a $99 one-off report off an online result via the existing Sheets→Affinity pipeline (D4). Validates report WTP (E1) before any subscription build. WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -171,7 +171,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.1 · Question engine",           state: "done" },
         { label: "WS4.3 · Save/session integrity (next)", state: "active" },
         { label: "WS5 · Admin & content",             state: "todo"   },
-        { label: "WS4.2 · Mock / full-set (after P07)", state: "todo" },
+        { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
     },
@@ -180,10 +180,10 @@ window.TPC_DASHBOARD = {
       owner:   "natalie",
       title:   "Phase 2 / 3 — later phases",
       items: [
-        { label: "P23 · $99 report MVP (E1 north-star)", state: "todo" },
+        { label: "WS9-00 · $99 report MVP (E1 north-star)", state: "todo" },
         { label: "WS7 · Test Mode + ranking (gated on E1/E2)", state: "todo"   },
         { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
-        { label: "P50+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
+        { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "Migrate Sheets → Firestore/Supabase (at WS7)", state: "todo" },
         { label: "AI question/image generation",      state: "hold"   },
       ],
@@ -257,7 +257,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "Full task-ID reindex: all 52 open roadmap tasks renumbered into one global execution-priority sequence P01…P52 (P01 = do first); closed [x] tasks keep their original WSx-0N IDs, frozen. Workstream headings retained as themes so Business-Space WS5/WS7/WS8 pointers still resolve. Applied across ROADMAP (+ old→new crosswalk at top), AGENT_HANDOFF, dashboard forward sections, and Business-Space DECISIONS/OPEN_QUESTIONS; dated changelog/history left citing old IDs. e.g. WS4.3-01→P01, WS5-04→P07, WS6-11 pilot→P21, WS9-00 $99 report→P23, WS7-06 integrity logging→P24." },
+      summary: "Kept WSx-0N IDs (reverted a P## global-reindex experiment). Ordering is now carried by: (1) workstream sections in priority order, (2) ascending -0N suffixes within each theme, (3) the bottom Priority-order list. Within-group fix: moved WS6-11 (pilot → launch) to the end of WS6 — it's the final launch gate but its low suffix is historical; ID kept stable so the ~4 refs to it don't break. Evaluation: themes are sound; WS6 was the only group with an internal order issue." },
     { date: "2026-06-28", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "ROADMAP physically reordered so sections read in execution order: WS4.2 (mock) section moved to after WS5 → Phase-1 now flows WS4.1 → WS4.3 → WS5 → WS4.2 → WS6 (gated WS7/8/9 under Phase 2/3). No task IDs changed and no closed [x] item moved — existing -0N suffixes already ascend within each workstream, so the section reorder is what makes the WSX-0N read in priority order. WS4.2's number stays below WS4.3/WS5 only because WS4.2-01 is closed/frozen (noted inline)." },
     { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "tpc-online-platform",

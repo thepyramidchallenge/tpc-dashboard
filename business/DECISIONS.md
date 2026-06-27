@@ -133,7 +133,7 @@ go at the bottom; never reuse a number.
     rests on item randomization (day 1) + honesty pledge + live calibration.
 - Links: D1 (price=trust ladder) · D3 (live=apex) · D5 (ranking) · H6 · Q1
   (item-design = the content-engine investment; invest once, win twice) ·
-  ROADMAP P24 (integrity signals)
+  ROADMAP WS7-06 (integrity signals)
 - Revisit: set numeric thresholds once behavioural data is collected.
 
 ### D7 — The long arc: platform-first → digitized live → unified portfolio
