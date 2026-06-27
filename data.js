@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-06-27",
-    updatedBy: "Codex",
+    updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.1 is closed and live-smoked. A WS1–4.1 risk review fixed R1 (upsertQuestion admin-gate), R2 (source/exposure deploy), and R5 (authenticated reads by default) live; R3→WS4.3 and R4→WS5-13 remain routed. Next: clear remaining review risks (R6–R12) and the R3 save/session blocker, then WS4.2 / WS5.",
+    "tpc-online-platform WS4.1 closed + live-smoked (real Google sign-in passed). Roadmap rearranged engineering-first → then Business Space: do WS4.3 (save integrity) → WS5 (admin/content) → WS4.2 (mock) → WS6 (pilot/launch); then Business-Space validation — WS2-07 region (D5), WS9-00 $99 report MVP (E1 north-star, D4), WS7-06 integrity logging day-1 (D6); WS7/WS8/WS9 subscription gated on E1/E2 (D7 'evidence gates build').",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.1 question engine is closed and live-smoked. Next: WS4.2 fixed QuestionSet practice, then WS5 content/admin approval so sheet questions become serveable.",
+      next:  "WS4.1 closed + live-smoked (real sign-in passed). Engineering-first order: WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -129,10 +129,11 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Run a selected QuestionSet in fixed order through the existing runner with test-like defaults." },
-      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Route R3 here: fail closed on unknown question IDs and decide completed vs draft session storage before pilot/ranking." },
-      { title: "WS5 — Content approval path", project: "tpc-online-platform", owner: "natalie", note: "Approve/author serveable sheet questions; current live policy returns 0 sheet questions until rows pass status/source/exposure gates." },
-      { title: "Risk pass — R6–R12 (review follow-ups)", project: "tpc-online-platform", owner: "natalie", note: "From the WS1–4.1 review: R6 timeout-less save can hang on Submitting; R7 no error boundary + unguarded payload.choices; R8 concurrent Sheets writes; R9 auth-rollback fragility; R10 69 missing images; R11 thin cross-device report; R12 input validation. R3 (WS4.3) remains the pre-pilot save/session blocker." },
+      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Engineering-first #1. WS4.3-01 forged-score fail-closed (R3), then completed-vs-draft storage + offline/failed-save UX (R6). Pre-pilot blockers." },
+      { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. Question list/editor/lifecycle (WS5-01/02/03) + seed real QuestionSets (WS5-04). Live policy serves 0 sheet questions until rows are approved." },
+      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
+      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
+      { title: "WS9-00 — $99 report MVP (E1 north-star)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (after engineering core). Sell a $99 one-off report off an online result via the existing Sheets→Affinity pipeline (D4). Validates report WTP (E1) before any subscription build. WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -168,9 +169,9 @@ window.TPC_DASHBOARD = {
         { label: "WS3.1 · App shell & student screens", state: "done" },
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
-        { label: "WS4.2 · Mock / full-set exercises", state: "active" },
-        { label: "WS4.3 · Save/session integrity",    state: "todo" },
+        { label: "WS4.3 · Save/session integrity (next)", state: "active" },
         { label: "WS5 · Admin & content",             state: "todo"   },
+        { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
       ],
     },
@@ -179,9 +180,10 @@ window.TPC_DASHBOARD = {
       owner:   "natalie",
       title:   "Phase 2 / 3 — later phases",
       items: [
-        { label: "WS7 · Test Mode + ranking",          state: "todo"   },
-        { label: "WS8 · Reporting v2 & adaptive",      state: "todo"   },
-        { label: "WS9 · Accounts & monetization",      state: "todo"   },
+        { label: "WS9-00 · $99 report MVP (E1 north-star)", state: "todo" },
+        { label: "WS7 · Test Mode + ranking (gated on E1/E2)", state: "todo"   },
+        { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
+        { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "Migrate Sheets → Firestore/Supabase (at WS7)", state: "todo" },
         { label: "AI question/image generation",      state: "hold"   },
       ],
@@ -254,6 +256,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "Roadmap rearranged engineering-first → then Business Space (synced across ROADMAP, AGENT_HANDOFF, dashboard). Task-level Priority order: Tier 1 engineering in dependency order (WS4.3 save integrity → WS5 admin/content → WS4.2 mock → WS6 pilot/launch); Tier 2 Business-Space validation (new WS2-07 region capture per D5; new WS9-00 $99 report MVP = E1 north-star per D4; WS7-06 integrity logging day-1 per D6); Tier 3 WS7/WS8/WS9-01+ subscription gated on E1/E2 (D7 'evidence gates build'). Also: real Google sign-in verified live end-to-end (the last open WS4.1 check); new WS6-15 first-time cold-start practice default routed. WS IDs kept stable so Business-Space D# links survive." },
     { date: "2026-06-27", who: "Codex", project: "tpc-online-platform",
       summary: "Implemented R5 authenticated reads by default: Cloud Run tpc-api-00012-sqq now leaves only ping public; unauthenticated listQuestions/getQuestionSet/upsertQuestion reject in live smoke; user-owned reads derive uid/email from the verified token. Public frontend gh-pages 447c7b0 now sends ID tokens for protected reads and keeps bundled samples out of the production JS bundle. Backend tests 6 pass; frontend tests 192 pass, 1 skipped." },
     { date: "2026-06-27", who: "Claude (Opus 4.8)", project: "",
