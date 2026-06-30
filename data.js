@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS2-07 region/year-level capture is live. WS4.3 is next: fail-closed grading + completed-save idempotency/retry first, then confirmed cross-device DraftSessions. After WS4.3: WS5 admin/content → WS4.2 mock → WS6 pilot/launch; Business-Space validation remains WS7-06 + WS9-00.",
+    "tpc-online-platform WS4.3 implementation is local but not deployed: fail-closed grading, completed-save idempotency/retry, and DraftSessions APIs/schema are coded and tests/build pass. Next: add the live Results.DraftSessions tab, deploy/smoke WS4.3, then WS5 admin/content.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -129,7 +129,7 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Engineering #1. Pre-pilot: WS4.3-01 forged-score fail-closed (R3) + WS4.3-03 completed-save retry/offline with stable sessionId idempotency (R6). Then WS4.3-02/04: confirmed cross-device DraftSessions." },
+      { title: "WS4.3 — Save/session integrity", project: "tpc-online-platform", owner: "natalie", note: "Local implementation done, not deployed: fail-closed grading, stable sessionId idempotency/retry, DraftSessions endpoints/schema, frontend retry-later result copy. Next: create live Results.DraftSessions tab + deploy/smoke." },
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live policy serves 0 sheet questions until rows are approved." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
       { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
@@ -256,6 +256,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-06-30", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Implemented WS4.3 locally: saveSession fails closed on unknown question IDs, ignores forged client score fields, and is idempotent by sessionId; added DraftSessions API/schema; frontend creates server drafts, submits via draftId/sessionId, queues failed completed saves for retry, and shows retry-later copy. Backend tests 12 pass, frontend tests 197 pass/1 skipped, build passed. Not deployed; live Results.DraftSessions tab still needed." },
     { date: "2026-06-30", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Updated WS4.3 planning against the latest repo: authenticated reads are already done (WS6-14), so WS4.3 now focuses on fail-closed grading, completed-save idempotency/retry, and confirmed cross-device DraftSessions after the pre-pilot save blockers. README/HANDOFF/ROADMAP/sheet notes aligned." },
     { date: "2026-06-28", who: "Codex", project: "tpc-online-platform",
