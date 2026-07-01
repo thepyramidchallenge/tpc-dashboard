@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-06-30",
-    updatedBy: "Codex (GPT-5)",
+    updated:   "2026-07-02",
+    updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
@@ -255,6 +255,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-02", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "WS4.3-13 young-learner UI polish (new sub-task; frontend/presentation only, no backend or DraftSessions schema change). Home promotes the newest unfinished practice to a 繼續練習 Continue card (progress ring, topic, updated time, Resume + Discard); other drafts get an inline progress bar + per-row discard, so drafts can be dropped from Home without resuming. The runner's ambiguous ✕-discards-immediately control became a non-destructive 暫停 Pause sheet (Save for later / Keep going / Discard) available in instant AND at-end modes — instant runs are now saveable — replacing the native window.confirm. Frontend 220 pass / 1 skipped, build passes, pause sheet visually verified in demo mode. NOT yet deployed to gh-pages (production still on index-CakzRsBB.js)." },
     { date: "2026-06-30", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Switched Attempts.attemptId to backend-generated only, added regression coverage, deployed Cloud Run tpc-api-00017-ct4, and updated live Results.Fields. Added 30 K2 authored/approved dummy arithmetic questions plus set_k2_dummy_arithmetic_01 to live TPC Questions for signed-in testing; backend tests 13 pass and live ping is healthy." },
     { date: "2026-06-30", who: "Codex (GPT-5)", project: "tpc-online-platform",
