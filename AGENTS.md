@@ -34,6 +34,15 @@ update `dashboard/data.js`:
 Keep edits small and valid JS — a trailing comma or unclosed string will break
 rendering. If the page shows an error banner, re-check the last thing you edited.
 
+**Before every commit, run the workspace linter:**
+`node scripts/check-workspace.js` — it machine-enforces this protocol
+(data.js evaluates; valid status/state values; board/roadmap `project` and
+`owner` keys resolve; changelog newest-first and `meta.updated` stamped;
+Business Space entries follow the schema; every `D#/H#/E#/Q#` reference
+points to an entry that exists). CI (`.github/workflows/check.yml`) runs the
+same check on every push, so a protocol violation fails the build instead of
+silently rotting.
+
 ---
 
 ## Field reference
