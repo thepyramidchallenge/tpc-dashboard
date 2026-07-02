@@ -1,0 +1,16 @@
+name: workspace-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lint workspace (data.js + business space)
+        run: node scripts/check-workspace.js
