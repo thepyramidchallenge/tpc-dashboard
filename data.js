@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live, with WS6-18 API hardening and WS6-19 Sheets reliability now deployed. Backend is Cloud Run tpc-api-00024-9l8 with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, per-uid/IP-fallback rate limiting, Sheets retry/backoff, and a 30s question-read cache; backend tests pass (29). Frontend remains public gh-pages cc64b52 with 231 tests passing. Next Track A focus: WS6-20 observability.",
+    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed. Backend is Cloud Run tpc-api-00026-qf2 with max-instances=1, CORS/rate limits, Sheets retry/cache, structured request/auth logs, and admin upsert audit stamping; backend tests pass (31). Frontend remains public gh-pages cc64b52 with 231 tests passing. Next Track A focus: WS6-21 backend test gaps.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening and WS6-19 Sheets reliability are deployed (Cloud Run tpc-api-00024-9l8 with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, per-uid/IP-fallback rate limiting, Sheets retry/backoff, 30s question cache; gh-pages cc64b52). Track A next: WS6-20 observability, then WS6-21 tests. Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
+      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed (Cloud Run tpc-api-00026-qf2 with max-instances=1; gh-pages cc64b52). Track A next: WS6-21 backend test gaps. Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6-18 API hardening + WS6-19 Sheets reliability deployed (backend tpc-api-00024-9l8 with max-instances=1, frontend cc64b52). Track A next: WS6-20 → WS6-21.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6-18/19/20 deployed (backend tpc-api-00026-qf2 with max-instances=1, frontend cc64b52). Track A next: WS6-21.",
     },
     {
       id:    "entrance-qr-scan",
@@ -131,7 +131,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live Sheets now include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
-      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18 API hardening and WS6-19 Sheets reliability are done; Track A next is WS6-20 observability → WS6-21 backend tests, plus accuracy/copy/timer/accessibility and WS6-10 concurrency smoke before pilot." },
+      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18/19/20 are done; Track A next is WS6-21 backend test gaps, plus accuracy/copy/timer/accessibility and WS6-10 concurrency smoke before pilot." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -171,6 +171,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6-18 · API surface hardening", state: "done" },
         { label: "WS6-19 · Sheets reliability", state: "done" },
+        { label: "WS6-20 · Observability", state: "done" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
@@ -257,6 +258,12 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "WS6-20 observability complete and live: Cloud Run tpc-api-00026-qf2 serves 100% with max-instances=1 preserved. Backend now emits structured api_request logs with requestId/action/method/verified uid+email/latency/outcome, echoes/generates X-Request-Id, logs token verification failures as auth_verify_failed without token contents, sanitizes invalid-token responses, and stamps admin upsertQuestion writes with verified updatedBy/updatedByUid plus admin_audit. Backend tests 31/31; live smoke passed and Cloud Logging confirmed api_request + auth_verify_failed jsonPayload entries. ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN, and cloud-run README updated." },
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Founder decision: WS5-15 content production sizing is on hold and not a current-stage priority. ROADMAP and UPGRADE_PLAN now mark it as deferred; Business Space Q1 keeps the sizing draft as background evidence only, to reopen when monthly challenge cadence or paid-report operations become active." },
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Track C WS5-15 content production sizing drafted into Business Space: H3 now includes a content-floor model of 25 approved questions per active level per month (20-question monthly challenge set + 25% reserve), with K2/K3 launch at ~50 approved questions/month and all K2-P6 at ~200/month; Q1 now lists the founder decisions needed before closing the task (launch levels, set length/reserve, author/QC owner, QC budget, AI-drafting stance, report-QC staffing). ROADMAP WS5-15 cites the draft and remains open pending those choices." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "WS5-00 frontend structure refactor complete (Track B, P0): App.jsx cut from 2,182 to 465 lines across five behavior-neutral commits — all 12 screens extracted to src/components/screens/, shared primitives to src/components/ui.jsx, pure helpers to src/lib/, and the WS4.3 state machinery isolated into src/hooks/ (useAuth, usePracticeSession, useCompletedSaveQueue, useQuiz) with latches/refs moved verbatim. All 231 frontend tests pass unmodified after every step; production build passes; demo-mode browser smoke covered the full practice loop (setup → briefing → quiz with pause sheet → submit → result → report → refresh-restore) with no console errors. WS5-01/02 admin UI is now unblocked. Not yet deployed to Pages (no user-visible change; deploys with WS5-00b error layer, next up). ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN updated." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
