@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening and WS6-19 Sheets reliability are deployed (Cloud Run tpc-api-00024-9l8 with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, per-uid/IP-fallback rate limiting, Sheets retry/backoff, 30s question cache; gh-pages cc64b52). Track A next: WS6-20 observability, then WS6-21 tests. Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
+      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening and WS6-19 Sheets reliability are deployed (Cloud Run tpc-api-00024-9l8 with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, per-uid/IP-fallback rate limiting, Sheets retry/backoff, 30s question cache; gh-pages cc64b52). Track A next: WS6-20 observability, then WS6-21 tests. Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -257,6 +257,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5-00 frontend structure refactor complete (Track B, P0): App.jsx cut from 2,182 to 465 lines across five behavior-neutral commits — all 12 screens extracted to src/components/screens/, shared primitives to src/components/ui.jsx, pure helpers to src/lib/, and the WS4.3 state machinery isolated into src/hooks/ (useAuth, usePracticeSession, useCompletedSaveQueue, useQuiz) with latches/refs moved verbatim. All 231 frontend tests pass unmodified after every step; production build passes; demo-mode browser smoke covered the full practice loop (setup → briefing → quiz with pause sheet → submit → result → report → refresh-restore) with no console errors. WS5-01/02 admin UI is now unblocked. Not yet deployed to Pages (no user-visible change; deploys with WS5-00b error layer, next up). ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN updated." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "WS6-19 Sheets reliability complete and live: added retry/backoff around Google Sheets helper calls for transient quota/rate-limit/5xx failures, plus a 30s per-instance cache for listQuestions/getQuestionSet invalidated by upsertQuestion. Runtime knobs documented (SHEETS_RETRY_MAX_ATTEMPTS, SHEETS_RETRY_BASE_MS, QUESTION_CACHE_TTL_MS). Backend tests 29/29; deployed Cloud Run tpc-api-00024-9l8 serving 100% with max-instances=1 preserved; live smoke passed ping, allowed-origin CORS, denied-origin no-echo, OPTIONS preflight, and unauth protected-read rejection. ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN, and cloud-run README updated." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
