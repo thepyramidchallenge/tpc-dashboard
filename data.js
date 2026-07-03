@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-03",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, WS6-20 observability, and WS6-21 backend test gaps are deployed. Backend is Cloud Run tpc-api-00027-6tg with max-instances=1, CORS/rate limits, Sheets retry/cache, structured request/auth logs, admin upsert audit stamping, DraftSessions lifecycle coverage, and dormant graders fail-closed until WS7. Backend tests pass (37). Frontend remains public gh-pages cc64b52 with 231 tests passing.",
+    "The 2026-07-03 review upgrade sprint is CLOSED and merged into ROADMAP (UPGRADE_PLAN_2026-07.md is now an archive stub). Backend: WS6-18/19/20/21 all deployed — Cloud Run tpc-api-00027-6tg with max-instances=1, CORS allow-list, rate limits, Sheets retry + question cache, structured logs, admin audit stamping, dormant graders fail-closed until WS7; suite 37/37. Frontend: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b error layer code-complete, 232 tests green — ONE ACTION LEFT: deploy WS5-00+00b together to Pages via deploy.sh (production still serves pre-refactor cc64b52). Then WS5-01/02/03 admin UI on the refactored frontend (mount admin behind the WS5-14 lazy boundary).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -258,6 +258,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "Review upgrade sprint verified + closed; UPGRADE_PLAN_2026-07.md merged into ROADMAP and reduced to an archive stub (no parallel task truth, D8 spirit). Independent verification of the sprint output passed: backend suite 37/37 locally, live ping healthy, CORS deny/allow behavior confirmed against production, ADMIN_EMAILS defaults gone from source, WS5-00 structure confirmed on disk (App.jsx 465 lines; 11 screen components + 4 hooks). Task evidence now lives in ROADMAP acceptance notes (WS5-00/00b, WS6-18..21 all flipped with deploy revisions; WS6-09 carries the a11y rider; WS5-15 founder-held; WS7-13 deferred to the DB decision per founder), runtime knobs in cloud-run/README, ops state in AGENT_HANDOFF. Remaining sprint action: deploy WS5-00+00b together to Pages via deploy.sh." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "WS5-00b bilingual error layer complete: zero window.alert and zero window.confirm left in the frontend. New src/lib/notify.js (notify / notifyError(context) / confirmDialog, single-flight) + src/components/Notices.jsx render young-learner bilingual toasts (with retry actions) and an in-app confirm bottom-sheet; sign-out and submit-with-unanswered now use the sheet, and WS5 admin CRUD will inherit notifyError. Frontend tests 232 pass (new sign-out-cancel case; failed-start and failed-profile-save asserted through the component); build passes; demo-mode browser smoke verified toast + both confirm sheets. Track B (WS5-00 + WS5-00b) is code-complete — deploy both to Pages via deploy.sh pending. Post-refactor review notes recorded: protect useQuiz from regrowing, keep admin routing out of App.jsx via the WS5-14 lazy boundary." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
