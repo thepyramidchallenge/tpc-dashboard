@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-03",
-    updatedBy: "Claude (Fable 5)",
+    updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
   },
 
@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live. A full risk review (H1 + M1–M8 + L1–L7) is closed: Codex fixed every correctness/reliability item (token-expiry recovery, durable retry queue, phantom-draft abort, partial-save repair, monotonic drafts, same-session save lock, finish-checkpoint, fail-closed grading, setup-write surfacing) and routed the ranked-Test-Mode/ops items (L2→WS7-11, L3→WS7-12, L4→WS6-16, L6→WS8-01, L7→WS6-17). Deployed: Cloud Run tpc-api-00021-trw + public gh-pages cc64b52; tests pass (backend 19, frontend 231). Next platform focus: WS5 admin/content → WS4.2 fixed QuestionSet practice → WS6 pilot polish.",
+    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live. A full risk review (H1 + M1–M8 + L1–L7) is closed: Codex fixed every correctness/reliability item (token-expiry recovery, durable retry queue, phantom-draft abort, partial-save repair, monotonic drafts, same-session save lock, finish-checkpoint, fail-closed grading, setup-write surfacing) and routed the ranked-Test-Mode/ops items (L2→WS7-11, L3→WS7-12, L4→WS6-16, L6→WS8-01, L7→WS6-17). Deployed: Cloud Run tpc-api-00022-qxq with max-instances=1 interim R8 mitigation + public gh-pages cc64b52; tests pass (backend 19, frontend 231). Next platform focus: WS5 admin/content → WS4.2 fixed QuestionSet practice → WS6 pilot polish.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live (H1 + M1–M8 + L1–L7 reviewed and fixed/routed; Cloud Run tpc-api-00021-trw + gh-pages cc64b52). Engineering-first order now: WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS7-06 log-only + WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
+      next:  "WS4.3 save integrity is fully hardened and live (H1 + M1–M8 + L1–L7 reviewed and fixed/routed; Cloud Run tpc-api-00022-qxq with max-instances=1 interim R8 mitigation + gh-pages cc64b52). Engineering-first order now: WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS7-06 log-only + WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity fully hardened + deployed (backend tpc-api-00021-trw, frontend cc64b52); next platform work is WS5 → WS4.2 → WS6.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity fully hardened + deployed (backend tpc-api-00022-qxq with max-instances=1 interim R8 mitigation, frontend cc64b52); next platform work is WS5 → WS4.2 → WS6.",
     },
     {
       id:    "entrance-qr-scan",
@@ -255,6 +255,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Track D ops complete: reauthenticated gcloud as info@pyramidchallenge.org and capped Cloud Run tpc-api to max-instances=1 as the interim R8 mitigation until WS6-10 characterizes multi-instance behavior. Cloud Run deployed revision tpc-api-00022-qxq serving 100% traffic; service template annotation autoscaling.knative.dev/maxScale=1; live ping healthy. Updated ROADMAP, AGENT_HANDOFF, and docs/UPGRADE_PLAN_2026-07.md to mark Track D finished and retain the revisit-before-post-pilot-load warning." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Full system review (design docs + cloud-run backend + prototype-v0.2 frontend code) → review upgrade sprint plan committed as docs/UPGRADE_PLAN_2026-07.md with new ROADMAP tasks WS5-00/00b/14/15, WS6-18/19/20/21, WS7-13. Verdict: architecture, auth/grading integrity and governance strong; three material risks — App.jsx 2,182-line monolith right before WS5 admin UI (→ WS5-00 refactor, P0), untracked backend hardening gaps (CORS *, no rate limiting, no Sheets retry/cache, thin observability, untested draft endpoints → WS6-18..21), and the E1 critical path running through all of WS6 (→ pilot-gating vs post-pilot labels, Track C). Plan is directory-partitioned into parallel tracks so Codex + Claude sessions can co-work (A=cloud-run, B=prototype-v0.2, C=docs, D=ops max-instances=1 interim for R8). Plan only — no code changed, nothing deployed; roadmap statuses unchanged." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "",
