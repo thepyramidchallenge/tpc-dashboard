@@ -177,6 +177,7 @@
   <nav class="viewnav" role="tablist" aria-label="View">
     <button id="tab-workspace" role="tab" aria-selected="true" onclick="TPCNAV.show('workspace')"><span class="ic"></span>Workspace <span class="zh">工作區</span></button>
     <button id="tab-business" role="tab" aria-selected="false" onclick="TPCNAV.show('business')"><span class="ic"></span>Business space <span class="zh">商業大腦</span></button>
+    <button id="tab-reports" role="tab" aria-selected="false" onclick="TPCNAV.show('reports')"><span class="ic"></span>Reports <span class="zh">深度報告</span></button>
   </nav>
 
   <div id="view-workspace" class="view">
@@ -225,7 +226,12 @@
     <div class="md-body" id="biz-content"></div>
   </div>
 
-  <footer>Static HTML · no build step. Workspace data in <code>data.js</code> · Business space renders <code>business/*.md</code>.</footer>
+  <div id="view-reports" class="view" hidden>
+    <nav class="biznav" id="repnav" aria-label="Deep-dive reports"></nav>
+    <div class="md-body" id="rep-content"></div>
+  </div>
+
+  <footer>Static HTML · no build step. Workspace data in <code>data.js</code> · Business space renders <code>business/*.md</code> · Reports renders <code>reports/*.md</code> (registry: <code>reports</code> in data.js).</footer>
 </div>
 
 <!-- data.js assigns window.TPC_DASHBOARD; it must load BEFORE the renderer below.
@@ -336,11 +342,14 @@ window.TPCNAV = (function(){
     { id:"OPEN_QUESTIONS", label:"Open questions", zh:"待解" },
     { id:"README",         label:"Guide",          zh:"指南" }
   ];
+  var REPORTS = (window.TPC_DASHBOARD && window.TPC_DASHBOARD.reports) || [];
   var SUBS = {
     workspace:"Workspace dashboard · daily source of truth",
-    business:"Business space · the why · 商業大腦"
+    business:"Business space · the why · 商業大腦",
+    reports:"Deep-dive reports · commissioned reviews · 深度報告"
   };
-  var cache = {}, bizBuilt = false, curDoc = "CONSTITUTION";
+  var cache = {}, bizBuilt = false, repBuilt = false, curDoc = "CONSTITUTION",
+      curRep = REPORTS.length ? REPORTS[0].id : null;
   function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
 
   function buildBizNav(){
@@ -373,15 +382,50 @@ window.TPCNAV = (function(){
     renderDoc(id);
   }
 
+  /* reports tab — same mechanism as the business space, but the list of
+     documents comes from data.js (reports[]) so new reports never require
+     touching this file: write reports/<id>.md + prepend the registry entry. */
+  function buildRepNav(){
+    $("repnav").innerHTML = REPORTS.map(function(r){
+      return '<button role="tab" data-rep="'+esc(r.id)+'" aria-selected="'+(r.id===curRep)+'" onclick="TPCNAV.report(\''+esc(r.id)+'\')">'+
+        esc(r.date)+' · '+esc(r.title)+(r.zh?'<span class="zh">'+esc(r.zh)+'</span>':'')+'</button>';
+    }).join("") || '<span style="color:#888;font-size:13px">No reports yet — the registry lives in <code>data.js</code> (<code>reports</code>), content in <code>reports/*.md</code>.</span>';
+  }
+
+  function renderRep(id){
+    var el = $("rep-content"), key = "rep:"+id;
+    if(cache[key]){ el.innerHTML = cache[key]; return; }
+    if(!window.marked){ el.innerHTML = '<div class="biz-error">Markdown renderer (marked) did not load — check your internet connection (it loads from a CDN).</div>'; return; }
+    el.innerHTML = '<p style="color:#888">Loading report…</p>';
+    fetch("./reports/"+id+".md?t="+Date.now()).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status); return r.text();
+    }).then(function(md){
+      var html = marked.parse(md); cache[key] = html; if(curRep===id) el.innerHTML = html;
+    }).catch(function(err){
+      el.innerHTML = '<div class="biz-error"><b>Could not load reports/'+esc(id)+'.md</b><br>'+
+        'The Reports tab reads markdown files, so the page must be <b>served</b> (the live GitHub Pages site, or a local server) — it will not work from a double-clicked <code>file://</code> page. '+
+        'The files are always readable directly in the repo under <code>reports/</code>.<br><br><span style="color:#a06">'+esc(err&&err.message||err)+'</span></div>';
+    });
+  }
+
+  function report(id){
+    curRep = id;
+    var btns = $("repnav").querySelectorAll("button");
+    for(var i=0;i<btns.length;i++) btns[i].setAttribute("aria-selected", btns[i].getAttribute("data-rep")===id);
+    renderRep(id);
+  }
+
+  var VIEWS = ["workspace","business","reports"];
   function show(view){
-    var biz = view==="business";
-    $("view-workspace").hidden = biz;
-    $("view-business").hidden = !biz;
-    $("tab-workspace").setAttribute("aria-selected", String(!biz));
-    $("tab-business").setAttribute("aria-selected", String(biz));
-    var bs = $("brandsub"); if(bs) bs.textContent = SUBS[biz?"business":"workspace"];
-    try{ history.replaceState(null,"", biz?"#business":"#workspace"); }catch(e){}
-    if(biz && !bizBuilt){ bizBuilt = true; buildBizNav(); renderDoc(curDoc); }
+    if(VIEWS.indexOf(view)<0) view = "workspace";
+    VIEWS.forEach(function(v){
+      $("view-"+v).hidden = (v!==view);
+      $("tab-"+v).setAttribute("aria-selected", String(v===view));
+    });
+    var bs = $("brandsub"); if(bs) bs.textContent = SUBS[view];
+    try{ history.replaceState(null,"", "#"+view); }catch(e){}
+    if(view==="business" && !bizBuilt){ bizBuilt = true; buildBizNav(); renderDoc(curDoc); }
+    if(view==="reports"  && !repBuilt){ repBuilt = true; buildRepNav(); if(curRep) renderRep(curRep); }
   }
 
   // internal .md links inside rendered docs switch documents instead of navigating away
@@ -392,7 +436,8 @@ window.TPCNAV = (function(){
   });
 
   if(location.hash==="#business") show("business");
-  return { show:show, doc:doc };
+  else if(location.hash==="#reports") show("reports");
+  return { show:show, doc:doc, report:report };
 })();
 </script>
 </body>

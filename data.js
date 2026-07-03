@@ -24,8 +24,23 @@ window.TPC_DASHBOARD = {
   meta: {
     updated:   "2026-07-03",
     updatedBy: "Claude (Fable 5)",
-    note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments).",
+    note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
+
+  /* --- reports (deep-dive reports tab) -----------------------------------
+   * Founder-commissioned periodic deep-dive reports. Registry only — the
+   * content lives in reports/<id>.md, rendered by the Reports tab (same
+   * mechanism as the Business space). PREPEND newest first. To add a report:
+   * write reports/<id>.md, prepend an entry here, stamp meta.updated.
+   * --------------------------------------------------------------------- */
+  reports: [
+    { id:    "2026-07-03-strategy-deep-dive",
+      date:  "2026-07-03",
+      who:   "Claude (Fable 5)",
+      title: "Strategy deep-dive #1 — the business, scaling, what breaks first",
+      zh:    "深度檢討 #1",
+      summary: "5-agent review (business plan / platform engineering / GTM-ops + 2 red-team skeptics) → evidence audit, core insight (the bottleneck moved to content/trust/E1-date), market reality check, 3/6/12-month moves, scale flywheel, what-breaks-first ranking, and the cheap experiments that settle each objection." },
+  ],
 
   /* --- people / ownership 分工 ------------------------------------------
    * Who owns what. `owner` fields elsewhere (projects, roadmap, board) must
@@ -260,6 +275,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "",
+      summary: "NEW REPORTS TAB (third view beside Workspace & Business space): periodic founder-commissioned deep-dive reports — registry in data.js reports[], content in reports/<id>.md, rendered exactly like the Business space (marked, pills nav, #reports hash). First report published: 2026-07-03 Strategy deep-dive #1 (3 deep-dive agents + 2 red-team skeptics, ~418K tokens): evidence audit (H2 unvalidated carries 100% of online revenue), core insight (bottleneck moved from engineering to content/trust/E1-date), HK competitor reality check, 3/6/12-month moves, scale flywheel, what-breaks-first ranking, cheap-experiment list. Per founder: additive only — focus/board/roadmap deliberately NOT touched (digest first); the stale items found (focus still claims WS5-00+00b deploy pending; WS5 roadmap state todo vs actually active; entrance-qr-scan placeholder note) are recorded in the report §1, to fix after founder review. Two verified act-now hazards recorded in report §0: TPC01 papers exposure (public-repo history purge needed; TPC01 burned for scoring) and the stale local platform clone (deploy-revert footgun; fix credentials + runbook rev guard)." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Founder UX requests shipped (gh-pages 8e32d56, bundle index-BOMVQ2mB.js): 管理 Admin is now the 5th tab after Bookmarks — rendered only for server-stamped admin accounts, students keep exactly 4 tabs, the admin code stays in its lazy chunk, and the redundant Profile entry button was removed. The admin question list was restyled as a POS/inventory-style console: clickable per-status stat cards (total/draft/review/approved/unapproved/disabled) that sync with the status filter, a search box across id/topic/prompt text, and a dense inventory table (ID + stem preview, level, domain/topic, type, difficulty, source, status chip, per-row Edit + lifecycle actions) with horizontal scroll on narrow screens. Also: the generic 'Something went wrong / Retry' the founder hit now reads 管理後台尚未啟用 'admin backend not ready (WS5-03 in development)' — the honest state until the Codex backend track deploys adminListQuestions/transitionQuestion. Suite 255 pass; demo browser smoke verified tab order, stat-card filtering, and the table." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
