@@ -30,6 +30,19 @@ update `dashboard/data.js`:
 8. **Commit & push** — this folder is its own **standalone repo**
    (`thepyramidchallenge/tpc-dashboard`): `git add -A && git commit -m "…" && git push`.
    GitHub Pages redeploys automatically; reload the page to verify.
+9. **Verify Pages actually deployed** — the automatic `pages-build-deployment`
+   on this repo fails intermittently ("Deployment failed, try again later";
+   observed 2026-07-02 and 2026-07-03), and the live site silently stays on
+   the old commit. After pushing, check and (if needed) rebuild:
+
+   ```bash
+   gh api repos/thepyramidchallenge/tpc-dashboard/pages/builds/latest --jq .status
+   # not "built"? trigger a manual rebuild — it has succeeded every time:
+   gh api -X POST repos/thepyramidchallenge/tpc-dashboard/pages/builds
+   ```
+
+   Do not stop at "pushed" — the update isn't done until the live data.js
+   serves the new commit.
 
 Keep edits small and valid JS — a trailing comma or unclosed string will break
 rendering. If the page shows an error banner, re-check the last thing you edited.
