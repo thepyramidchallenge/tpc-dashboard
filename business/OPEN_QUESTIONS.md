@@ -12,7 +12,20 @@ piece of evidence. Don't let them quietly disappear.
   generation is currently **HOLD** (ROADMAP WS5-06) precisely because quality
   isn't there yet. This recurring human/AI+QC cost is the real long-run floor
   (H5) and is tied to trust — over-automation risks the moat.
-- Gates: the whole funnel top; H3/H5 cost assumptions. Links: ROADMAP WS5.
+- WS5-15 sizing draft (2026-07-03): one 20-question monthly set per active level
+  plus 25% reserve = **25 approved questions/level/month**. Pilot K2/K3 only:
+  **50 approved questions/month** after the initial seed set. All K2-P6 levels:
+  **200 approved questions/month**. QC-only floor at 15-25 min/question and
+  HK$200-400/hour is roughly HK$50-170/question; this excludes first-draft
+  authoring, illustration/asset production, report QC, and rework.
+- Decisions needed before closing WS5-15: active launch levels; set length and
+  reserve policy; named human owner for authoring and independent QC; budget cap
+  for QC/run-rate; whether AI remains HOLD for pilot or can draft under
+  human-review only; whether report QC is staffed by the same person or separate.
+- Founder update (2026-07-03): keep WS5-15 **on hold** for now; content
+  production sizing is not a priority at the current development stage. Reopen
+  when monthly challenge cadence or paid-report operations become active.
+- Gates: the whole funnel top; H3/H5 cost assumptions. Links: ROADMAP WS5-15 · H3.
 
 ### Q2 — Ranking credibility thresholds (framework now set by D6)
 - Domain: trust

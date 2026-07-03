@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed. Backend is Cloud Run tpc-api-00026-qf2 with max-instances=1, CORS/rate limits, Sheets retry/cache, structured request/auth logs, and admin upsert audit stamping; backend tests pass (31). Frontend remains public gh-pages cc64b52 with 231 tests passing. Next Track A focus: WS6-21 backend test gaps.",
+    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed. Backend is Cloud Run tpc-api-00026-qf2 with max-instances=1, CORS/rate limits, Sheets retry/cache, structured request/auth logs, and admin upsert audit stamping. WS6-21 backend test gaps are complete locally with 37 tests passing; runtime dormant-grader removal awaits the next backend deploy. Frontend remains public gh-pages cc64b52 with 231 tests passing.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed (Cloud Run tpc-api-00026-qf2 with max-instances=1; gh-pages cc64b52). Track A next: WS6-21 backend test gaps. Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
+      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, and WS6-20 observability are deployed (Cloud Run tpc-api-00026-qf2 with max-instances=1; gh-pages cc64b52). WS6-21 backend test gaps are complete locally (37 tests green; dormant graders fail closed locally until next deploy). Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6-18/19/20 deployed (backend tpc-api-00026-qf2 with max-instances=1, frontend cc64b52). Track A next: WS6-21.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6-18/19/20 deployed (backend tpc-api-00026-qf2 with max-instances=1, frontend cc64b52). WS6-21 backend test gaps are complete locally with 37 tests green; deploy the dormant-grader fail-closed change with the next backend revision.",
     },
     {
       id:    "entrance-qr-scan",
@@ -131,7 +131,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live Sheets now include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
-      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18/19/20 are done; Track A next is WS6-21 backend test gaps, plus accuracy/copy/timer/accessibility and WS6-10 concurrency smoke before pilot." },
+      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18/19/20 are deployed and WS6-21 is locally complete (37 backend tests green; dormant graders fail closed locally until next deploy). Remaining pilot work is accuracy/copy/timer/accessibility and WS6-10 concurrency smoke before WS6-11." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -174,7 +174,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6-20 · Observability", state: "done" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
-        { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
+        { label: "WS6 · QA, polish, pilot → launch",   state: "active"   },
       ],
     },
     {
@@ -258,6 +258,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "WS6-21 backend test gaps complete locally: added a minimal in-memory mock-Sheets harness, covered DraftSessions create/get/save/discard/submit including stale revisions, submitted-is-read-only, slim submitted payload, and repeat-submit idempotency; removed dormant non-Phase-1 graders (numeric_entry/fill_blank/matching/drag_order/step_entry) until WS7 and pinned fail-closed behavior. Backend tests now 37/37. Runtime dormant-grader removal awaits next backend deploy." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "WS6-20 observability complete and live: Cloud Run tpc-api-00026-qf2 serves 100% with max-instances=1 preserved. Backend now emits structured api_request logs with requestId/action/method/verified uid+email/latency/outcome, echoes/generates X-Request-Id, logs token verification failures as auth_verify_failed without token contents, sanitizes invalid-token responses, and stamps admin upsertQuestion writes with verified updatedBy/updatedByUid plus admin_audit. Backend tests 31/31; live smoke passed and Cloud Logging confirmed api_request + auth_verify_failed jsonPayload entries. ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN, and cloud-run README updated." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",

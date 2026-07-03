@@ -40,7 +40,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 ### H3 — Online can self-sustain at a reachable report-attach rate
 - Status: **MODELLED, UNVALIDATED**
 - Domain: pricing, platform
-- Updated: 2026-06-27
+- Updated: 2026-07-03
 - Belief: because online cost is software-leveraged and the $99 report is
   high-margin, self-sustain needs only a modest attach rate, not the live 53%.
 - Model (online report $99, ~$85 contribution; 1,000 free users):
@@ -55,8 +55,17 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
   all-in bands in the table above). Founder's thesis: cost **declines** as the infra sprint completes and
   frontier models cut build effort (see H5). Reports reach self-sustain with
   ~4–5× fewer buyers than subscriptions ($28/mo-equiv would need ~360–890).
+- Content-floor update (WS5-15 sizing draft, 2026-07-03): assume one **20-question**
+  monthly challenge set per active level plus a 25% approved-question reserve,
+  i.e. **25 approved questions / active level / month**. K2/K3-only launch =
+  **50 approved questions/month**; K2-P6 all-level launch = **200 approved
+  questions/month**. QC-only floor at 15-25 min/question and HK$200-400/hour is
+  roughly **HK$2.5K-8.5K/month** for K2/K3 or **HK$10K-34K/month** for all 8
+  levels; authoring, illustration, report QC, and rework sit on top. This keeps
+  the H3 ~$10K future-cost row plausible only if level scope stays narrow or
+  AI+human-QC materially reduces authoring load.
 - How we'll know: E1 attach + actual cost tracking (Q3).
-- Links: D3 · D4 · E1 · Q3
+- Links: D3 · D4 · E1 · Q1 · Q3 · ROADMAP WS5-15
 
 ### H4 — TPC demand is D2C parent-pull, not channel-push
 - Status: **SUPPORTED** (good news for a direct-trust moat)
