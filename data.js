@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, WS6-20 observability, and WS6-21 backend test gaps are deployed (Cloud Run tpc-api-00027-6tg with max-instances=1; gh-pages cc64b52). Track B: WS5-00 structure refactor is done (App.jsx 2,182 → 465 lines, 231 tests green, not yet deployed); WS5-00b error layer next, then WS5-01/02 admin UI (now unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
+      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, WS6-20 observability, and WS6-21 backend test gaps are deployed (Cloud Run tpc-api-00027-6tg with max-instances=1; gh-pages cc64b52). Track B complete: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b bilingual error layer (zero alert/confirm, 232 tests green); Pages deploy of both pending. Next: WS5-01/02 admin UI (unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -258,6 +258,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5-00b bilingual error layer complete: zero window.alert and zero window.confirm left in the frontend. New src/lib/notify.js (notify / notifyError(context) / confirmDialog, single-flight) + src/components/Notices.jsx render young-learner bilingual toasts (with retry actions) and an in-app confirm bottom-sheet; sign-out and submit-with-unanswered now use the sheet, and WS5 admin CRUD will inherit notifyError. Frontend tests 232 pass (new sign-out-cancel case; failed-start and failed-profile-save asserted through the component); build passes; demo-mode browser smoke verified toast + both confirm sheets. Track B (WS5-00 + WS5-00b) is code-complete — deploy both to Pages via deploy.sh pending. Post-refactor review notes recorded: protect useQuiz from regrowing, keep admin routing out of App.jsx via the WS5-14 lazy boundary." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "WS6-21 backend test gaps complete and deployed: added a minimal in-memory mock-Sheets harness, covered DraftSessions create/get/save/discard/submit including stale revisions, submitted-is-read-only, slim submitted payload, and repeat-submit idempotency; removed dormant non-Phase-1 graders (numeric_entry/fill_blank/matching/drag_order/step_entry) until WS7 and pinned fail-closed behavior. Backend tests now 37/37; deployed Cloud Run tpc-api-00027-6tg serving 100% with maxScale=1 preserved and live smoke passed." },
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
