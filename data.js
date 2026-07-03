@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "The 2026-07-03 review upgrade sprint is CLOSED and fully merged into ROADMAP (UPGRADE_PLAN_2026-07.md deleted per founder — docs/ stays lean; plan text lives in git history). Backend: WS6-18/19/20/21 all deployed — Cloud Run tpc-api-00027-6tg with max-instances=1, CORS allow-list, rate limits, Sheets retry + question cache, structured logs, admin audit stamping, dormant graders fail-closed until WS7; suite 37/37. Frontend: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b error layer code-complete, 232 tests green — ONE ACTION LEFT: deploy WS5-00+00b together to Pages via deploy.sh (production still serves pre-refactor cc64b52). New ROADMAP phase WS6.5 (UI review, pre-pilot): decide per message class whether WS5-00b's toasts are the right presentation, then a whole-app screen review. Then WS5-01/02/03 admin UI (mount admin behind the WS5-14 lazy boundary).",
+    "The 2026-07-03 review upgrade sprint is CLOSED and fully merged into ROADMAP (UPGRADE_PLAN_2026-07.md deleted per founder — docs/ stays lean; plan text lives in git history). Backend: WS6-18/19/20/21 all deployed — Cloud Run tpc-api-00027-6tg with max-instances=1, CORS allow-list, rate limits, Sheets retry + question cache, structured logs, admin audit stamping, dormant graders fail-closed until WS7; suite 37/37. Frontend: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b error layer code-complete, 232 tests green — ONE ACTION LEFT: deploy WS5-00+00b together to Pages via deploy.sh (production still serves pre-refactor cc64b52). Renumber (founder 2026-07-03): former WS6 is now WS6.1 · QA/polish/launch, and WS6.2 · UI review holds ALL UI-review work — WS6.2-01 notify-layer message classes (are toasts right for every alert?), WS6.2-02 whole-app screen review, plus moved-in copy/timer-colouring/usability-a11y/unselect (ex WS6-04/05/09/12). Then WS5-01/02/03 admin UI (mount admin behind the WS5-14 lazy boundary).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live; WS6-18 API hardening, WS6-19 Sheets reliability, WS6-20 observability, and WS6-21 backend test gaps are deployed (Cloud Run tpc-api-00027-6tg with max-instances=1; gh-pages cc64b52). Track B complete: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b bilingual error layer (zero alert/confirm, 232 tests green); Pages deploy of both pending. Next: WS5-01/02 admin UI (unblocked). Engineering order remains WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch.",
+      next:  "WS4.3 save integrity is fully hardened and live; WS6.1-18/19/20/21 (API hardening, Sheets reliability, observability, backend test gaps) are deployed (Cloud Run tpc-api-00027-6tg with max-instances=1; gh-pages cc64b52). Track B complete: WS5-00 refactor (App.jsx 2,182 → 465 lines) + WS5-00b bilingual error layer (zero alert/confirm, 232 tests green); Pages deploy of both pending. Next: WS5-01/02 admin UI (unblocked). Engineering order: WS5 admin/content → WS4.2 mock → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6-18/19/20/21 deployed (backend tpc-api-00027-6tg with max-instances=1, frontend cc64b52).",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity hardened; WS6.1-18/19/20/21 deployed (backend tpc-api-00027-6tg with max-instances=1, frontend cc64b52).",
     },
     {
       id:    "entrance-qr-scan",
@@ -131,7 +131,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live Sheets now include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
-      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18/19/20/21 are deployed. Remaining pilot work is accuracy/copy/timer/accessibility and WS6-10 concurrency smoke before WS6-11." },
+      { title: "WS6.1 + WS6.2 — Polish + UI review → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6.1-18/19/20/21 are deployed. WS6.1 keeps accuracy/cold-start/fallback/concurrency-smoke; WS6.2 (new phase) holds ALL UI review — notify-layer message classes (are toasts right for every alert?), copy, timer colouring, usability/a11y, unselect, whole-app screen review — before WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -169,12 +169,14 @@ window.TPC_DASHBOARD = {
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
         { label: "WS4.3 · Save/session integrity", state: "done" },
-        { label: "WS6-18 · API surface hardening", state: "done" },
-        { label: "WS6-19 · Sheets reliability", state: "done" },
-        { label: "WS6-20 · Observability", state: "done" },
+        { label: "WS6.1-18 · API surface hardening", state: "done" },
+        { label: "WS6.1-19 · Sheets reliability", state: "done" },
+        { label: "WS6.1-20 · Observability", state: "done" },
+        { label: "WS6.1-21 · Backend test gaps", state: "done" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
-        { label: "WS6 · QA, polish, pilot → launch",   state: "active"   },
+        { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
+        { label: "WS6.2 · UI review (all UI-review work)", state: "todo" },
       ],
     },
     {
@@ -258,6 +260,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS6 renumbered per founder: former WS6 is now WS6.1 · QA/polish/launch (WS6-NN → WS6.1-NN, suffixes unchanged), and WS6.2 · UI review is the home of ALL UI-review work — WS6.2-01 notify-layer message-class review + WS6.2-02 whole-app screen review (ex WS6.5-01/02), plus four moved-in tasks: WS6-04→WS6.2-03 copy review, WS6-05→WS6.2-04 timer colouring, WS6-09→WS6.2-05 usability/a11y (incl. axe rider), WS6-12→WS6.2-06 unselect decision. Swept all repo docs (incl. dated entries), backend test titles (37/37 green), and dashboard live fields; older changelog entries below keep pre-renumber IDs (append-only log) — the 1:1 mapping lives in the ROADMAP decision log. This consciously supersedes the IDs-stay-stable rule for WS6 only." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "UPGRADE_PLAN_2026-07.md deleted per founder (keep docs/ lean; already merged into ROADMAP; full plan text retrievable via git show 8a8e3b4). New ROADMAP phase WS6.5 · UI review created to hold the WS5-00b follow-up: the alert→toast / confirm→sheet conversion was mechanical, so WS6.5-01 must decide per message class whether a pop-up toast, blocking sheet, or inline state is the right presentation (plus toast TTL/stacking, retry affordances, bilingual tone for young readers), and WS6.5-02 runs a whole-app screen-by-screen UI review once the WS5 admin screens exist — sequenced after WS5 + WS4.2 and before the WS6-11 pilot." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
