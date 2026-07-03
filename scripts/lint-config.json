@@ -1,0 +1,5 @@
+{
+  "domains": ["pricing", "platform", "live", "trust", "growth", "brand", "content", "ops", "workspace"],
+  "moduleDocRoots": ["../tpc-online-platform-admin/docs"],
+  "changelogWarnAt": 40
+}

@@ -38,10 +38,20 @@ rendering. If the page shows an error banner, re-check the last thing you edited
 `node scripts/check-workspace.js` — it machine-enforces this protocol
 (data.js evaluates; valid status/state values; board/roadmap `project` and
 `owner` keys resolve; changelog newest-first and `meta.updated` stamped;
-Business Space entries follow the schema; every `D#/H#/E#/Q#` reference
-points to an entry that exists). CI (`.github/workflows/check.yml`) runs the
-same check on every push, so a protocol violation fails the build instead of
-silently rotting.
+Business Space entries follow the schema incl. the required `Domain:` tag;
+every `D#/H#/E#/Q#` reference — including in module-repo docs — points to an
+entry that exists; `business/INDEX.md` is fresh; module folders contain no
+ledger files — D8 governance). CI (`.github/workflows/check.yml`) runs the
+same check on every push. Scripts are shared with `tf-dashboard` — 改 script
+記得兩邊 sync.
+
+**After editing any `business/*.md`:** run `node scripts/build-index.js` to
+regenerate `business/INDEX.md` (auto-generated navigation — never hand-edit).
+
+**Changelog rotation (D8):** when the linter warns that `data.js` changelog
+exceeds ~40 entries, run `node scripts/rotate-changelog.js . 30` — it keeps
+the newest 30 in data.js and appends the rest to
+`changelog/ARCHIVE-YYYY-MM.md` (append-only, never rewrite history).
 
 ---
 

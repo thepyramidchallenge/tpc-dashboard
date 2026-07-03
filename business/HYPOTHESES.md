@@ -9,6 +9,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H1 — Parents pay for measurement/insight, not content
 - Status: **PARTIAL** (validated only in the live-event context)
+- Domain: pricing, brand
 - Updated: 2026-06-27
 - Belief: the load-bearing wall of TPC — parents will pay for credible
   measurement, not for more questions.
@@ -23,6 +24,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H2 — The measurement WTP transfers to at-home online (the trust-transfer bet)
 - Status: **UNVALIDATED** ← the single biggest bet the whole funnel rests on
+- Domain: trust, platform
 - Updated: 2026-06-27
 - Belief: parents will pay (a $99 one-off report, then a $198/$298 tier) for
   measurement based on an at-home, un-proctored online challenge — not only after
@@ -37,6 +39,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H3 — Online can self-sustain at a reachable report-attach rate
 - Status: **MODELLED, UNVALIDATED**
+- Domain: pricing, platform
 - Updated: 2026-06-27
 - Belief: because online cost is software-leveraged and the $99 report is
   high-margin, self-sustain needs only a modest attach rate, not the live 53%.
@@ -57,6 +60,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H4 — TPC demand is D2C parent-pull, not channel-push
 - Status: **SUPPORTED** (good news for a direct-trust moat)
+- Domain: growth
 - Updated: 2026-06-27
 - Belief: families come to TPC directly, not via tuition-centre/teacher channels.
 - Evidence: Season 2 acquisition — social media 51%, Google search 16%, past
@@ -67,6 +71,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H5 — Build/maintenance cost trends down over time (AI leverage)
 - Status: **ASSUMED** (founder's core thesis; plausible, untracked)
+- Domain: ops, platform
 - Updated: 2026-06-27
 - Belief: after the major infrastructure sprint, active builder hours drop; and
   frontier-model leaps make planning/building faster with lower late-stage
@@ -80,6 +85,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 
 ### H6 — Credible-ranking / integrity IS the paid-tier moat (not a feature)
 - Status: **ASSERTED** (strategic belief; follows from H1 + D3, not yet market-tested)
+- Domain: trust
 - Updated: 2026-06-27
 - Belief: because AI makes content/questions ~free, TPC's defensible value is a
   *credible, graded, explainable* benchmark. The integrity system is therefore the

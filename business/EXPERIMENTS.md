@@ -7,6 +7,7 @@ which hypothesis/decision it updates. Status: `PROPOSED` · `RUNNING` · `DONE`.
 
 ### E1 — Online challenge → $99 one-off report attach rate  ★ north-star
 - Status: PROPOSED
+- Domain: pricing, platform
 - Updated: 2026-06-27
 - Question: does measurement willingness-to-pay transfer to at-home online? (H2)
 - Metric: **% of online-challenge completers who buy the $99 report.**
@@ -24,6 +25,7 @@ which hypothesis/decision it updates. Status: `PROPOSED` · `RUNNING` · `DONE`.
 
 ### E2 — Season 3 full-package bundle → 6-month renewal rate
 - Status: PROPOSED
+- Domain: pricing
 - Updated: 2026-06-27
 - Question: will near-free **seeded** members pay the real $198 to continue? (the
   cleanest trust-transfer signal, H2)
@@ -40,6 +42,7 @@ which hypothesis/decision it updates. Status: `PROPOSED` · `RUNNING` · `DONE`.
 
 ### E3 — Live event toward break-even + does online lower its CAC?
 - Status: PROPOSED
+- Domain: live, growth
 - Updated: 2026-06-27
 - Question: can the next live event reach break-even (~199), and does the online
   free-challenge funnel reduce live-event CAC vs Season 2's ads-heavy mix?

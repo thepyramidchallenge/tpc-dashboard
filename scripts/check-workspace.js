@@ -28,6 +28,18 @@ const ALLOWED_STATUS = new Set(['stable', 'active', 'blocked', 'planned']);
 const ALLOWED_STATE = new Set(['done', 'active', 'todo', 'hold']);
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+/* --- 0 · config (scripts/lint-config.json, optional) --------------------- */
+let CONFIG = { domains: [], moduleDocRoots: [], changelogWarnAt: 40 };
+const cfgPath = path.join(ROOT, 'scripts', 'lint-config.json');
+if (fs.existsSync(cfgPath)) {
+  try {
+    CONFIG = Object.assign(CONFIG, JSON.parse(fs.readFileSync(cfgPath, 'utf8')));
+  } catch (e) {
+    err('scripts/lint-config.json: invalid JSON — ' + e.message);
+  }
+}
+const DOMAINS = new Set(CONFIG.domains);
+
 function isValidDate(s) {
   if (typeof s !== 'string' || !DATE_RE.test(s)) return false;
   const d = new Date(s + 'T00:00:00Z');
@@ -163,6 +175,27 @@ if (data) {
         && data.changelog[0].date > data.meta.updated) {
       err(`data.js: newest changelog entry (${data.changelog[0].date}) is newer than meta.updated (${data.meta.updated}) — stamp meta.updated`);
     }
+    if (data.changelog.length > CONFIG.changelogWarnAt) {
+      warn(`data.js changelog: ${data.changelog.length} entries (> ${CONFIG.changelogWarnAt}) — rotate: keep the newest ~30 here, append the rest to changelog/ARCHIVE-YYYY-MM.md (append-only; rule in AGENTS.md)`);
+    }
+  }
+
+  /* WS cross-check: every WS task id shown on the dashboard must exist in ROADMAP.md */
+  const roadmapMd = path.join(ROOT, 'ROADMAP.md');
+  if (fs.existsSync(roadmapMd) && Array.isArray(data.roadmap)) {
+    const roadmapText = fs.readFileSync(roadmapMd, 'utf8');
+    const seenWs = new Set();
+    for (const g of data.roadmap) {
+      for (const it of g.items || []) {
+        for (const wsId of String(it.label || '').match(/\bWS\d+(?:\.\d+)?-\d+\b/g) || []) {
+          if (seenWs.has(wsId)) continue;
+          seenWs.add(wsId);
+          if (!roadmapText.includes(wsId)) {
+            err(`data.js roadmap: references ${wsId} but it does not appear in ROADMAP.md — task ids must match the work plan`);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -213,9 +246,20 @@ if (!fs.existsSync(BIZ)) {
     flush(lines.length);
   }
 
-  // per-entry schema: D/H/E need Status + Updated; Q is free-form
+  // per-entry schema: D/H/E need Status + Updated; Q is free-form except Domain
   for (const [id, body] of Object.entries(bodies)) {
     const prefix = id[0];
+    // Domain applies to all four ledgers
+    const dm = body.match(/^-\s*Domain:\s*(.+)$/m);
+    if (DOMAINS.size > 0) {
+      if (!dm) {
+        err(`business ${id}: missing "- Domain:" line (allowed: ${[...DOMAINS].join(', ')})`);
+      } else {
+        for (const d of dm[1].split(/,\s*/).map((s) => s.trim()).filter(Boolean)) {
+          if (!DOMAINS.has(d)) err(`business ${id}: domain "${d}" not in lint-config.json domains {${[...DOMAINS].join(', ')}}`);
+        }
+      }
+    }
     if (prefix === 'Q') continue;
     if (!/^-\s*Status:/m.test(body)) err(`business ${id}: missing "- Status:" line (schema in business/README.md)`);
     const up = body.match(/^-\s*Updated:\s*(\S+)/m);
@@ -254,6 +298,74 @@ if (!fs.existsSync(BIZ)) {
       }
     }
   }
+}
+
+/* --- 3 · INDEX.md staleness ---------------------------------------------- */
+if (fs.existsSync(BIZ)) {
+  try {
+    const { buildIndex } = require('./build-index.js');
+    const expected = buildIndex(ROOT);
+    const indexPath = path.join(BIZ, 'INDEX.md');
+    if (!fs.existsSync(indexPath)) {
+      err('business/INDEX.md: missing — run `node scripts/build-index.js`');
+    } else if (fs.readFileSync(indexPath, 'utf8') !== expected) {
+      err('business/INDEX.md: stale — run `node scripts/build-index.js` after editing business/*.md');
+    }
+  } catch (e) {
+    warn('index check skipped: ' + e.message);
+  }
+}
+
+/* --- 4 · module documentation rules (D21: cite, never restate) ----------- */
+const FORBIDDEN_MODULE_FILES = new Set([
+  'CONSTITUTION.md', 'DECISIONS.md', 'HYPOTHESES.md', 'EXPERIMENTS.md', 'OPEN_QUESTIONS.md',
+]);
+const SKIP_DIRS = new Set(['node_modules', '.git', 'dist', 'build', '.vercel', 'coverage']);
+
+function walkMd(dir, out) {
+  for (const name of fs.readdirSync(dir)) {
+    if (SKIP_DIRS.has(name)) continue;
+    const p = path.join(dir, name);
+    const st = fs.statSync(p);
+    if (st.isDirectory()) walkMd(p, out);
+    else if (name.endsWith('.md')) out.push(p);
+  }
+}
+
+for (const rel of CONFIG.moduleDocRoots || []) {
+  const rootDir = path.resolve(ROOT, rel);
+  if (!fs.existsSync(rootDir)) continue; // sibling repos are absent in CI — local/librarian runs cover this
+  const mdFiles = [];
+  try { walkMd(rootDir, mdFiles); } catch (e) { warn(`module root ${rel}: walk failed — ${e.message}`); continue; }
+  let readmeSeen = false;
+  for (const f of mdFiles) {
+    const base = path.basename(f);
+    const relF = path.relative(path.dirname(ROOT), f);
+    if (FORBIDDEN_MODULE_FILES.has(base)) {
+      err(`${relF}: module folders must not contain a ${base} — global truth lives only in the dashboard repo's business/ (cite, never restate)`);
+      continue;
+    }
+    // cross-refs in module docs must resolve against the global ledgers
+    const text = fs.readFileSync(f, 'utf8');
+    const seen = new Set();
+    let m;
+    const re = /\b([DHEQ])(\d{1,3})\b/g;
+    while ((m = re.exec(text)) !== null) {
+      const [tok, p, num] = m;
+      if (seen.has(tok)) continue;
+      seen.add(tok);
+      if (known[p] && known[p].size > 0 && !known[p].has(Number(num))) {
+        err(`${relF}: references ${tok} but no such entry exists in business/ (max ${p}${Math.max(...known[p])})`);
+      }
+    }
+    if (base === 'README.md' && path.dirname(f) === rootDir) {
+      readmeSeen = true;
+      if (!/governing decisions/i.test(text)) {
+        warn(`${relF}: module README has no "Governing decisions" section — list the D#s that govern this module`);
+      }
+    }
+  }
+  if (!readmeSeen) warn(`module root ${rel}: no README.md at its top level — add one with a "Governing decisions" section`);
 }
 
 /* --- report -------------------------------------------------------------- */

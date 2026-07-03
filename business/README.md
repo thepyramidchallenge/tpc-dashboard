@@ -39,6 +39,7 @@ is itself important — surface it, don't silently pick one.
 ```
 ### D7 — Short title
 - Status:   ACCEPTED | SUPERSEDED            (H#: UNVALIDATED | PARTIAL | VALIDATED | REJECTED)
+- Domain:   one or more of: pricing · platform · live · trust · growth · brand · content · ops · workspace
 - Updated:  2026-06-27
 - Body:     the decision / belief / question, in 1–4 lines
 - Why:      the reasoning
@@ -49,6 +50,26 @@ is itself important — surface it, don't silently pick one.
 
 Numbers are append-only and never reused. To change a decision, add a new entry
 and mark the old one `SUPERSEDED → D#`.
+
+`Domain:` is required on every D/H/E/Q entry (comma-separate multiples; the
+allowed set lives in `scripts/lint-config.json` and is linter-enforced).
+[`INDEX.md`](INDEX.md) is **auto-generated** — never edit it by hand; run
+`node scripts/build-index.js` after editing any ledger, or the linter fails.
+
+## Module documentation rules (D8 — one truth, many platforms)
+
+Platform repos (tpc-online-platform-admin, pyramid-site, …) keep
+**implementation docs only**: `README.md` (with a **"Governing decisions"**
+section listing the D#s that govern it), `ARCHITECTURE`, `RUNBOOK`,
+`HANDOFF`. Three linter-enforced rules:
+
+1. **Cite, never restate** — module docs link to D#s; they never copy a
+   decision's body (copies drift and become parallel truths).
+2. **Forbidden filenames** — no `CONSTITUTION.md` / `DECISIONS.md` /
+   `HYPOTHESES.md` / `EXPERIMENTS.md` / `OPEN_QUESTIONS.md` inside module
+   folders. Global truth lives only here.
+3. **One-way reference** — modules cite business/ as authority; business/
+   cites module paths only as evidence links.
 
 ---
 
