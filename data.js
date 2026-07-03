@@ -40,7 +40,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live. A full risk review (H1 + M1–M8 + L1–L7) is closed: Codex fixed every correctness/reliability item (token-expiry recovery, durable retry queue, phantom-draft abort, partial-save repair, monotonic drafts, same-session save lock, finish-checkpoint, fail-closed grading, setup-write surfacing) and routed the ranked-Test-Mode/ops items (L2→WS7-11, L3→WS7-12, L4→WS6-16, L6→WS8-01, L7→WS6-17). Deployed: Cloud Run tpc-api-00022-qxq with max-instances=1 interim R8 mitigation + public gh-pages cc64b52; tests pass (backend 19, frontend 231). Next platform focus: WS5 admin/content → WS4.2 fixed QuestionSet practice → WS6 pilot polish.",
+    "tpc-online-platform WS4.3 save/session integrity is fully hardened and live, and WS6-18 API surface hardening is now deployed. Backend is Cloud Run tpc-api-00023-htg with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, and per-uid/IP-fallback rate limiting; backend tests pass (24). Frontend remains public gh-pages cc64b52 with 231 tests passing. Next platform focus: WS5 admin/content → WS4.2 fixed QuestionSet practice → remaining WS6 pilot polish.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS4.3 save integrity is fully hardened and live (H1 + M1–M8 + L1–L7 reviewed and fixed/routed; Cloud Run tpc-api-00022-qxq with max-instances=1 interim R8 mitigation + gh-pages cc64b52). Engineering-first order now: WS5 admin/content → WS4.2 mock → WS6 pilot/launch; then Business-Space validation (WS7-06 log-only + WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
+      next:  "WS4.3 save integrity is fully hardened and live, and WS6-18 API hardening is deployed (Cloud Run tpc-api-00023-htg with max-instances=1, explicit ADMIN_EMAILS env, CORS allow-list, per-uid/IP-fallback rate limiting; gh-pages cc64b52). Engineering-first order now: WS5 admin/content → WS4.2 mock → remaining WS6 pilot polish/launch; then Business-Space validation (WS7-06 log-only + WS9-00 $99 report MVP = E1 north-star) with WS7/8/9 subscription gated on E1/E2.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -78,7 +78,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity fully hardened + deployed (backend tpc-api-00022-qxq with max-instances=1 interim R8 mitigation, frontend cc64b52); next platform work is WS5 → WS4.2 → WS6.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS4.3 save/session integrity fully hardened + WS6-18 API hardening deployed (backend tpc-api-00023-htg with max-instances=1, frontend cc64b52); next platform work is WS5 → WS4.2 → remaining WS6.",
     },
     {
       id:    "entrance-qr-scan",
@@ -131,7 +131,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "WS5 — Admin & content", project: "tpc-online-platform", owner: "natalie", note: "Engineering #2. List/lifecycle UI (WS5-01), editor+validation (WS5-02), backend state machine (WS5-03), seed authored sets only — never real_seed (WS5-04). Live Sheets now include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
       { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
-      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. Accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice. R7 malformed-payload guard already done (WS4.1-08)." },
+      { title: "WS6 — Polish → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6-18 API surface hardening is done; remaining: accuracy/copy/timer/accessibility + concurrency smoke (R8, WS6-10) → WS6-11 pilot → launch free Practice." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -169,6 +169,7 @@ window.TPC_DASHBOARD = {
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
         { label: "WS4.3 · Save/session integrity", state: "done" },
+        { label: "WS6-18 · API surface hardening", state: "done" },
         { label: "WS5 · Admin & content",             state: "todo"   },
         { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
         { label: "WS6 · QA, polish, pilot → launch",   state: "todo"   },
@@ -256,6 +257,8 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "WS6-18 API surface hardening complete and live: Cloud Run tpc-api-00023-htg serves 100% with max-instances=1 preserved, wildcard CORS replaced by an allow-list, non-ping actions rate-limited per verified uid with IP fallback for unauth/invalid-token traffic, and hardcoded ADMIN_EMAILS defaults removed from source with ADMIN_EMAILS now explicit in Cloud Run env. Backend tests 24/24; live smoke passed ping, allowed-origin CORS, denied-origin no-echo, OPTIONS preflight, and unauth protected-read rejection. ROADMAP, AGENT_HANDOFF, UPGRADE_PLAN, and cloud-run README updated." },
+    { date: "2026-07-03", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Track D ops complete: reauthenticated gcloud as info@pyramidchallenge.org and capped Cloud Run tpc-api to max-instances=1 as the interim R8 mitigation until WS6-10 characterizes multi-instance behavior. Cloud Run deployed revision tpc-api-00022-qxq serving 100% traffic; service template annotation autoscaling.knative.dev/maxScale=1; live ping healthy. Updated ROADMAP, AGENT_HANDOFF, and docs/UPGRADE_PLAN_2026-07.md to mark Track D finished and retain the revisit-before-post-pilot-load warning." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Full system review (design docs + cloud-run backend + prototype-v0.2 frontend code) → review upgrade sprint plan committed as docs/UPGRADE_PLAN_2026-07.md with new ROADMAP tasks WS5-00/00b/14/15, WS6-18/19/20/21, WS7-13. Verdict: architecture, auth/grading integrity and governance strong; three material risks — App.jsx 2,182-line monolith right before WS5 admin UI (→ WS5-00 refactor, P0), untracked backend hardening gaps (CORS *, no rate limiting, no Sheets retry/cache, thin observability, untested draft endpoints → WS6-18..21), and the E1 critical path running through all of WS6 (→ pilot-gating vs post-pilot labels, Track C). Plan is directory-partitioned into parallel tracks so Codex + Claude sessions can co-work (A=cloud-run, B=prototype-v0.2, C=docs, D=ops max-instances=1 interim for R8). Plan only — no code changed, nothing deployed; roadmap statuses unchanged." },
@@ -313,27 +316,5 @@ window.TPC_DASHBOARD = {
       summary: "Roadmap numbering sync: WS3.1 is app shell, WS3.2 is close-out, WS4.1 is question engine, and WS4.2 is mock/full-set work. Updated dependent roadmap references and dashboard labels; next platform task is WS4.1-05 removeBookmark end-to-end." },
     { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "Planning sync: docs/ROADMAP.md is now the detailed plan (WS0–WS9, WSx-0N task IDs, S/M/L effort, exit criteria, decision log); AGENT_HANDOFF.md slimmed to status/ops/risks (722→148 lines). Decision log resolved — mock = test-like Practice preset, accuracy = count-based % + marks score, AI gen = HOLD, public leaderboard = none, audio = defer. Dashboard roadmap aligned: added WS3.1/WS3.2 (done) + WS4.2 mock; later phases renamed to WS7/WS8/WS9." },
-    { date: "2026-06-25", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "WS3.2 DONE: React student app (prototype-v0.2) is production. Close-out review fixed B1 (one-practice-one-save), B4 (instant feedback = no timer), C1 (notification badge clears) and C3 cleanup. Gates closed — browser QA passed, production switched to the v0.2 build (deploy.sh → gh-pages), and REQUIRE_AUTH=true enforced on Cloud Run (rev tpc-api-00006-jsm; real-login save verified). Added a Vitest + Testing Library suite (138 pass, 1 skipped). Known gap: 69 per-choice crop images missing (deferred to WS5)." },
-    { date: "2026-06-25", who: "Codex", project: "tpc-online-platform",
-      summary: "Started WS3.1 React rebuild: created prototype-v0.2 as a React + Vite + JavaScript static SPA, ported the student flow shell (sign-in/setup, Home, Practice setup, Quiz, Result, Report, Profile), preserved Cloud Run/GIS adapter boundaries, added bundled K2/K3 data/assets, and verified npm install/build plus local Chrome sign-in render." },
-    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "WS2 DONE: real Google sign-in live + tested end-to-end. Vendor-neutral Google Identity Services on the frontend (TPC.auth adapter) → Cloud Run verifyGoogleToken verifies the ID token server-side; uid = Google sub; first-login writes Customers.Users. Admin role server-authoritative (ADMIN_EMAILS allow-list). Verified a real Google account signed up on production. Note: REQUIRE_AUTH still off (write lockdown is the one remaining toggle). No Firebase/Supabase dependency." },
-    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "WS1 DONE: full Sheets data layer live + tested. Backend pivoted Apps Script → Cloud Run (Node, asia-east2, project tpc-platform-2026) reading/writing all 3 workbooks via a service account. Verified end-to-end against real sheets — getQuestionSet, upsertUser, saveSession (server-side graded), listUserHistory all 200. Prototype apiUrl wired; reads (gviz) + writes (Cloud Run) both live." },
-    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "WS1 read path: stood up the Google Sheets question bank and linked the prototype to it (gviz CSV, read-only). Verified live end-to-end — 40 K2/K3 questions + 5 sets load, DATA_SOURCE flips to 'live' with bundled fallback. Write API (sessions/attempts) + SheetsBackend adapter still outstanding." },
-    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "",
-      summary: "Fixed stale links: live URL → thepyramidchallenge.github.io/tpc-dashboard; repo URLs → thepyramidchallenge org; workspace marked offline-only." },
-    { date: "2026-06-24", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
-      summary: "Synced roadmap with TASKS_PHASE1.md — added 'Adaptive difficulty' to Later phases (the one plan item missing from the dashboard)." },
-    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
-      summary: "Reworked the colour scheme for readability — system map is now colour-coded by owner/layer (Max=teal, Natalie=violet, backend=blue/green)." },
-    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
-      summary: "Switched the dashboard to a light/white theme." },
-    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
-      summary: "Added ownership (分工: Max = pyramid-site + UI, Natalie = platform), bilingual labels, and published the dashboard online at hkycaa.github.io/tpc-dashboard." },
-    { date: "2026-06-22", who: "Claude (Opus 4.8)", project: "",
-      summary: "Created the workspace dashboard (system map, roadmap, board, changelog) as the daily source of truth." },
   ],
 };
