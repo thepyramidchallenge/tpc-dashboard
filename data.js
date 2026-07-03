@@ -34,6 +34,12 @@ window.TPC_DASHBOARD = {
    * write reports/<id>.md, prepend an entry here, stamp meta.updated.
    * --------------------------------------------------------------------- */
   reports: [
+    { id:    "2026-07-03-visual-question-factory",
+      date:  "2026-07-03",
+      who:   "Claude (Fable 5)",
+      title: "Deep-dive #2 — Visual Question Factory: verdict, corrections & parallel-build plan",
+      zh:    "深度檢討 #2 · 出題工廠",
+      summary: "4-probe review of the factory-first pivot: architecture proven live (working scene-spec→SVG micro-build embedded), 25yr AIG science backs it, niche genuinely open — but 3 archetypes cover only 20-28% of real papers, the 6-12-month claim is unfalsifiable, and the factory must feed a dated warm E1, not replace it. Answers all 10 founder questions + week-1 plan, kill criteria, intern containment, parallel-track design, plus draft ledger entries (2 decisions, 1 hypothesis, 1 experiment, 1 open question — next free numbers) awaiting founder discussion." },
     { id:    "2026-07-03-strategy-deep-dive",
       date:  "2026-07-03",
       who:   "Claude (Fable 5)",
@@ -275,6 +281,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-03", who: "Claude (Fable 5)", project: "",
+      summary: "Deep-dive report #2 published to the Reports tab (visual-question-factory): responds to the founder's factory-first strategic update after the ChatGPT discussion. Method: 4 parallel probes — all 40 real TPC01 items archetype-classified (proposed 3 archetypes cover only 20-28% of real papers; comparison/extremum 4th + text-arithmetic track lift to >60%), a WORKING scene-spec→deterministic-SVG micro-build (rendered sample embedded in the report; solver = pure code for these archetypes), prior-art research (25yr AIG literature validates the architecture; the K2/K3-visual-bilingual-contest niche is genuinely unoccupied — niche economics, not infeasibility; moat = calibrated bank not engine), and a red team on the pivot. Verdict: build the MINIMAL factory in 1-2 weeks, its first output IS the E1 paper; the 6-12-month-exposure claim is unfalsifiable as stated and must not delay a dated warm-cohort E1; honest KPI = total human min (incl. rejects) per approved question ≤10 vs a timed manual control arm. Includes week-1 plan, kill/double-down criteria, intern containment (renderer/tooling only, never prompts/QC/answer keys), parallel-track design (factory = new standalone private repo, WS5-04 sheet-script import contract, Natalie's repos untouched), and draft ledger text for discussion (windowed-challenge decision + factory-supply-line decision + factory-cost hypothesis + factory-MVP experiment + glyph-licensing open question, at the next free D/H/E/Q numbers — deliberately NOT written into the ledgers yet). Nothing outside reports/+data.js touched per founder instruction." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "",
       summary: "NEW REPORTS TAB (third view beside Workspace & Business space): periodic founder-commissioned deep-dive reports — registry in data.js reports[], content in reports/<id>.md, rendered exactly like the Business space (marked, pills nav, #reports hash). First report published: 2026-07-03 Strategy deep-dive #1 (3 deep-dive agents + 2 red-team skeptics, ~418K tokens): evidence audit (H2 unvalidated carries 100% of online revenue), core insight (bottleneck moved from engineering to content/trust/E1-date), HK competitor reality check, 3/6/12-month moves, scale flywheel, what-breaks-first ranking, cheap-experiment list. Per founder: additive only — focus/board/roadmap deliberately NOT touched (digest first); the stale items found (focus still claims WS5-00+00b deploy pending; WS5 roadmap state todo vs actually active; entrance-qr-scan placeholder note) are recorded in the report §1, to fix after founder review. Two verified act-now hazards recorded in report §0: TPC01 papers exposure (public-repo history purge needed; TPC01 burned for scoring) and the stale local platform clone (deploy-revert footgun; fix credentials + runbook rev guard)." },
     { date: "2026-07-03", who: "Claude (Fable 5)", project: "tpc-online-platform",
