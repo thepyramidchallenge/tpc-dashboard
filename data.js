@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-05",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5 admin source is now live-deployed but not fully smoke-closed. Today source `f08ac8b` implemented the founder-approved full question review flow (draft→review→approved/unapproved, reviewNote, reviewer actions, Assets/Log placeholders, WS5-16 per-admin tab permissions) and `2b30a50` recorded production deploy state: Pages `beb4c8c` / bundle `index-DSMkLxtk.js`, Cloud Run `tpc-api-00029-lnz` with `SUPER_ADMIN_EMAILS=info@pyramidchallenge.org`. The one blocking operational step is the live Sheet migration: create/update Customers `AdminEmails` (`email addedBy addedAt tabs`), append `Users.adminTabs`, and append `Questions.reviewNote` using `cloud-run/scripts/migrate-ws5-16-sheets.js`; until then account grant/tick actions fail on the missing tab and review notes/adminTabs may be dropped by header mapping. After migration, live-smoke WS5-17 end to end, then close WS5-01/02/03 and WS5-16 as appropriate.",
+    "WS5 admin is live-deployed on the founder-final storage model and one tiny step from smoke-ready. Founder decision 2026-07-05 night: NO separate AdminEmails sheet — admin grants/revokes/tab ticks write the Customers Users tab directly (role + adminTabs cells) and reviewNote is just a new column on the existing Questions tab; source `47405c6` implements it (backend 56 / frontend 288 green) and is deployed: Pages `7f52c05` (bundle `index-Bsjg9oS6.js`) + Cloud Run `tpc-api-00030-9p2`. Remaining: append two header columns (`Users.adminTabs`, `Questions.reviewNote`) — the idempotent columns-only script `cloud-run/scripts/migrate-ws5-16-sheets.js` is ready but ADC is stale (invalid_rapt), so either founder runs `gcloud auth application-default login` + the script (Codex assisting) or adds the two header cells by hand. Then live-smoke WS5-17 end to end and close WS5-01/02/03/16.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5 admin source is deployed to Pages `beb4c8c` and Cloud Run `tpc-api-00029-lnz`; finish the WS5-16/WS5 review-flow sheet migration (`AdminEmails.tabs`, `Users.adminTabs`, `Questions.reviewNote`) and live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5 admin deployed on the Users-tab storage model (Pages `7f52c05`, Cloud Run `tpc-api-00030-9p2`; no AdminEmails sheet — grants/ticks edit Users.role/adminTabs directly). Finish the columns-only migration (`Users.adminTabs` + `Questions.reviewNote`; script ready, ADC reauth needed — Codex assisting) and live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `f08ac8b` full review flow + WS5-16 permissions; `2b30a50` migration script + deploy state; Pages `beb4c8c`; Cloud Run `tpc-api-00029-lnz`; sheet migration still outstanding before full live smoke.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `47405c6` Users-tab admin storage (no AdminEmails sheet); Pages `7f52c05`; Cloud Run `tpc-api-00030-9p2`; columns-only sheet migration (Users.adminTabs + Questions.reviewNote) outstanding before full live smoke.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5 sheet migration + live smoke", project: "tpc-online-platform", owner: "natalie", note: "Run the idempotent WS5-16 migration for AdminEmails.tabs, Users.adminTabs, Questions.reviewNote; then smoke review flow + admin permissions on live." },
+      { title: "WS5 sheet columns + live smoke", project: "tpc-online-platform", owner: "natalie", note: "Columns only (founder: no new sheets): append Users.adminTabs + Questions.reviewNote headers — script ready, ADC reauth needed (gcloud auth application-default login; Codex assisting) or add the 2 header cells by hand. Then smoke review flow + admin permissions on live." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -282,6 +282,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-05", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5-16 storage finalized per founder + production redeployed. Founder decisions applied through the day: accounts console mirrors the backend Users sheet exactly (uid-first columns, drag-resizable widths, 題庫-pattern filters); Linked = has a Google-auth uid (derived server-side; manual adds show N until first sign-in); 新增用戶 Add user is a full editor-style page requiring the table's fields per backend rules (adminCreateUser writes a real Users row); per-admin tab tick boxes (題庫/管理員) on admin rows decide which admin tabs each account shows — and the final storage revision: NO separate AdminEmails sheet, every grant/revoke/tick writes the Customers Users tab directly (role + adminTabs cells; reviewNote likewise just a new Questions column; provenance = admin_audit Cloud Logging). Source `47405c6` (backend 56 / frontend 288 / build green) deployed to production: Pages `7f52c05` (bundle index-Bsjg9oS6.js, live-verified) + Cloud Run `tpc-api-00030-9p2` (super-admin gates smoked). Outstanding: columns-only migration (Users.adminTabs + Questions.reviewNote) — script ready but local ADC is stale (invalid_rapt); founder to run gcloud auth application-default login + script (Codex assisting) or add the 2 header cells manually; until then tick/reviewNote values are silently dropped, everything else works. Board/focus updated; WS5 roadmap stays active pending the WS5-17 live smoke." },
     { date: "2026-07-05", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Dashboard catch-up for today's WS5 platform work: `f08ac8b` made the full founder-approved question review flow code-complete (draft→review→approved/unapproved, unapproved edit+resubmit, approved→unapproved/disabled, disabled terminal; server-owned `reviewNote`; status-driven editor buttons; read-only review/approved views; sortable/safer question list; Assets and Log placeholder tabs; WS5-16 per-admin tab permissions/adminCreateUser/adminSetAdminTabs included in the same green tree). Verification recorded in platform docs: frontend 288 pass, backend 57 pass, build green. `2b30a50` added the idempotent live Sheet migration script and recorded production deploy state: Pages `gh-pages` `beb4c8c` (bundle `index-DSMkLxtk.js`, admin chunk `AdminApp-BVM08NUk.js`) and Cloud Run `tpc-api-00029-lnz` with `SUPER_ADMIN_EMAILS=info@pyramidchallenge.org`; live smoke confirmed superadmin-gated users/permission actions are no longer unknown actions. Remaining blocker: run `cloud-run/scripts/migrate-ws5-16-sheets.js` against live Customers/Questions to create/update `AdminEmails.tabs`, append `Users.adminTabs`, and append `Questions.reviewNote`; until then grant/tick actions fail on the missing tab and reviewNote/adminTabs values may be dropped by header mapping. Dashboard focus/project/board/roadmap updated accordingly; full WS5 closure waits for WS5-17 live smoke after migration." },
     { date: "2026-07-05", who: "Claude (Fable 5)", project: "tpc-online-platform",
