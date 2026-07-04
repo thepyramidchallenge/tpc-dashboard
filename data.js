@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5 admin is live-deployed on the founder-final storage model and ready for WS5-17 smoke. Founder decision 2026-07-05 night: NO separate AdminEmails sheet — admin grants/revokes/tab ticks write the Customers Users tab directly (role + adminTabs cells) and reviewNote is just a new column on the existing Questions tab. Source `47405c6` implements it (backend 56 / frontend 288 green) and is deployed: Pages `7f52c05` (bundle `index-Bsjg9oS6.js`) + Cloud Run `tpc-api-00030-9p2`. Codex completed the live columns fix: `Users.adminTabs` is at `L1` and `Questions.reviewNote` is at `T1`. Next: live-smoke WS5-17 end to end and close WS5-01/02/03/16 if green.",
+    "WS5 admin is live-deployed on the founder-final storage model and ready for WS5-17 smoke. Founder decision 2026-07-05 night: NO separate AdminEmails sheet — admin grants/revokes/tab ticks write the Customers Users tab directly (role + adminTabs cells) and reviewNote is just a new column on the existing Questions tab. Latest source `5257544` fixes stale live account access: Cloud Run `getUser` resolves env superadmin/admin tabs even when the Users row is stale, and the frontend refreshes cached account access on load. Deployed: Pages `95a2a3f` (bundle `index-RE1NZKix.js`) + Cloud Run `tpc-api-00031-qbx`. Tab order stays 題庫 → 素材庫 → 管理員 → 日誌. Live columns: `Users.adminTabs` at `L1`, `Questions.reviewNote` at `T1`. Next: live-smoke WS5-17 end to end and close WS5-01/02/03/16 if green.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5 admin deployed on the Users-tab storage model (Pages `7f52c05`, Cloud Run `tpc-api-00030-9p2`; no AdminEmails sheet — grants/ticks edit Users.role/adminTabs directly). Live columns are now present (`Users.adminTabs` at L1, `Questions.reviewNote` at T1). Live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5 admin deployed on the Users-tab storage model (source `5257544`, Pages `95a2a3f`, Cloud Run `tpc-api-00031-qbx`; no AdminEmails sheet — grants/ticks edit Users.role/adminTabs directly). Latest live fix resolves stale owner access so 管理員 appears without manually editing the sheet row; tab order is 題庫 → 素材庫 → 管理員 → 日誌. Live columns are present (`Users.adminTabs` at L1, `Questions.reviewNote` at T1). Live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `47405c6` Users-tab admin storage (no AdminEmails sheet); Pages `7f52c05`; Cloud Run `tpc-api-00030-9p2`; live columns fixed (`Users.adminTabs`, `Questions.reviewNote`); WS5-17 live smoke remains.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `5257544` Users-tab admin storage + stale-access refresh fix (no AdminEmails sheet); Pages `95a2a3f`; Cloud Run `tpc-api-00031-qbx`; live columns fixed (`Users.adminTabs`, `Questions.reviewNote`); WS5-17 live smoke remains.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5 live smoke", project: "tpc-online-platform", owner: "natalie", note: "Columns are fixed (Users.adminTabs L1, Questions.reviewNote T1; no new sheets). Smoke review flow + admin permissions on live." },
+      { title: "WS5 live smoke", project: "tpc-online-platform", owner: "natalie", note: "Live now has the stale-account access fix (`5257544` / Cloud Run `tpc-api-00031-qbx` / Pages `95a2a3f`), so owner should see 管理員. Smoke review flow + admin permissions on live." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -282,6 +282,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-05", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Fixed the live missing 管理員 tab for the owner without changing the founder-preferred order (題庫 → 素材庫 → 管理員 → 日誌). Root cause: the live Users row for info@pyramidchallenge.org was stale (`role=admin`, blank `adminTabs`) while `SUPER_ADMIN_EMAILS` made the account superadmin server-side; `getUser` returned the raw row, so the frontend cached only questions access. Source `5257544` makes Cloud Run `getUser` resolve env superadmin/admin roles and serialized tabs before returning, exports it for regression coverage, and adds a frontend account-access refresh hook so cached users update after load/sign-in. Deployed backend Cloud Run `tpc-api-00031-qbx` (100%) and public Pages `95a2a3f` with bundle `index-RE1NZKix.js`; tests: backend server suite 57 pass, focused frontend admin/app-flow 90 pass, production build green, live ping healthy, Pages now serves the new bundle." },
     { date: "2026-07-05", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Fixed the live Google Sheet headers after reading Claude's latest no-AdminEmails storage revision. Local ADC was stale (`invalid_rapt`), so Codex used the Cloud Run `tpc-sheets` service-account impersonation path to apply the same columns-only migration via Sheets API: `TPC Customers.Users.adminTabs` added/verified at `L1`, and `TPC Questions.Questions.reviewNote` added/verified at `T1`. No `AdminEmails` sheet was created. Dashboard focus/project/board now show columns fixed; WS5-17 live smoke is the remaining step." },
     { date: "2026-07-05", who: "Claude (Fable 5)", project: "tpc-online-platform",
