@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5.1 admin is closing down while WS5.3 asset-library foundation opens. Private repo is pushed through 47aa0aa; public frontend is live on gh-pages 69b74d8 from source 2ece136 (index-CcRK4Cp1.js, AdminApp-BOrCk5_w.js). Next: live Assets sheet/Drive migration before asset endpoints are deployed/smoked.",
+    "WS5.3 素材庫 asset library is now LIVE on infra: Drive folder shared to the tpc-sheets SA, Assets tab migrated, backend tpc-api-00040-r74 deployed with ASSET_* env (GET /asset verified), 素材庫 console live on gh-pages 370359c. Only remaining: the interactive founder browser smoke (upload→登記→批准→served) + the human category/QC review. Doc commit 6868e1d is local (not pushed).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.1 admin baseline is live; latest pushed source adds WS5.1-02f version compare/inspect and WS5.3 backend/frontend foundation (Drive-backed Assets registry/API, template CSV, migration script, asset editor + 素材庫 console). Public frontend is live on gh-pages 69b74d8. Next: migrate live Assets tab + Drive folder env before deploying/smoking asset endpoints. Continue WS5.1-04 authored sets, then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5.1 admin baseline is live; WS5.3 asset library is now live on infra — Assets tab migrated, backend tpc-api-00040-r74 (ASSET_* env, GET /asset verified), 素材庫 console live on gh-pages 370359c, Drive folder shared to the tpc-sheets SA. Remaining WS5.3: the interactive founder browser smoke (upload→登記→批准→served) + human category/QC review. Then continue WS5.1-04 authored sets, WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current pushed source/docs checkpoint: version-history compare/inspect plus WS5.3 Asset Library backend foundation. Do not call asset work live until the `Assets` sheet migration, Drive folder sharing/env, Cloud Run deploy, and browser/API smoke are complete.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS5.3 Asset Library infra is now LIVE: `Assets` sheet migrated, Drive folder shared to the tpc-sheets SA, Cloud Run tpc-api-00040-r74 deployed with ASSET_* env, GET /asset API-verified, 素材庫 console on gh-pages. Remaining before WS5.3 status flips: the interactive browser smoke (upload→登記→批准→served) + human category/QC review. Doc commit 6868e1d is local (push under `gh auth switch --user thepyramidchallenge` when ready).",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "Prepare WS5.3 live asset migration", project: "tpc-online-platform", owner: "natalie", note: "Private source + public frontend are pushed. Asset endpoints still need live Assets sheet + Drive folder sharing/env before Cloud Run deploy and smoke." },
+      { title: "WS5.3 素材庫 — interactive founder smoke", project: "tpc-online-platform", owner: "natalie", note: "Infra is LIVE (Assets tab migrated, backend tpc-api-00040-r74 + ASSET_* env, GET /asset verified, console on gh-pages 370359c, Drive shared to tpc-sheets SA). Do the browser loop signed in as admin: drop <assetId>.svg in incoming/ → 待登記 → 登記 → 提交審批 → 批准 → GET /asset serves it; 退回 needs a note; re-check the 3 failed pilot SVGs. Then the human category/QC review." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -284,6 +284,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "WS5.3 素材庫 taken LIVE (infra): ran the founder go-live checklist end-to-end. (1) Confirmed the Drive `Asset Library` folder is now shared to the `tpc-sheets` service account as Editor — impersonated-SA check returns canEdit:true on both incoming/ (1jyF3PUc…) and library/ (1bq84iaW…), clearing the prior 403 blocker. (2) Ran `migrate-ws5-3-assets-tab.js` against live TPC Questions via SA-impersonation token — `Assets` tab + 22 Fields rows created, header reads back OK (tab currently header-only). (3) Redeployed the backend from source: `gcloud run deploy --source` → `tpc-api-00040-r74` serving 100%, now carrying the asset endpoints + `ASSET_INCOMING_FOLDER_ID`/`ASSET_LIBRARY_FOLDER_ID` env; verified public `GET /asset` (400 no-id, 404 non-approved) and ping OK. (4) Rebuilt + deployed the frontend → gh-pages `370359c` (AdminApp bundle now carries the 素材庫 console; live site 200). Remaining = the interactive founder browser smoke (sign-in admin → upload SVG to incoming/ → 登記 → 批准 → served), which needs a real admin Google session (backend requires an app-audience ID token — not CLI-scriptable), plus the human category/QC review. NB documented: a service account has no My-Drive quota, so registration only *moves* the user-uploaded file (never creates) — a future AI generator must upload under its own quota/shared drive, not as tpc-sheets. Docs updated (AGENT_HANDOFF §1/§2, ROADMAP WS5.3-01) + committed locally 6868e1d (not pushed). WS5.3 stays in-progress until the interactive smoke passes." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "WS5.1-02f version-history view — authored the compare/inspect implementation: new pure `src/admin/versionCompare.js` (snapshotToFields / questionFromDraft / diffFields) + the AdminEditor history panel now expands each approved edition's full snapshot fields and diffs two editions (vN ↔ another version or the live working copy) with changed-field highlighting; 5 unit + 2 behavior tests, frontend suite + build green. Confirmed LIVE on gh-pages (admin chunk AdminApp-DBxKjNjs.js serves the compare/inspect code, 98 kB = 02f-only, no asset console); interactive founder smoke (approved question with ≥2 versions) in progress with founder. Also did the founder-requested deferred-item routing pass in ROADMAP — every WS5.1 [~] item now names a concrete destination: WS5.1-02e→WS6.2-03, 02d/03e→WS6.2-01, 01h/03d→new WS8-10 (report-time snapshot stamping), 01d→new WS6.1-22 (admin batch ops), 01g→new WS6.1-23 (large-bank scale); rollback/copy split to WS5.1-02g. Then diagnosed a live bug: 子主題 SubTopic is a REQUIRED editor field but the Questions sheet has no subTopic column (and normalizeQuestionRow drops it), so it silently never persists — fix pending founder decision (persist vs make-optional). Shared working tree with parallel Codex/Fable sessions." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
