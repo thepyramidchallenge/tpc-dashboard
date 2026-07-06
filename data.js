@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5.1 admin remains the immediate focus. Codex's 2026-07-06 work across sessions: fixed admin question-editor/list workflow (`f7daa5c`), broke WS5.1 into child checklist tasks (`03c03a2`), built the WS5.1-18 backend log read + AdminLog/StudentLog dual-write hooks (`fdf7ecf`, documented by `0944b8d`; NOT deployed — live tab migration + Cloud Run deploy still need approval), and diagnosed the public Pages failure as a GitHub deploy flake; latest public Pages is green/live on `gh-pages` `15a1102` serving `assets/index-DA81w3w2.js`. Next: WS5.1-18 production migration/deploy if approved, plus remaining WS5.1 live-smoke/closure items.",
+    "WS5.1 admin is closing down while WS5.3 asset-library foundation opens. Private source is pushed through 76bb7bb; public frontend is live on gh-pages 51cb324 (index-esrwdBMi.js). Next: live Assets sheet/Drive migration before asset endpoints are deployed/smoked.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.1 is deployed and now decomposed for execution. Current live baseline: Cloud Run `tpc-api-00036-q2w`; public Pages latest successful deployment `15a1102` (asset `index-DA81w3w2.js`, run 28780192157). Codex today also built source-only WS5.1-18 backend logs (`fdf7ecf`): `adminListLogs`, AdminLog/StudentLog dual-write hooks, template CSVs, and idempotent migration script; live migration + Cloud Run deploy are pending founder approval. Continue WS5.1 live smoke/closure from the child checklist, then seed authored sets (WS5.1-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5.1 admin baseline is live; latest pushed source adds WS5.1-02f version compare/inspect and WS5.3 backend/frontend foundation (Drive-backed Assets registry/API, template CSV, migration script, asset editor scaffolding). Public frontend is live on gh-pages 51cb324. Next: migrate live Assets tab + Drive folder env before deploying/smoking asset endpoints. Continue WS5.1-04 authored sets, then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5.1 deploy baseline: Cloud Run `tpc-api-00036-q2w` + public Pages green/live. Codex source/docs checkpoints today: `f7daa5c` admin editor workflow, `03c03a2` WS5.1 child checklist breakdown, `fdf7ecf` WS5.1-18 backend logs, `0944b8d` pending-production status. Do not mark WS5.1-18 done until live AdminLog/StudentLog tabs are migrated and Cloud Run is redeployed.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current pushed source/docs checkpoint: version-history compare/inspect plus WS5.3 Asset Library backend foundation. Do not call asset work live until the `Assets` sheet migration, Drive folder sharing/env, Cloud Run deploy, and browser/API smoke are complete.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.1 live smoke + WS5.1-18 deploy decision", project: "tpc-online-platform", owner: "natalie", note: "Use the ROADMAP child checklist. Codex built WS5.1-18 backend logs in source (`fdf7ecf`) but production still needs approval for live AdminLog/StudentLog migration + Cloud Run deploy. Current public Pages is green on `15a1102`." },
+      { title: "Prepare WS5.3 live asset migration", project: "tpc-online-platform", owner: "natalie", note: "Private source + public frontend are pushed. Asset endpoints still need live Assets sheet + Drive folder sharing/env before Cloud Run deploy and smoke." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -197,7 +197,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-21 · Backend test gaps", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "WS5.2 · Question factory (AI question gen)", state: "hold" },
-        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "hold" },
+        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS6.2 · UI review (all UI-review work)", state: "todo" },
@@ -284,6 +284,10 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5.3 素材庫 asset library built end-to-end in source per founder plan (manual input now, AI generation later — same registry/QC pipeline for both producers). This session: Drive `Asset Library` folder tree created under TPC online platform (incoming/ · library/{content-objects,math,logic,pages} · source-exports; ids in sheets-template README); backend Assets registry on TPC Questions (adminListAssets/upsertAsset/transitionAsset with the question lifecycle + server-owned reviewNote, 待登記 inbox over Drive, admin base64 preview, public approved-only GET /asset, admin-audit + 日誌 asset.* vocabulary; backend 69→79 tests); full 素材庫 admin console replacing the placeholder tab (ERP table with Drive thumbnails, filters, batch Approve, inbox 登記 flow, asset editor with QC checklist + lifecycle buttons; frontend 348 tests, build green, admin chunk still lazy); template CSV + idempotent migrate-ws5-3-assets-tab.js. NOT live: Assets tab migration was permission-blocked this session — founder checklist in AGENT_HANDOFF §2 item 2 (share Drive folder to tpc-sheets SA as Editor → run migration → set ASSET_*_FOLDER_ID env → deploy both → smoke incl. the 3 failed pilot SVGs). No status flips: WS5.3 stays in-progress until the live smoke. Coordination note: this ran alongside the Codex session in the same tree — Codex's commits 76bb7bb/9d0ef56 swept this session's asset files into history; content is correct, attribution is mixed." },
+    { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Updated and published platform source/docs for WS5.1-02f version-history compare/inspect and the WS5.3 Asset Library foundation: private admin source pushed through 76bb7bb; public frontend deployed to gh-pages 51cb324 (live index-esrwdBMi.js). Asset proposal includes Drive-backed Assets registry/API, approved-only /asset serving, frontend asset editor scaffolding, template CSV + migration script, and docs/handoff updates. Validation: backend 79 tests, frontend 343 tests, frontend build passes. Live asset endpoint smoke still waits on Assets sheet + Drive folder/env migration." },
     { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Codex day wrap-up across sessions, not just this chat: (1) `f7daa5c` fixed the admin question editor/list workflow after live-smoke findings (backend validation test tweaks + AdminApp/AdminEditor/adminValidation/styles updates); (2) `03c03a2` broke the oversized unfinished WS5 ROADMAP work into explicit child checklist IDs `WS5-01a`...`WS5-18g` without marking tasks complete; (3) `fdf7ecf` built WS5-18 backend activity logs — superadmin-gated `adminListLogs`, AdminLog/StudentLog fire-and-forget dual-write hooks, template CSVs, and `migrate-ws5-18-log-tabs.js` — with backend suite 61→68, followed by `0944b8d` docs noting live migration + Cloud Run deploy are pending founder approval; (4) diagnosed the public Pages failure email for run 28779435632 as a GitHub-side deploy flake (`Deployment failed, try again later`), while latest gh-pages run 28780192157 succeeded on `15a1102` and live site serves `assets/index-DA81w3w2.js`. Dashboard updated + changelog rotated." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
