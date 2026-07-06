@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-06",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -286,6 +286,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5 full review (docs vs code) + founder-directed polish, committed f0fdf2c (private main; NOT deployed to Pages — founder to authorize). Review verdict: WS5.1 ~95% (deferred items already tracked), WS5.2 design-only, WS5.3 ~70% (interactive smoke + taxonomy review left); all claimed invariants matched code. 8 risk flags recorded in AGENT_HANDOFF §5 — headline: admin question edits are last-save-wins with no updatedAt conflict check (stale tab silently overwrites; ROADMAP decision log → WS6.1-10), case-sensitive upsertUser email match could split a mixed-case pre-created account into two rows, and public /asset approved-only serving lacks a regression test. Risk #4 closed same day: new backend end-to-end test pins that a roster admin grant survives the Google sign-in merge. Code in the same pass (founder verified the asterisk fix in-browser): admin add-user required asterisks now red required-star; admin 題庫/素材庫 timestamps human-readable via shared formatWhen (Drive UTC → HK time, unit-tested) and 待登記 inbox shows 更新時間 from Drive modifiedTime; question final render moved to fixed-ratio photo frames (--photo-ratio 4/3, --choice-photo-ratio 1/1, both TBC by founder) with clamped never-truncated stem text. Frontend 354 / build green; my AdminAssets.jsx edits ride with the parallel session's in-flight label refactor." },
     { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Codex wrap-up across today's chatrooms: fixed the dashboard deploy-pages rerun failure by naming the Pages artifact with `github.run_attempt` and verified the replacement deploy; read the platform/admin roadmap state and identified WS5.1-07a + WS5.1-18e as closable; recorded founder-passed smokes for SubTopic persistence/filtering and 日誌 AdminLog/StudentLog; captured the new WS5.1-18j log-retention guard after the founder spotted Google Sheets growth risk; verified dashboard consistency checks; and aligned the next closeout sequence to WS5.3 interactive smoke + log retention before moving into WS5.2 seed pack → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
