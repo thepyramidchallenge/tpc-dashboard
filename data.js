@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Engineering-first priority is reset: close current engineering evidence (WS5.1-18e Log UI smoke, WS5.1-07 subTopic closeout, WS5.3 browser smoke), then content/fixed-set work (WS5.2 seed pack → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2), then pilot polish, then Business Space/report validation (WS7-06 log-only → WS9-00 $99 report).",
+    "Engineering-first priority is reset: close current engineering evidence (WS5.3 browser smoke + WS5.1-18j log retention guard), then content/fixed-set work (WS5.2 seed pack → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2), then pilot polish, then Business Space/report validation (WS7-06 log-only → WS9-00 $99 report).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Priority order refreshed in ROADMAP: Tier 0 close WS5.1-18e Log UI browser smoke, WS5.1-07 subTopic live status, and WS5.3 browser smoke; Tier 1 generate the WS5.2 seed pack from real_seed as ai_generated variants, assemble WS5.1-04 K2/K3 QuestionSets, add WS5.1-05 placeholders, then run WS4.2 fixed-set practice; Tier 2 pilot polish; Tier 3 WS7-06 log-only + WS9-00 $99 report validation.",
+      next:  "Priority order refreshed in ROADMAP: Tier 0 close WS5.3 browser smoke and add WS5.1-18j log retention/rotation before pilot traffic; Tier 1 generate the WS5.2 seed pack from real_seed as ai_generated variants, assemble WS5.1-04 K2/K3 QuestionSets, add WS5.1-05 placeholders, then run WS4.2 fixed-set practice; Tier 2 pilot polish; Tier 3 WS7-06 log-only + WS9-00 $99 report validation.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current priority order: close WS5.1-18e/WS5.1-07/WS5.3 smoke evidence, then WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2, then Business Space/report validation via WS7-06 + WS9-00.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current priority order: close WS5.3 smoke evidence and WS5.1-18j log retention/rotation, then WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2, then Business Space/report validation via WS7-06 + WS9-00.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,8 +146,8 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.1 closeout — Log UI + SubTopic", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 0. Finish WS5.1-18e in-browser 日誌 smoke for both streams, then close WS5.1-07 by confirming live subTopic persistence/filtering; taxonomy remains deferred." },
       { title: "WS5.3 素材庫 — interactive founder smoke", project: "tpc-online-platform", owner: "natalie", note: "Infra is LIVE (Assets tab migrated, backend tpc-api-00040-r74 + ASSET_* env, GET /asset verified, console on gh-pages 370359c, Drive shared to tpc-sheets SA). Do the browser loop signed in as admin: drop <assetId>.svg in incoming/ → 待登記 → 登記 → 提交審批 → 批准 → GET /asset serves it; 退回 needs a note; re-check the 3 failed pilot SVGs. Then the human category/QC review." },
+      { title: "WS5.1-18j — Log retention guard", project: "tpc-online-platform", owner: "natalie", note: "Founder spotted the append-only log growth risk after WS5.1-18e passed. Before pilot traffic: define row soft caps and add archive/rotation so AdminLog/StudentLog cannot hit Google Sheets limits." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -286,6 +286,12 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "WS5.3 素材庫 founder revisions built + deployed (backend tpc-api-00042-r6l, Pages gh-pages 71d7815; backend 82 / frontend 351 tests, build green). (1) Dropped licence + sourceNote from the Assets schema (all SVGs in-house) — live Assets tab + Fields cleaned to 20 cols (founder's 1 test row preserved), migration + tests updated. (2) Manual upload: new uploadAsset endpoint writes the SVG/PNG into Drive incoming/ and the console gets an 上載素材 Upload button → registration editor prefilled; all Drive calls now pass supportsAllDrives. NEEDS a Shared Drive (service accounts have no My-Drive quota) — founder to create one, move Asset Library in, add tpc-sheets as Content Manager, then a 30-sec ASSET_*_FOLDER_ID env update; until then the button errors but the manual Drive-drop + 待登記 register path still works. (3) Category is now a friendly grouped 中文/English picker (editor) + friendly labels (table); backend still stores the dot-code. (4) Class A/B explained inline during registration. (5) Required fields marked with red asterisks. (6) The vague 'fix the highlighted fields' toast now names the exact fields to fix. Also confirmed WS5.1-07 subTopic is now fully LIVE (Questions gained the subTopic column, 24 cols, and the deployed backend has the read/write code). Founder is live-testing; interactive WS5.3 smoke + WS5.3-01c category-taxonomy review continue with the founder." },
+    { date: "2026-07-06", who: "Founder + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Closed WS5.1-18e Log UI browser smoke: founder confirmed 日誌 loads both AdminLog and StudentLog, and one admin action plus one student action produced rows. New risk captured as WS5.1-18j: append-only logs need retention/rotation before pilot traffic so AdminLog/StudentLog do not grow into Google Sheets file/API limits." },
+    { date: "2026-07-06", who: "Founder + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Closed WS5.1-07a SubTopic live persistence/filtering: live `Questions` has `subTopic` appended after `createdAt`, `Fields` documents free-text subTopic, Cloud Run is on `tpc-api-00041-dr9`, backend round-trip test passes, and founder browser smoke passed save/reopen plus admin list filtering. ROADMAP now marks WS5.1-07/07a done for Phase 1; WS5.1-07c/07d taxonomy process/migration remain later." },
     { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Reprioritized the platform roadmap and dashboard around the founder's engineering-first → Business Space/report sequence. ROADMAP Priority order now has Tier 0 current engineering closure (WS5.1-18e Log UI smoke, WS5.1-07 subTopic closeout, WS5.3 browser smoke), Tier 1 content/fixed-set engineering (WS5.2 lightweight 55% rule + seed-pack lane → WS5.1-04 K2/K3 QuestionSets → WS5.1-05 placeholders → WS4.2 fixed-set flow), Tier 2 pilot-gating WS6.1/WS6.2 polish, Tier 3 Business Space/report validation (WS7-06 log-only integrity → WS9-00 $99 report MVP), and Tier 4 gated full WS7/WS8/WS9-01+. Also routed WS5.1-04 question creation to WS5.2 as `source=ai_generated` variants from `real_seed` with `seedId`; no new pretend-authored content." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
