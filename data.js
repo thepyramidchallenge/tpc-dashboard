@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5.3 素材庫 asset library is now LIVE on infra: Drive folder shared to the tpc-sheets SA, Assets tab migrated, backend tpc-api-00040-r74 deployed with ASSET_* env (GET /asset verified), 素材庫 console live on gh-pages 370359c. Only remaining: the interactive founder browser smoke (upload→登記→批准→served) + the human category/QC review. Doc commit 6868e1d is local (not pushed).",
+    "Engineering-first priority is reset: close current engineering evidence (WS5.1-18e Log UI smoke, WS5.1-07 subTopic closeout, WS5.3 browser smoke), then content/fixed-set work (WS5.2 seed pack → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2), then pilot polish, then Business Space/report validation (WS7-06 log-only → WS9-00 $99 report).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.1 admin baseline is live; WS5.3 asset library is now live on infra — Assets tab migrated, backend tpc-api-00040-r74 (ASSET_* env, GET /asset verified), 素材庫 console live on gh-pages 370359c, Drive folder shared to the tpc-sheets SA. Remaining WS5.3: the interactive founder browser smoke (upload→登記→批准→served) + human category/QC review. Then continue WS5.1-04 authored sets, WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "Priority order refreshed in ROADMAP: Tier 0 close WS5.1-18e Log UI browser smoke, WS5.1-07 subTopic live status, and WS5.3 browser smoke; Tier 1 generate the WS5.2 seed pack from real_seed as ai_generated variants, assemble WS5.1-04 K2/K3 QuestionSets, add WS5.1-05 placeholders, then run WS4.2 fixed-set practice; Tier 2 pilot polish; Tier 3 WS7-06 log-only + WS9-00 $99 report validation.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. WS5.3 Asset Library infra is now LIVE: `Assets` sheet migrated, Drive folder shared to the tpc-sheets SA, Cloud Run tpc-api-00040-r74 deployed with ASSET_* env, GET /asset API-verified, 素材庫 console on gh-pages. Remaining before WS5.3 status flips: the interactive browser smoke (upload→登記→批准→served) + human category/QC review. Doc commit 6868e1d is local (push under `gh auth switch --user thepyramidchallenge` when ready).",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current priority order: close WS5.1-18e/WS5.1-07/WS5.3 smoke evidence, then WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2, then Business Space/report validation via WS7-06 + WS9-00.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,15 +146,16 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
+      { title: "WS5.1 closeout — Log UI + SubTopic", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 0. Finish WS5.1-18e in-browser 日誌 smoke for both streams, then close WS5.1-07 by confirming live subTopic persistence/filtering; taxonomy remains deferred." },
       { title: "WS5.3 素材庫 — interactive founder smoke", project: "tpc-online-platform", owner: "natalie", note: "Infra is LIVE (Assets tab migrated, backend tpc-api-00040-r74 + ASSET_* env, GET /asset verified, console on gh-pages 370359c, Drive shared to tpc-sheets SA). Do the browser loop signed in as admin: drop <assetId>.svg in incoming/ → 待登記 → 登記 → 提交審批 → 批准 → GET /asset serves it; 退回 needs a note; re-check the 3 failed pilot SVGs. Then the human category/QC review." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.1-04 — Authored sets", project: "tpc-online-platform", owner: "natalie", note: "After WS5.1-17 smoke, seed authored QuestionSets only — never real_seed. Live Sheets already include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
-      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5.1-04 sets." },
-      { title: "WS6.1 + WS6.2 — Polish + UI review → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6.1-18/19/20/21 are deployed. WS6.1 keeps accuracy/cold-start/fallback/concurrency-smoke; WS6.2 (new phase) holds ALL UI review — notify-layer message classes (are toasts right for every alert?), copy, timer colouring, usability/a11y, unselect, whole-app screen review — before WS6.1-11 pilot." },
-      { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
+      { title: "WS5.2 seed pack → WS5.1-04 sets", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 1. No new pretend-authored content: document the lightweight 55% rule, generate K2/K3 ai_generated variants from real_seed with seedId provenance, approve/import them, then assemble 3-5 K2 + 3-5 K3 non-real_seed QuestionSets." },
+      { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
+      { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
+      { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
@@ -196,11 +197,11 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-20 · Observability", state: "done" },
         { label: "WS6.1-21 · Backend test gaps", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2 · Question factory (AI question gen)", state: "hold" },
+        { label: "WS5.2 · Question factory (seed-pack lane active; recurring AI hold)", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
-        { label: "WS6.2 · UI review (all UI-review work)", state: "todo" },
+        { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
       ],
     },
     {
@@ -208,6 +209,7 @@ window.TPC_DASHBOARD = {
       owner:   "natalie",
       title:   "Phase 2 / 3 — later phases",
       items: [
+        { label: "WS7-06 · Log-only integrity subset (co-ship with report)", state: "todo" },
         { label: "WS9-00 · $99 report MVP (E1 north-star)", state: "todo" },
         { label: "WS7 · Test Mode + ranking (gated on E1/E2)", state: "todo"   },
         { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
@@ -284,6 +286,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Reprioritized the platform roadmap and dashboard around the founder's engineering-first → Business Space/report sequence. ROADMAP Priority order now has Tier 0 current engineering closure (WS5.1-18e Log UI smoke, WS5.1-07 subTopic closeout, WS5.3 browser smoke), Tier 1 content/fixed-set engineering (WS5.2 lightweight 55% rule + seed-pack lane → WS5.1-04 K2/K3 QuestionSets → WS5.1-05 placeholders → WS4.2 fixed-set flow), Tier 2 pilot-gating WS6.1/WS6.2 polish, Tier 3 Business Space/report validation (WS7-06 log-only integrity → WS9-00 $99 report MVP), and Tier 4 gated full WS7/WS8/WS9-01+. Also routed WS5.1-04 question creation to WS5.2 as `source=ai_generated` variants from `real_seed` with `seedId`; no new pretend-authored content." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "WS5.3 素材庫 taken LIVE (infra): ran the founder go-live checklist end-to-end. (1) Confirmed the Drive `Asset Library` folder is now shared to the `tpc-sheets` service account as Editor — impersonated-SA check returns canEdit:true on both incoming/ (1jyF3PUc…) and library/ (1bq84iaW…), clearing the prior 403 blocker. (2) Ran `migrate-ws5-3-assets-tab.js` against live TPC Questions via SA-impersonation token — `Assets` tab + 22 Fields rows created, header reads back OK (tab currently header-only). (3) Redeployed the backend from source: `gcloud run deploy --source` → `tpc-api-00040-r74` serving 100%, now carrying the asset endpoints + `ASSET_INCOMING_FOLDER_ID`/`ASSET_LIBRARY_FOLDER_ID` env; verified public `GET /asset` (400 no-id, 404 non-approved) and ping OK. (4) Rebuilt + deployed the frontend → gh-pages `370359c` (AdminApp bundle now carries the 素材庫 console; live site 200). Remaining = the interactive founder browser smoke (sign-in admin → upload SVG to incoming/ → 登記 → 批准 → served), which needs a real admin Google session (backend requires an app-audience ID token — not CLI-scriptable), plus the human category/QC review. NB documented: a service account has no My-Drive quota, so registration only *moves* the user-uploaded file (never creates) — a future AI generator must upload under its own quota/shared drive, not as tpc-sheets. Docs updated (AGENT_HANDOFF §1/§2, ROADMAP WS5.3-01) + committed locally 6868e1d (not pushed). WS5.3 stays in-progress until the interactive smoke passes." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
