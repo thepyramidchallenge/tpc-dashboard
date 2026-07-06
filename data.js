@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5 admin is live-deployed on the founder-final storage model and ready for WS5-17 smoke. Founder decision 2026-07-05 night: NO separate AdminEmails sheet — admin grants/revokes/tab ticks write the Customers Users tab directly (role + adminTabs cells) and reviewNote is just a new column on the existing Questions tab. Latest source `5257544` fixes stale live account access: Cloud Run `getUser` resolves env superadmin/admin tabs even when the Users row is stale, and the frontend refreshes cached account access on load. Deployed: Pages `95a2a3f` (bundle `index-RE1NZKix.js`) + Cloud Run `tpc-api-00031-qbx`. Tab order stays 題庫 → 素材庫 → 管理員 → 日誌. Live columns: `Users.adminTabs` at `L1`, `Questions.reviewNote` at `T1`. Next: live-smoke WS5-17 end to end and close WS5-01/02/03/16 if green.",
+    "WS5 admin is FULLY deployed as of 2026-07-06 and ready for the WS5-17 smoke. Production = Cloud Run `tpc-api-00032-8l5` + Pages `a3cdd46` (bundle `index-CuQp5Ia8.js`; source `0798534`), carrying all four WS5 layers together: the review flow (draft→提交審批→批准/退回→重新提交審批; disabled terminal), the version policy (儲存改工作稿，批准出新版本 — snapshot-on-approve into the new QuestionVersions tab, keep all versions), WS5-16 per-tab permissions (Users-tab storage, no AdminEmails sheet), and the field-rules pass (limits alignment, domain↔topic autofill, reviewNote keep-but-clear 已解除 prefix, createdBy/createdAt authorship, English-only studentName, superadmin-only 日誌). Live Questions header runs …reviewNote(T1)·version(U1)·createdBy(V1)·createdAt(W1); QuestionVersions tab + Fields docs in place (read-back verified). Next: live-smoke WS5-17 end to end (incl. v1/v2 minting + 版本歷史) and close WS5-01/02/03/16 if green.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5 admin deployed on the Users-tab storage model (source `5257544`, Pages `95a2a3f`, Cloud Run `tpc-api-00031-qbx`; no AdminEmails sheet — grants/ticks edit Users.role/adminTabs directly). Latest live fix resolves stale owner access so 管理員 appears without manually editing the sheet row; tab order is 題庫 → 素材庫 → 管理員 → 日誌. Live columns are present (`Users.adminTabs` at L1, `Questions.reviewNote` at T1). Live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5 fully deployed 2026-07-06 (source `0798534`, Pages `a3cdd46`, Cloud Run `tpc-api-00032-8l5`): review flow + version policy (QuestionVersions snapshot-on-approve) + per-tab permissions (Users-tab storage, no AdminEmails sheet) + field-rules pass. Live sheet migrations complete (reviewNote T1 · version U1 · createdBy V1 · createdAt W1 · QuestionVersions tab). Live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, plus owner add-user/tab-permission/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `5257544` Users-tab admin storage + stale-access refresh fix (no AdminEmails sheet); Pages `95a2a3f`; Cloud Run `tpc-api-00031-qbx`; live columns fixed (`Users.adminTabs`, `Questions.reviewNote`); WS5-17 live smoke remains.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 source/deploy checkpoint: `0798534` (review flow + version policy + per-tab permissions + field-rules); Pages `a3cdd46`; Cloud Run `tpc-api-00032-8l5`; all live-sheet migrations done (reviewNote/version/createdBy/createdAt + QuestionVersions tab); WS5-17 live smoke remains.",
     },
     {
       id:    "entrance-qr-scan",
