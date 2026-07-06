@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5 admin remains the immediate focus: latest deployed platform baseline is Cloud Run `tpc-api-00036-q2w` plus public Pages green/live on `gh-pages` `15a1102` (serving `assets/index-DA81w3w2.js`). Codex's 2026-07-06 docs-only pass broke the too-large WS5 ROADMAP items into child checklists `WS5-01a`...`WS5-18g` and pushed admin commit `03c03a2`; no task was marked complete. Next: run the WS5-17 live smoke against the decomposed checklist, then close WS5-01/02/03/16 only when the smoke is green.",
+    "WS5 admin remains the immediate focus. Codex's 2026-07-06 work across sessions: fixed admin question-editor/list workflow (`f7daa5c`), broke WS5 into child checklist tasks (`03c03a2`), built the WS5-18 backend log read + AdminLog/StudentLog dual-write hooks (`fdf7ecf`, documented by `0944b8d`; NOT deployed — live tab migration + Cloud Run deploy still need approval), and diagnosed the public Pages failure as a GitHub deploy flake; latest public Pages is green/live on `gh-pages` `15a1102` serving `assets/index-DA81w3w2.js`. Next: WS5-18 production migration/deploy if approved, plus remaining WS5 live-smoke/closure items.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5 is deployed and now decomposed for execution: Cloud Run `tpc-api-00036-q2w`; public Pages latest successful deployment `15a1102` (asset `index-DA81w3w2.js`, run 28780192157). ROADMAP WS5 now has child checklists `WS5-01a`...`WS5-18g` for smoke, content, assets, roster, logs, and notifications. Live-smoke WS5-17: create/edit draft → submit review → approve/unapprove with reviewNote → resubmit → student serveability, version v1/v2/history, plus owner add-user/role-derived tabs/revoke. Then close WS5-01/02/03 and WS5-16 as smoke permits, seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5 is deployed and now decomposed for execution. Current live baseline: Cloud Run `tpc-api-00036-q2w`; public Pages latest successful deployment `15a1102` (asset `index-DA81w3w2.js`, run 28780192157). Codex today also built source-only WS5-18 backend logs (`fdf7ecf`): `adminListLogs`, AdminLog/StudentLog dual-write hooks, template CSVs, and idempotent migration script; live migration + Cloud Run deploy are pending founder approval. Continue WS5 live smoke/closure from the child checklist, then seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 deploy baseline: Cloud Run `tpc-api-00036-q2w` + public Pages green/live; docs checkpoint `03c03a2` breaks unfinished WS5 work into child tasks `WS5-01a`...`WS5-18g` without closing anything. WS5-17 live smoke remains the gate before flipping WS5-01/02/03/16.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 deploy baseline: Cloud Run `tpc-api-00036-q2w` + public Pages green/live. Codex source/docs checkpoints today: `f7daa5c` admin editor workflow, `03c03a2` WS5 child checklist breakdown, `fdf7ecf` WS5-18 backend logs, `0944b8d` pending-production status. Do not mark WS5-18 done until live AdminLog/StudentLog tabs are migrated and Cloud Run is redeployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5 live smoke", project: "tpc-online-platform", owner: "natalie", note: "Use the new WS5 child checklist in ROADMAP (`WS5-01a`...`WS5-18g`). Current live baseline: Cloud Run `tpc-api-00036-q2w`; public Pages deployment `15a1102` green and serving `index-DA81w3w2.js`. Smoke review flow, version v1/v2/history, student serveability, and role-derived admin tabs." },
+      { title: "WS5 live smoke + WS5-18 deploy decision", project: "tpc-online-platform", owner: "natalie", note: "Use the ROADMAP child checklist. Codex built WS5-18 backend logs in source (`fdf7ecf`) but production still needs approval for live AdminLog/StudentLog migration + Cloud Run deploy. Current public Pages is green on `15a1102`." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -283,7 +283,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-07-06", who: "Codex (GPT-5)", project: "tpc-online-platform",
-      summary: "Docs/wrap-up pass: read the platform ROADMAP, broke the oversized unfinished WS5 work into explicit child checklist IDs `WS5-01a`...`WS5-18g` (live-smoke, editor/backend validation, content sets, missing images, AI/asset/QC holds, exposure telemetry, content sizing, admin roster smoke, deploy smoke, Log/Notifications backend) without marking any task complete, and added a matching AGENT_HANDOFF breadcrumb. Committed/pushed to private admin repo as `03c03a2` (`docs: break down WS5 roadmap subtasks`). Investigated the public Pages failure email for run 28779435632: build succeeded, deploy failed with GitHub-side `Deployment failed, try again later`; latest gh-pages run 28780192157 succeeded on `15a1102`, live site returns 200 and serves `assets/index-DA81w3w2.js`. No code changes." },
+      summary: "Codex day wrap-up across sessions, not just this chat: (1) `f7daa5c` fixed the admin question editor/list workflow after live-smoke findings (backend validation test tweaks + AdminApp/AdminEditor/adminValidation/styles updates); (2) `03c03a2` broke the oversized unfinished WS5 ROADMAP work into explicit child checklist IDs `WS5-01a`...`WS5-18g` without marking tasks complete; (3) `fdf7ecf` built WS5-18 backend activity logs — superadmin-gated `adminListLogs`, AdminLog/StudentLog fire-and-forget dual-write hooks, template CSVs, and `migrate-ws5-18-log-tabs.js` — with backend suite 61→68, followed by `0944b8d` docs noting live migration + Cloud Run deploy are pending founder approval; (4) diagnosed the public Pages failure email for run 28779435632 as a GitHub-side deploy flake (`Deployment failed, try again later`), while latest gh-pages run 28780192157 succeeded on `15a1102` and live site serves `assets/index-DA81w3w2.js`. Dashboard updated + changelog rotated." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Toast colour rule shipped per founder: every top pop-up now follows red = error, green = pass/success, white = saved draft. New green success tone (已提交審批 as requested, plus 已批准並建立 vN / 已退回 / 已停用 / 已更新 N 題 / admin grant·revoke / user added); saved-draft toasts stay white; all blocking or failed messages moved to red (validation prompts, missing 審批備註, no-applicable-transition, backend-not-ready, sign-in expired, 沒有題目, sign-up field checks); legacy warn tone renders red so nothing is ever off-palette. Rule pinned by tests. Clean-room commit be4e27e (excluded the parallel session's in-flight 5-option/version-cell work); frontend 300 / backend 60 / build green; Pages deployed from a clean worktree → gh-pages 99ce687 (bundle index-zbKgAeu4.js), live asset verified; backend unchanged (tpc-api-00034-2qt). Also pre-decides the colour tier of WS6.2-01 message-class review." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
