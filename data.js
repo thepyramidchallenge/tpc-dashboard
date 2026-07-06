@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-05",
-    updatedBy: "Codex (GPT-5)",
+    updated:   "2026-07-06",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
