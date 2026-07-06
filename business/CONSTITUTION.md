@@ -59,6 +59,31 @@ first. This is *not* a licence for unlimited spend — engineering stays
 disciplined. Free online challenge exists to **learn + build trust + create the
 ranking database**, not as charity or a gimmick.
 
+## The polish floor (group-wide DNA)
+
+Across all of the founder's businesses — HKYCAA, Team Futura, TPC, and whatever
+comes next — every **customer-facing surface must feel finished, polished and
+premium** (完成品, never 半完成品). This is not an aesthetic preference; it is
+the market-entry thesis itself: these businesses exist because competitors ship
+incomplete-feeling products, and the polish gap *is* the opening. For TPC it is
+doubly binding: the product **is** trust (framework question 2), and a
+half-finished surface is the fastest way to destroy credibility in an
+assessment brand.
+
+- **Scope is variable; polish is not.** Under time pressure, cut features —
+  ship fewer, simpler things — but everything a customer touches must read as
+  a complete, quality product.
+- **Cut, don't expose.** An unfinished feature gets removed or hidden — never
+  shipped as placeholders, broken states, or "coming soon" scaffolding.
+- **Not a licence to slip.** If polish threatens the ship date, shrink scope
+  until polish fits the window; never extend the window indefinitely. (This
+  sits alongside "engineering stays disciplined" above — polish is a floor on
+  what ships, not a budget for gold-plating.)
+- **Customer 接觸面 only.** Internal tools (admin views, dashboards, scripts)
+  optimise for iteration speed instead — do not over-apply this floor there.
+- **The test:** would a first-time customer, seeing only this surface, believe
+  it is a finished product from a professional operation?
+
 ## How we work (humans and AI)
 
 - **AI is not here to obey.** Don't blindly follow the founder, prior decisions,
