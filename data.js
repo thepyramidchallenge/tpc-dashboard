@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5 admin remains the immediate focus. Codex's 2026-07-06 work across sessions: fixed admin question-editor/list workflow (`f7daa5c`), broke WS5 into child checklist tasks (`03c03a2`), built the WS5-18 backend log read + AdminLog/StudentLog dual-write hooks (`fdf7ecf`, documented by `0944b8d`; NOT deployed — live tab migration + Cloud Run deploy still need approval), and diagnosed the public Pages failure as a GitHub deploy flake; latest public Pages is green/live on `gh-pages` `15a1102` serving `assets/index-DA81w3w2.js`. Next: WS5-18 production migration/deploy if approved, plus remaining WS5 live-smoke/closure items.",
+    "WS5.1 admin remains the immediate focus. Codex's 2026-07-06 work across sessions: fixed admin question-editor/list workflow (`f7daa5c`), broke WS5.1 into child checklist tasks (`03c03a2`), built the WS5.1-18 backend log read + AdminLog/StudentLog dual-write hooks (`fdf7ecf`, documented by `0944b8d`; NOT deployed — live tab migration + Cloud Run deploy still need approval), and diagnosed the public Pages failure as a GitHub deploy flake; latest public Pages is green/live on `gh-pages` `15a1102` serving `assets/index-DA81w3w2.js`. Next: WS5.1-18 production migration/deploy if approved, plus remaining WS5.1 live-smoke/closure items.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5 is deployed and now decomposed for execution. Current live baseline: Cloud Run `tpc-api-00036-q2w`; public Pages latest successful deployment `15a1102` (asset `index-DA81w3w2.js`, run 28780192157). Codex today also built source-only WS5-18 backend logs (`fdf7ecf`): `adminListLogs`, AdminLog/StudentLog dual-write hooks, template CSVs, and idempotent migration script; live migration + Cloud Run deploy are pending founder approval. Continue WS5 live smoke/closure from the child checklist, then seed authored sets (WS5-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
+      next:  "WS5.1 is deployed and now decomposed for execution. Current live baseline: Cloud Run `tpc-api-00036-q2w`; public Pages latest successful deployment `15a1102` (asset `index-DA81w3w2.js`, run 28780192157). Codex today also built source-only WS5.1-18 backend logs (`fdf7ecf`): `adminListLogs`, AdminLog/StudentLog dual-write hooks, template CSVs, and idempotent migration script; live migration + Cloud Run deploy are pending founder approval. Continue WS5.1 live smoke/closure from the child checklist, then seed authored sets (WS5.1-04), then WS4.2 fixed-set practice → WS6.1 polish + WS6.2 UI review → pilot/launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5 deploy baseline: Cloud Run `tpc-api-00036-q2w` + public Pages green/live. Codex source/docs checkpoints today: `f7daa5c` admin editor workflow, `03c03a2` WS5 child checklist breakdown, `fdf7ecf` WS5-18 backend logs, `0944b8d` pending-production status. Do not mark WS5-18 done until live AdminLog/StudentLog tabs are migrated and Cloud Run is redeployed.",
+      next:  "Source of truth for full-stack platform work — tracks the Phase-1 roadmap. Current WS5.1 deploy baseline: Cloud Run `tpc-api-00036-q2w` + public Pages green/live. Codex source/docs checkpoints today: `f7daa5c` admin editor workflow, `03c03a2` WS5.1 child checklist breakdown, `fdf7ecf` WS5.1-18 backend logs, `0944b8d` pending-production status. Do not mark WS5.1-18 done until live AdminLog/StudentLog tabs are migrated and Cloud Run is redeployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,13 +146,13 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5 live smoke + WS5-18 deploy decision", project: "tpc-online-platform", owner: "natalie", note: "Use the ROADMAP child checklist. Codex built WS5-18 backend logs in source (`fdf7ecf`) but production still needs approval for live AdminLog/StudentLog migration + Cloud Run deploy. Current public Pages is green on `15a1102`." },
+      { title: "WS5.1 live smoke + WS5.1-18 deploy decision", project: "tpc-online-platform", owner: "natalie", note: "Use the ROADMAP child checklist. Codex built WS5.1-18 backend logs in source (`fdf7ecf`) but production still needs approval for live AdminLog/StudentLog migration + Cloud Run deploy. Current public Pages is green on `15a1102`." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5-04 — Authored sets", project: "tpc-online-platform", owner: "natalie", note: "After WS5-17 smoke, seed authored QuestionSets only — never real_seed. Live Sheets already include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
-      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5-04 sets." },
+      { title: "WS5.1-04 — Authored sets", project: "tpc-online-platform", owner: "natalie", note: "After WS5.1-17 smoke, seed authored QuestionSets only — never real_seed. Live Sheets already include 30 K2 authored dummy arithmetic rows for testing; production-quality content remains open." },
+      { title: "WS4.2 — Fixed QuestionSet practice", project: "tpc-online-platform", owner: "natalie", note: "Engineering #3. Run a QuestionSet in fixed order through the runner (test-like defaults). Depends on WS5.1-04 sets." },
       { title: "WS6.1 + WS6.2 — Polish + UI review → pilot → launch", project: "tpc-online-platform", owner: "natalie", note: "Engineering #4. WS6.1-18/19/20/21 are deployed. WS6.1 keeps accuracy/cold-start/fallback/concurrency-smoke; WS6.2 (new phase) holds ALL UI review — notify-layer message classes (are toasts right for every alert?), copy, timer colouring, usability/a11y, unselect, whole-app screen review — before WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — integrity logging + $99 report (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier (E1 north-star). Co-ship: WS7-06 log-only integrity (randomization + focus/blur + answer-timeline, D6) so the first online challenge carries baseline integrity, THEN/with WS9-00 $99 report off that result via the Sheets→Affinity pipeline (D4). WS7/8/9 subscription gated on E1/E2 (D7)." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
@@ -195,8 +195,10 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-19 · Sheets reliability", state: "done" },
         { label: "WS6.1-20 · Observability", state: "done" },
         { label: "WS6.1-21 · Backend test gaps", state: "done" },
-        { label: "WS5 · Admin & content",             state: "active"   },
-        { label: "WS4.2 · Mock / full-set (after WS5-04)", state: "todo" },
+        { label: "WS5.1 · Admin UI & content platform", state: "active" },
+        { label: "WS5.2 · Question factory (AI question gen)", state: "hold" },
+        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "hold" },
+        { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS6.2 · UI review (all UI-review work)", state: "todo" },
       ],
@@ -211,7 +213,7 @@ window.TPC_DASHBOARD = {
         { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
         { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "Migrate Sheets → Firestore/Supabase (at WS7)", state: "todo" },
-        { label: "AI question/image generation",      state: "hold"   },
+        { label: "AI generation → WS5.2 (questions) / WS5.3 (SVG assets)", state: "hold" },
       ],
     },
   ],
