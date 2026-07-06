@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-06",
-    updatedBy: "Claude (Fable 5)",
+    updatedBy: "Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.3 素材庫 — interactive founder smoke", project: "tpc-online-platform", owner: "natalie", note: "Infra is LIVE (Assets tab migrated, backend tpc-api-00040-r74 + ASSET_* env, GET /asset verified, console on gh-pages 370359c, Drive shared to tpc-sheets SA). Do the browser loop signed in as admin: drop <assetId>.svg in incoming/ → 待登記 → 登記 → 提交審批 → 批准 → GET /asset serves it; 退回 needs a note; re-check the 3 failed pilot SVGs. Then the human category/QC review." },
+      { title: "WS5.3 素材庫 — Shared Drive + founder smoke", project: "tpc-online-platform", owner: "natalie", note: "Backend + console are LIVE (tpc-api-00044-8d6, frontend 354 / backend 84 green, slim 18-col Assets registry, registered assets serve through GET /asset). Manual Drive-drop → 待登記 → 登記 works. Blocker: move Asset Library into a real Shared Drive and add tpc-sheets as Content manager so in-app Upload can create files, then smoke upload → 登記 → 批准 → served and re-check the 3 failed pilot SVGs." },
       { title: "WS5.1-18j — Log retention guard", project: "tpc-online-platform", owner: "natalie", note: "Founder spotted the append-only log growth risk after WS5.1-18e passed. Before pilot traffic: define row soft caps and add archive/rotation so AdminLog/StudentLog cannot hit Google Sheets limits." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
@@ -248,6 +248,7 @@ window.TPC_DASHBOARD = {
     subgraph BE["Backend"]
       auth["Google Identity Services<br/>Cloud Run token verification"]:::be
       api["Cloud Run API<br/>(SheetsBackend · Node)<br/>asia-east2 · live"]:::be
+      drive[("Google Drive<br/>Asset Library<br/>incoming · library")]:::store
       sheets[("Google Sheets<br/>Customers · Questions · Results<br/>(service account)")]:::store
       future[("Firestore / Supabase<br/>(flip adapter when<br/>tests scale to 100s)")]:::future
     end
@@ -263,6 +264,7 @@ window.TPC_DASHBOARD = {
     app --> adapter
     adapter --> api
     api --> sheets
+    api --> drive
     api -.->|migration| future
 
     %% owner-tinted regions: teal = Max, violet = Natalie, neutral = infra
@@ -286,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-06", who: "Codex", project: "tpc-online-platform",
+      summary: "Post-Fable sync: waited for the dashboard Fable 5 deploy to finish, then reconciled platform docs/templates to the current WS5.3 state. Updated AGENT_HANDOFF/ROADMAP/ARCHITECTURE/WIREFLOW plus README/runbooks and sheets templates: Assets is now the slim 18-column registry, backend current is tpc-api-00044-8d6, manual Drive-drop registration works, and the remaining blocker is specifically Shared Drive quota for in-app Upload. Added missing Assets Fields rows, corrected Questions__Assets.csv, and synced the dashboard board/system map. Validation green: backend 84, frontend 354, frontend build, asset header check." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Claude day wrap-up across ALL of today's sessions (Fable 5 + Opus 4.8, every chatroom — the Claude counterpart to the Codex wrap-up). (1) WS5.1 admin console hardened end-to-end: field-rules pass (prompt/id limits + counters, domain↔topic auto-populate, reviewNote keep-but-clear with 已解除 prefix, server-owned createdBy/createdAt, English-only studentName, superadmin-only 日誌), lenient 儲存草稿 vs full 提交審批 gate mirrored server-side, adminTabs RETIRED → role-derived tabs with the live column deleted, snapshot-on-approve version policy + WS5.1-02f compare/inspect history UI, and the toast colour rule (red=error / green=success / white=draft) — carried live through the day's production deploys (backend tpc-api-00032→00034; multiple Pages pushes). (2) WS5.3 素材庫 from zero to live: full Drive-backed registry + lifecycle + approved-only /asset serving + admin console built in source (Fable), infra go-live checklist executed (Drive share verified, Assets migration, tpc-api-00040-r74, Pages), then two founder revision rounds (Opus): licence/sourceNote then labelZh/labelEn dropped (tags carry naming, 18 cols), friendly bilingual category picker + Class A/B inline help, clearer field-naming errors, incoming→library move bug fixed (idempotent + fires on approval) with the full serve loop verified on the founder's live SVG, manual upload built but blocked on a real Shared Drive (SA has no My-Drive quota — top founder action in AGENT_HANDOFF §2); backend tests 69→84 across the day, latest tpc-api-00044-8d6 + Pages 2b06b00. (3) Governance + review: CONSTITUTION polish-floor entry (group-wide 完成品 DNA); full WS5 docs-vs-code review — verdict WS5.1 ~95% / WS5.2 design-only / WS5.3 ~70%, 8 risk flags in AGENT_HANDOFF §5 (headline: admin question edits are last-save-wins with no conflict check) + 2 ROADMAP decision-log entries, risk #4 closed same day by the new roster-grant-survives-sign-in backend test; founder-authorized evening deploy gh-pages 80cb060 (red required-star asterisks on add-user, formatWhen timestamps incl. Drive UTC→HK, 待登記 更新時間, fixed-ratio photo frames 4/3 & 1/1 TBC) — all curl-verified live. Still open for Claude's next sessions: Shared Drive + WS5.3 interactive smoke, WS5.1-18j log retention, /asset approved-only regression test, upsertUser email case-normalization." },
     { date: "2026-07-06", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
