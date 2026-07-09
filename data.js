@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-06",
-    updatedBy: "Codex",
+    updated:   "2026-07-09",
+    updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -288,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "",
+      summary: "AGENTS.md: 修正誤導性 `dashboard/` 路徑前綴——standalone repo 由根目錄 serve index.html/data.js，並無 dashboard/ 子資料夾（Line 3 & 15）。面試 sandbox 係本 repo 嘅副本，籌備時發現。Where-it-lives 段落嘅 dashboard/ 掛載描述屬正確，保留。" },
     { date: "2026-07-06", who: "Codex", project: "tpc-online-platform",
       summary: "Post-Fable sync: waited for the dashboard Fable 5 deploy to finish, then reconciled platform docs/templates to the current WS5.3 state. Updated AGENT_HANDOFF/ROADMAP/ARCHITECTURE/WIREFLOW plus README/runbooks and sheets templates: Assets is now the slim 18-column registry, backend current is tpc-api-00044-8d6, manual Drive-drop registration works, and the remaining blocker is specifically Shared Drive quota for in-app Upload. Added missing Assets Fields rows, corrected Questions__Assets.csv, and synced the dashboard board/system map. Validation green: backend 84, frontend 354, frontend build, asset header check." },
     { date: "2026-07-06", who: "Claude (Fable 5)", project: "tpc-online-platform",

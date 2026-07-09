@@ -1,6 +1,6 @@
 # Dashboard update protocol
 
-The team dashboard lives here: open `dashboard/index.html` (double-click — no
+The team dashboard lives here: open `index.html` (double-click — no
 build step, works offline). It is the **daily source of truth**: focus, project
 status, system map, roadmap, Now/Next/Blocked board, and a changelog.
 
@@ -12,7 +12,7 @@ is in it. Do not edit `index.html` unless you're changing the layout itself.
 ## For agents — run this at the end of every work session
 
 After finishing a piece of work (and as part of writing your documentation),
-update `dashboard/data.js`:
+update `data.js`:
 
 1. **Stamp it** — set `meta.updated` (today) and `meta.updatedBy` (you).
 2. **Focus** — if priorities shifted, rewrite `focus` (one sentence: the single
