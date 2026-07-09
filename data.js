@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-09",
-    updatedBy: "Claude (Opus 4.8)",
+    updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Tier 0 engineering closure is green: WS5.3 upload smoke, WS5.1-18j retention, and the deployed question-editor asset picker are in place; do a founder/browser smoke of the picker, then resume the content/fixed-set path.",
+    "Production question-bank lifecycle is now guarded: generated questionIds lock the level, deletion is exact-draft-only in backend/list/editor, and private/public deploys are aligned. Next: founder/browser smoke the live admin question workflow and picker, then resume WS5.2 seed pack -> WS5.1-04 sets -> WS4.2 fixed-set practice.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.3 upload smoke, WS5.1-18j log retention, and the minimal picker deploy are closed. Current follow-up: founder/browser-smoke the question-editor asset picker. Then Tier 1 resumes: WS5.2 seed pack from real_seed as ai_generated variants → WS5.1-04 K2/K3 QuestionSets → WS5.1-05 placeholders → WS4.2 fixed-set practice.",
+      next:  "WS5.3 picker linkage, responsive desktop/tablet shell, and question lifecycle hardening are live. Current follow-up: founder/browser-smoke draft create/edit/delete, level lock after generated questionId, non-draft delete unavailability, and picker save/serve. Then Tier 1 resumes: WS5.2 seed pack from real_seed as ai_generated variants -> WS5.1-04 K2/K3 QuestionSets -> WS5.1-05 placeholders -> WS4.2 fixed-set practice.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. WS5.3 picker linkage is deployed (Cloud Run tpc-api-00047-8xm + Pages bc9463f) and awaits founder/browser smoke; after that, continue WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2 and WS7-06 + WS9-00 validation.",
+      next:  "Source of truth for full-stack platform work. Current private source is main d228be6; public Pages is gh-pages 3a83b16; backend is Cloud Run tpc-api-00050-hvp. WS5.3 picker linkage plus generated-id level lock and exact-draft-only delete await founder/browser smoke; after that, continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2 and WS7-06 + WS9-00 validation.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.3-03 — Question-editor asset picker", project: "tpc-online-platform", owner: "natalie", note: "Deployed, founder/browser smoke pending: approved asset dropdowns now link prompt.assetId and option assetIds into questions; backend/student payloads serve prompt assets as imageAssetId and sparse option assets as choiceAssets. Later: richer search/filter UX." },
+      { title: "Founder smoke — admin question lifecycle + picker", project: "tpc-online-platform", owner: "natalie", note: "Live stack now includes WS5.3 picker linkage, responsive desktop/tablet shell, generated-id level lock, and exact-draft-only delete from list + editor. Smoke: create a draft, verify level locks after questionId generation, delete draft only, confirm review/approved/unapproved/retired cannot be deleted, and confirm picker saves/serves prompt + option assets." },
       { title: "WS5.2 seed pack → WS5.1-04 sets", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 1 after the picker live smoke. No pretend-authored content: document the lightweight 55% rule, generate K2/K3 ai_generated variants from real_seed with seedId provenance, approve/import them, then assemble 3-5 K2 + 3-5 K3 non-real_seed QuestionSets." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
@@ -287,6 +287,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-09", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Codex wrap-up across recent platform sessions, not just this chat: WS5.3 question-editor asset linking was deployed after the picker was not visible, with prompt.assetId and sparse option assetIds now saved into questions and served back as imageAssetId/choiceAssets; later maintenance removed the duplicate free-text option asset field and kept validation aligned. Today the question-bank lifecycle was hardened and shipped end-to-end: generated questionIds now lock the question level, ids are not recycled unless the exact draft row is deleted, deleteQuestion accepts raw status draft only, and approved/review/unapproved/disabled/retired/blank rows are rejected server-side while the list toolbar, row menu, and editor expose delete only for exact drafts. Private source main d228be6 is pushed; public Pages gh-pages 3a83b16 is republished from that commit; Cloud Run tpc-api-00050-hvp is live. Verification: backend 96 pass, frontend 363 pass. Next: founder/browser smoke admin lifecycle + picker, then resume the seed-pack lane." },
     { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "Responsive desktop/tablet UI shipped (founder-directed, WS6.2). The phone-only v0.2 student app now adapts to computer/iPad: at ≥900px the top tab bar becomes a persistent left sidebar (company logo top-left) inside a fixed-height app shell — sidebar + header stay pinned while only the content pane scrolls — filling the full viewport width, with student and admin panels sharing 32px content padding so they align; 820–899px gives the quiz runner a two-column layout (prompt left, choices right); <900px is unchanged (original top tabs / single column / bottom sheets, verified identical). All four admin consoles (Questions/Assets/Users/Log) now paginate 25/50 rows via a shared admin/AdminPager.jsx with the pager pinned to the bottom of the panel; admin tables stretch to fill when narrower than the console; confirm/pause sheets recentre as modal dialogs on desktop; the Home data-source footer shows only in demo. Pure frontend/CSS — no backend/API/data-model change. Frontend suite green (362) + build green. Committed to private origin/main; production Pages deploy state recorded in AGENT_HANDOFF. NOTE: a separate unrelated in-tree feature (delete-draft-question + level-lock: cloud-run/server.js, backend.js, AdminApp/AdminEditor, tests) was left uncommitted — not authored in this session." },
     { date: "2026-07-09", who: "Codex", project: "tpc-online-platform",
