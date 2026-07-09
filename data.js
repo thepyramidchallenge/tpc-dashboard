@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-09",
-    updatedBy: "Codex",
+    updatedBy: "Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -287,6 +287,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "Responsive desktop/tablet UI shipped (founder-directed, WS6.2). The phone-only v0.2 student app now adapts to computer/iPad: at ≥900px the top tab bar becomes a persistent left sidebar (company logo top-left) inside a fixed-height app shell — sidebar + header stay pinned while only the content pane scrolls — filling the full viewport width, with student and admin panels sharing 32px content padding so they align; 820–899px gives the quiz runner a two-column layout (prompt left, choices right); <900px is unchanged (original top tabs / single column / bottom sheets, verified identical). All four admin consoles (Questions/Assets/Users/Log) now paginate 25/50 rows via a shared admin/AdminPager.jsx with the pager pinned to the bottom of the panel; admin tables stretch to fill when narrower than the console; confirm/pause sheets recentre as modal dialogs on desktop; the Home data-source footer shows only in demo. Pure frontend/CSS — no backend/API/data-model change. Frontend suite green (362) + build green. Committed to private origin/main; production Pages deploy state recorded in AGENT_HANDOFF. NOTE: a separate unrelated in-tree feature (delete-draft-question + level-lock: cloud-run/server.js, backend.js, AdminApp/AdminEditor, tests) was left uncommitted — not authored in this session." },
     { date: "2026-07-09", who: "Codex", project: "tpc-online-platform",
       summary: "WS5.3-03 question-editor asset linking deployed after the founder could not see the picker: backend Cloud Run tpc-api-00047-8xm + Pages bc9463f, with live CSS/JS verified. Approved asset dropdowns now bind prompt.assetId and option assetIds, prompt assets serve as imageAssetId, sparse option assets stay position-aligned as choiceAssets, and live IDs render through public /asset. Remaining: founder/browser smoke + richer search/filter UX later." },
     { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "",
