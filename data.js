@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Tier 0 engineering closure is green in source/docs: WS5.3 upload smoke and WS5.1-18j retention are closed; the question-editor asset picker is source-built/tested but still needs deploy/live-smoke before the main content/fixed-set path resumes.",
+    "Tier 0 engineering closure is green: WS5.3 upload smoke, WS5.1-18j retention, and the deployed question-editor asset picker are in place; do a founder/browser smoke of the picker, then resume the content/fixed-set path.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.3 upload smoke and WS5.1-18j log retention are closed. Current source-only follow-up: deploy/live-smoke the question-editor asset picker. Then Tier 1 resumes: WS5.2 seed pack from real_seed as ai_generated variants → WS5.1-04 K2/K3 QuestionSets → WS5.1-05 placeholders → WS4.2 fixed-set practice.",
+      next:  "WS5.3 upload smoke, WS5.1-18j log retention, and the minimal picker deploy are closed. Current follow-up: founder/browser-smoke the question-editor asset picker. Then Tier 1 resumes: WS5.2 seed pack from real_seed as ai_generated variants → WS5.1-04 K2/K3 QuestionSets → WS5.1-05 placeholders → WS4.2 fixed-set practice.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. WS5.3 picker linkage is source-built/tested, not yet deployed/live-smoked; after that, continue WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2 and WS7-06 + WS9-00 validation.",
+      next:  "Source of truth for full-stack platform work. WS5.3 picker linkage is deployed (Cloud Run tpc-api-00047-8xm + Pages bc9463f) and awaits founder/browser smoke; after that, continue WS5.2 seed-pack lane → WS5.1-04 sets → WS5.1-05 placeholders → WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2 and WS7-06 + WS9-00 validation.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.3-03 — Question-editor asset picker", project: "tpc-online-platform", owner: "natalie", note: "Source-built/tested, not deployed/live-smoked: approved asset dropdowns now link prompt.assetId and option assetIds into questions; backend/student payloads serve prompt assets as imageAssetId and sparse option assets as choiceAssets. Next: deploy/live-smoke, then add richer search/filter UX later." },
+      { title: "WS5.3-03 — Question-editor asset picker", project: "tpc-online-platform", owner: "natalie", note: "Deployed, founder/browser smoke pending: approved asset dropdowns now link prompt.assetId and option assetIds into questions; backend/student payloads serve prompt assets as imageAssetId and sparse option assets as choiceAssets. Later: richer search/filter UX." },
       { title: "WS5.2 seed pack → WS5.1-04 sets", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 1 after the picker live smoke. No pretend-authored content: document the lightweight 55% rule, generate K2/K3 ai_generated variants from real_seed with seedId provenance, approve/import them, then assemble 3-5 K2 + 3-5 K3 non-real_seed QuestionSets." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
@@ -288,7 +288,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   changelog: [
     { date: "2026-07-09", who: "Codex", project: "tpc-online-platform",
-      summary: "WS5.3-03 question-editor asset linking is source-built/tested but not yet deployed/live-smoked: approved asset dropdowns now bind prompt.assetId and option assetIds, prompt assets serve as imageAssetId, sparse option assets stay position-aligned as choiceAssets, and live IDs render through public /asset. Updated dashboard focus/board to show Tier 0 smoke/retention closed and this picker live-smoke as the immediate follow-up before WS5.2 seed-pack work." },
+      summary: "WS5.3-03 question-editor asset linking deployed after the founder could not see the picker: backend Cloud Run tpc-api-00047-8xm + Pages bc9463f, with live CSS/JS verified. Approved asset dropdowns now bind prompt.assetId and option assetIds, prompt assets serve as imageAssetId, sparse option assets stay position-aligned as choiceAssets, and live IDs render through public /asset. Remaining: founder/browser smoke + richer search/filter UX later." },
     { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "",
       summary: "AGENTS.md: 修正誤導性 `dashboard/` 路徑前綴——standalone repo 由根目錄 serve index.html/data.js，並無 dashboard/ 子資料夾（Line 3 & 15）。面試 sandbox 係本 repo 嘅副本，籌備時發現。Where-it-lives 段落嘅 dashboard/ 掛載描述屬正確，保留。" },
     { date: "2026-07-06", who: "Codex", project: "tpc-online-platform",
