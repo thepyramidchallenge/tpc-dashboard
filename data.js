@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Close WS5.1-13 now: the live Questions exposure counter column is migrated and backend source is green/pushed; interactive Google reauthentication is the one remaining gate to Cloud Run deploy + live increment smoke.",
+    "Close the remaining WS5.1 core next: WS5.1-13 exposure telemetry is live and closed; integrate WS5.1-18f Notifications (backend Lane A → frontend Lane B → live Sheets migration/deploy/smoke).",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.1-13 exposure telemetry is source-complete (99 backend tests), pushed as 7396b73, and live-sheet-migrated at Questions.exposureStartedCount; run interactive gcloud reauthentication, deploy Cloud Run, then live-smoke one session increment. No maxExposure or auto-retirement.",
+      next:  "WS5.1-13 is closed live: Questions.exposureStartedCount is deployed on Cloud Run tpc-api-00051-zr8 and authenticated smoke recorded exact per-start increments (99 backend tests; no maxExposure/auto-retirement). Next close WS5.1-18f Notifications via the agreed two-lane integration.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Current private source is main d228be6; public Pages is gh-pages 3a83b16; backend is Cloud Run tpc-api-00050-hvp. WS5.3 picker linkage plus generated-id level lock and exact-draft-only delete await founder/browser smoke; after that, continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow, then pilot-gating WS6.1/WS6.2 and WS7-06 + WS9-00 validation.",
+      next:  "Source of truth for full-stack platform work. Current private source is main cefeec2; public Pages is gh-pages 2178adb; backend is Cloud Run tpc-api-00051-zr8. WS5.1-13 is closed. Next integrate WS5.1-18f Notifications, then continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,6 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
+      { title: "WS5.1-18f Notifications integration", project: "tpc-online-platform", owner: "natalie", note: "Next WS5.1 closure item. Implement/merge backend Lane A first, rebase the already-green frontend Lane B, migrate Results.Notifications targetType/targetId and read back, then deploy Cloud Run + Pages and live-smoke review events, welcome, unread badge, and mark-all-read." },
       { title: "Founder smoke — admin question lifecycle + picker", project: "tpc-online-platform", owner: "natalie", note: "Live stack now includes WS5.3 picker linkage, responsive desktop/tablet shell, generated-id level lock, and exact-draft-only delete from list + editor. Smoke: create a draft, verify level locks after questionId generation, delete draft only, confirm review/approved/unapproved/retired cannot be deleted, and confirm picker saves/serves prompt + option assets." },
       { title: "WS5.2 seed pack → WS5.1-04 sets", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 1 after the picker live smoke. No pretend-authored content: document the lightweight 55% rule, generate K2/K3 ai_generated variants from real_seed with seedId provenance, approve/import them, then assemble 3-5 K2 + 3-5 K3 non-real_seed QuestionSets." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
@@ -158,7 +159,6 @@ window.TPC_DASHBOARD = {
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
-      { title: "WS5.1-13 Cloud Run deploy", project: "tpc-online-platform", owner: "natalie", note: "Live Questions.exposureStartedCount at Y is migrated/read-back green and source 7396b73 is pushed (99 backend tests). Deployment is blocked only by expired local Google RAPT credentials; run gcloud auth login, redeploy cloud-run/, then start one new session and verify its question counters increment once." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -288,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-10", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Closed WS5.1-13 live after gcloud reauthentication. Deployed exposure telemetry to Cloud Run tpc-api-00051-zr8 (100% traffic, ping healthy; revision template maxScale=1), reran backend 99/99, and used the signed-in production app for authenticated counter smoke. Two distinct 10-question draft starts produced exactly 20 Questions.exposureStartedCount increments; overlapping questions correctly reached 2. Both smoke drafts were discarded afterward while started-exposure counters intentionally remained. ROADMAP/AGENT_HANDOFF now mark 13a-e complete; next WS5.1 closure item is the agreed WS5.1-18f Notifications two-lane integration." },
     { date: "2026-07-10", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "WS5.1-13 exposure telemetry implemented and pushed as private source 7396b73: founder kept one Questions.exposureStartedCount field and explicitly removed maxExposure/serve caps/automatic retirement. Live TPC Questions migrated through the connected Sheets path (column Y + Fields row; 81 existing questions initialized to 0; read-back verified). createDraftSession now increments once per new draftId+question, de-dupes duplicate pool ids, rejects unknown ids before draft creation, strips forged counter writes, invalidates cache, and shares a process-wide Questions write lock with admin edits under maxScale=1. Backend 99 pass. Cloud Run remains tpc-api-00050-hvp because local gcloud credentials require interactive reauthentication; deploy + one live increment smoke remain before closing the task." },
     { date: "2026-07-09", who: "Codex (GPT-5)", project: "tpc-online-platform",
