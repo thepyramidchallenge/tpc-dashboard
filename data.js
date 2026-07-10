@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-09",
+    updated:   "2026-07-10",
     updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Production question-bank lifecycle is now guarded: generated questionIds lock the level, deletion is exact-draft-only in backend/list/editor, and private/public deploys are aligned. Next: founder/browser smoke the live admin question workflow and picker, then resume WS5.2 seed pack -> WS5.1-04 sets -> WS4.2 fixed-set practice.",
+    "Close WS5.1-13 now: the live Questions exposure counter column is migrated and backend source is green/pushed; interactive Google reauthentication is the one remaining gate to Cloud Run deploy + live increment smoke.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.3 picker linkage, responsive desktop/tablet shell, and question lifecycle hardening are live. Current follow-up: founder/browser-smoke draft create/edit/delete, level lock after generated questionId, non-draft delete unavailability, and picker save/serve. Then Tier 1 resumes: WS5.2 seed pack from real_seed as ai_generated variants -> WS5.1-04 K2/K3 QuestionSets -> WS5.1-05 placeholders -> WS4.2 fixed-set practice.",
+      next:  "WS5.1-13 exposure telemetry is source-complete (99 backend tests), pushed as 7396b73, and live-sheet-migrated at Questions.exposureStartedCount; run interactive gcloud reauthentication, deploy Cloud Run, then live-smoke one session increment. No maxExposure or auto-retirement.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -158,6 +158,7 @@ window.TPC_DASHBOARD = {
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
+      { title: "WS5.1-13 Cloud Run deploy", project: "tpc-online-platform", owner: "natalie", note: "Live Questions.exposureStartedCount at Y is migrated/read-back green and source 7396b73 is pushed (99 backend tests). Deployment is blocked only by expired local Google RAPT credentials; run gcloud auth login, redeploy cloud-run/, then start one new session and verify its question counters increment once." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -287,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-10", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "WS5.1-13 exposure telemetry implemented and pushed as private source 7396b73: founder kept one Questions.exposureStartedCount field and explicitly removed maxExposure/serve caps/automatic retirement. Live TPC Questions migrated through the connected Sheets path (column Y + Fields row; 81 existing questions initialized to 0; read-back verified). createDraftSession now increments once per new draftId+question, de-dupes duplicate pool ids, rejects unknown ids before draft creation, strips forged counter writes, invalidates cache, and shares a process-wide Questions write lock with admin edits under maxScale=1. Backend 99 pass. Cloud Run remains tpc-api-00050-hvp because local gcloud credentials require interactive reauthentication; deploy + one live increment smoke remain before closing the task." },
     { date: "2026-07-09", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Codex wrap-up across recent platform sessions, not just this chat: WS5.3 question-editor asset linking was deployed after the picker was not visible, with prompt.assetId and sparse option assetIds now saved into questions and served back as imageAssetId/choiceAssets; later maintenance removed the duplicate free-text option asset field and kept validation aligned. Today the question-bank lifecycle was hardened and shipped end-to-end: generated questionIds now lock the question level, ids are not recycled unless the exact draft row is deleted, deleteQuestion accepts raw status draft only, and approved/review/unapproved/disabled/retired/blank rows are rejected server-side while the list toolbar, row menu, and editor expose delete only for exact drafts. Private source main d228be6 is pushed; public Pages gh-pages 3a83b16 is republished from that commit; Cloud Run tpc-api-00050-hvp is live. Verification: backend 96 pass, frontend 363 pass. Next: founder/browser smoke admin lifecycle + picker, then resume the seed-pack lane." },
     { date: "2026-07-09", who: "Claude (Opus 4.8)", project: "tpc-online-platform",
