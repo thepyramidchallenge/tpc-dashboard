@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-10",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Close the remaining WS5.1 core next: WS5.1-13 exposure telemetry is live and closed; WS5.1-18f backend Lane A is merged, so rebase/integrate frontend Lane B → live Sheets migration/deploy/smoke.",
+    "WS5.1-18 Notifications/日誌 umbrella is CLOSED (18f + WS5.1-19 founder-smoked 2026-07-10). Next: finish the WS5.2 question-factory decision session → seed-pack lane → WS5.1-04 sets; remaining founder smokes are 18g bell→editor click, panel-parity on a real phone, and the whitelist grant/revoke bell.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.1-13 is closed live: Questions.exposureStartedCount is deployed on Cloud Run tpc-api-00051-zr8 and authenticated smoke recorded exact per-start increments (99 deployed tests; no maxExposure/auto-retirement). WS5.1-18f Lane A is merged at 98e9802 (current main backend 104 pass); rebase/integrate Lane B next.",
+      next:  "WS5.1-18 umbrella CLOSED 2026-07-10: 18f Notifications integration + WS5.1-19 self-approval whitelist both passed founder in-browser smoke; login/setup full-panel fix, full-width review-note textarea, and the founder-frozen question-only notification→editor deep-link (18g) are live on Pages 988da4c; backend is Cloud Run tpc-api-00059-rwn (backend 110 / frontend 375 green). Next: WS5.2 seed-pack lane → WS5.1-04 sets.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Current private main includes WS5.1-13 closure plus WS5.1-18f Lane A 98e9802; public Pages is gh-pages 2178adb; backend is Cloud Run tpc-api-00051-zr8. WS5.1-13 is closed. Next rebase/integrate WS5.1-18f Lane B, then continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow.",
+      next:  "Source of truth for full-stack platform work. Private main a463069 closes WS5.1-18 (18f founder-smoked) + WS5.1-19 (founder-smoked, self-approve bell live) and carries the 18g question-only deep-link (founder-frozen scope) + login/review-note UI fixes; public Pages is gh-pages 988da4c; backend is Cloud Run tpc-api-00059-rwn. Next: WS5.2 question-factory decisions → seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.1-18f Notifications integration", project: "tpc-online-platform", owner: "natalie", note: "Next WS5.1 closure item. Backend Lane A is merged at 98e9802 and current-main backend is 104 pass. Rebase the already-green frontend Lane B, migrate Results.Notifications targetType/targetId and read back, then deploy Cloud Run + Pages and live-smoke review events, welcome, unread badge, and mark-all-read." },
+      { title: "Founder smokes — 18g bell link · panel-parity phone · whitelist bell", project: "tpc-online-platform", owner: "natalie", note: "Three quick live checks left: click a question notification in the bell → lands in the 題庫 editor (18g frozen scope, Pages 988da4c); open the admin console on a real phone (100dvh pager behaviour); grant/revoke self-approval → target admin's bell rings (Cloud Run tpc-api-00059-rwn)." },
       { title: "Founder smoke — admin question lifecycle + picker", project: "tpc-online-platform", owner: "natalie", note: "Live stack now includes WS5.3 picker linkage, responsive desktop/tablet shell, generated-id level lock, and exact-draft-only delete from list + editor. Smoke: create a draft, verify level locks after questionId generation, delete draft only, confirm review/approved/unapproved/retired cannot be deleted, and confirm picker saves/serves prompt + option assets." },
       { title: "WS5.2 seed pack → WS5.1-04 sets", project: "tpc-online-platform", owner: "natalie", note: "Priority Tier 1 after the picker live smoke. No pretend-authored content: document the lightweight 55% rule, generate K2/K3 ai_generated variants from real_seed with seedId provenance, approve/import them, then assemble 3-5 K2 + 3-5 K3 non-real_seed QuestionSets." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
@@ -288,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-10", who: "Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "WS5.1-18 umbrella CLOSED: founder passed the 18f Notifications smoke (submit→admin bell, unapprove+note→author bell, badge clear + read=TRUE, fresh-signup welcome) and the WS5.1-19 self-approval smoke — both ticked in ROADMAP, 18h/18i stay parked. Same evening: login/setup screens fixed to the full-width panel (.app--auth, founder report); 審批備註 review-note textarea widened to fill the editor column; notification click-through built (founder request) then founder-frozen to question-only scope — bell rows with targetType=question deep-link into the 題庫 editor, welcome/user rows stay informational, 日誌 target clicks keep filter behaviour. Deploys: Pages gh-pages 988da4c (bundle verified live) and Cloud Run tpc-api-00059-rwn from committed HEAD, which also settles the dc6d22a/717e8d2 whitelist-bell race between two parallel sessions (frontend 375 / backend 110 green). Remaining founder smokes: 18g bell→editor click, panel-parity real phone, whitelist bell." },
     { date: "2026-07-10", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Closed WS5.1-13 live after gcloud reauthentication. Deployed exposure telemetry to Cloud Run tpc-api-00051-zr8 (100% traffic, ping healthy; revision template maxScale=1), reran backend 99/99, and used the signed-in production app for authenticated counter smoke. Two distinct 10-question draft starts produced exactly 20 Questions.exposureStartedCount increments; overlapping questions correctly reached 2. Both smoke drafts were discarded afterward while started-exposure counters intentionally remained. ROADMAP/AGENT_HANDOFF now mark 13a-e complete; next WS5.1 closure item is the agreed WS5.1-18f Notifications two-lane integration." },
     { date: "2026-07-10", who: "Codex (GPT-5)", project: "tpc-online-platform",
