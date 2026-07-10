@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Current private source is main a3a94ae (including WS5.1-18f Lane A 98e9802); public Pages is gh-pages 2178adb; backend is Cloud Run tpc-api-00051-zr8. WS5.1-13 is closed. Next rebase/integrate WS5.1-18f Lane B, then continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow.",
+      next:  "Source of truth for full-stack platform work. Current private main includes WS5.1-13 closure plus WS5.1-18f Lane A 98e9802; public Pages is gh-pages 2178adb; backend is Cloud Run tpc-api-00051-zr8. WS5.1-13 is closed. Next rebase/integrate WS5.1-18f Lane B, then continue WS5.2 seed-pack lane -> WS5.1-04 sets -> WS5.1-05 placeholders -> WS4.2 fixed-set flow.",
     },
     {
       id:    "entrance-qr-scan",
