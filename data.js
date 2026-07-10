@@ -192,10 +192,7 @@ window.TPC_DASHBOARD = {
         { label: "WS3.2 · Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 · Question engine",           state: "done" },
         { label: "WS4.3 · Save/session integrity", state: "done" },
-        { label: "WS6.1-18 · API surface hardening", state: "done" },
-        { label: "WS6.1-19 · Sheets reliability", state: "done" },
-        { label: "WS6.1-20 · Observability", state: "done" },
-        { label: "WS6.1-21 · Backend test gaps", state: "done" },
+        { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "WS5.2 · Question factory (seed-pack lane active; recurring AI hold)", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
@@ -214,8 +211,9 @@ window.TPC_DASHBOARD = {
         { label: "WS7 · Test Mode + ranking (gated on E1/E2)", state: "todo"   },
         { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
         { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
-        { label: "Migrate Sheets → Firestore/Supabase (at WS7)", state: "todo" },
-        { label: "AI generation → WS5.2 (questions) / WS5.3 (SVG assets)", state: "hold" },
+        { label: "WS10 · Advanced question interactions & visual renderers (ex-WS4.4: class-A visual model, tap/hotspot, mini-games, open numeric)", state: "hold" },
+        { label: "WS7-16 datastore decision + WS7-13 adapter parity (Sheets → Firestore/Supabase)", state: "todo" },
+        { label: "Recurring AI factories (WS5.2-01f/01g evidence-gated auto-approval · WS5.3-05 illustrative-asset generator)", state: "hold" },
       ],
     },
   ],
@@ -288,6 +286,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-10", who: "Claude (Fable 5)", project: "",
+      summary: "Big-picture plan sync: the dashboard roadmap now mirrors docs/ROADMAP.md's current workstream structure — new WS10 · Advanced question interactions & visual renderers added to Phase 2/3 on hold (the former WS4.4 family renumbered + rehomed by founder decision: class-A visual model, tap/hotspot, mini-games, open numeric); the stale 'AI generation → WS5.2/WS5.3' hold row replaced by the accurate 'recurring AI factories' hold (WS5.2's bounded seed-pack lane is active Phase 1 work; only 01f/01g auto-approval and the WS5.3-05 asset generator stay held); the datastore row now names WS7-16 decision + WS7-13 adapter parity; the four WS6.1-18…21 hardening rows collapsed to one done row. Also reverted the earlier same-day fine-grained stage-sync commit per founder direction — the dashboard tracks the plan and session outcomes, not minute-level status." },
     { date: "2026-07-10", who: "Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Claude day wrap-up (rest of 2026-07-10, ALL chatrooms — beyond the 18f/18g/19 closure entries below). (1) WS5.2 question factory: docs/QUESTION_FACTORY.md accepted as the canonical bounded-lane contract — reviewer-guided 55% similarity indicator, three integrity gates, anchored 0–5 confidence rubric, and the retained-analysis amendment (policy point 9): every final approve/unapprove appends one compact QuestionReviewEvaluations record (no question-content copy) while the backend recomputes eligibility and rejects evaluation_stale; §10 records the Claude⇄Codex two-track split. Track A approval-evaluation panel is committed (4668238: approvalEvaluation.js scoring module + ApprovalEvaluationPanel.jsx + editor approve-gating; frontend 412 local, demo-mode founder drive passed); track B backend persistence + tab migration is source-complete in-tree. Go-live gate: migration read-back → deploy → §10.2 real ai_generated smoke. (2) Founder unparked 18i: joint 18i+WS5.3-01c ratification packet delivered as docs/VOCABULARY_RATIFICATION.md (nine decisions + full bilingual stored-value tables, five survey agents, load-bearing claims source-verified); founder review underway — Appendix A reviewed, first amendment 取消自我批准 revoke label; apply nothing until ratified. (3) Docs governance sweep: AGENT_HANDOFF restructured 930→610 lines (single TL;DR + 02e coordination block up top; every fact lives in exactly one section; stale 18f smoke script and 'whitelist bell not live' warnings resolved; superseded blocks compressed into §7 history); ROADMAP index order fixed — WS5.1-19 un-nested from inside the 18x sub-list, priority tiers renumbered to a continuous 1–13 with Tier 0 = founder-owed items, long tasks decomposed into WS5.2-01h1–01h6 · 02e1/02e2 · WS6.1-13a–13c, and six missing 2026-07-10 cross-cutting decision-log entries added (19 separation of duties · 18f scope + targetId=Users.uid rule · 18g freeze · panel-parity rule · 02e retained analysis + split · ratification pending); WS4.4 renumbered to WS10 (advanced renderers = Phase 2–3 workstream) and on-hold terminology standardized repo-wide. All pushed through private main 6059285; memory/phase notes synced." },
     { date: "2026-07-10", who: "Claude (Fable 5)", project: "tpc-online-platform",
