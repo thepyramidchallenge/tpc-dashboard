@@ -68,6 +68,75 @@ the newest 30 in data.js and appends the rest to
 
 ---
 
+## Control flow → reasoning flow (how to architect AI-native systems)
+
+A group-wide doctrine, learned on the sister project's Hermes Inbox (Team Futura,
+2026-07) and **measured** there — it applies to every AI-native system we build,
+TPC and Family Hermes included.
+
+**Both extremes are wrong.** "Give everything to one powerful LLM" is not
+architecture — real systems still need deterministic tools, APIs, permissions,
+guardrails, data integrity, regression tests. But a fully deterministic pipeline
+(classifier → routing → resolver → composer) drifts the other way: engineering
+stops **supporting** reasoning and starts **replacing** it. The skill is not
+picking a side — it is **partitioning**.
+
+**The partition.**
+- **Engineering owns** what must be exactly right every time: deterministic
+  execution, APIs, tools, data integrity, permissions, safety guardrails,
+  regression testing.
+- **Reasoning owns** what depends on open-ended input: understanding the human,
+  judgement, workflow orchestration, deciding which tools to call, integrating
+  evidence, deciding whether to answer or defer.
+- The future is neither "all deterministic" nor "all AI" — it is knowing where
+  the boundary is. **And the boundary MOVES**: as models improve, work that was
+  reasoning-territory becomes cheap enough to make deterministic, and rigid
+  branches that were fine become constraints. Re-examine the partition when
+  capability changes; it is not carved once.
+
+**Control flow → reasoning flow.** Traditional software has the programmer define
+every branch (`if A → B → call tool X`). Both humans and AI architect-agents
+inherit that, which is why almost every architecture proposal drifts toward more
+pipeline. But modern reasoning models crossed a threshold — many hand-designed
+control flows no longer add value; they have become constraints. The move is not
+to delete structure; it is to change **who owns the workflow**: engineering
+provides the tools, evidence and boundaries; the reasoning model decides what to
+call and how to combine it.
+
+**The architecture smell (with an operational test).** When you find yourself
+continuously adding routing rules, if-else branches, exception handlers, glue
+code, the instinct is "the workflow is incomplete." That instinct is often wrong
+— continuous routing patches usually mean the decision has already crossed from
+deterministic into reasoning. The precise test, measured on Hermes: **a
+deterministic branch that fires on context it cannot fully read** has crossed the
+line (Hermes force-appended a pay-now link whenever the evidence held one, blind
+to a parent who had just said 「已付」 / 「太遲啦」). Before adding another branch,
+ask: should this decision still be deterministic workflow, or has it become
+reasoning?
+
+**Where reasoning is most valuable.** Not generating text — **interpreting
+open-ended human input**. Traditional software forces humans to adapt (IVR menus,
+rigid forms, twenty layers of options). AI-native systems invert it: the human
+arrives with multiple intents, implicit assumptions, missing context, and the
+model adapts to the human. Optimise **how software understands humans**, not how
+humans communicate with software.
+
+**The human architect's job.** AI optimises *within* an architecture, extremely
+well — and it will optimise the existing pipeline forever, proposing another
+routing rule, another patch, rarely questioning the frame it was handed. (Hermes:
+the same model that could reason out the correct answer in *debugging* kept
+proposing more glue in *production*; the architectural leap came from the human.)
+Within a task frame, patching is the locally-correct move — so the leap requires
+stepping **outside** the frame, a different act than solving the task. The AI-era
+architect's maturity is therefore not how much workflow they design — it is **how
+accurately they partition the system**, and **owning the frame the AI optimises
+inside**. Challenge the assumption; the model will not do it for you.
+
+**Measured, not asserted.** On Hermes: an offline A/B over 45 real drafts, model
+held constant, same send-time guards, blind judge + human audit — a reasoning
+agent beat the rigid pipeline on usefulness AND on audited safety. Build TPC's
+AI systems from this partition, not from a growing pipeline.
+
 ## Field reference
 
 | Field | Values / shape |

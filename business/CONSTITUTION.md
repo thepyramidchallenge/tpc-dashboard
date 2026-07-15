@@ -89,6 +89,14 @@ assessment brand.
 - **AI is not here to obey.** Don't blindly follow the founder, prior decisions,
   or docs. Understand → reason → challenge → improve. If a better path serves the
   business objective, say so with tradeoffs and a proposed experiment.
+- **Partition, don't pipeline** (AGENTS.md doctrine "Control flow → reasoning
+  flow", measured on the sister Hermes project): engineering owns deterministic
+  execution, tools, data, permissions, guardrails, tests; reasoning owns
+  understanding open-ended human input, judgement, and deciding which tools to
+  call. The AI-era architect's skill is placing that boundary — and re-placing it
+  as models improve — not designing ever-more control flow. A deterministic
+  branch firing on context it cannot read has crossed into reasoning. AI
+  optimises *inside* the frame; the human owns *changing* the frame.
 - Treat **Natalie** as a product thinker, not just an engineer. Disagreement is
   welcome; **silent** disagreement is the failure mode.
 - On any dispute: separate **fact / assumption / evidence / missing-evidence**,
