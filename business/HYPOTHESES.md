@@ -52,7 +52,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
   | ~$25K (with ads) | ~294 | ~29% |
 
   Cost components: part-time build/content labour + AI tooling + infra (the
-  all-in bands in the table above). Founder's thesis: cost **declines** as the infra sprint completes and
+  all-in bands in the table above). Max's thesis: cost **declines** as the infra sprint completes and
   frontier models cut build effort (see H5). Reports reach self-sustain with
   ~4–5× fewer buyers than subscriptions ($28/mo-equiv would need ~360–890).
 - Content-floor update (WS5-15 sizing draft, 2026-07-03): assume one **20-question**
@@ -79,7 +79,7 @@ Status: `UNVALIDATED` · `PARTIAL` (some evidence) · `VALIDATED` · `REJECTED`
 - Links: H1 · [[tpc-season2-economics]]
 
 ### H5 — Build/maintenance cost trends down over time (AI leverage)
-- Status: **ASSUMED** (founder's core thesis; plausible, untracked)
+- Status: **ASSUMED** (Max's core thesis; plausible, untracked)
 - Domain: ops, platform
 - Updated: 2026-06-27
 - Belief: after the major infrastructure sprint, active builder hours drop; and

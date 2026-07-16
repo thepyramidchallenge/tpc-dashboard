@@ -14,6 +14,7 @@
 - **D6** · ACCEPTED · [trust] — Integrity model: graded, explainable trust (the paid-tier moat)
 - **D7** · ACCEPTED · [platform, live] — The long arc: platform-first → digitized live → unified portfolio
 - **D8** · ACCEPTED · [workspace] — Workspace governance: one global truth, module docs cite it, machine-enforced
+- **D9** · ACCEPTED · [workspace] — Decision attribution follows the originating person and device
 
 ## Hypotheses (H#) — [HYPOTHESES.md](HYPOTHESES.md)
 

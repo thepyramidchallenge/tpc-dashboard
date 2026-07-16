@@ -7,7 +7,7 @@ that future humans/agents unknowingly reverse.
 It is **not** a manifesto, a spec, or a prompt. It is a small, structured,
 **living** record of vision, decisions, bets, experiments, and unknowns.
 
-> New collaborator (AI agent / Natalie / a developer / the founder months from
+> New collaborator (AI agent / Natalie / Max / a developer / either owner months from
 > now)? **Read [`CONSTITUTION.md`](CONSTITUTION.md) first**, then
 > `HYPOTHESES.md` + `DECISIONS.md`. Understand before you build.
 
@@ -33,6 +33,10 @@ It is **not** a manifesto, a spec, or a prompt. It is a small, structured,
 
 If a business entry and a product decision ever contradict, that contradiction
 is itself important — surface it, don't silently pick one.
+
+Human decision attribution follows **D9**: decisions made from Natalie's
+MacBook are attributed to Natalie; decisions originating from Max's other
+computer are attributed to Max. Keep named agent authorship intact.
 
 ## Entry schema (keep every entry in this shape)
 

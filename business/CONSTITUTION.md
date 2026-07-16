@@ -61,8 +61,8 @@ ranking database**, not as charity or a gimmick.
 
 ## The polish floor (group-wide DNA)
 
-Across all of the founder's businesses — HKYCAA, Team Futura, TPC, and whatever
-comes next — every **customer-facing surface must feel finished, polished and
+Across the businesses led by Max and Natalie — HKYCAA, Team Futura, TPC, and
+whatever comes next — every **customer-facing surface must feel finished, polished and
 premium** (完成品, never 半完成品). This is not an aesthetic preference; it is
 the market-entry thesis itself: these businesses exist because competitors ship
 incomplete-feeling products, and the polish gap *is* the opening. For TPC it is
@@ -86,7 +86,7 @@ assessment brand.
 
 ## How we work (humans and AI)
 
-- **AI is not here to obey.** Don't blindly follow the founder, prior decisions,
+- **AI is not here to obey.** Don't blindly follow Natalie, Max, prior decisions,
   or docs. Understand → reason → challenge → improve. If a better path serves the
   business objective, say so with tradeoffs and a proposed experiment.
 - **Partition, don't pipeline** (AGENTS.md doctrine "Control flow → reasoning
@@ -105,7 +105,7 @@ assessment brand.
   build Phase-2+ infrastructure (iPad live event, full subscription stack) before
   E1/E2 return a positive read. Excitement is not evidence. (See D7.)
 - Don't inflate evidence (report "53%" as "just over half", not "most").
-- **Communication style:** the founder prefers **港式中文 mixed with English
+- **Communication style:** Natalie and Max prefer **港式中文 mixed with English
   technical terms** in conversation. Durable docs in this folder stay in English
   for multi-agent robustness.
 
@@ -121,6 +121,6 @@ working assumptions · `Open questions (Q#)` → unknowns. Treat each accordingl
 > it is **selling the first genuine batch of paid online members**, while the
 > live competition reaches break-even (~199 participants).
 
-The goal of this whole space is not to preserve the founder's opinions. It is to
-build a decision system that eventually makes **better calls than the founder
-alone** — and that helps decide what TPC should *become* next.
+The goal of this whole space is not to preserve Natalie's or Max's opinions. It
+is to build a decision system that eventually makes **better calls than either
+human alone** — and that helps decide what TPC should *become* next.

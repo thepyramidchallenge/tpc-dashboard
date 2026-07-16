@@ -33,7 +33,7 @@ go at the bottom; never reuse a number.
 - Revisit: if online $99 attach is weak, A/B a lower intro price (see Q4).
 
 ### D2 — Bundle the **6-month** tier (not 12) into the full package
-- Status: ACCEPTED (founder agreed 2026-06-27)
+- Status: ACCEPTED (Max agreed 2026-06-27)
 - Domain: pricing
 - Updated: 2026-06-27
 - Body: The full package ($580) includes the **6-month** online tier, not 12.
@@ -91,7 +91,7 @@ go at the bottom; never reuse a number.
 - Revisit: once E1 shows healthy attach + upgrade rate.
 
 ### D5 — Ranking framing: "Top X% among TPC challengers" + disclose the cohort
-- Status: ACCEPTED (founder agreed 2026-06-27)
+- Status: ACCEPTED (Max agreed 2026-06-27)
 - Domain: trust, brand
 - Updated: 2026-06-27
 - Body: Publish ranking as **"top X% among TPC challengers"** — never an implied
@@ -224,7 +224,26 @@ go at the bottom; never reuse a number.
   humans and agents scoped navigation without fragmenting the ledgers.
 - Links: D6 · CONSTITUTION · AGENTS.md · business/README.md ·
   scripts/check-workspace.js · tf-dashboard decision no. 21 (same model,
-  both founder workspaces; bare cross-workspace D-tokens are avoided here
+  both of Max's workspaces; bare cross-workspace D-tokens are avoided here
   so the reference linter stays unambiguous)
 - Revisit: changelog >40 · D# >50 · an agent citing a wrong decision due to
   ledger noise.
+
+### D9 — Decision attribution follows the originating person and device
+- Status: ACCEPTED
+- Domain: workspace
+- Updated: 2026-07-16
+- Body: Human decisions made from Natalie's MacBook are attributed to Natalie.
+  Human decisions first created on Max's other computer are attributed to Max.
+  Named agent implementation and review attribution stays with that agent.
+  Historical generic “founder” labels in active records are resolved through
+  Git reflog and line-level blame provenance; append-only archives and Git
+  history remain unchanged and are interpreted under this rule.
+- Why: TPC is operated across two personal computers; a shared role label erased
+  who actually made each decision.
+- Evidence: Natalie confirmed on 2026-07-16 that this MacBook is exclusively
+  hers and that human decisions originating from the other computer are Max's;
+  local Git reflogs distinguish locally created commits from pulled commits.
+- Links: D8 · AGENTS.md · data.js · business/README.md
+- Revisit: if either device becomes shared, the operators change, or a decision
+  is intentionally joint.

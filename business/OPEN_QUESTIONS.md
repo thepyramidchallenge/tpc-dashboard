@@ -22,7 +22,7 @@ piece of evidence. Don't let them quietly disappear.
   reserve policy; named human owner for authoring and independent QC; budget cap
   for QC/run-rate; whether AI remains HOLD for pilot or can draft under
   human-review only; whether report QC is staffed by the same person or separate.
-- Founder update (2026-07-03): keep WS5-15 **on hold** for now; content
+- Max's update (2026-07-03): keep WS5-15 **on hold** for now; content
   production sizing is not a priority at the current development stage. Reopen
   when monthly challenge cadence or paid-report operations become active.
 - Gates: the whole funnel top; H3/H5 cost assumptions. Links: ROADMAP WS5-15 · H3.
@@ -63,7 +63,7 @@ piece of evidence. Don't let them quietly disappear.
 
 ### Q7 — Brand tone: dial down "elite/competitive"?
 - Domain: brand
-- Founder's own note: the elite/competitive branding may be overdone and could be
+- Max's own note: the elite/competitive branding may be overdone and could be
   softened. But the equity is built on hierarchy ("Pyramid", "Challenge", "top
   1%"). Needs an explicit decision rather than drift — what to soften, what to
   keep. Links: CONSTITUTION.
