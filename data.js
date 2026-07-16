@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Do not deploy the current backend until the Codex full-review queue is triaged: 5 P1 + 3 P2 findings were found; completed-session integrity (P1 #1) is fixed locally at d911413, while four P1s remain. In parallel, WS5.2-02e is LIVE awaiting Natalie's §10.2 browser smoke; 02f AI evaluation is source-complete but undeployed; and 01c Run 001 is internally preflighted (20/20) awaiting human verification, confidence scores and real review time.",
+    "Do not deploy the current backend until the four remaining full-review P1s are resolved. WS5.2-01d/01h/01i Phase B/C is now source-built locally (173 backend / 440 frontend) but intentionally not live: provider/admission adapters, backend-owned async batch execution, live staging-tab migration, deploy and smoke remain. In parallel, 02e awaits Natalie's §10.2 smoke and 01c Run 001 awaits human verification/time evidence.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Live = Pages f8d8fcf · Cloud Run tpc-api-00060-wxv. Local source validation = frontend 424 (02f) / backend 151 (01c + WS4.3-22). 02e rails are live with k3_m000001_ai seeded; Natalie's §10.2 smoke is the closure gate. 02f is source-complete but must deploy only from d911413 or later after the remaining full-review P1s are triaged. WS5.2-01a is closed; 01c Run 001 awaits human verification before the official seed-pack lane → WS5.1-04 sets.",
+      next:  "Live remains Pages f8d8fcf · Cloud Run tpc-api-00060-wxv. Local Phase B/C source validation = frontend 440 / backend 173 + production build: staging tabs/migration, trusted promotion/recovery and the AI generator panel are built but no provider, live migration, deploy or smoke exists. Resolve four remaining P1s first; then choose generator/admission adapters and a backend-owned async/429-safe batch path. 02e §10.2 and 01c human-review evidence remain open.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Local main d911413 is 2 commits ahead of origin/main: 7676ce1 adds the internal-only WS5.2-01c calibration harness; d911413 fixes full-review P1 #1 (completed-session integrity). Public Pages is f8d8fcf; Cloud Run is tpc-api-00060-wxv. Next: triage/fix the four remaining P1s → push safe source → Natalie's §10.2 smoke + 02f deploy consent/API key → complete 01c human review → official seed-pack lane → WS5.1-04 sets.",
+      next:  "Source of truth for full-stack platform work. Local main includes the internal 01c harness, completed-session P1 fix, provenance docs and the new source-only 01d/01h/01i Phase B/C slice; it is not deployed. Public Pages remains f8d8fcf; Cloud Run remains tpc-api-00060-wxv. Next: resolve the four remaining P1s → select/wire independent generator + admission providers → replace browser-driven max batch (51 writes vs 30/min default) with a worker or explicit 429 continuation → migrate/read back → backend-first deploy and live smoke.",
     },
     {
       id:    "entrance-qr-scan",
@@ -149,7 +149,7 @@ window.TPC_DASHBOARD = {
       { title: "Full-review remediation — 4 P1 + 3 P2 remain", project: "tpc-online-platform", owner: "natalie", note: "Codex found 5 P1 and 3 P2 integrity/security/deploy issues. P1 #1 (duplicate/mutable completed-session attempts, draft-pool mismatch and Sessions/Attempts disagreement) is fixed locally at d911413 with backend 151 green; not deployed. Remaining P1s: draft-save race, stale AI-evaluation binding, partial approval journal writes and arbitrary service-account Drive file IDs. P2s: upsertUser mass assignment, token verification before rate limiting and dirty-tree production deploys." },
       { title: "Natalie's actions — panel-parity phone · whitelist bell", project: "tpc-online-platform", owner: "natalie", note: "① Open the admin console on a real phone (100dvh pager behaviour; dashboard flip waits on it). ② Grant/revoke self-approval → target admin's bell rings (current backend tpc-api-00060-wxv). Also still owed when convenient: editor asset-picker path smoke (WS5.3-03). (18i vocabulary ratification: DONE 2026-07-10.)" },
       { title: "WS5.2-02e §10.2 smoke + 02f deploy consent", project: "tpc-online-platform", owner: "natalie", note: "02e rails are LIVE (QuestionReviewEvaluations migrated → tpc-api-00060-wxv → Pages f8d8fcf) and k3_m000001_ai is seeded. Natalie: run the §10.2 panel→Sheets smoke, then disable the row and flip 02e. 02f is committed bf42874 and needs ANTHROPIC_API_KEY, but any backend deploy must use d911413 or later and wait for the remaining P1 review queue to be triaged." },
-      { title: "WS5.2-01c internal calibration → official seed pack", project: "tpc-online-platform", owner: "natalie", note: "WS5.2-01a is closed: retain all 40 seeds; target 60 approved per level as two disjoint 30-question sets; pre-launch runs stay internal-only. Run 001 (7676ce1) preflighted 20/20 outputs, 20 seed + 10 sibling comparisons, max similarity 43.75%, AI-draft outcome 16 approve / 1 unapprove / 3 gate-fail. An in-house human must verify/adjust the drafts, enter confidence and record actual review time before 01c closes; no live write or official question creation occurred." },
+      { title: "WS5.2 question factory — Phase B/C source + 01c evidence", project: "tpc-online-platform", owner: "natalie", note: "01d/01h/01i Phase B/C is source-built: exact GenerationJobs/Slots migration contract, fail-closed provider-neutral generator/admission hooks, hashed 7-day passing payload, reserved-ID promotion/recovery, and Single/Batch admin UI; independent review fixes preserve job-creator authorship and advanced-row reconciliation. Tests: backend 173 / frontend 440 + build. NOT live: no adapters, tabs, deploy or smoke; browser batch can issue 51 writes vs default 30/min, so 01h4 remains partial. Separately, 01c Run 001 still needs in-house verification, confidence and real review time before official content." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -287,6 +287,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-16", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Started WS5.2 AI-question-generation Phase B/C and kept the rollout boundary explicit. Source now has exact GenerationJobs/GenerationSlots templates + idempotent read-back migration; admin-gated stable-job/slot APIs; strict bounded-lane/taxonomy/text-only validation; provider-neutral generator plus independent admission hooks that fail closed; discarded gate failures; SHA-256-bound 7-day passing payload; reserved-ID/read-before-retry trusted promotion with three write attempts; notification/audit hooks; and a dedicated Single/Batch generator with refresh routes, passed-only results, targeted retries and sequential approval entry. Independent review found and fixed creator-attribution/WS5.1-19 separation, aggregate partial-state semantics, caller-job-ID docs, advanced-lifecycle reconciliation and persistent collision handling. Validation: backend 173/173, frontend 440/440, production build and diff checks pass. No model/admission adapter, live Sheets migration, Cloud Run/Pages deploy or browser smoke occurred. 01h4 remains partial because the browser-driven maximum can issue 51 writes against the default 30/min; the four existing P1 backend findings still gate deployment." },
     { date: "2026-07-16", who: "Natalie + Codex (GPT-5)", project: "",
       summary: "Attribution correction recorded as Business Space D9: this MacBook's human decisions are Natalie's; human decisions originating from Max's other computer are Max's. Active records were normalized line by line using local reflog + Git blame provenance; named agent attribution, append-only archives and Git history remain unchanged." },
     { date: "2026-07-15", who: "Max + Claude (Opus 4.8)", project: "",
