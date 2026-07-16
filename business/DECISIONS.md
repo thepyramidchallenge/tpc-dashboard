@@ -35,7 +35,7 @@ go at the bottom; never reuse a number.
 ### D2 — Bundle the **6-month** tier (not 12) into the full package
 - Status: ACCEPTED (Max agreed 2026-06-27)
 - Domain: pricing
-- Updated: 2026-06-27
+- Updated: 2026-06-27 (attribution resolved 2026-07-16 — D9)
 - Body: The full package ($580) includes the **6-month** online tier, not 12.
 - Why: the bundle's real value is the **renewal moment** — whether a verified
   live buyer pays the real $198 to continue is the cleanest trust-transfer
@@ -236,14 +236,24 @@ go at the bottom; never reuse a number.
 - Body: Human decisions made from Natalie's MacBook are attributed to Natalie.
   Human decisions first created on Max's other computer are attributed to Max.
   Named agent implementation and review attribution stays with that agent.
-  Historical generic “founder” labels in active records are resolved through
-  Git reflog and line-level blame provenance; append-only archives and Git
-  history remain unchanged and are interpreted under this rule.
+  Historical generic “founder” labels are resolved **per workspace**, because the
+  label meant different people in different repos: in `tpc-online-platform`
+  founder = **Natalie**; in this dashboard — the Business Space, the ledgers and
+  the commissioned reports — founder = **Max**. Append-only archives
+  (`changelog/ARCHIVE-*.md`) and Git history stay unchanged and are read under
+  this rule.
 - Why: TPC is operated across two personal computers; a shared role label erased
   who actually made each decision.
-- Evidence: Natalie confirmed on 2026-07-16 that this MacBook is exclusively
-  hers and that human decisions originating from the other computer are Max's;
-  local Git reflogs distinguish locally created commits from pulled commits.
+- Evidence: Natalie confirmed on 2026-07-16 that this MacBook is exclusively hers,
+  that decisions originating from the other computer are Max's, and that the
+  dashboard groundwork, Business Space and reports were built by Max. The
+  per-workspace split is corroborated by wording that predates this decision:
+  the platform's `CLAUDE.md` stated “This project is owned by **Natalie**”, while
+  `business/README.md` listed Natalie *separately from* “the founder” — so the
+  two labels were never the same person. Git authorship does **not** distinguish
+  the devices (316 of 320 platform commits carry the shared `HKYCAA
+  <info@pyramidchallenge.org>` identity), so blame/reflog was not and cannot be
+  the basis.
 - Links: D8 · AGENTS.md · data.js · business/README.md
 - Revisit: if either device becomes shared, the operators change, or a decision
   is intentionally joint.
