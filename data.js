@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Live stack: Pages b0eab6f (source b5a5172) + Cloud Run tpc-api-00079-lkw (100%, max instances 1). GenerationRuns, pairing/claim/submit and the local Codex/Claude companion are live. Job genjob_2518586d-4323-472f-93f2-1bb07feedd56 settled six review rows after one fail-closed regeneration. Pause more generation; human-review those rows and close 01c5–01c7/01j. Q+A-in-results is source-built and awaiting normal frontend deployment.",
+      next:  "Live stack: Pages b0eab6f (source b5a5172) + Cloud Run tpc-api-00079-lkw (100%, max instances 1). GenerationRuns and the one-job Codex/Claude companion are live. Job genjob_2518586d-4323-472f-93f2-1bb07feedd56 settled six review rows after one fail-closed regeneration. Pause more generation; human-review those rows and close 01c5–01c7/01j. Q+A results plus session-paired watch are source-built only; migrate GenerationCompanionSessions, deploy backend/frontend and run a non-promoting smoke before use.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Private main bad3490 contains the deployed companion lane. Current source reloads canonical Questions rows into Generator results (prompt, A–E, answer, explanation), stays on Single results and keeps watching retryable failures. Verify/deploy that frontend change only after full tests; separately reconcile the live lane with the skipped 01c7/non-promoting activation evidence.",
+      next:  "Source of truth for full-stack platform work. Private main f5b3314 contains the verified Q+A result readback, superadmin-only generation gate and session-paired watch source. Watch uses discovery-only session auth plus a submission capability bound to one slot/attempt, offline-heartbeat detection and one-job recovery. Backend 261/261, frontend 469/469 and build pass; GenerationCompanionSessions migration, deploys and non-promoting smoke remain pending.",
     },
     {
       id:    "entrance-qr-scan",
@@ -151,7 +151,7 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 result Q+A frontend deploy", project: "tpc-online-platform", owner: "natalie", note: "Source joins review-ready IDs to authoritative Questions rows and shows prompt, A–E, correct answer and explanation without retaining staging payloads; Single stays on results and companion retries remain watchable. Complete full verification and use the guarded Pages deploy." },
+      { title: "WS5.2 Q+A + session-watch guarded rollout", project: "tpc-online-platform", owner: "natalie", note: "Verified source shows authoritative prompt, A–E, correct answer and explanation, and adds one-command-per-session watch without a browser localhost/deep-link launcher. After activation gates: migrate/read back GenerationCompanionSessions, deploy backend then frontend, and run a non-promoting smoke. Keep one-job recovery; do not start another production batch yet." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -242,7 +242,7 @@ window.TPC_DASHBOARD = {
     subgraph PLAT["tpc-online-platform — Practice / Test SPA · owner: Natalie"]
       app["App shell<br/>(Home · Practice · Result · Report · Admin)"]:::plat
       adapter{{"Backend interface<br/>(data-access adapter)"}}:::iface
-      companion["Local CLI companion (live)<br/>Codex/Claude subscriptions<br/>generate + independent judge"]:::wip
+      companion["Local CLI companion<br/>one-job live · session watch source-only<br/>Codex/Claude generate + independent judge"]:::wip
     end
 
     %% ---- backend ----
@@ -263,7 +263,7 @@ window.TPC_DASHBOARD = {
     admins --> app
     app --> auth
     app --> adapter
-    app -.->|"manual job pairing"| companion
+    app -.->|"one-job pairing · session token display"| companion
     adapter --> api
     companion -->|"authenticated slot submit"| api
     api --> sheets
@@ -291,6 +291,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Completed and security-hardened the accepted WS5.2-01i2 session-paired watch source: start the companion once with one hidden session token, then each later New generation click is discovered without another Terminal visit. The browser still never launches or contacts a local process, localhost port or deep link. Session auth is discovery-only; the backend mints a submission-only capability bound to one exact job/slot/attempt, serializes acquire/submit against Stop or re-pair revocation, projects a watcher offline after three missed heartbeat windows, removes the displayed bearer after connection, and exposes one-job recovery for failed, long-stalled or pre-session jobs. Natural session expiry stops discovery while an already-issued slot capability keeps its independent maximum two-hour TTL for in-flight completion; explicit revocation invalidates it. CLI abort/retry and per-slot failure isolation were hardened. Integrated private main f5b3314 is pushed; backend 261/261, frontend 469/469, build, local visual QA and final P0/P1 sub-agent review pass. Source only: GenerationCompanionSessions migration, backend/frontend deploy and a non-promoting smoke remain pending; no production batch was started." },
     { date: "2026-07-17", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "Ruled and enforced superadmin-only AI generation (WS5.2-01h7). Natalie's decision: the companion subscription CLIs live on the owner's computer, so generation is owner-only for now and multi-operator/admin-tier generation is explicitly a later development stage. Enforcement landed at both layers: backend moved adminCreateGenerationJob, adminIssueGenerationCompanionToken, adminGenerateQuestionSlot, adminPromoteGenerationSlot and adminGetGenerationJob from the admin gate to the superadmin gate (companion claim/submit stay pairing-token-authenticated, and the token uid must match the now-superadmin job creator), and the 題庫 ✦ New AI question entry plus direct generator routes hide/fail closed for admin-tier accounts, which keep review/approval. New refusal tests cover both layers. Committed as the integrated private main f5b3314 together with the parallel Codex session's source-built WS5.2-01i2 session-paired watch lane after waiting out its in-flight edits; backend 261/261 and frontend 469/469 pass on the integrated tree and origin is pushed. The rule is source-enforced, deploys pending — the live tpc-api-00079-lkw still gates generation at admin tier until the next revision. Docs: ROADMAP WS5.2-01h7 and an AGENT_HANDOFF non-negotiable boundary. The six genjob_2518586d review rows still await Natalie's human review; current focus stays WS5.2-01c5." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
