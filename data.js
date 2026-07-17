@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. The local CLI bootstrap is committed as 79a9c41; origin/main separately has f8e5385, the single-tab GenerationRuns typed-row staging implementation. Reconcile both sibling commits before the next platform commit/push/deploy. Current work remains 01c5 blind review, then 01c6–01c7; the server-driven lane later needs independent providers, backend-owned async or verified 429 continuation, GenerationRuns backend-first deploy, migration/readback, and real smokes.",
+      next:  "Source of truth for full-stack platform work. Private main d14a4b2 now reconciles the local CLI lane (79a9c41) with the single-tab GenerationRuns implementation (f8e5385); the concise handoff and all active Markdown references are synchronized and pushed. Combined validation: backend 224/224, frontend 461/461, production build and local Markdown links pass. Current work remains 01c5 blind review, then 01c6–01c7; the separate server lane later needs independent providers, backend-owned async or verified 429 continuation, backend-first deploy, GenerationRuns migration/readback and real smokes.",
     },
     {
       id:    "entrance-qr-scan",
@@ -159,7 +159,6 @@ window.TPC_DASHBOARD = {
     ],
     blocked: [
       { title: "WS5.2-02e approval artifact closure", project: "tpc-online-platform", owner: "natalie", note: "Not failed: the stored decision/version/evaluation result is not visible in the frontend, so Natalie will not perform a hidden Sheets/AdminLog check. Choose an authenticated admin readback view or formally waive the manual UI smoke based on existing automated/backend evidence. This does not block 01c5." },
-      { title: "Platform main reconciliation before commit/deploy", project: "tpc-online-platform-admin", owner: "natalie", note: "Local main 79a9c41 (CLI lane) and origin/main f8e5385 (GenerationRuns) are sibling commits; the checkout is ahead 1 / behind 1 and the aggregate handoff/roadmap edits are uncommitted. Merge both without discarding either before any platform commit, push or deploy. This does not block the private 01c5 human review." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -289,6 +288,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Cleaned and synchronized the platform documentation after reconciling both sibling source lines. Private main d14a4b2 now contains the local CLI batch lane (79a9c41), GenerationRuns typed-row staging (f8e5385), and one concise 175-line AGENT_HANDOFF replacing the accumulated ~1,100-line second changelog. Current status was synchronized across the root/backend/frontend/template READMEs, ARCHITECTURE, QUESTION_FACTORY, ROADMAP, WIREFLOW, docs index and agent protocol: four production smokes closed; approval evidence remains an explicit frontend-readback-or-waiver decision; current focus is 01c5; GenerationRuns is source-built but not deployed/migrated; WS7-18 remains later-stage. Removed the resolved branch-reconciliation blocker. Validation: backend 224/224, frontend 461/461, production build, diff checks and all 14 local Markdown-link targets pass; origin/main is pushed through d14a4b2." },
     { date: "2026-07-17", who: "Natalie + Codex + Claude", project: "tpc-online-platform",
       summary: "Late cross-task result folded into the all-Codex wrap-up: origin/main commit f8e5385 consolidates never-migrated GenerationJobs/GenerationSlots into one 29-column GenerationRuns typed-row tab (one JOB row per run plus SLOT rows per requested output). One writer per row and no duplicated metadata are retained; creation is one append; JOB counts are creation/settlement snapshots while reads derive live SLOT status; the { job, slots } frontend contract is unchanged. Validation recorded by that task: backend 215/215 and untouched frontend 461/461. This is source-built, not live: the workbook has no generation tabs, providers/worker remain unwired, and the retired two-tab migration must never run. The handoff/dashboard also expose the resulting repo reconciliation debt: local 79a9c41 CLI work and origin f8e5385 are siblings and must be merged before platform commit/push/deploy. Current focus remains 01c5 blind human review; neither this server lane nor the approval-evidence UI/waiver choice blocks it." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
