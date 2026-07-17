@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Consolidated PR #3 is merged; private main 5295ecc contains the recovered production lineage, security release, latest-main reconciliation, and final handoff, and matches the deployed backend hashes. Next: build Natalie's zero-API local CLI question-generation lane, then choose independent generator/admission providers, replace the 51-write browser maximum with a worker or verified 429 continuation, migrate/read back staging tabs, and run backend-first smokes.",
+      next:  "Source of truth for full-stack platform work. The local CLI bootstrap is committed as 79a9c41; origin/main separately has f8e5385, the single-tab GenerationRuns typed-row staging implementation. Reconcile both sibling commits before the next platform commit/push/deploy. Current work remains 01c5 blind review, then 01c6–01c7; the server-driven lane later needs independent providers, backend-owned async or verified 429 continuation, GenerationRuns backend-first deploy, migration/readback, and real smokes.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,12 +146,12 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2 Phase B/C — local CLI generation lane", project: "tpc-online-platform", owner: "natalie", note: "Build the bounded batch scaffold from repository seed CSVs (≤5 seeds × ≤5 outputs), exact JSON brief/contract, Codex CLI and Claude Code bake-off, offline 01c validation, then founder-run trusted promotion into status=review with reserved IDs and seedId provenance. GenerationJobs/Slots and server providers remain intentionally inactive until the separate production activation sequence." },
-      { title: "WS5.2 provider/async activation design", project: "tpc-online-platform", owner: "natalie", note: "After the local lane produces reviewed evidence: finish Run 001 human timing/confidence, choose independent generator and admission model families, replace the 51-write browser maximum with backend-owned async work or proven 429 continuation, migrate/read back GenerationJobs/Slots, deploy backend-first, then smoke Single/Batch/retry/timeout/cross-admin." },
+      { title: "WS5.2-01c5 — blind human comparison", project: "tpc-online-platform", owner: "natalie", note: "Blindly compare the isolated Codex and Claude candidate for the same slot. Record all three integrity gates, eight similarity categories, quality/confidence, adjustments, accept/reject decision and real review time. Then run 01c6 calibration and make the 01c7 go/no-go; do not start the official 60-question-per-level run yet." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
+      { title: "WS5.2 provider/async activation design", project: "tpc-online-platform", owner: "natalie", note: "Separate later lane: choose independent generator/admission families, replace the browser-driven write pattern with backend-owned async work or proven 429 continuation, deploy the GenerationRuns backend first, run migrate-ws5-2-01h-generation-runs.js with readback, then smoke Single/Batch/retry/timeout/cross-admin. Never run the retired GenerationJobs/GenerationSlots migration." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -159,6 +159,7 @@ window.TPC_DASHBOARD = {
     ],
     blocked: [
       { title: "WS5.2-02e approval artifact closure", project: "tpc-online-platform", owner: "natalie", note: "Not failed: the stored decision/version/evaluation result is not visible in the frontend, so Natalie will not perform a hidden Sheets/AdminLog check. Choose an authenticated admin readback view or formally waive the manual UI smoke based on existing automated/backend evidence. This does not block 01c5." },
+      { title: "Platform main reconciliation before commit/deploy", project: "tpc-online-platform-admin", owner: "natalie", note: "Local main 79a9c41 (CLI lane) and origin/main f8e5385 (GenerationRuns) are sibling commits; the checkout is ahead 1 / behind 1 and the aggregate handoff/roadmap edits are uncommitted. Merge both without discarding either before any platform commit, push or deploy. This does not block the private 01c5 human review." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -195,6 +196,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "WS5.2 · Question factory (seed-pack lane active; recurring AI hold)", state: "active" },
+        { label: "WS5.2-01h4 · GenerationRuns typed-row staging (source-built; deploy/migration pending)", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
@@ -287,6 +289,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Codex + Claude", project: "tpc-online-platform",
+      summary: "Late cross-task result folded into the all-Codex wrap-up: origin/main commit f8e5385 consolidates never-migrated GenerationJobs/GenerationSlots into one 29-column GenerationRuns typed-row tab (one JOB row per run plus SLOT rows per requested output). One writer per row and no duplicated metadata are retained; creation is one append; JOB counts are creation/settlement snapshots while reads derive live SLOT status; the { job, slots } frontend contract is unchanged. Validation recorded by that task: backend 215/215 and untouched frontend 461/461. This is source-built, not live: the workbook has no generation tabs, providers/worker remain unwired, and the retired two-tab migration must never run. The handoff/dashboard also expose the resulting repo reconciliation debt: local 79a9c41 CLI work and origin f8e5385 are siblings and must be merged before platform commit/push/deploy. Current focus remains 01c5 blind human review; neither this server lane nor the approval-evidence UI/waiver choice blocks it." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Production acceptance update after all other Codex tasks became idle: Natalie passed the authenticated two-tab Save-for-later conflict/retry, self-approval whitelist grant/revoke bell, question-editor asset-picker save/reopen, and physical-phone admin panel-parity (100dvh versus mobile URL bar) smokes. The dashboard manual-smoke card is closed. WS5.2 §10.2 approval evidence remains unverified rather than failed: the retained post-decision ID/version/evaluation artifacts are not visible in the frontend, and Natalie will not inspect hidden Sheets/AdminLog results. Recorded the non-blocking closure choice — add an authenticated admin readback view or formally waive the manual UI artifact check based on existing automated/backend evidence. Current focus stays WS5.2-01c5 blind Codex-vs-Claude human review, then 01c6–01c7 calibration/go-no-go." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
