@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-17",
-    updatedBy: "Natalie + Codex (GPT-5)",
+    updatedBy: "Natalie + Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -291,6 +291,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
+      summary: "Ruled and enforced superadmin-only AI generation (WS5.2-01h7). Natalie's decision: the companion subscription CLIs live on the owner's computer, so generation is owner-only for now and multi-operator/admin-tier generation is explicitly a later development stage. Enforcement landed at both layers: backend moved adminCreateGenerationJob, adminIssueGenerationCompanionToken, adminGenerateQuestionSlot, adminPromoteGenerationSlot and adminGetGenerationJob from the admin gate to the superadmin gate (companion claim/submit stay pairing-token-authenticated, and the token uid must match the now-superadmin job creator), and the 題庫 ✦ New AI question entry plus direct generator routes hide/fail closed for admin-tier accounts, which keep review/approval. New refusal tests cover both layers. Committed as the integrated private main f5b3314 together with the parallel Codex session's source-built WS5.2-01i2 session-paired watch lane after waiting out its in-flight edits; backend 261/261 and frontend 469/469 pass on the integrated tree and origin is pushed. The rule is source-enforced, deploys pending — the live tpc-api-00079-lkw still gates generation at admin tier until the next revision. Docs: ROADMAP WS5.2-01h7 and an AGENT_HANDOFF non-negotiable boundary. The six genjob_2518586d review rows still await Natalie's human review; current focus stays WS5.2-01c5." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Ran the existing live companion job genjob_2518586d-4323-472f-93f2-1bb07feedd56 from the correct cloud-run package after the UI's cwd-ambiguous command failed from ~. The dual subscription-CLI lane generated six K3 candidates: one first attempt failed answer+technical gates and was discarded; regeneration passed; all six slots settled review_ready as k3_l000001_ai–k3_l000006_ai with zero issues. They remain real status=review rows requiring human approval, not calibration/approval-yield evidence; further production generation is paused because 01c7/non-promoting activation evidence and 01j recovery remain open. Source now reloads canonical Questions rows into Generator results to show prompt, A–E, correct answer and explanation, keeps Single results on-screen, clarifies the cloud-run cwd, and keeps watching gate-failure retries; frontend 463/463, production build and local visual QA pass, deployment pending. Cloud Run tpc-api-00079-lkw is confirmed at 100%. A no-terminal design is technically possible via a signed login-started backend-polling helper; no browser-triggerable localhost/deep-link launcher was accepted." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
