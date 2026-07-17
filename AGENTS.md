@@ -30,15 +30,17 @@ update `data.js`:
 8. **Commit & push** — this folder is its own **standalone repo**
    (`thepyramidchallenge/tpc-dashboard`): `git add -A && git commit -m "…" && git push`.
    GitHub Pages redeploys automatically; reload the page to verify.
-9. **Verify Pages actually deployed** — the automatic `pages-build-deployment`
-   on this repo fails intermittently ("Deployment failed, try again later";
-   observed 2026-07-02 and 2026-07-03), and the live site silently stays on
-   the old commit. After pushing, check and (if needed) rebuild:
+9. **Verify Pages actually deployed** — Pages deploys via the `deploy-pages`
+   workflow (`.github/workflows/pages.yml`, since 256a567). The legacy
+   `gh api …/pages/builds` check/rebuild documented here before no longer
+   applies — the POST now returns 403 "does not have a GitHub Pages site".
+   After pushing, confirm the workflow run succeeded and the live file
+   actually updated:
 
    ```bash
-   gh api repos/thepyramidchallenge/tpc-dashboard/pages/builds/latest --jq .status
-   # not "built"? trigger a manual rebuild — it has succeeded every time:
-   gh api -X POST repos/thepyramidchallenge/tpc-dashboard/pages/builds
+   gh run list --workflow pages.yml --limit 1   # expect: completed success on your commit
+   curl -s "https://thepyramidchallenge.github.io/tpc-dashboard/data.js?cb=$RANDOM" | grep -m1 updatedBy
+   # failed run? gh run rerun <run-id>
    ```
 
    Do not stop at "pushed" — the update isn't done until the live data.js
