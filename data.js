@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Do WS5.2-01c5 first: blindly compare the isolated Codex and Claude candidates, record human gates/similarity/quality/time, then run 01c6–01c7 calibration and go/no-go. Four production smokes passed; approval-artifact visibility/waiver is a separate non-blocking decision. Exact next actions: top of tpc-online-platform/AGENT_HANDOFF.md.",
+    "Do WS5.2-01c5 first: treat the already-unblinded Codex/Claude pair as a review-method rehearsal, record gates/sibling-distinctness/quality/time, then freeze versioned prompts and honest blinding for 01c6–01c7 calibration/go-no-go. Official production is live GenerationRuns → authenticated local subscription-CLI companion → TPC backend status=review; implementation is still open. Exact next actions: top of tpc-online-platform/AGENT_HANDOFF.md.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Live stack: Pages b0eab6f (committed source b5a5172) + Cloud Run tpc-api-secfinal-0717 (100%, max instances 1). All five review P1s, the upsertUser allowlist, pre-verification token limiter, Drive scope guard, atomic approval/draft/session fixes, and rate-limit setup failover are live; writes are unfrozen. Direct run.app canaries selected trusted XFF position 1. Authenticated draft, whitelist bell, asset-picker and real-phone smokes passed 2026-07-17. Next: WS5.2-01c5 blind review → 01c6–01c7 calibration/go-no-go → trusted promotion; approval stored-result visibility/waiver remains a separate decision.",
+      next:  "Live stack: Pages b0eab6f (committed source b5a5172) + Cloud Run tpc-api-secfinal-0717 (100%, max instances 1). Security/release hardening is live; authenticated draft, whitelist bell, asset-picker and real-phone smokes passed. Next: WS5.2-01c5 known-pair method rehearsal → versioned/blinded 01c6–01c7 calibration/go-no-go → implement the accepted GenerationRuns + authenticated local subscription-CLI companion path. Approval stored-result visibility/waiver remains a separate non-blocking decision; WS7-18 owns later shared-NAT/scale validation.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Private main d14a4b2 now reconciles the local CLI lane (79a9c41) with the single-tab GenerationRuns implementation (f8e5385); the concise handoff and all active Markdown references are synchronized and pushed. Combined validation: backend 224/224, frontend 461/461, production build and local Markdown links pass. Current work remains 01c5 blind review, then 01c6–01c7; the separate server lane later needs independent providers, backend-owned async or verified 429 continuation, backend-first deploy, GenerationRuns migration/readback and real smokes.",
+      next:  "Source of truth for full-stack platform work. Private main d0a6e10 carries the synchronized CLI-to-live contract and cleaned planning docs. ROADMAP keeps every prior task ID (141 done + 143 open/partial), developed WS0–WS5, dependencies and S/M/L estimates while removing deployment-diary narration; AGENT_HANDOFF stays concise. Current work is 01c5 method rehearsal, then honest calibration/go-no-go. The accepted live lane still needs versioned prompts, job-scoped pairing auth, combined idempotent slot submission, the repo companion command, backend-first deploy, GenerationRuns migration/readback and non-promoting/real smokes.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,12 +146,12 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2-01c5 — blind human comparison", project: "tpc-online-platform", owner: "natalie", note: "Blindly compare the isolated Codex and Claude candidate for the same slot. Record all three integrity gates, eight similarity categories, quality/confidence, adjustments, accept/reject decision and real review time. Then run 01c6 calibration and make the 01c7 go/no-go; do not start the official 60-question-per-level run yet." },
+      { title: "WS5.2-01c5 — review-method rehearsal", project: "tpc-online-platform", owner: "natalie", note: "The existing Codex/Claude pair is already unblinded. Use it to rehearse the rubric, sibling-distinctness checks, evidence format and timing only; do not rank either generator. Then freeze versioned prompts and honest blinding before 01c6 calibration and the 01c7 go/no-go." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 provider/async activation design", project: "tpc-online-platform", owner: "natalie", note: "Separate later lane: choose independent generator/admission families, replace the browser-driven write pattern with backend-owned async work or proven 429 continuation, deploy the GenerationRuns backend first, run migrate-ws5-2-01h-generation-runs.js with readback, then smoke Single/Batch/retry/timeout/cross-admin. Never run the retired GenerationJobs/GenerationSlots migration." },
+      { title: "WS5.2 CLI-to-live companion activation", project: "tpc-online-platform", owner: "natalie", note: "After 01c7: version canonical generator/judge prompts; build short-lived job-scoped pairing auth, combined slot submit/revalidate/promote/readback, and the founder-run subscription-CLI companion with scrubbed child environments. Deploy backend first, migrate GenerationRuns, run a non-promoting transport smoke, then one authorized review-row smoke. Never run the retired two-tab migration." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -195,7 +195,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "WS5.2 · Question factory (seed-pack lane active; recurring AI hold)", state: "active" },
-        { label: "WS5.2-01h4 · GenerationRuns typed-row staging (source-built; deploy/migration pending)", state: "active" },
+        { label: "WS5.2-01d/01h/01i · GenerationRuns + authenticated local subscription-CLI companion (implementation/deploy/migration pending)", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
@@ -242,6 +242,7 @@ window.TPC_DASHBOARD = {
     subgraph PLAT["tpc-online-platform — Practice / Test SPA · owner: Natalie"]
       app["App shell<br/>(Home · Practice · Result · Report · Admin)"]:::plat
       adapter{{"Backend interface<br/>(data-access adapter)"}}:::iface
+      companion["Local CLI companion (planned)<br/>Codex/Claude subscriptions<br/>generate + independent judge"]:::future
     end
 
     %% ---- backend ----
@@ -262,7 +263,9 @@ window.TPC_DASHBOARD = {
     admins --> app
     app --> auth
     app --> adapter
+    app -.->|"job + pairing token"| companion
     adapter --> api
+    companion -.->|"authenticated slot submit"| api
     api --> sheets
     api --> drive
     api -.->|migration| future
@@ -288,6 +291,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Consolidated the final all-Codex documentation state and pushed private main d0a6e10. QUESTION_FACTORY now accepts official production as live GenerationRuns first, then a founder-run authenticated local Codex/Claude subscription-CLI companion (generator and independent judge) submitting one slot at a time to the TPC backend; no developer model API key, direct Sheets write or completed production batch handoff. ROADMAP was cleaned from 782 to 505 lines without deleting work: all 141 done and 143 open/partial task IDs remain, developed WS0–WS5 is task-level, dependencies and S/M/L estimates are restored, held commitments keep explicit IDs, and Git owns the retired deployment diary. AGENT_HANDOFF and root/backend/template/architecture/wireflow docs are synchronized. Current 01c5 is correctly a method rehearsal because the known pair is already unblinded; honest calibration follows. Validation: diff check and local Markdown links pass." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Cleaned and synchronized the platform documentation after reconciling both sibling source lines. Private main d14a4b2 now contains the local CLI batch lane (79a9c41), GenerationRuns typed-row staging (f8e5385), and one concise 175-line AGENT_HANDOFF replacing the accumulated ~1,100-line second changelog. Current status was synchronized across the root/backend/frontend/template READMEs, ARCHITECTURE, QUESTION_FACTORY, ROADMAP, WIREFLOW, docs index and agent protocol: four production smokes closed; approval evidence remains an explicit frontend-readback-or-waiver decision; current focus is 01c5; GenerationRuns is source-built but not deployed/migrated; WS7-18 remains later-stage. Removed the resolved branch-reconciliation blocker. Validation: backend 224/224, frontend 461/461, production build, diff checks and all 14 local Markdown-link targets pass; origin/main is pushed through d14a4b2." },
     { date: "2026-07-17", who: "Natalie + Codex + Claude", project: "tpc-online-platform",
