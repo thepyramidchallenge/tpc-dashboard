@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "The consolidated security release is LIVE and source-verified; resume WS5.2 Phase B/C through the zero-API local CLI generation lane, while Natalie completes the remaining authenticated approval/draft/notification/phone smokes. Exact next actions: top of tpc-online-platform/AGENT_HANDOFF.md.",
+    "Do WS5.2-01c5 first: blindly compare the isolated Codex and Claude candidates, record human gates/similarity/quality/time, then run 01c6–01c7 calibration and go/no-go. Four production smokes passed; approval-artifact visibility/waiver is a separate non-blocking decision. Exact next actions: top of tpc-online-platform/AGENT_HANDOFF.md.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Live stack: Pages b0eab6f (committed source b5a5172) + Cloud Run tpc-api-secfinal-0717 (100%, max instances 1). All five review P1s, the upsertUser allowlist, pre-verification token limiter, Drive scope guard, atomic approval/draft/session fixes, and rate-limit setup failover are live; writes are unfrozen. Direct run.app canaries selected trusted XFF position 1. Next: WS5.2 local CLI scaffold → generate/bake-off → offline validate → trusted promotion, plus Natalie's authenticated smokes.",
+      next:  "Live stack: Pages b0eab6f (committed source b5a5172) + Cloud Run tpc-api-secfinal-0717 (100%, max instances 1). All five review P1s, the upsertUser allowlist, pre-verification token limiter, Drive scope guard, atomic approval/draft/session fixes, and rate-limit setup failover are live; writes are unfrozen. Direct run.app canaries selected trusted XFF position 1. Authenticated draft, whitelist bell, asset-picker and real-phone smokes passed 2026-07-17. Next: WS5.2-01c5 blind review → 01c6–01c7 calibration/go-no-go → trusted promotion; approval stored-result visibility/waiver remains a separate decision.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -147,7 +147,6 @@ window.TPC_DASHBOARD = {
   board: {
     now: [
       { title: "WS5.2 Phase B/C — local CLI generation lane", project: "tpc-online-platform", owner: "natalie", note: "Build the bounded batch scaffold from repository seed CSVs (≤5 seeds × ≤5 outputs), exact JSON brief/contract, Codex CLI and Claude Code bake-off, offline 01c validation, then founder-run trusted promotion into status=review with reserved IDs and seedId provenance. GenerationJobs/Slots and server providers remain intentionally inactive until the separate production activation sequence." },
-      { title: "Natalie's manual production evidence", project: "tpc-online-platform", owner: "natalie", note: "Run: two-tab Save-for-later conflict/retry; WS5.2 §10.2 approve/unapprove decision-ID evidence; whitelist grant/revoke bell; asset-picker save/reopen; and panel parity on a real phone (100dvh versus URL bar). Writes are open and the consolidated release is live." },
       { title: "WS5.2 provider/async activation design", project: "tpc-online-platform", owner: "natalie", note: "After the local lane produces reviewed evidence: finish Run 001 human timing/confidence, choose independent generator and admission model families, replace the 51-write browser maximum with backend-owned async work or proven 429 continuation, migrate/read back GenerationJobs/Slots, deploy backend-first, then smoke Single/Batch/retry/timeout/cross-admin." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
@@ -159,6 +158,7 @@ window.TPC_DASHBOARD = {
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
+      { title: "WS5.2-02e approval artifact closure", project: "tpc-online-platform", owner: "natalie", note: "Not failed: the stored decision/version/evaluation result is not visible in the frontend, so Natalie will not perform a hidden Sheets/AdminLog check. Choose an authenticated admin readback view or formally waive the manual UI smoke based on existing automated/backend evidence. This does not block 01c5." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -195,6 +195,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "WS5.2 · Question factory (seed-pack lane active; recurring AI hold)", state: "active" },
+        { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
@@ -286,6 +287,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Production acceptance update after all other Codex tasks became idle: Natalie passed the authenticated two-tab Save-for-later conflict/retry, self-approval whitelist grant/revoke bell, question-editor asset-picker save/reopen, and physical-phone admin panel-parity (100dvh versus mobile URL bar) smokes. The dashboard manual-smoke card is closed. WS5.2 §10.2 approval evidence remains unverified rather than failed: the retained post-decision ID/version/evaluation artifacts are not visible in the frontend, and Natalie will not inspect hidden Sheets/AdminLog results. Recorded the non-blocking closure choice — add an authenticated admin readback view or formally waive the manual UI artifact check based on existing automated/backend evidence. Current focus stays WS5.2-01c5 blind Codex-vs-Claude human review, then 01c6–01c7 calibration/go-no-go." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Consolidated and shipped the complete security/release closeout. Cloud Run tpc-api-secfinal-0717 now serves 100% (max instances 1, writes open, fingerprint enforcement on, RATE_LIMIT_XFF_CLIENT_FROM_RIGHT=1) with all five full-review P1s plus the upsertUser server-owned-field allowlist and pre-verification Google-token limiter; tpc-api-00075-h8f remains tagged ws5307 at 0% for rollback. Two zero-traffic direct-run.app canaries proved XFF position 2 spoofable and position 1 stable; unsafe canary tags were removed. Downloaded live server.js and lockfile hashes exactly match the consolidated branch; ping/auth gates and error logs are clean. The frontend rate-limit failover was hardened so existing users never enter setup on a 429, then Pages b0eab6f was built from committed source b5a5172 through the detached-worktree deploy guard; the GitHub Pages workflow and live bundle were verified. Consolidated PR #3 is merged and private main 5295ecc now holds the release plus final handoff; GitHub also recognizes contained approval PR #1 as merged. Validation: backend 209/209, frontend 461/461, Vite build, and both production dependency audits green/zero vulnerabilities. Current focus moves to Natalie's zero-API local CLI question-generation Phase B/C lane plus the remaining authenticated human smokes." },
     { date: "2026-07-17", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
