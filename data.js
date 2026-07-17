@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-17",
-    updatedBy: "Natalie + Codex (GPT-5)",
+    updatedBy: "Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -201,6 +201,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
+        { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 gated on 01c7 closure)", state: "active" },
       ],
     },
     {
@@ -291,6 +292,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-17", who: "Claude (Fable 5)", project: "",
+      summary: "End-of-day Claude wrap across all of today's chatrooms (shared checkout with Codex; each platform item has its own detailed entry below). Platform: (1) WS5.3-07 Drive file-ID trust boundary — the last full-review P1 — ruled with Natalie, blast-radius-audited and taken LIVE as tpc-api-00075-h8f (Opus 4.8). (2) WS5.2-01h7 superadmin-only AI generation ruled and enforced at both backend and frontend layers with refusal tests, integrated with the parallel Codex watch lane as f5b3314. (3) WS5.2-01c5 review-method rehearsal completed with Natalie as scribe and CLOSED — method findings now feed the blinded 01c6/01c7 calibration at the head of the queue. (4) NEW WS11 backend-maintainability track registered in ROADMAP (8e33cec) with its first two phases landed on origin/main at zero runtime diff: WS11-01 scripts-bootstrap dedupe 401c3f8 (15 of 16 scripts on scripts/lib/bootstrap.js, backend 268/268; companion-sessions port + live ADC read-back smoke deferred) and WS11-02 eslint gate e63b281 (npm run lint, 0 errors); WS11-03/04/05 stay gated on the 01c7 containment closing — the WS11 roadmap row was added to this dashboard today. (5) Committed the valid doc corrections the Codex final audit left pending (01c5→01c6/01c7 references in AGENT_HANDOFF/QUESTION_FACTORY/ROADMAP) as 6a209aa, pushed; platform tree clean at wrap. Workspace: dashboard changelog rotated per D8 into changelog/ARCHIVE-2026-07.md; workspace docs synced to the 2026-07-17 layout (458dd58); ten stale finished release-lane git worktrees (18f/18g lanes, ws4.3-23 release trio, 02g p1-3 trio, reconcile, patch-source) removed from TPC Root (~2 GB freed; every branch, including three unmerged doc/patch branches, retained in the platform repo)." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "End-of-day all-Codex wrap after every other task stopped. Release/security closeout: reconciled the backend/live ancestry into the verified main line; made Pages deploys commit-pinned, test-gated and reproducible; upgraded Vitest/Google clients so frontend/backend audits are zero; consolidated and deployed the reviewed security fixes, including the Drive file-ID trust boundary. WS5.2: built the private CLI scaffold/validator and completed the Codex+Claude 1×1 smokes; closed 01c5 as an unblinded review-method rehearsal; versioned the generator/judge contract, made the independent judge the sole AI evaluation draft, added fail-closed 01j recovery work, and source-built a superadmin-only session-paired watch plus authoritative Q+A result readback. The official GenerationRuns/one-job companion nevertheless went live before 01c7 and produced six review rows after one fail-closed regeneration; these are neither approved content nor calibration evidence. A minimal Pages hotfix now gives a cwd-independent `npm --prefix` command without activating watch. Final synchronized priority: run one honestly blinded 2–5-seed 01c6 calibration, make the 01c7 go/no-go, then reconcile the live lane before any new production batch or approval. Later gates remain 01j failure/recovery, 02e authenticated readback-or-waiver, GenerationCompanionSessions migration/readback, guarded backend/frontend rollout and non-promoting smoke. ROADMAP/QUESTION_FACTORY/AGENT_HANDOFF corrections from the final audit are valid and intentionally remain uncommitted for the owning platform task." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
