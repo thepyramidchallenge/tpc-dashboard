@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Current gate: honestly blinded WS5.2-01c6 calibration → 01c7 go/no-go. The split GenerationJobs/GenerationSlots ledger, Questions.generationReview, complete independent-review display and session-watch UI are live on Cloud Run 00086 / Pages 171a69c without a global write freeze. The production-only pre-promotion fingerprint defect is fixed; retry the same genjob_d586… slot as attempt 3, then complete the non-promoting watch/revocation and saved-review readback smokes. Existing old-runtime rows remain manual.",
+      next:  "Current gate: honestly blinded WS5.2-01c6 calibration → 01c7 go/no-go. Human operational context lives in tpc-online-platform/AGENT_HANDOFF.md; verify deployed Cloud Run and Pages state with ./tpc-online-platform/scripts/production-status.py. Existing old-runtime rows remain manual, and activation smokes remain gated.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Single and Batch use one flow; the independent judge returns gates, eight-category seed/closest-sibling similarity, confidence and rationale. Trusted promotion validates/recomputes and stores admin-only generationReview; generator and approval views display it. Backend 272/272—including production-flag companion coverage—frontend 476/476 and build pass. Cloud Run 00086 and Pages are deployed; retry/readback and the remaining transport smokes stay behind the activation gates.",
+      next:  "Full private source. Deployed machine state comes from ./tpc-online-platform/scripts/production-status.py; AGENT_HANDOFF.md owns human operational context. Source now includes a one-call signed-in Home bootstrap and protected manual CI/release automation; production activation and configuration remain recorded there.",
     },
     {
       id:    "entrance-qr-scan",
@@ -293,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Reduced signed-in Home startup to one authenticated getHomeBootstrap request backed by a single Results workbook batchGet for sessions, bookmarks, notifications and drafts; Attempts are no longer loaded until history is requested. Established deployed infrastructure plus scripts/production-status.py as machine truth and AGENT_HANDOFF.md as the one human operational context, removing volatile revision/test-count duplication and correcting the production ledger description. Added path-aware source CI and a protected, exact-SHA, manually dispatched backend-first production promotion workflow with candidate health/config checks, explicit traffic promotion and verified public Pages publication. Source and docs are complete; no production deployment was made, and one-time GitHub production-environment, WIF and public-repo-token activation remains explicit." },
     { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Resolved the repeated genjob_d586cae5 slot-1 submit failure after attempt 2 identified attestation_review_invalid:evaluation. The independent Claude review was not the defect: production REQUIRE_EVALUATION_FINGERPRINT=true had been applied to pre-promotion candidate validation even though no live Question row—and therefore no content fingerprint—exists at that stage. Commit 4b69f3b exempts only this advisory pre-promotion check; candidate/prompt hashes still bind the review, while final human approval retains exact-content fingerprint enforcement. Production-flag companion/rejection/final-approval coverage and the complete backend suite pass 272/272; lint remains 0 errors. Cloud Run tpc-api-00086-m8r is Ready and serves 100% through LATEST with a new image digest; live action-router health passed. Read-only Sheet verification shows attempt 2 left the same slot generating with blank reserved/question IDs and no payload/hash, so Natalie should retry the same job/slot as attempt 3 rather than create a new job." },
     { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
