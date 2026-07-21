@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Current gate: honestly blinded WS5.2-01c6 calibration → 01c7 go/no-go → reconcile the prematurely-live companion lane. Live stack remains Pages 6c15afe (minimal cwd-independent command hotfix 1a14da5) + Cloud Run tpc-api-00079-lkw (100%, max instances 1). Q+A results and session-paired watch remain source-built only; do not migrate/deploy them or run another production batch before the activation and failure/recovery gates close.",
+      next:  "Current gate: honestly blinded WS5.2-01c6 calibration → 01c7 go/no-go → reconcile the prematurely-live companion lane. Live stack remains Pages 6c15afe + Cloud Run tpc-api-00079-lkw. Q+A/session-watch and the complete independent generation review are source-built only; after the gates, migrate GenerationJobs/GenerationSlots plus Questions.generationReview and deploy the matching backend/frontend. The six older review rows have only three-gate evidence and remain manual.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Local source now makes Single and Batch one operator flow; `single` is derived ledger metadata only. Frontend 476/476 and the production build pass. These 2026-07-21 changes are not yet committed or deployed; GenerationCompanionSessions migration, backend/frontend watch rollout and non-promoting smoke remain pending behind the existing activation gates.",
+      next:  "Source of truth for full-stack platform work. Local source now makes Single and Batch one flow and makes the independent judge return gates, eight-category seed/closest-sibling similarity, confidence and rationale. Trusted promotion validates/recomputes and stores admin-only generationReview; generator and approval views display it. Backend 269/269, frontend 476/476 and build pass. Source remains local/uncommitted/undeployed; frozen schema migration, matching rollout and smoke remain behind the activation gates.",
     },
     {
       id:    "entrance-qr-scan",
@@ -151,7 +151,7 @@ window.TPC_DASHBOARD = {
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 Q+A + session-watch guarded rollout", project: "tpc-online-platform", owner: "natalie", note: "Verified source shows authoritative prompt, A–E, correct answer and explanation, and adds one-command-per-session watch without a browser localhost/deep-link launcher. After activation gates: migrate/read back GenerationCompanionSessions, deploy backend then frontend, and run a non-promoting smoke. Keep one-job recovery; do not start another production batch yet." },
+      { title: "WS5.2 complete-review + session-watch guarded rollout", project: "tpc-online-platform", owner: "natalie", note: "Verified source shows authoritative Q+A plus the saved independent review (gates, confidence, seed/closest-sibling similarity, eight judgments and rationale) and adds one-command-per-session watch. After activation gates: migrate/read back GenerationJobs, GenerationSlots and Questions.generationReview; deploy the matching backend/frontend; run the non-promoting and one-slot readback smokes. Keep the six older rows manual and start no new production batch yet." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -197,6 +197,7 @@ window.TPC_DASHBOARD = {
         { label: "WS5.2-01c6/01c7 · Honestly blinded calibration + go/no-go (current)", state: "active" },
         { label: "WS5.2-01d/01h/01i · GenerationRuns + authenticated local subscription-CLI companion (live; activation evidence/recovery closure pending)", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
+        { label: "WS5.2-02f · Complete independent generation review persistence/UI (source-built; migration/deploy/adapter removal pending)", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
@@ -292,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Fixed the missing AI-question review at its real source. The local independent judge no longer returns only three gates: its versioned contract now produces the full advisory review (gates, eight-category seed and closest-sibling comparisons, anchored confidence ratings and rationale). Claims include sanitized same-seed review/approved siblings; the backend requires the exact comparison set, validates/recomputes every raw judgment, carries the review through idempotent promotion and stores it in server-owned admin-only Questions.generationReview. Student reads omit it and content edits clear it. Generator results display gates, confidence, both similarity percentages, all eight judgments and rationale; the approval panel prefills the same editable evidence without a second disabled model call. Added the frozen-write schema migration/template/docs and fail-closed legacy behavior: the six 2026-07-17 rows have only old three-gate evidence and remain manual. Backend 269/269, frontend 476/476, production build and lint (0 errors) pass. Source is not deployed." },
     { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Confirmed and enforced one AI-question-generation flow for both one-question and multi-question runs. The admin always configures seed/output allocations, creates one backend-owned job, uses the same companion, gates, progress/result screen, recovery rules and deliberate human-approval handoff. Exactly one seed × one output is merely derived `mode=single` API/ledger metadata; any larger allocation is `batch`, with no operator mode switch or caller-selected branch. Refactored the request builder so mode cannot disagree with allocations, removed mode-specific frontend validation, and parameterized the lifecycle regression to prove 1-output and 3-output jobs follow the same create → token → read-only watch path. QUESTION_FACTORY, ROADMAP and AGENT_HANDOFF now record the decision. Frontend 476/476 and production build pass; source changes remain local/uncommitted and are not deployed." },
     { date: "2026-07-17", who: "Claude (Fable 5)", project: "",
