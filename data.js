@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-21",
-    updatedBy: "Natalie + Codex (GPT-5)",
+    updated:   "2026-07-22",
+    updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Run one honestly blinded 2–5-seed WS5.2-01c6 calibration with frozen generator/judge prompt versions, then make the 01c7 go/no-go. Until both close, start no further production batch and do not approve the six prematurely-live review rows; exact next actions are at the top of tpc-online-platform/AGENT_HANDOFF.md.",
+    "Freeze the WS5.2-01c6 prompt fixes and run a blinded scored Codex-vs-Claude comparison before any official 60-per-level generation; meanwhile close the live session-watch, revocation and recovery smokes, and do not approve legacy rows without complete saved review evidence.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Current gate: honestly blinded WS5.2-01c6 calibration → 01c7 go/no-go. Human operational context lives in tpc-online-platform/AGENT_HANDOFF.md; verify deployed Cloud Run and Pages state with ./tpc-online-platform/scripts/production-status.py. Existing old-runtime rows remain manual, and activation smokes remain gated.",
+      next:  "01c6 is complete and 01c7 = NO-GO / iterate. Freeze the agreed prompt fixes, run the blinded scored Codex-vs-Claude comparison, then close the non-promoting session-watch/revocation and authorized recovery smokes before any official 60-per-level run. Existing old-runtime rows remain manual.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -146,12 +146,12 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2-01c6 blinded calibration → 01c7 go/no-go", project: "tpc-online-platform", owner: "natalie", note: "Run one private 2–5-seed calibration with frozen, versioned generator/judge prompts; review randomized candidates in the rendered UI and record quality, failure patterns, time and cost. Keep the prematurely-live companion lane contained: no new production batch and no approval of k3_l000001_ai–k3_l000006_ai before the decision." },
+      { title: "WS5.2 post-01c7 iteration + blinded scored re-run", project: "tpc-online-platform", owner: "natalie", note: "01c6 produced 8/8 would-approve candidates, but 01c7 is NO-GO / iterate. Freeze the westernized-name, bilingual-explanation and anti-convergence fixes, then run the blinded scored Codex-vs-Claude comparison. Config preference is Codex + brief-only; start no official 60-per-level run yet." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 session-watch + saved-review live smokes", project: "tpc-online-platform", owner: "natalie", note: "The two-tab ledger, generationReview column and matching backend/frontend are live. Revision 00087 releases the exact active attempt after final failure; companion source 37974f0 first retries generator/judge CLI or malformed JSON once in a fresh process on the same slot attempt, while valid gate failures are never auto-retried. Retry the current recovery slot, verify the saved full review and finish watch/revocation. Keep old-runtime rows manual and start no normal production batch yet." },
+      { title: "WS5.2 session-watch + saved-review live smokes", project: "tpc-online-platform", owner: "natalie", note: "Three-hour session pairing, 15-second foreground-only polling and batched GenerationJobs/GenerationSlots reads are live on backend 00090 and Pages 65109e5. Run the remaining non-promoting watch/revocation and explicitly authorized promotion/recovery readback smokes. Keep old-runtime rows manual and start no normal production batch yet." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -194,8 +194,8 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2-01c6/01c7 · Honestly blinded calibration + go/no-go (current)", state: "active" },
-        { label: "WS5.2-01d/01h/01i · Split generation ledger + authenticated local subscription-CLI companion (live; smokes/recovery closure pending)", state: "active" },
+        { label: "WS5.2-01c6/01c7 · Calibration complete; NO-GO/iterate; blinded scored re-run active", state: "active" },
+        { label: "WS5.2-01d/01h/01i · Split generation ledger + 3-hour session-paired local CLI companion (live; smokes/recovery closure pending)", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.2-02f · Complete independent generation review persistence/UI (live; new-row smoke + adapter removal pending)", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
@@ -293,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-22", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Codex daily wrap for all July 21 tasks, recorded after every other Codex task stopped. The WS5.2 calibration finished: 01c6 yielded 8/8 would-approve candidates (4 as-is, 4 after minor edits), the controlled 2×2 A/B showed generator.md was quality-neutral within each model, Natalie set 01c7 to NO-GO / iterate, and the preferred bootstrap configuration is Codex + brief-only; freeze the prompt fixes and run a blinded scored Codex-vs-Claude comparison before any official 60-per-level generation. The live question-generation lane was cut over to GenerationJobs/GenerationSlots with GenerationRuns retained as rollback, gained complete saved independent review plus generation-time sibling-set handling, bounded transient/gate-failure recovery and exact-attempt release, and moved companion discovery/termination to a revocable three-hour session. The final read-efficiency release batches control-table reads, reuses locked snapshots and polls foreground clients every 15 seconds, reducing one-job claim from 9 to 2 reads and submit/promotion from 21 to 5; PR #6 merged as f73d841, Cloud Run tpc-api-00090-ncz serves 100%, Pages 65109e5 is live, and backend 281/281 plus frontend 481/481 and the production build pass. Home bootstrap, production-status tooling and protected source delivery were also improved, while production automation remains intentionally unconfigured. The July 22 daily sync then confirmed dashboard, pyramid-site and tpc-online-platform clean and current on main." },
     { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "A real post-recovery companion_judge_failed issue established the bounded transient retry policy. Companion source 37974f0 now retries generator or independent-judge CLI/structured-output failure exactly once after one second in a fresh process, retaining the same claimed slot attempt and reusing the same candidate for judge retry. Valid completed gate failures are never auto-retried; if both phase attempts fail, revision 00087's exact-attempt release still moves the slot to needs_regeneration without a Question row. Committed source passes 276/276; the founder-Mac combined full-sibling/compatibility source passes 279/279; lint 0 errors. No Cloud Run redeploy was required." },
     { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
