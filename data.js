@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-17",
-    updatedBy: "Claude (Fable 5)",
+    updated:   "2026-07-21",
+    updatedBy: "Natalie + Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Source of truth for full-stack platform work. Private main e7d598a preserves the cwd-independent one-job/watch commands alongside Q+A result readback, superadmin-only generation and hardened session-paired watch source. Current frontend 475/475 and build pass; GenerationCompanionSessions migration, backend/frontend watch deploys and non-promoting smoke remain pending.",
+      next:  "Source of truth for full-stack platform work. Local source now makes Single and Batch one operator flow; `single` is derived ledger metadata only. Frontend 476/476 and the production build pass. These 2026-07-21 changes are not yet committed or deployed; GenerationCompanionSessions migration, backend/frontend watch rollout and non-promoting smoke remain pending behind the existing activation gates.",
     },
     {
       id:    "entrance-qr-scan",
@@ -292,6 +292,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-21", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Confirmed and enforced one AI-question-generation flow for both one-question and multi-question runs. The admin always configures seed/output allocations, creates one backend-owned job, uses the same companion, gates, progress/result screen, recovery rules and deliberate human-approval handoff. Exactly one seed × one output is merely derived `mode=single` API/ledger metadata; any larger allocation is `batch`, with no operator mode switch or caller-selected branch. Refactored the request builder so mode cannot disagree with allocations, removed mode-specific frontend validation, and parameterized the lifecycle regression to prove 1-output and 3-output jobs follow the same create → token → read-only watch path. QUESTION_FACTORY, ROADMAP and AGENT_HANDOFF now record the decision. Frontend 476/476 and production build pass; source changes remain local/uncommitted and are not deployed." },
     { date: "2026-07-17", who: "Claude (Fable 5)", project: "",
       summary: "End-of-day Claude wrap across all of today's chatrooms (shared checkout with Codex; each platform item has its own detailed entry below). Platform: (1) WS5.3-07 Drive file-ID trust boundary — the last full-review P1 — ruled with Natalie, blast-radius-audited and taken LIVE as tpc-api-00075-h8f (Opus 4.8). (2) WS5.2-01h7 superadmin-only AI generation ruled and enforced at both backend and frontend layers with refusal tests, integrated with the parallel Codex watch lane as f5b3314. (3) WS5.2-01c5 review-method rehearsal completed with Natalie as scribe and CLOSED — method findings now feed the blinded 01c6/01c7 calibration at the head of the queue. (4) NEW WS11 backend-maintainability track registered in ROADMAP (8e33cec) with its first two phases landed on origin/main at zero runtime diff: WS11-01 scripts-bootstrap dedupe 401c3f8 (15 of 16 scripts on scripts/lib/bootstrap.js, backend 268/268; companion-sessions port + live ADC read-back smoke deferred) and WS11-02 eslint gate e63b281 (npm run lint, 0 errors); WS11-03/04/05 stay gated on the 01c7 containment closing — the WS11 roadmap row was added to this dashboard today. (5) Committed the valid doc corrections the Codex final audit left pending (01c5→01c6/01c7 references in AGENT_HANDOFF/QUESTION_FACTORY/ROADMAP) as 6a209aa, pushed; platform tree clean at wrap. Workspace: dashboard changelog rotated per D8 into changelog/ARCHIVE-2026-07.md; workspace docs synced to the 2026-07-17 layout (458dd58); ten stale finished release-lane git worktrees (18f/18g lanes, ws4.3-23 release trio, 02g p1-3 trio, reconcile, patch-source) removed from TPC Root (~2 GB freed; every branch, including three unmerged doc/patch branches, retained in the platform repo)." },
     { date: "2026-07-17", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
