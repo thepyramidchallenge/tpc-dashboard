@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Freeze the WS5.2-01c6 prompt fixes and run a blinded scored Codex-vs-Claude comparison before any official 60-per-level generation; meanwhile close the live session-watch, revocation and recovery smokes, and do not approve legacy rows without complete saved review evidence.",
+    "Run the WS5.2 blinded scored Codex-vs-Claude comparison with the frozen QF-2026-07-23 brief before any official 60-per-level generation; meanwhile close the live session-watch, revocation and recovery smokes, and do not approve legacy rows without complete saved review evidence.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "01c6 is complete and 01c7 = NO-GO / iterate. Freeze the agreed prompt fixes, run the blinded scored Codex-vs-Claude comparison, then close the non-promoting session-watch/revocation and authorized recovery smokes before any official 60-per-level run. Existing old-runtime rows remain manual.",
+      next:  "01c6 is complete and 01c7 = NO-GO / iterate. The QF-2026-07-23 brief-only prompt freeze is complete; next run the same four seeds in a blinded scored Codex-vs-Claude comparison, then close the non-promoting session-watch/revocation and authorized recovery smokes before any official 60-per-level run. Existing old-runtime rows remain manual.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2 post-01c7 iteration + blinded scored re-run", project: "tpc-online-platform", owner: "natalie", note: "01c6 produced 8/8 would-approve candidates, but 01c7 is NO-GO / iterate. Freeze the westernized-name, bilingual-explanation and anti-convergence fixes, then run the blinded scored Codex-vs-Claude comparison. Config preference is Codex + brief-only; start no official 60-per-level run yet." },
+      { title: "WS5.2 blinded scored Codex-vs-Claude re-run", project: "tpc-online-platform", owner: "natalie", note: "The QF-2026-07-23 brief-only prompt freeze is complete: identical candidate instructions, localized paired names, teaching bilingual explanations in separate paragraphs, and diversity encouraged rather than gated. Next run the same four seeds blinded; start no official 60-per-level run yet." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -194,7 +194,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2-01c6/01c7 · Calibration complete; NO-GO/iterate; blinded scored re-run active", state: "active" },
+        { label: "WS5.2-01c6/01c7 · NO-GO/iterate; prompt freeze complete; blinded scored re-run next", state: "active" },
         { label: "WS5.2-01d/01h/01i · Split generation ledger + 3-hour session-paired local CLI companion (live; smokes/recovery closure pending)", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.2-02f · Complete independent generation review persistence/UI (live; new-row smoke + adapter removal pending)", state: "active" },
@@ -293,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-23", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Completed WS5.2 post-01c7 Step 1 prompt freeze as platform commit 60f76a1. Candidate generation now uses the same private brief-only instructions for Codex and Claude, with no Claude generator.md overlay; requires natural localized character-name pairs such as 美美/Mia; requires teaching explanations as separate Traditional Chinese and equivalent English paragraphs; and treats same-seed diversity as an encouraged quality goal rather than an integrity gate or mandatory dedupe. The local scaffold policy is QF-2026-07-23, focused scaffold/preflight coverage passes 11/11, the full backend suite previously passed 336/336 with lint at 0 errors, and no comparison batch, Question row, promotion or deployment was started. Next: scaffold the blinded scored re-run for the same four seeds." },
     { date: "2026-07-23", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Codex daily wrap recorded after every other July 23 task stopped. The only completed Codex work today was the scheduled repository sync: dashboard, pyramid-site and tpc-online-platform were all already clean and current on main, with the platform still at f73d841. No platform source, production, roadmap, focus or board state changed, so the existing 01c7 NO-GO / iterate priorities remain current." },
     { date: "2026-07-22", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
