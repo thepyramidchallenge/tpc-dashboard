@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-23",
+    updated:   "2026-07-24",
     updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Run the WS5.2 blinded scored Codex-vs-Claude comparison with the frozen QF-2026-07-23 brief before any official 60-per-level generation; meanwhile close the live session-watch, revocation and recovery smokes, and do not approve legacy rows without complete saved review evidence.",
+    "Clear the 10 open full-review risks, then run the four required source migrations and deploy the settled WS5.2-01k/01l/01j source; finish recovery/metrics UI and live smokes before the official backend-managed 24-candidate comparison.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "01c6 is complete and 01c7 = NO-GO / iterate. The QF-2026-07-23 brief-only prompt freeze is complete; next run the same four seeds in a blinded scored Codex-vs-Claude comparison, then close the non-promoting session-watch/revocation and authorized recovery smokes before any official 60-per-level run. Existing old-runtime rows remain manual.",
+      next:  "01c7 remains NO-GO. Clear the 10-item full-review release gate, migrate DraftSessions + GenerationPrompts/InputPackages + Questions.answerGuide + GenerationSlots recovery/metrics columns, then deploy the settled source and finish recovery/metrics UI and live smokes. The private 24-candidate rehearsal is review-ready but does not replace the required backend-managed comparison; no official 60-per-level run yet.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -146,18 +146,19 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2 blinded scored Codex-vs-Claude re-run", project: "tpc-online-platform", owner: "natalie", note: "The QF-2026-07-23 brief-only prompt freeze is complete: identical candidate instructions, localized paired names, teaching bilingual explanations in separate paragraphs, and diversity encouraged rather than gated. Next run the same four seeds blinded; start no official 60-per-level run yet." },
+      { title: "WS5.2 release-gate remediation + migrations", project: "tpc-online-platform", owner: "natalie", note: "Settled source fe8904d is clean and green but not deployed. Clear the 10 full-review risks—especially the four P1 generation/data-integrity risks—then run the four handoff migrations before any backend deploy. Keep official generation stopped." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 session-watch + saved-review live smokes", project: "tpc-online-platform", owner: "natalie", note: "Three-hour session pairing, 15-second foreground-only polling and batched GenerationJobs/GenerationSlots reads are live on backend 00090 and Pages 65109e5. Run the remaining non-promoting watch/revocation and explicitly authorized promotion/recovery readback smokes. Keep old-runtime rows manual and start no normal production batch yet." },
+      { title: "WS5.2 recovery UI, live smokes + comparison", project: "tpc-online-platform", owner: "natalie", note: "After migration/deploy, add needs_judging/needs_attention/cancelled, Retry judge, Discard, Finish batch and grouped metrics UI; schedule the 30-day purge; run watch/revocation/recovery smokes; then run the non-promoting backend-managed 24-candidate blinded comparison. The private rehearsal has 24/24 valid, judge-gate-passing candidates awaiting human review but is preflight evidence only." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
+      { title: "10 full-review risks block release-ready status", project: "tpc-online-platform", owner: "natalie", note: "FULL_REVIEW_RISKS.md has 4 P1 and 6 P2 items still unchecked: ambiguous Sheets retries, unenforced prompt hashes, lost claim responses, premature live-attempt takeover, request binding, duplicate prompts, asset-byte trust, immutable asset evidence, inspector disclosure reset and recovery-status accuracy." },
       { title: "WS5.2-02e approval artifact closure", project: "tpc-online-platform", owner: "natalie", note: "Not failed: the stored decision/version/evaluation result is not visible in the frontend, so Natalie will not perform a hidden Sheets/AdminLog check. Choose an authenticated admin readback view or formally waive the manual UI smoke based on existing automated/backend evidence. This does not block private 01c6–01c7 calibration, but remains required for §10.2/live approval-evidence closure." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
@@ -194,8 +195,10 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2-01c6/01c7 · NO-GO/iterate; prompt freeze complete; blinded scored re-run next", state: "active" },
-        { label: "WS5.2-01d/01h/01i · Split generation ledger + 3-hour session-paired local CLI companion (live; smokes/recovery closure pending)", state: "active" },
+        { label: "WS5.2-01c6/01c7 · NO-GO; private 24-candidate preflight awaits human review; official backend-managed comparison pending", state: "active" },
+        { label: "WS5.2-01d/01h/01i · Split generation ledger + 3-hour session-paired local CLI companion (live; remaining transport/promotion smokes pending)", state: "active" },
+        { label: "WS5.2-01k/01l/01j · Prompt authority, core answer guide, recovery and metrics source settled; migrations/UI/deploy/smokes pending", state: "active" },
+        { label: "Full-review gate · Clear 10 open P1/P2 risks before release-ready status", state: "active" },
         { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
         { label: "WS5.2-02f · Complete independent generation review persistence/UI (live; new-row smoke + adapter removal pending)", state: "active" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
@@ -293,6 +296,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Codex daily wrap across all July 23 platform tasks, recorded after every other Codex task stopped. WS4.3-25 session telemetry was migrated and released: Cloud Run tpc-api-00092-xp6 serves 100%, Pages 83dcc63 came from source 73b2e05, 101 fabricated pre-cutoff zero attempt times became null, and authenticated timed/untimed, save/resume, reload, History, denominator, timing and topic-label smokes passed. Source work fixed awaited audit logging and same-second log pagination; pinned exact generator/judge CLI/model roles; added deterministic prompt export manifests; added hash-checked, chunked 30-day exact input retention plus dry-run-first purge; and integrated backend-authoritative prompts, Phase-1 answer guides, pre-judge staging, judge-only recovery, one-replacement budgets, honest batch aggregates and per-attempt timing metrics. A private non-promoting route rehearsal produced 24/24 structurally valid, corrected-judge-gate-passing candidates awaiting blinded human review, but it used frozen local inputs and does not close 01c7. The full review registered 10 open P1/P2 release risks. After all Codex and Claude rooms were idle for 10 minutes, the shared tree was reconciled, documentation synced, verified at backend 433/433 + frontend 506/506 + build/lint/audits green, and pushed clean as fe8904d. No 01k/01l/01j production deployment occurred; clear the risk gate, run the four migrations, finish UI/purge scheduling/live smokes, then run the official backend-managed comparison. The scheduled sync later confirmed dashboard, pyramid-site and tpc-online-platform current on main." },
     { date: "2026-07-23", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Completed WS5.2 post-01c7 Step 1 prompt freeze as platform commit 60f76a1. Candidate generation now uses the same private brief-only instructions for Codex and Claude, with no Claude generator.md overlay; requires natural localized character-name pairs such as 美美/Mia; requires teaching explanations as separate Traditional Chinese and equivalent English paragraphs; and treats same-seed diversity as an encouraged quality goal rather than an integrity gate or mandatory dedupe. The local scaffold policy is QF-2026-07-23, focused scaffold/preflight coverage passes 11/11, the full backend suite previously passed 336/336 with lint at 0 errors, and no comparison batch, Question row, promotion or deployment was started. Next: scaffold the blinded scored re-run for the same four seeds." },
     { date: "2026-07-23", who: "Codex (GPT-5)", project: "tpc-online-platform",
