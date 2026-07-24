@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Clear the 10 open full-review risks, then run the four required source migrations and deploy the settled WS5.2-01k/01l/01j source; finish recovery/metrics UI and live smokes before the official backend-managed 24-candidate comparison.",
+    "Use the closed WS5.2 lane for a bounded official seed pack with saved independent-judge evidence and explicit human approval, then resume WS5.1-04 QuestionSets before image-placeholder and fixed-set Practice/mock work.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "01c7 remains NO-GO. Clear the 10-item full-review release gate, migrate DraftSessions + GenerationPrompts/InputPackages + Questions.answerGuide + GenerationSlots recovery/metrics columns, then deploy the settled source and finish recovery/metrics UI and live smokes. The private 24-candidate rehearsal is review-ready but does not replace the required backend-managed comparison; no official 60-per-level run yet.",
+      next:  "WS5.2 is GO for the bounded official seed-pack lane. Keep every AI row at review with saved independent-judge evidence until explicit human approval, then build the WS5.1-04 disjoint QuestionSets; follow with WS5.1-05 image placeholders and the WS4.2 fixed-set Practice/mock proof.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Full private source. Deployed machine state comes from ./tpc-online-platform/scripts/production-status.py; AGENT_HANDOFF.md owns human operational context. Source now includes a one-call signed-in Home bootstrap and protected manual CI/release automation; production activation and configuration remain recorded there.",
+      next:  "Full private source. Current docs tip is 15183c2; Cloud Run tpc-api-ws52retry serves the e3d050d backend at 100%, while Pages c5bbc84 was built from UI source 36ffd03. Use scripts/production-status.py for machine state and AGENT_HANDOFF.md for the operational boundary.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,20 +146,17 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2 release-gate remediation + migrations", project: "tpc-online-platform", owner: "natalie", note: "Settled source fe8904d is clean and green but not deployed. Clear the 10 full-review risks—especially the four P1 generation/data-integrity risks—then run the four handoff migrations before any backend deploy. Keep official generation stopped." },
+      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "WS5.2 is GO. Generate only the bounded official pack, preserve independent-judge evidence and status=review, require explicit human approval, then assemble the approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "WS5.2 recovery UI, live smokes + comparison", project: "tpc-online-platform", owner: "natalie", note: "After migration/deploy, add needs_judging/needs_attention/cancelled, Retry judge, Discard, Finish batch and grouped metrics UI; schedule the 30-day purge; run watch/revocation/recovery smokes; then run the non-promoting backend-managed 24-candidate blinded comparison. The private rehearsal has 24/24 valid, judge-gate-passing candidates awaiting human review but is preflight evidence only." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
     blocked: [
-      { title: "10 full-review risks block release-ready status", project: "tpc-online-platform", owner: "natalie", note: "FULL_REVIEW_RISKS.md has 4 P1 and 6 P2 items still unchecked: ambiguous Sheets retries, unenforced prompt hashes, lost claim responses, premature live-attempt takeover, request binding, duplicate prompts, asset-byte trust, immutable asset evidence, inspector disclosure reset and recovery-status accuracy." },
-      { title: "WS5.2-02e approval artifact closure", project: "tpc-online-platform", owner: "natalie", note: "Not failed: the stored decision/version/evaluation result is not visible in the frontend, so Natalie will not perform a hidden Sheets/AdminLog check. Choose an authenticated admin readback view or formally waive the manual UI smoke based on existing automated/backend evidence. This does not block private 01c6–01c7 calibration, but remains required for §10.2/live approval-evidence closure." },
       { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
     ],
   },
@@ -195,17 +192,17 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2-01c6/01c7 · NO-GO; private 24-candidate preflight awaits human review; official backend-managed comparison pending", state: "active" },
-        { label: "WS5.2-01d/01h/01i · Split generation ledger + 3-hour session-paired local CLI companion (live; remaining transport/promotion smokes pending)", state: "active" },
-        { label: "WS5.2-01k/01l/01j · Prompt authority, core answer guide, recovery and metrics source settled; migrations/UI/deploy/smokes pending", state: "active" },
-        { label: "Full-review gate · Clear 10 open P1/P2 risks before release-ready status", state: "active" },
-        { label: "WS5.2-02e · Approval stored-result visibility or manual-smoke waiver", state: "active" },
-        { label: "WS5.2-02f · Complete independent generation review persistence/UI (live; new-row smoke + adapter removal pending)", state: "active" },
+        { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
+        { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
+        { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
+        { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
+        { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
+        { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
         { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
-        { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 gated on 01c7 closure)", state: "active" },
+        { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 now unblocked but sequenced after current content work)", state: "active" },
       ],
     },
     {
@@ -255,7 +252,7 @@ window.TPC_DASHBOARD = {
       auth["Google Identity Services<br/>Cloud Run token verification"]:::be
       api["Cloud Run API<br/>(SheetsBackend · Node)<br/>asia-east2 · live"]:::be
       drive[("Google Drive<br/>Asset Library<br/>incoming · library")]:::store
-      sheets[("Google Sheets<br/>Customers · Questions · Results<br/>GenerationJobs · GenerationSlots")]:::store
+      sheets[("Google Sheets<br/>Customers · Questions · Results<br/>QuestionReviewEvaluations<br/>GenerationPrompts · GenerationInputPackages<br/>GenerationRecords")]:::store
       future[("Firestore / Supabase<br/>(flip adapter when<br/>tests scale to 100s)")]:::future
     end
 
@@ -296,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Final all-Codex July 24 wrap, recorded only after every other task became idle. The blinded 24-candidate comparison was accepted and selected direct compiled prompting; the live factory now has immutable prompt/input inspection, grouped time/token/cost metrics, Phase-1 answer guides, retained approval evidence, a daily purge, and the typed 87-row GenerationRecords ledger, with legacy split tabs deleted. The full 10-risk gate and all seven 01j recovery cases closed. Literal production proofs passed for judge-only retry, promotion Retry import plus payload-clearing Discard, 12-minute stale release/late-result rejection, and partial-family Finish; the seven-day elapsed wait was explicitly waived with automated expiry/non-restoration coverage, making WS5.2-01c7 GO for the bounded official seed-pack lane without waiving human approval. A real transient Sheets-quota burst was hardened by changing metrics to one three-range batchGet and failing quota responses immediately with Retry-After; the final retry fix removed a stale server-evaluator dependency, and the post-fix window was clean. Current production is Cloud Run tpc-api-ws52retry at 100% from backend e3d050d and Pages c5bbc84 from UI source 36ffd03; Home, Users/access, Log, Question Bank/Generator/Review and Asset Library improvements are live. Final validation includes backend 481/481, frontend 528/528, Vite build, zero audit findings, and clean quota telemetry. All 20 platform Markdown files were synchronized and pushed as docs tip 15183c2, with 12/12 local links and all 315 ROADMAP definitions intact. Next: bounded official review rows with saved judge evidence and explicit human approval, then WS5.1-04 QuestionSets." },
     { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Codex daily wrap across all July 23 platform tasks, recorded after every other Codex task stopped. WS4.3-25 session telemetry was migrated and released: Cloud Run tpc-api-00092-xp6 serves 100%, Pages 83dcc63 came from source 73b2e05, 101 fabricated pre-cutoff zero attempt times became null, and authenticated timed/untimed, save/resume, reload, History, denominator, timing and topic-label smokes passed. Source work fixed awaited audit logging and same-second log pagination; pinned exact generator/judge CLI/model roles; added deterministic prompt export manifests; added hash-checked, chunked 30-day exact input retention plus dry-run-first purge; and integrated backend-authoritative prompts, Phase-1 answer guides, pre-judge staging, judge-only recovery, one-replacement budgets, honest batch aggregates and per-attempt timing metrics. A private non-promoting route rehearsal produced 24/24 structurally valid, corrected-judge-gate-passing candidates awaiting blinded human review, but it used frozen local inputs and does not close 01c7. The full review registered 10 open P1/P2 release risks. After all Codex and Claude rooms were idle for 10 minutes, the shared tree was reconciled, documentation synced, verified at backend 433/433 + frontend 506/506 + build/lint/audits green, and pushed clean as fe8904d. No 01k/01l/01j production deployment occurred; clear the risk gate, run the four migrations, finish UI/purge scheduling/live smokes, then run the official backend-managed comparison. The scheduled sync later confirmed dashboard, pyramid-site and tpc-online-platform current on main." },
     { date: "2026-07-23", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
