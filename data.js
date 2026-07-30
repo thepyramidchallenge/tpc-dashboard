@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-24",
+    updated:   "2026-07-27",
     updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Full private source. Current docs tip is 15183c2; Cloud Run tpc-api-ws52retry serves the e3d050d backend at 100%, while Pages c5bbc84 was built from UI source 36ffd03. Use scripts/production-status.py for machine state and AGENT_HANDOFF.md for the operational boundary.",
+      next:  "Full private source. Current main tip is 11d59c7; Cloud Run tpc-api-ws52retry serves the e3d050d backend at 100%, while Pages c5bbc84 was built from UI source 36ffd03. Use scripts/production-status.py for machine state and AGENT_HANDOFF.md for the operational boundary.",
     },
     {
       id:    "entrance-qr-scan",
@@ -293,6 +293,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-27", who: "Codex (GPT-5)", project: "tpc-online-platform",
+      summary: "Daily wrap for the unreported July 24–26 window, recorded after all meaningful platform development tasks became idle. No source commit landed after the July 24 final consolidation: tpc-online-platform remains clean and aligned with origin/main at 11d59c7, and all 20 tracked Markdown files remain synchronized, so no platform documentation edit was necessary. Claude's co-authored 8c40a82 contribution is fully contained in main and supplied a strong WS5.2-01j foundation—pre-judge staging, judge-only recovery, one-replacement budgets, honest batch aggregates and per-attempt metrics—while Codex then hardened, tested, migrated, deployed and documented the wider release, including recovery proofs, retry/import/discard handling, Sheets-quota containment, admin-workspace consolidation and FR-09 disclosure safety. Critical verdict: WS5.2 is operationally closed only for the bounded official seed-pack lane, not for recurring or autonomous generation; explicit human approval remains mandatory. The next product constraint is approved content inventory and disjoint QuestionSets, while FR-07 SVG allowlisting, FR-08 production asset evidence/snapshots and FR-09 frontend deployment remain follow-ups. July 25–26 added no new code or deployment evidence." },
     { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Final all-Codex July 24 wrap, recorded only after every other task became idle. The blinded 24-candidate comparison was accepted and selected direct compiled prompting; the live factory now has immutable prompt/input inspection, grouped time/token/cost metrics, Phase-1 answer guides, retained approval evidence, a daily purge, and the typed 87-row GenerationRecords ledger, with legacy split tabs deleted. The full 10-risk gate and all seven 01j recovery cases closed. Literal production proofs passed for judge-only retry, promotion Retry import plus payload-clearing Discard, 12-minute stale release/late-result rejection, and partial-family Finish; the seven-day elapsed wait was explicitly waived with automated expiry/non-restoration coverage, making WS5.2-01c7 GO for the bounded official seed-pack lane without waiving human approval. A real transient Sheets-quota burst was hardened by changing metrics to one three-range batchGet and failing quota responses immediately with Retry-After; the final retry fix removed a stale server-evaluator dependency, and the post-fix window was clean. Current production is Cloud Run tpc-api-ws52retry at 100% from backend e3d050d and Pages c5bbc84 from UI source 36ffd03; Home, Users/access, Log, Question Bank/Generator/Review and Asset Library improvements are live. Final validation includes backend 481/481, frontend 528/528, Vite build, zero audit findings, and clean quota telemetry. All 20 platform Markdown files were synchronized and pushed as docs tip 15183c2, with 12/12 local links and all 315 ROADMAP definitions intact. Next: bounded official review rows with saved judge evidence and explicit human approval, then WS5.1-04 QuestionSets." },
     { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
