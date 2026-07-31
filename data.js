@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-31",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Codex (changes initiated by Dixon)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Complete one controlled WS5.2-01m human edit → mechanical validation → manual AI judging → human decision proof, read back the immutable evidence, then merge the exact deployed branch before scaling the bounded official seed pack or QuestionSets.",
+    "Dixon-initiated learner zh-HK/en UI is live from private main 6ed5105 and public Pages f26f5f7. Sign-in and Settings language selectors remain; the authenticated learner-header selector was removed at Dixon's follow-up. The language backend and production Customers migration remain isolated and undeployed. Current platform focus is bounded official content and exact-version QuestionSets; Treasure activation remains on hold.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Finish the first real WS5.2-01m revise/rejudge/decide proof and merge the deployed source branch. Then keep every bounded-pack AI row at review until explicit human approval, build the WS5.1-04 disjoint QuestionSets, and continue to placeholders plus fixed-set Practice/mock.",
+      next:  "Dixon-initiated learner zh-HK/en frontend is live: private main 6ed5105; public Pages f26f5f7 via workflow 30619332923. Sign-in and Settings selectors remain; the authenticated learner-header selector is removed. Next: keep each bounded-pack AI row at review until explicit approval and build exact-version QuestionSets. Cross-device language persistence requires a separate backend/migration release.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Full private source. origin/main is 96007e6, while exact deployed WS5.2-01m source 2c71644 is still on codex/ws5-2-01m-feedback-loop; Cloud Run tpc-api-ws5201m0730 serves 100% and Pages df57e43 is live. Complete 01m8a, then merge the branch without losing the verified release boundary.",
+      next:  "Private source of truth includes main 6ed5105. Frontend Pages is f26f5f7; Cloud Run remains tpc-api-feedback0731. Dixon's learner-language UI is live, but its account-language backend and production Customers migration are not deployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,7 +146,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2-01m live acceptance + source merge", project: "tpc-online-platform", owner: "natalie", note: "Use one internal generated question for the controlled human edit → mechanical validation → manual companion judging → human decision journey. Read back immutable original/revision/advisory/decision evidence, prove failed/stale paths retain the edit, then merge exact deployed source 2c71644 plus docs head 9ea066d into main." },
+      { title: "Bounded official content + exact-version QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "Keep every generated candidate internal until explicit human approval, then build the WS5.1-04 QuestionSets. Treasure curation, matched comparison, and activation remain on hold under WS5.2-04." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
@@ -196,7 +196,8 @@ window.TPC_DASHBOARD = {
         { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
         { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
         { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
-        { label: "WS5.2-01m · Human-revision/manual-rejudge safety live; first real revise→rejudge→decide evidence proof and source merge pending", state: "active" },
+        { label: "WS5.2-01m · Human-revision/manual-rejudge safety, evidence proof, and source merge", state: "done" },
+        { label: "Dixon · Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
         { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
         { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
@@ -295,6 +296,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Dixon (initiator) + Codex", project: "tpc-online-platform",
+      summary: "Dixon initiated and acceptance-directed the learner zh-HK/en UI release. Private main is 6ed5105; public Pages is f26f5f7 via successful workflow 30619332923. Live sign-in and Settings language selectors remain, while the authenticated learner-header selector was removed at Dixon's follow-up. Frontend 583/583 and the 94-module build passed. No language Cloud Run backend or production Customers Sheet migration was deployed." },
     { date: "2026-07-31", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "UI polish: the boot splash and admin lazy-chunk fallback now show an animated pyramid loader — the logo mark assembling itself course by course (pure CSS/SVG, 0.2s fade-in delay so fast boots never flash it, reduced-motion users get the complete static mark). Committed as 66e2f20 on codex/ws5-2-01m-feedback-loop, kept strictly separate from the parallel uncommitted WS5.2-01m work; deploy-gate tests 549/549, published via deploy.sh as Pages bf1907e (workflow 30611377059) and live-verified on the public app." },
     { date: "2026-07-30", who: "Natalie + Codex (GPT-5); Claude evidence reviewed", project: "tpc-online-platform",
