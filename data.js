@@ -103,7 +103,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private main e3a5d7f records the completed WS4.2 release. Cloud Run tpc-api-ws42align0731 serves 100% from b91684e; production migrations and the full publish/run/reload/submit/unpublish smoke passed. Next: official WS5.1-04 QuestionSets after bounded content approval; the account-language backend and Customers migration remain undeployed.",
+      next:  "The completed WS4.2 release is recorded on private main. Cloud Run tpc-api-ws42align0731 serves 100% from b91684e; public Pages serves application source e3a5d7f; migrations and the full publish/run/reload/submit/unpublish smoke passed. Next: official WS5.1-04 QuestionSets after bounded content approval; the account-language backend and Customers migration remain undeployed.",
     },
     {
       id:    "entrance-qr-scan",
