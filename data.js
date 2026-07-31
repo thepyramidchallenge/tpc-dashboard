@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-31",
-    updatedBy: "Codex (changes initiated by Dixon)",
+    updatedBy: "Natalie + Claude (Opus 4.8)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -50,18 +50,21 @@ window.TPC_DASHBOARD = {
 
   /* --- people / ownership 分工 ------------------------------------------
    * Who owns what. `owner` fields elsewhere (projects, roadmap, board) must
-   * use one of these keys. Split: Max = pyramid-site + UI in general;
-   * Natalie = the rest (learning platform, data layer, content).
+   * use one of these keys. Split: Max = pyramid-site + UI in general, plus
+   * the WS5.2 question factory and WS5.3 asset factory (reassigned
+   * 2026-07-31, after Natalie closed WS5.2 to GO);
+   * Natalie = the rest of the learning platform (data layer, content,
+   * QuestionSets, pilot).
    * --------------------------------------------------------------------- */
   owners: {
-    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general / 網站重建及整體 UI", color: "#1f7a96" },
-    natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content / 學習平台、資料層、內容", color: "#6d4fd6" },
+    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general + question/asset factories (WS5.2 · WS5.3) / 網站重建、整體 UI、出題及素材工廠", color: "#1f7a96" },
+    natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content (excl. WS5.2/WS5.3 factories) / 學習平台、資料層、內容（工廠除外）", color: "#6d4fd6" },
     both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#5a6570" },
   },
 
   // The single most important thing to know before starting work today.
   focus:
-    "Dixon-initiated learner zh-HK/en UI is live from private main 6ed5105 and public Pages f26f5f7. Sign-in and Settings language selectors remain; the authenticated learner-header selector was removed at Dixon's follow-up. The language backend and production Customers migration remain isolated and undeployed. Current platform focus is bounded official content and exact-version QuestionSets; Treasure activation remains on hold.",
+    "WS5.2 and WS5.3 are now Max's (reassigned 2026-07-31); Natalie keeps human approval and WS5.1-04 onward. Dixon-initiated learner zh-HK/en UI is live from private main 6ed5105 and public Pages f26f5f7. Sign-in and Settings language selectors remain; the authenticated learner-header selector was removed at Dixon's follow-up. The language backend and production Customers migration remain isolated and undeployed. Current platform focus is bounded official content and exact-version QuestionSets; Treasure activation remains on hold.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -146,12 +149,12 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "Bounded official content + exact-version QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "Keep every generated candidate internal until explicit human approval, then build the WS5.1-04 QuestionSets. Treasure curation, matched comparison, and activation remain on hold under WS5.2-04." },
+      { title: "Bounded official content + exact-version QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "Keep every generated candidate internal until explicit human approval, then build the WS5.1-04 QuestionSets. Generation itself is Max's from 2026-07-31; Treasure curation, matched comparison, and activation remain on hold under WS5.2-04 (also Max)." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
-      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "After 01m8a and source merge: generate only the bounded official pack, preserve independent-judge evidence and status=review, require explicit human approval, then assemble approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content." },
+      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "both", note: "Split at the handoff line: Max owns the WS5.2 half (after 01m8a and source merge, generate only the bounded official pack, preserve independent-judge evidence and status=review); Natalie owns human approval and WS5.1-04 onward (assemble approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content)." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -193,19 +196,28 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18…21 · Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
-        { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
-        { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
-        { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
-        { label: "WS5.2-01m · Human-revision/manual-rejudge safety, evidence proof, and source merge", state: "done" },
         { label: "Dixon · Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
-        { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
-        { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
-        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
         { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 now unblocked but sequenced after current content work)", state: "active" },
+      ],
+    },
+    {
+      project: "tpc-online-platform",
+      owner:   "max",
+      title:   "Question & asset factories (WS5.2 · WS5.3)",
+      items: [
+        { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
+        { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
+        { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
+        { label: "WS5.2-01m · Human-revision/manual-rejudge safety, evidence proof, and source merge", state: "done" },
+        { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
+        { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
+        { label: "WS5.2-04 · Treasure curation, matched comparison and activation", state: "hold" },
+        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
+        { label: "Recurring AI factories (WS5.2-01f/01g evidence-gated auto-approval · WS5.3-05 illustrative-asset generator)", state: "hold" },
       ],
     },
     {
@@ -220,7 +232,6 @@ window.TPC_DASHBOARD = {
         { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "WS10 · Advanced question interactions & visual renderers (ex-WS4.4: class-A visual model, tap/hotspot, mini-games, open numeric)", state: "hold" },
         { label: "WS7-16 datastore decision + WS7-13 adapter parity (Sheets → Firestore/Supabase)", state: "todo" },
-        { label: "Recurring AI factories (WS5.2-01f/01g evidence-gated auto-approval · WS5.3-05 illustrative-asset generator)", state: "hold" },
       ],
     },
   ],
@@ -296,6 +307,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "OWNERSHIP: WS5.2 (question factory) and WS5.3 (asset factory) are reassigned in full from Natalie to Max, effective today. Natalie's closing position on WS5.2 is the 2026-07-24 01c7 GO for the bounded official seed-pack lane — 9 of 10 full-review risks cleared (all four P1s), with FR-07's stricter static-SVG parser hardening deferred to WS5.3-08. WS5.2-01m closed earlier the same day in the parallel Codex session, so Max inherits no open WS5.2 build item; WS5.2-04 (Treasure curation/comparison/activation) transfers as held work. Dashboard changes: WS5.2/WS5.3 roadmap rows lifted out of Natalie's Phase-1 group into a new Max-owned 'Question & asset factories' group, carrying the held recurring-factories and WS5.2-04 rows; Dixon's learner zh-HK/en UI row stays in Natalie's Phase-1 group since it is not factory work; the Now card was rebased onto Codex's replacement and notes that generation is Max's while approval and WS5.1-04 onward stay Natalie's. Unchanged and deliberately so: GO authorizes the bounded lane only — it does not approve any candidate, publish answer guides, enable auto-approval, or start recurring generation, and human approval remains mandatory." },
     { date: "2026-07-31", who: "Dixon (initiator) + Codex", project: "tpc-online-platform",
       summary: "Dixon initiated and acceptance-directed the learner zh-HK/en UI release. Private main is 6ed5105; public Pages is f26f5f7 via successful workflow 30619332923. Live sign-in and Settings language selectors remain, while the authenticated learner-header selector was removed at Dixon's follow-up. Frontend 583/583 and the 94-module build passed. No language Cloud Run backend or production Customers Sheet migration was deployed." },
     { date: "2026-07-31", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
