@@ -232,28 +232,50 @@ go at the bottom; never reuse a number.
 ### D9 — Decision attribution follows the originating person and device
 - Status: ACCEPTED
 - Domain: workspace
-- Updated: 2026-07-16
-- Body: Human decisions made from Natalie's MacBook are attributed to Natalie.
-  Human decisions first created on Max's other computer are attributed to Max.
-  Named agent implementation and review attribution stays with that agent.
+- Updated: 2026-07-31
+- Body: Human decisions are attributed by **originating account/device**, per the
+  map below. Named agent implementation and review attribution stays with that
+  agent, unchanged.
+
+  | Origin | Attributed to |
+  |---|---|
+  | `ktf@Hais-MacBook-Pro` — the dev Mac holding the `TPC Root` workspace | **Max** (founder) |
+  | Max's other computer | **Max** (founder) |
+  | `/Users/hkycaa` MacBook, general operation | **Natalie** |
+  | `/Users/hkycaa/Documents/TPC-webpage-UI-Dixon` and later Dixon-directed work | **Dixon** (intern, joined 2026-07) |
+
+  A person, not a directory, is the unit: work Dixon initiates or
+  acceptance-directs is Dixon's even though it originates inside Natalie's
+  account, and work Natalie initiates there stays Natalie's. Where a device is
+  shared, whoever initiated and accepted the change is the attributed person.
   Historical generic “founder” labels are resolved **per workspace**, because the
   label meant different people in different repos: in `tpc-online-platform`
   founder = **Natalie**; in this dashboard — the Business Space, the ledgers and
   the commissioned reports — founder = **Max**. Append-only archives
   (`changelog/ARCHIVE-*.md`) and Git history stay unchanged and are read under
   this rule.
-- Why: TPC is operated across two personal computers; a shared role label erased
-  who actually made each decision.
-- Evidence: Natalie confirmed on 2026-07-16 that this MacBook is exclusively hers,
-  that decisions originating from the other computer are Max's, and that the
-  dashboard groundwork, Business Space and reports were built by Max. The
-  per-workspace split is corroborated by wording that predates this decision:
+- Why: TPC is now operated by three people across three accounts; a shared role
+  label, and a two-device map, both erased who actually made each decision.
+- Evidence: Natalie confirmed on 2026-07-16 that the `/Users/hkycaa` MacBook is
+  exclusively hers, that decisions originating from the other computer are Max's,
+  and that the dashboard groundwork, Business Space and reports were built by Max.
+  The per-workspace split is corroborated by wording that predates this decision:
   the platform's `CLAUDE.md` stated “This project is owned by **Natalie**”, while
   `business/README.md` listed Natalie *separately from* “the founder” — so the
-  two labels were never the same person. Git authorship does **not** distinguish
-  the devices (316 of 320 platform commits carry the shared `HKYCAA
+  two labels were never the same person. Git authorship did **not** distinguish
+  the devices (316 of 320 platform commits carried the shared `HKYCAA
   <info@pyramidchallenge.org>` identity), so blame/reflog was not and cannot be
-  the basis.
+  the basis for anything before 2026-07-31. The 2026-07 amendment was forced by
+  two facts the original map could not express: the dev Mac (`ktf`) is a third
+  account it never named, and Dixon — a new intern — initiated and
+  acceptance-directed the live learner-language release (`d97d492`, Pages
+  workflow `30619332923`) from inside Natalie's account.
+- Enforcement: Max ruled on 2026-07-31 that every change originating from the dev
+  Mac is signed Max. That account's global Git identity is therefore
+  `Max <info@pyramidchallenge.org>`; commits made there from 2026-07-31 onward
+  carry it, and blame is authoritative for the dev Mac from that date forward.
+  Other accounts keep their existing identity — Git author alone still does not
+  separate Natalie from Dixon, so their split rests on this ledger.
 - Links: D8 · AGENTS.md · data.js · business/README.md
-- Revisit: if either device becomes shared, the operators change, or a decision
-  is intentionally joint.
+- Revisit: if a device becomes shared without a named initiator, the operators
+  change again, Dixon's role changes, or a decision is intentionally joint.

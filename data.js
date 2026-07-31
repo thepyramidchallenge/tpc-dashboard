@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-31",
-    updatedBy: "Codex (GPT-5)",
+    updatedBy: "Max + Claude (Opus 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -56,6 +56,7 @@ window.TPC_DASHBOARD = {
   owners: {
     max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general / 網站重建及整體 UI", color: "#1f7a96" },
     natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content / 學習平台、資料層、內容", color: "#6d4fd6" },
+    dixon:   { name: "Dixon",   zh: "Dixon",   scope: "Intern (joined 2026-07) — learner UI / 實習生：學生端介面", color: "#b06a1f" },
     both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#5a6570" },
   },
 
@@ -295,6 +296,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Max + Claude (Opus 5)", project: "",
+      summary: "D9 attribution amended for a third operator and a third device. Dixon joined as intern in 2026-07, initiated and acceptance-directed the live learner-language release (platform d97d492, Pages workflow 30619332923) from inside Natalie's /Users/hkycaa account — so the old two-device map attributed his work to Natalie. D9 now maps origin → person as a table (dev Mac ktf@Hais-MacBook-Pro + Max's other computer = Max; /Users/hkycaa = Natalie; Dixon-initiated or acceptance-directed work = Dixon regardless of the account it originates in), with the person, not the directory, as the unit. Max ruled that every change originating from the dev Mac is signed Max: that account's global Git identity is now Max <info@pyramidchallenge.org>, so blame is authoritative there from today forward, while Natalie and Dixon still both commit as HKYCAA and their split rests on this ledger. Registered dixon in owners. Synced the D9 restatements in business/README.md and the platform repo's CLAUDE.md. Also fixed the access gap behind all of this: tpc-online-platform-admin is private under the thepyramidchallenge personal account and HKYCAA was not a collaborator, so git pull on the dev Mac failed with 'Repository not found' and the local copy had sat 4 weeks stale at July 3; HKYCAA now holds write, pull verified." },
     { date: "2026-07-31", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "UI polish: the boot splash and admin lazy-chunk fallback now show an animated pyramid loader — the logo mark assembling itself course by course (pure CSS/SVG, 0.2s fade-in delay so fast boots never flash it, reduced-motion users get the complete static mark). Committed as 66e2f20 on codex/ws5-2-01m-feedback-loop, kept strictly separate from the parallel uncommitted WS5.2-01m work; deploy-gate tests 549/549, published via deploy.sh as Pages bf1907e (workflow 30611377059) and live-verified on the public app." },
     { date: "2026-07-30", who: "Natalie + Codex (GPT-5); Claude evidence reviewed", project: "tpc-online-platform",

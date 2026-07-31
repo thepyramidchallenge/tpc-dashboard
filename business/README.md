@@ -34,9 +34,11 @@ It is **not** a manifesto, a spec, or a prompt. It is a small, structured,
 If a business entry and a product decision ever contradict, that contradiction
 is itself important — surface it, don't silently pick one.
 
-Human decision attribution follows **D9**: decisions made from Natalie's
-MacBook are attributed to Natalie; decisions originating from Max's other
-computer are attributed to Max. Keep named agent authorship intact.
+Human decision attribution follows **D9**, which maps origin → person: the dev
+Mac (`ktf@Hais-MacBook-Pro`, this `TPC Root` workspace) and Max's other computer
+are **Max**; the `/Users/hkycaa` MacBook is **Natalie**; work initiated or
+acceptance-directed by **Dixon** (intern) is Dixon's even when it originates
+inside Natalie's account. Keep named agent authorship intact.
 
 ## Entry schema (keep every entry in this shape)
 
