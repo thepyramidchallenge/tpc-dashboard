@@ -65,7 +65,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "WS5.2 and WS5.3 are now Max's (reassigned 2026-07-31); Natalie keeps human approval and WS5.1-04 onward. Dixon-initiated learner zh-HK/en UI is live from private main 6ed5105 and public Pages f26f5f7. Sign-in and Settings language selectors remain; the authenticated learner-header selector was removed at Dixon's follow-up. The language backend and production Customers migration remain isolated and undeployed. Current platform focus is bounded official content and exact-version QuestionSets; Treasure activation remains on hold.",
+    "WS4.2 is production-complete: the fixed 30-question mock, admin publish/unpublish gate, exact active-attempt snapshot, reload recovery, integrity log and bilingual Coming Soon state all passed live. Current platform focus returns to bounded official content and WS5.1-04 exact-version QuestionSets; Max owns WS5.2/WS5.3, Natalie keeps human approval and WS5.1-04 onward, and Treasure activation remains on hold.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -91,7 +91,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Dixon-initiated learner zh-HK/en frontend is live: private main 6ed5105; public Pages f26f5f7 via workflow 30619332923. Sign-in and Settings selectors remain; the authenticated learner-header selector is removed. Next: keep each bounded-pack AI row at review until explicit approval and build exact-version QuestionSets. Cross-device language persistence requires a separate backend/migration release.",
+      next:  "Public Pages 14b2494 serves merged main e3a5d7f (WS4.2 plus the glyph release) via workflow 30627860310. Keep each bounded-pack AI row at review until explicit approval, then build the official WS5.1-04 exact-version QuestionSets. Cross-device language persistence still requires a separate backend/migration release.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -103,7 +103,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private main 8459c82 records the five-minute companion-recovery release. Frontend Pages remains f26f5f7; Cloud Run tpc-api-takeover5m0731 is Ready at 100%, aligning the UI and backend timeout. A controlled stale-attempt/takeover proof remains; the account-language backend and production Customers migration are not deployed.",
+      next:  "Private main e3a5d7f records the completed WS4.2 release. Cloud Run tpc-api-ws42align0731 serves 100% from b91684e; production migrations and the full publish/run/reload/submit/unpublish smoke passed. Next: official WS5.1-04 QuestionSets after bounded content approval; the account-language backend and Customers migration remain undeployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -157,7 +157,6 @@ window.TPC_DASHBOARD = {
     ],
     next: [
       { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "Parallel lane — does not displace the shadow feedback proof. Dixon (intern) is implementing; Max and Natalie stay accountable. Frontend only, on the existing WS3.1-06 Report screen: extract aggregation into a tested reportStats.js, then accuracy trend, topic/domain breakdown with a 7d/30d/all filter, local past-attempt review in the History drill-in, minimum-data guards, and test coverage. Cross-device completeness stays WS8-04; WS8-01, WS8-10, WS8-12 and WS9-00 remain excluded and unassigned." },
-      { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit and first-time-user default → WS6.1-11 pilot. Split from WS6.2 on 2026-07-31 when the UI review moved to Max; the two now run as separate lanes." },
       { title: "WS6.2 — UI review", project: "tpc-online-platform", owner: "max", note: "Reassigned to Max 2026-07-31, matching his UI-in-general scope. Pilot-relevant pass: notify/validation classes, whole-app screen-by-screen review, bilingual copy, glyph/colour/button consistency, Home layout, button UAT, young-learner usability and the Log abnormal-activity banner. Five tasks stay held until after the pilot. WS6.2-07 still confirms UID/display-field scope with Max first." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -201,7 +200,7 @@ window.TPC_DASHBOARD = {
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "Dixon · Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
-        { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
+        { label: "WS4.2 · Mock / fixed 30-question set", state: "done" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
         { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 now unblocked but sequenced after current content work)", state: "active" },
       ],
@@ -336,6 +335,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "WS4.2 COMPLETE: PR #52 merged the agreed fixed-set behavior as b91684e. Production gained the QuestionSets publication seal and exact DraftSessions question snapshot; Cloud Run tpc-api-ws42align0731 serves 100% with zero error logs through smoke. A superadmin published only the 30-question K2 smoke set, confirmed the 15-minute fixed-order briefing, reloaded and resumed the same wall-clock attempt, submitted all 30, verified the compact integrity record (telemetry present; one recovery), then unpublished it. Sheets read-back found 30 Attempts, no residual draft, successful publish/unpublish logs, all 8 sets draft and a blank final seal; learners again see the bilingual Coming Soon card. Public Pages 14b2494 now serves merged main e3a5d7f through workflow 30627860310, retaining both WS4.2 and Claude's glyph alignment. WS4.2-02/03 are closed; official content and WS5.1-04 QuestionSets remain next." },
     { date: "2026-07-31", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "UI POLISH RELEASE: two frontend changes shipped to Pages. (1) Boot loader: the static \u25b2 splash became the logo mark assembling itself layer by layer (pure CSS/SVG, reduced-motion safe, also on the admin lazy-chunk fallback). (2) In-progress markers + glyph alignment (PR #50): every control whose function is deferred, Phase 2/3 or held \u2014 Profile upgrade, generator Treasure tab/button, Batch upload, Class A asset help, reserved question types \u2014 now carries a monochrome hourglass icon, and all interactive-control glyphs (back chevrons, list chevrons, Report clock, Result check/cross, bookmark flag, notification dots, quiz stepper, admin plus/spark/arrow/grid/dots) were unified on the shared monochrome Icon set with 12 new shapes; \u2039\u203a stripped from i18n strings. Combined tree verified 607/607 frontend tests + build; deployed as Pages cbb632f from merge 7a3a07d on top of the WS4.2 release; hourglass marker confirmed in the live bundle. Docs synced via PR #53." },
     { date: "2026-07-31", who: "Natalie + Codex", project: "tpc-online-platform",
