@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-31",
-    updatedBy: "Natalie + Claude (Opus 4.8)",
+    updatedBy: "Natalie + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -103,7 +103,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private source of truth includes main 6ed5105. Frontend Pages is f26f5f7; Cloud Run remains tpc-api-feedback0731. Dixon's learner-language UI is live, but its account-language backend and production Customers migration are not deployed.",
+      next:  "Private main 8459c82 records the five-minute companion-recovery release. Frontend Pages remains f26f5f7; Cloud Run tpc-api-takeover5m0731 is Ready at 100%, aligning the UI and backend timeout. A controlled stale-attempt/takeover proof remains; the account-language backend and production Customers migration are not deployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -227,7 +227,7 @@ window.TPC_DASHBOARD = {
       items: [
         { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
         { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
-        { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
+        { label: "WS5.2-01k/01l done; WS5.2-01j live with five-minute UI/backend alignment, controlled boundary proof + Admin diagnostics UI publication remaining", state: "active" },
         { label: "WS5.2-01m · Human-revision/manual-rejudge safety, evidence proof, and source merge", state: "done" },
         { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
         { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
@@ -336,6 +336,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "RECOVERY ALIGNMENT: closed the user-visible five-minute UI / 12-minute deployed-backend mismatch without shipping the held language-preference backend. Minimal release 62ae763 applies only the already-merged dc1ea75 timeout/test patch to exact diagnostics source 826c180; backend 518/518 and lint 0 errors passed. Cloud Run tpc-api-takeover5m0731 was staged at 0%, became Ready, passed tagged health, retained byte-identical non-image runtime configuration, then moved to 100%; canonical health passed and post-cutover error/5xx count was zero. No Sheets migration/read/write, generation action, frontend deploy, Customers migration or language-preference action occurred. Platform PR #49 merged the synchronized release boundary into main 8459c82. WS5.2-01j6 remains active only for a future controlled five-minute stale-attempt/takeover and late-result proof using suitable existing production state; do not create generation work solely for the smoke." },
     { date: "2026-07-31", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "OWNERSHIP: WS6.2 UI review reassigned from Natalie to Max, matching his UI-in-general scope. The combined \"WS6.1 + WS6.2 pilot-gating polish\" card is split in two, since the halves now have different owners: WS6.1 launch-critical polish stays with Natalie, WS6.2 becomes its own Max-owned lane (15 tasks, 5 held until after the pilot). WS6.2-07 still confirms UID/display-field scope with Max before its review. Platform docs record the same gate on the WS6.2 section (157a146), mirroring how WS6.3 names its lane owner. That commit also corrected docs/README.md, which still claimed the diagnostics source was not in main — merging it made that false, and only the public Admin UI is still missing." },
     { date: "2026-07-31", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
