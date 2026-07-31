@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-07-27",
+    updated:   "2026-07-31",
     updatedBy: "Codex (GPT-5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
@@ -61,7 +61,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Use the closed WS5.2 lane for a bounded official seed pack with saved independent-judge evidence and explicit human approval, then resume WS5.1-04 QuestionSets before image-placeholder and fixed-set Practice/mock work.",
+    "Complete one controlled WS5.2-01m human edit → mechanical validation → manual AI judging → human decision proof, read back the immutable evidence, then merge the exact deployed branch before scaling the bounded official seed pack or QuestionSets.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -87,7 +87,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS5.2 is GO for the bounded official seed-pack lane. Keep every AI row at review with saved independent-judge evidence until explicit human approval, then build the WS5.1-04 disjoint QuestionSets; follow with WS5.1-05 image placeholders and the WS4.2 fixed-set Practice/mock proof.",
+      next:  "Finish the first real WS5.2-01m revise/rejudge/decide proof and merge the deployed source branch. Then keep every bounded-pack AI row at review until explicit human approval, build the WS5.1-04 disjoint QuestionSets, and continue to placeholders plus fixed-set Practice/mock.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -99,7 +99,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Full private source. Current main tip is 11d59c7; Cloud Run tpc-api-ws52retry serves the e3d050d backend at 100%, while Pages c5bbc84 was built from UI source 36ffd03. Use scripts/production-status.py for machine state and AGENT_HANDOFF.md for the operational boundary.",
+      next:  "Full private source. origin/main is 96007e6, while exact deployed WS5.2-01m source 2c71644 is still on codex/ws5-2-01m-feedback-loop; Cloud Run tpc-api-ws5201m0730 serves 100% and Pages df57e43 is live. Complete 01m8a, then merge the branch without losing the verified release boundary.",
     },
     {
       id:    "entrance-qr-scan",
@@ -146,11 +146,12 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "WS5.2 is GO. Generate only the bounded official pack, preserve independent-judge evidence and status=review, require explicit human approval, then assemble the approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content." },
+      { title: "WS5.2-01m live acceptance + source merge", project: "tpc-online-platform", owner: "natalie", note: "Use one internal generated question for the controlled human edit → mechanical validation → manual companion judging → human decision journey. Read back immutable original/revision/advisory/decision evidence, prove failed/stale paths retain the edit, then merge exact deployed source 2c71644 plus docs head 9ea066d into main." },
       { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
       { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
     ],
     next: [
+      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "After 01m8a and source merge: generate only the bounded official pack, preserve independent-judge evidence and status=review, require explicit human approval, then assemble approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
       { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -195,6 +196,7 @@ window.TPC_DASHBOARD = {
         { label: "WS5.2-01c6/01c7 · 24-candidate comparison accepted; direct compiled prompting selected; bounded official lane GO", state: "done" },
         { label: "WS5.2-01d/01h/01i · Typed GenerationRecords ledger + 3-hour session-paired companion + transport/promotion proofs", state: "done" },
         { label: "WS5.2-01k/01l/01j · Prompt/input inspection, Phase-1 answer guide, metrics and all seven recovery cases", state: "done" },
+        { label: "WS5.2-01m · Human-revision/manual-rejudge safety live; first real revise→rejudge→decide evidence proof and source merge pending", state: "active" },
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
         { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
         { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
@@ -293,6 +295,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-30", who: "Natalie + Codex (GPT-5); Claude evidence reviewed", project: "tpc-online-platform",
+      summary: "JULY 30 WRAP — UI: Home dashboard typography/grid and the accuracy trend were iterated into an adaptive, runtime-built, pointer/keyboard-accessible five-point chart; the watch-pairing panel gained independent Codex/Claude CLI-aware model presets and exact custom IDs, all published through reviewed Pages releases. RELIABILITY: a real repeated-sign-in/Home fan-out caused 62 Sheets reads/minute and eight quota rejections; Codex traced it to duplicate GIS/auth work plus separate hydration calls, shipped one guarded getHomeBootstrap with a five-tab Results batchGet and one Questions read, and verified one fresh sign-in at six total Sheets reads, all attempt-1/200, followed by a five-minute window with zero reads, retries, quota errors, API errors, 5xx, or companion polling. WS5.2/GOVERNANCE: the obsolete evaluator path was physically removed; Phase-1 production sizing, recurring generation and auto-approval boundaries were closed or routed to later evidence gates; ROADMAP workstream summaries were restored; the expanded model picker landed on main 96007e6. HUMAN–AI REVIEW: exact source 2c71644 is live on Cloud Run tpc-api-ws5201m0730 at 100% and Pages df57e43; QuestionReviewEvaluations grew from 18 to 25 columns, and frozen human revisions, manual companion re-judging, fingerprint-bound approval, immutable evidence history and failure retention passed backend 497/497, frontend 546/546, migration 4/4, build and lint. The source remains pushed but unmerged on codex/ws5-2-01m-feedback-loop; 01m8a is honestly partial until one real revise→rejudge→decide round is read back. DOCS: all 20 tracked Markdown files were reconciled and pushed at 9ea066d; links/fences, 65 API actions, 326 unique roadmap IDs and all 18 calculated progress summaries pass. CRITICAL ASSESSMENT: Codex delivered substantial, well-tested product/release progress and responded well to the quota incident, but deployment from an unmerged branch and the still-unrun acceptance journey are material integration risks; daily UI/release churn also increased operational surface. No independently attributable July 30 Claude source/docs commit or active Claude worktree was found, so today does not support a symmetric agent-output comparison. Claude remains the configured independent-judge lane and its earlier co-authored 8c40a82 staging/recovery/metrics foundation is still embedded, but July 30's attributable implementation, incident response, release and documentation work was Codex-led." },
     { date: "2026-07-27", who: "Codex (GPT-5)", project: "tpc-online-platform",
       summary: "Post-closure daily wrap for July 25–26, recorded after all meaningful platform development tasks became idle. The sole source change after the prior July 24 dashboard wrap was the final consolidation at 11d59c7; no further commit or deployment evidence landed on July 25–26. tpc-online-platform is clean and aligned with origin/main, and all 20 tracked Markdown files remain synchronized, so no platform documentation edit was necessary. Claude's co-authored 8c40a82 contribution is fully contained in main and supplied a strong WS5.2-01j foundation—pre-judge staging, judge-only recovery, one-replacement budgets, honest batch aggregates and per-attempt metrics—while Codex then hardened, tested, migrated, deployed and documented the wider release. Critical verdict: WS5.2 is operationally closed only for the bounded official seed-pack lane, not for recurring or autonomous generation; explicit human approval remains mandatory. The next product constraint is approved content inventory and disjoint QuestionSets, while FR-07 SVG allowlisting, FR-08 production asset evidence/snapshots and FR-09 frontend deployment remain follow-ups." },
     { date: "2026-07-24", who: "Natalie + Codex (GPT-5)", project: "tpc-online-platform",
