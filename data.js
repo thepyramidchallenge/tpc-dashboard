@@ -52,12 +52,13 @@ window.TPC_DASHBOARD = {
    * Who owns what. `owner` fields elsewhere (projects, roadmap, board) must
    * use one of these keys. Split: Max = pyramid-site + UI in general, plus
    * the WS5.2 question factory and WS5.3 asset factory (reassigned
-   * 2026-07-31, after Natalie closed WS5.2 to GO);
+   * 2026-07-31, after Natalie closed WS5.2 to GO) and the WS6.2 UI review
+   * (reassigned the same day);
    * Natalie = the rest of the learning platform (data layer, content,
-   * QuestionSets, pilot).
+   * QuestionSets, WS6.1 pilot).
    * --------------------------------------------------------------------- */
   owners: {
-    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general + question/asset factories (WS5.2 · WS5.3) / 網站重建、整體 UI、出題及素材工廠", color: "#1f7a96" },
+    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general incl. WS6.2 UI review + question/asset factories (WS5.2 · WS5.3) / 網站重建、整體 UI（含 WS6.2 介面檢視）、出題及素材工廠", color: "#1f7a96" },
     natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content (excl. WS5.2/WS5.3 factories) / 學習平台、資料層、內容（工廠除外）", color: "#6d4fd6" },
     both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#5a6570" },
   },
@@ -157,7 +158,8 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "Parallel lane — does not displace the shadow feedback proof. Dixon (intern) is implementing; Max and Natalie stay accountable. Frontend only, on the existing WS3.1-06 Report screen: extract aggregation into a tested reportStats.js, then accuracy trend, topic/domain breakdown with a 7d/30d/all filter, local past-attempt review in the History drill-in, minimum-data guards, and test coverage. Cross-device completeness stays WS8-04; WS8-01, WS8-10, WS8-12 and WS9-00 remain excluded and unassigned." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
-      { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
+      { title: "WS6.1 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit and first-time-user default → WS6.1-11 pilot. Split from WS6.2 on 2026-07-31 when the UI review moved to Max; the two now run as separate lanes." },
+      { title: "WS6.2 — UI review", project: "tpc-online-platform", owner: "max", note: "Reassigned to Max 2026-07-31, matching his UI-in-general scope. Pilot-relevant pass: notify/validation classes, whole-app screen-by-screen review, bilingual copy, glyph/colour/button consistency, Home layout, button UAT, young-learner usability and the Log abnormal-activity banner. Five tasks stay held until after the pilot. WS6.2-07 still confirms UID/display-field scope with Max first." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
       { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
     ],
@@ -201,8 +203,21 @@ window.TPC_DASHBOARD = {
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
         { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
-        { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
         { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 now unblocked but sequenced after current content work)", state: "active" },
+      ],
+    },
+    {
+      project: "tpc-online-platform",
+      owner:   "max",
+      title:   "UI review (WS6.2) — pilot-relevant pass",
+      items: [
+        { label: "WS6.2-01 · Notify-layer message classes + form vs field validation", state: "todo" },
+        { label: "WS6.2-02 · Whole-app screen-by-screen review", state: "todo" },
+        { label: "WS6.2-03 · Bilingual labels, buttons and copy", state: "todo" },
+        { label: "WS6.2-05 · Young-learner usability + non-audio accessibility", state: "todo" },
+        { label: "WS6.2-08…12 · Glyphs/colours/buttons, Home layout, button UAT, Log banner", state: "todo" },
+        { label: "WS6.2-04/06/13/14/15 · Held until after pilot (colour logic, unselect, cross-device language, audio, image ratios)", state: "hold" },
+        { label: "WS6.2-07 · Confirm UID/display-field scope with Max, then review", state: "todo" },
       ],
     },
     {
@@ -321,6 +336,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
+      summary: "OWNERSHIP: WS6.2 UI review reassigned from Natalie to Max, matching his UI-in-general scope. The combined \"WS6.1 + WS6.2 pilot-gating polish\" card is split in two, since the halves now have different owners: WS6.1 launch-critical polish stays with Natalie, WS6.2 becomes its own Max-owned lane (15 tasks, 5 held until after the pilot). WS6.2-07 still confirms UID/display-field scope with Max before its review. Platform docs record the same gate on the WS6.2 section (157a146), mirroring how WS6.3 names its lane owner. That commit also corrected docs/README.md, which still claimed the diagnostics source was not in main — merging it made that false, and only the public Admin UI is still missing." },
     { date: "2026-07-31", who: "Natalie + Claude (Opus 4.8)", project: "tpc-online-platform",
       summary: "REPORT TAB: recorded the WS6.3 lane now that its plan landed (platform 8600c57) — six frontend-only tasks on the existing WS3.1-06 Report screen: extract aggregation into a tested reportStats.js, accuracy trend, topic/domain breakdown with a 7d/30d/all filter, local past-attempt review in the History drill-in, minimum-data guards, and test coverage. Dixon (intern) is implementing; Natalie chose to keep the lane owned by Max and Natalie rather than add a new owner key, so accountability stays with the principals and Dixon is named in the card note. It is a parallel lane and does not displace the shadow feedback proof. Exclusions restated so they are not quietly absorbed later: cross-device completeness stays WS8-04, and WS8-01, WS8-10, WS8-12 and WS9-00 remain unassigned. Platform side landed earlier today: the AGENT_HANDOFF.md → docs/ move completed as a tracked rename with every reference repointed, FULL_REVIEW_RISKS.md was deleted with its one still-open item FR-07 (static SVG validation) migrated into ROADMAP under WS5.3-08 plus a short operational gate in the handoff, and the WS6.3 queue entry followed once the move was committed." },
     { date: "2026-07-31", who: "Natalie + Codex", project: "tpc-online-platform",
