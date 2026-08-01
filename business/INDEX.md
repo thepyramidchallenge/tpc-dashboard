@@ -15,6 +15,9 @@
 - **D7** · ACCEPTED · [platform, live] — The long arc: platform-first → digitized live → unified portfolio
 - **D8** · ACCEPTED · [workspace] — Workspace governance: one global truth, module docs cite it, machine-enforced
 - **D9** · ACCEPTED · [workspace] — Decision attribution follows the originating person and device
+- **D10** · ACCEPTED · [workspace, ops] — Three-person ownership re-cut for the UAT sprint
+- **D11** · ACCEPTED · [platform, content] — Offline recipe harness: mandate and hard boundary
+- **D12** · ACCEPTED · [platform, ops] — Infrastructure stays on Sheets + Drive through UAT
 
 ## Hypotheses (H#) — [HYPOTHESES.md](HYPOTHESES.md)
 

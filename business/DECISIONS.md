@@ -279,3 +279,87 @@ go at the bottom; never reuse a number.
 - Links: D8 · AGENTS.md · data.js · business/README.md
 - Revisit: if a device becomes shared without a named initiator, the operators
   change again, Dixon's role changes, or a decision is intentionally joint.
+
+### D10 — Three-person ownership re-cut for the UAT sprint
+- Status: ACCEPTED
+- Domain: workspace, ops
+- Updated: 2026-07-31
+- Body: Ownership across the platform is re-cut for the founder sprint
+  (2026-07-31 → UAT week 2026-09-10..13): **Max** owns learner-facing UI/UX
+  (Home, Practice, 答題畫面, settings, parent shell), the visual question
+  factory (scene-spec → SVG) and generation operations; **Natalie** owns the
+  data layer, integrity/audit machinery, backend, governed generation lane and
+  admin platform; **Dixon** (intern) owns the reports page and question-review
+  operations (math/curricular correctness). K-level developmental-fit review
+  sits with Max (OT background). pyramid-site work is paused for the sprint
+  and resumes after UAT. Review duty is bounded: Dixon's review load stays
+  under ~1.5 h/day so reports work survives.
+- Why: Max moved from Team Futura dev onto the platform on 2026-07-31; the old
+  two-owner split (D9 owners map) no longer matched who does what, and Dixon's
+  role had grown past "intern helping".
+- Evidence: Max ruled this on 2026-07-31. Dixon initiated and
+  acceptance-directed the live learner-language release (platform d97d492);
+  he is a qualified primary-level math tutor; neither Dixon nor Natalie
+  teaches kindergarten, which is what routes K-level developmental fit to Max.
+  Natalie's async review is pending — she may challenge any boundary.
+- Links: D9 · data.js owners · tpc-online-platform-admin/docs/RECIPE_HARNESS_SPEC.md
+- Revisit: at UAT close-out; if Natalie's review objects; if Dixon's role or
+  hours change.
+
+### D11 — Offline recipe harness: mandate and hard boundary
+- Status: ACCEPTED
+- Domain: platform, content
+- Updated: 2026-07-31
+- Body: Generation-recipe iteration (August) runs in an **offline harness** on
+  Max's dev Mac, consuming frozen snapshots of the production contracts
+  (QF-GEN-2026-07-23b, QF-JUDGE-2026-07-31a+35d3129, question schema, qff1
+  category vocabulary) so the proven recipe transfers 1:1 into the governed
+  lane. Hard rules: every harness-generated question is throwaway and
+  internal-only (per the accepted WS5.2-01a scope); **nothing from the harness
+  is ever imported into production** — after the recipe converges, production
+  content is regenerated through the governed lane so live questions carry
+  real provenance (D6); the harness touches no production surface and leaves
+  the WS5.2-04 Treasure hold untouched. Founder start was ruled without a
+  prior sync: the spec's open questions became async review items for Natalie.
+  Convergence gate: two consecutive 30-question holdout validation batches at
+  ≥75–80% Dixon pass → GO/NO-GO 2026-08-21..23; NO-GO cuts scope, not the
+  deadline.
+- Why: the production feedback loop is deliberately dormant (shadow gate,
+  activation refused until the matched-comparison contract), and iterating
+  recipes through the governed lane would pollute production ledgers with
+  throwaway rows — while the calibration precedent (01c Run 001, offline,
+  payload-private) already established the offline pattern.
+- Evidence: RECIPE_HARNESS_SPEC.md (ACTIVE, platform repo branch
+  docs/offline-recipe-harness-spec) with the scene-spec visual design and
+  working PoC (factory-harness/visual-poc.html, 7 archetypes K2–P6);
+  WS5.2-01a decisions 2026-07-10 already required pre-launch generation to be
+  in-house-only.
+- Links: D6 · D10 · D12 · tpc-online-platform-admin/docs/RECIPE_HARNESS_SPEC.md
+- Revisit: at GO/NO-GO 2026-08-21..23; if Natalie's async review objects; when
+  WS5.2-04 gets its founder GO.
+
+### D12 — Infrastructure stays on Sheets + Drive through UAT
+- Status: ACCEPTED
+- Domain: platform, ops
+- Updated: 2026-07-31
+- Body: No data-layer or asset-store migration before UAT. Google Sheets
+  (behind the Cloud Run adapter) and Drive (asset library) remain the stack;
+  the migration decision is deferred to ~2026-10 after UAT, taken on real load
+  data. Triggers that reopen it: sustained concurrency trending toward the
+  ~60 reads/min per-service-account quota (not a one-off spike), product
+  queries Sheets cannot serve (e.g. D5 ranking at scale), or approach to the
+  1000-free-user target. Pre-UAT hardening is operational only: invite waves
+  (~10 families each), a W5 dress rehearsal load test, and a kid-friendly
+  retry state for 429s. Factory-generated SVGs ship inline in the question row
+  (they are text, versioned and reviewed with the question) rather than as
+  per-image Drive registrations.
+- Why: the 2026-07-30 incident proved the quota ceiling is real but also that
+  the fixed cost is low (6 reads per cold sign-in, 2–3 warm); UAT scale
+  (dozens of families in waves) fits with headroom, while a migration would
+  re-verify the entire integrity/test surface inside a six-week window with
+  zero slack — infrastructure is not the bottleneck UAT is testing.
+- Evidence: July 30 Sheets incident (62 reads/min, 8 quota rejections) and its
+  fix with production proof; the backend adapter was built for a later swap;
+  UAT recruitment targets the Season 2 base in waves.
+- Links: D7 · D11 · tpc-online-platform-admin/docs/ARCHITECTURE.md
+- Revisit: ~2026-10 post-UAT with real load data, or on any trigger above.

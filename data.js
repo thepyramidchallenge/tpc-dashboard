@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-07-31",
-    updatedBy: "Max + Claude (Opus 5)",
+    updatedBy: "Max + Claude (Fable 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -54,15 +54,15 @@ window.TPC_DASHBOARD = {
    * Natalie = the rest (learning platform, data layer, content).
    * --------------------------------------------------------------------- */
   owners: {
-    max:     { name: "Max",     zh: "Max",     scope: "pyramid-site + UI in general / 網站重建及整體 UI", color: "#1f7a96" },
-    natalie: { name: "Natalie", zh: "Natalie", scope: "Learning platform, data, content / 學習平台、資料層、內容", color: "#6d4fd6" },
-    dixon:   { name: "Dixon",   zh: "Dixon",   scope: "Intern (joined 2026-07) — learner UI / 實習生：學生端介面", color: "#b06a1f" },
+    max:     { name: "Max",     zh: "Max",     scope: "Learner UI/UX · visual factory · generation ops · pyramid-site (paused) / 學生端UI、出題工廠、生成營運 (D10)", color: "#1f7a96" },
+    natalie: { name: "Natalie", zh: "Natalie", scope: "Data layer, integrity, backend, governed lane, admin platform / 資料層、後端、審批機制 (D10)", color: "#6d4fd6" },
+    dixon:   { name: "Dixon",   zh: "Dixon",   scope: "Intern (joined 2026-07) — reports page + question review / 實習生：報告頁、審題 (D10)", color: "#b06a1f" },
     both:    { name: "Max + Natalie", zh: "Max + Natalie", scope: "Shared / 共同", color: "#5a6570" },
   },
 
   // The single most important thing to know before starting work today.
   focus:
-    "Complete one controlled WS5.2-01m human edit → mechanical validation → manual AI judging → human decision proof, read back the immutable evidence, then merge the exact deployed branch before scaling the bounded official seed pack or QuestionSets.",
+    "Founder sprint to UAT (Sep 10–13, K2/K3 deep): cook the generation recipe offline (Dixon-reviewed daily batches → GO/NO-GO Aug 21–23), redesign the learner UI to K2-self-operable, then fill the pools through the governed lane — WS5.2-01m merge + stabilize main is checkpoint one.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -147,19 +147,20 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "WS5.2-01m live acceptance + source merge", project: "tpc-online-platform", owner: "natalie", note: "Use one internal generated question for the controlled human edit → mechanical validation → manual companion judging → human decision journey. Read back immutable original/revision/advisory/decision evidence, prove failed/stale paths retain the edit, then merge exact deployed source 2c71644 plus docs head 9ea066d into main." },
-      { title: "Hero parallax parity",        project: "pyramid-site",        owner: "max",     note: "7-layer hero is reproducible offline — confirm it matches live." },
-      { title: "Absorb scoring/report graphics", project: "pyramid-site",     owner: "max",     note: "distribution curve, scoring table, radar 1/2 → public/img (ASSET_GATHER §B)." },
+      { title: "Recipe harness B1–B4 + 第一爐 text batch", project: "tpc-online-platform", owner: "max", note: "Codex builds from RECIPE_HARNESS_SPEC (branch docs/offline-recipe-harness-spec, ACTIVE per D11). First 12–15q batch fires night of Aug 3; Dixon blind-reviews all on Aug 4 morning — his unfiltered verdicts double as the confidence-threshold calibration. Scene-spec visual PoC already proven (7 archetypes, K2–P6)." },
+      { title: "WS5.2-01m live acceptance + source merge", project: "tpc-online-platform", owner: "natalie", note: "Use one internal generated question for the controlled human edit → mechanical validation → manual companion judging → human decision journey. Read back immutable original/revision/advisory/decision evidence, prove failed/stale paths retain the edit, then merge exact deployed source 2c71644 plus docs head 9ea066d into main. Now checkpoint one of the UAT sprint — main must be stable before UI implementation lands (W4)." },
+      { title: "Learner UI design sprint — 答題畫面 first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated. Settings streamlined; 429 kid-friendly retry state included. Design freeze Aug 21." },
+      { title: "Reports page", project: "tpc-online-platform", owner: "dixon", note: "UAT-comprehensible for parents by Sep 4 (not final). Dixon's review duty is capped ~1.5h/day (D10) so this work survives the batch cadence." },
     ],
     next: [
-      { title: "Bounded official seed pack → WS5.1-04 QuestionSets", project: "tpc-online-platform", owner: "natalie", note: "After 01m8a and source merge: generate only the bounded official pack, preserve independent-judge evidence and status=review, require explicit human approval, then assemble approved inventory into two disjoint 30-question K2 sets without treating calibration/smoke rows as content." },
+      { title: "Recipe GO/NO-GO — Aug 21–23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at ≥75–80% Dixon pass + judge agreement good enough to pre-filter → governed intake starts. NO-GO cuts scope (single level / smaller pool), never the date." },
+      { title: "Governed-lane intake → WS5.1-04 QuestionSets (W4–5)", project: "tpc-online-platform", owner: "natalie", note: "After GO + 01m merge: regenerate through the governed lane only (~15–20 approvals/day; Dixon correctness confirm + Max developmental pass + sample audit), preserve independent-judge evidence and status=review, assemble two disjoint 30-question sets per level (K2/K3). Harness output never imports (D11)." },
       { title: "WS5.1-05 + WS4.2 fixed-set flow", project: "tpc-online-platform", owner: "natalie", note: "After sets exist: add/verify placeholder handling for the 69 missing per-choice images, then run a fixed QuestionSet end-to-end through Practice/mock and save a session tagged to the set id." },
-      { title: "WS6.1 + WS6.2 — pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit, first-time-user default, and pilot-relevant UI/copy/usability/visual/log-abnormal-banner review → WS6.1-11 pilot." },
-      { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
-      { title: "Deploy pyramid-site",         project: "pyramid-site",        owner: "max",     note: "Vercel/Netlify once parity is reached." },
+      { title: "UAT — Sep 10–13 (K2/K3 deep)", project: "tpc-online-platform", owner: "both", note: "Feature freeze Sep 4; dry run Sep 7–9; invite waves ~10 families each from the Season 2 base (invites out ~Aug 24). Pass = K2 completes 10q unaided · parents understand the report · zero quota red. Kid micro-tests (Aug 24–30, Sep 1–6) and a W5 dress-rehearsal load test precede it (D12)." },
+      { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2. Post-UAT lane; Dixon's reports-page work feeds the report UI." },
     ],
     blocked: [
-      { title: "Export CDN-hotlinked photos", project: "pyramid-site",        owner: "max",     note: "About photo, report mockup, trophy — need Squarespace export (ASSET_GATHER §E)." },
+      { title: "pyramid-site — paused for UAT sprint", project: "pyramid-site", owner: "max", note: "Hero parallax parity, scoring/report graphics absorb, deploy, CDN photo export (ASSET_GATHER §B/§E) — all parked by D10 until after UAT; resume ~mid-Sep." },
     ],
   },
 
@@ -173,9 +174,9 @@ window.TPC_DASHBOARD = {
       title:   "Marketing site rebuild",
       items: [
         { label: "Next.js scaffold + brand system",   state: "done"   },
-        { label: "Hero parallax (7 layers)",          state: "active" },
-        { label: "Content sections parity",           state: "active" },
-        { label: "Asset migration (mainpage → public)", state: "active" },
+        { label: "Hero parallax (7 layers) — paused for UAT sprint (D10)", state: "hold" },
+        { label: "Content sections parity — paused for UAT sprint (D10)",  state: "hold" },
+        { label: "Asset migration (mainpage → public) — paused (D10)",     state: "hold" },
         { label: "Deploy (Vercel/Netlify)",           state: "todo"   },
         { label: "Link into learning platform",       state: "todo"   },
       ],
@@ -201,10 +202,11 @@ window.TPC_DASHBOARD = {
         { label: "Full-review gate · 10 P1/P2 risks remediated and regression register retained", state: "done" },
         { label: "WS5.2-02e · Approval evaluation and retained decision-evidence readback", state: "done" },
         { label: "WS5.2-02f · Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
-        { label: "WS5.3 · Asset factory (AI SVG gen)", state: "active" },
+        { label: "WS5.3 · Visual factory — scene-spec → SVG (PoC done: 7 archetypes K2–P6)", state: "active" },
+        { label: "Offline recipe harness · daily batch loop → GO/NO-GO Aug 21–23 (D11)", state: "active" },
         { label: "WS4.2 · Mock / full-set (after WS5.1-04)", state: "todo" },
-        { label: "WS6.1 · QA, polish, pilot → launch", state: "active" },
-        { label: "WS6.2 · UI review (pilot-relevant pass)", state: "active" },
+        { label: "WS6.1 · QA, polish → UAT week Sep 10–13 (K2/K3 deep)", state: "active" },
+        { label: "WS6.2 · Learner UI redesign — founder sprint (freeze Aug 21, implement W4)", state: "active" },
         { label: "WS11 · Backend maintainability refactor (01 bootstrap dedupe + 02 lint done; 03–05 now unblocked but sequenced after current content work)", state: "active" },
       ],
     },
@@ -296,6 +298,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-07-31", who: "Max + Claude (Fable 5)", project: "",
+      summary: "FOUNDER SPRINT KICKOFF — Max moved from Team Futura dev onto the platform and set a six-week runway to UAT (Sep 10–13, K2/K3 deep, not eight levels thin). Three decisions minted: D10 ownership re-cut (Max = learner UI/UX + visual factory + generation ops; Natalie = data/integrity/backend/governed lane; Dixon = reports page + question-review ops; K-level developmental fit routes to Max's OT background; pyramid-site paused), D11 offline recipe-harness mandate (internal-only, never imports into production, recipe-only deliverable, GO/NO-GO Aug 21–23; founder start ruled without a sync — Natalie reviews async), and D12 infra stays on Sheets+Drive through UAT (migration decision ~Oct on real load data; factory SVGs ship inline in the question row). Enabling work landed the same day: RECIPE_HARNESS_SPEC.md written and ACTIVE on platform branch docs/offline-recipe-harness-spec with a working scene-spec→SVG PoC (7 archetypes spanning K2 counting to P6 composite-area/angles/chart-average — the deterministic-renderer design lets the existing text judge evaluate visual questions by judging the spec, so no vision judge is needed); platform-doc factory decisions renamed to FD10–FD35 (formerly D-numbered 10–35) in platform docs to stop colliding with this ledger (D1–D9 rows left for Natalie — low tokens also mean difficulty tiers); a six-week delivery plan with daily two-checkpoint batch cadence (12–15q iteration, 30q holdout validation, Friday prompt-pack consolidation, blind repeats) was published to the team. Scope cuts confirmed: user mailbox hidden in favour of static announcements; narration is TTS-only on 文字題 with an optional narrationScript schema field pending. Board and roadmap realigned to the sprint; first text batch fires the night of Aug 3." },
     { date: "2026-07-31", who: "Max + Claude (Opus 5)", project: "",
       summary: "D9 attribution amended for a third operator and a third device. Dixon joined as intern in 2026-07, initiated and acceptance-directed the live learner-language release (platform d97d492, Pages workflow 30619332923) from inside Natalie's /Users/hkycaa account — so the old two-device map attributed his work to Natalie. D9 now maps origin → person as a table (dev Mac ktf@Hais-MacBook-Pro + Max's other computer = Max; /Users/hkycaa = Natalie; Dixon-initiated or acceptance-directed work = Dixon regardless of the account it originates in), with the person, not the directory, as the unit. Max ruled that every change originating from the dev Mac is signed Max: that account's global Git identity is now Max <info@pyramidchallenge.org>, so blame is authoritative there from today forward, while Natalie and Dixon still both commit as HKYCAA and their split rests on this ledger. Registered dixon in owners. Synced the D9 restatements in business/README.md and the platform repo's CLAUDE.md. Also fixed the access gap behind all of this: tpc-online-platform-admin is private under the thepyramidchallenge personal account and HKYCAA was not a collaborator, so git pull on the dev Mac failed with 'Repository not found' and the local copy had sat 4 weeks stale at July 3; HKYCAA now holds write, pull verified." },
     { date: "2026-07-31", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
