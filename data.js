@@ -22,7 +22,7 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-08-03",
+    updated:   "2026-08-04",
     updatedBy: "Natalie + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard ÃÂÃÂ· light theme. ÃÂÃÂ· Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). ÃÂÃÂ· Reports (ÃÂ¦ÃÂ·ÃÂ±ÃÂ¥ÃÂºÃÂ¦ÃÂ¥ÃÂ ÃÂ±ÃÂ¥ÃÂÃÂ): reports/ ÃÂ¢ÃÂÃÂ periodic commissioned deep-dives.",
   },
@@ -66,7 +66,7 @@ window.TPC_DASHBOARD = {
 
   // The single most important thing to know before starting work today.
   focus:
-    "Founder sprint to UAT (Sep 10-13, K2/K3 deep): keep the live WS4.2 learner path honest, integrate the pending edge-to-edge/Profile-only-language polish deliberately, and make PR #70 fail-closed before treating its experimental batches as a release-ready calibration lane. Treasure activation remains on hold.",
+    "Pilot readiness is now bottlenecked by approved official K2/K3 content and release discipline, not WS4.2 core: preserve the live governed learner path, run serialized pilot-scale concurrency evidence, resolve the three blocked merge lanes deliberately, and replace or unpublish the sole dummy mock before public launch. Treasure activation remains on hold.",
 
   /* --- projects --------------------------------------------------------- */
   projects: [
@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Question Set Builder readability is live from source dd8ea89 / Pages d0adf49 through PR #132; continue bounded official-content approval and exact-version QuestionSets. The inherited PostCSS audit finding remains open.",
+      next:  "Public frontend source df7dbca / Pages bd4f511 is live through workflow 30824219824 with 722/722 tests and the 106-module build; Cloud Run tpc-api-points0803 serves backend d1160c1. Continue bounded official-content approval, pilot-scale concurrency evidence and the launch replacement/unpublish action for the dummy mock. The inherited PostCSS audit finding remains open.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite ÃÂÃÂ· backend in cloud-run/",
-      next:  "PR #132 is merged and live: the compact Question Set Builder, scrollable panes and balanced 10-concept demo passed 718/718 tests and live-asset readback. Next remains bounded official content and signed-in Report UAT; no backend or Sheets change shipped in this release.",
+      next:  "Private main is synchronized through docs-only closeout PR #145 / bc114140; current product release remains frontend df7dbca / Pages bd4f511 and backend d1160c1. PRs #134, #135 and #136 remain unmerged because of held scope, conflicts and incomplete demo/bilingual work. Next remains bounded official content, pilot reliability and signed-in Report UAT.",
     },
     {
       id:    "entrance-qr-scan",
@@ -151,20 +151,20 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "Bounded official content ÃÂ¢ÃÂÃÂ exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "Shared handoff: Max owns bounded WS5.2 generation and keeps each candidate at status=review with independent-judge evidence; Natalie owns explicit human approval and WS5.1-04 exact-version QuestionSets. Source-only candidate 7d93cd1 restores ordered selected-question visibility for every set row but still needs a separate PR/release. Do not count calibration or smoke rows as official content. Treasure remains held under WS5.2-04." },
+      { title: "Bounded official content -> exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "The governed set workflow, readable 30-question builder and latest-version performance evidence are live. Max owns bounded WS5.2 generation; Natalie owns explicit human approval and WS5.1-04 QuestionSets. Production still has one intentionally published pre-launch dummy plus seven drafts; do not count demo/calibration rows as official content, and replace or unpublish the dummy before launch. Treasure remains held under WS5.2-04." },
       { title: "Learner UI design sprint ÃÂ¢ÃÂÃÂ ÃÂ§ÃÂ­ÃÂÃÂ©ÃÂ¡ÃÂÃÂ§ÃÂÃÂ«ÃÂ©ÃÂÃÂ¢ first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
-      { title: "WS4.2 adjacent polish + launch gate", project: "tpc-online-platform", owner: "max", note: "Result metrics are now live through PR #130 with aligned score/distribution bars, explicit unanswered handling and overflow-safe spacing. Continue the remaining whole-app WS6.2 review, keyboard/focus/ARIA and narrow/zoomed bilingual checks. Before official launch, replace or unpublish the sole dummy mock." },
+      { title: "Pilot reliability + release discipline", project: "tpc-online-platform", owner: "natalie", note: "WS4.2 core and adjacent learner polish are live through frontend df7dbca / Pages bd4f511. The Aug 3 Sheets alert was a transient overlap of production UAT/admin reads on an old revision, not a quota/backend failure: all 58 reads succeeded first attempt and no rollback was needed. Serialize production tests and polling, then reduce replay/append/ledger read amplification before the pilot-scale concurrency gate." },
     ],
     next: [
       { title: "Recipe GO/NO-GO ÃÂ¢ÃÂÃÂ Aug 21ÃÂ¢ÃÂÃÂ23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at ÃÂ¢ÃÂÃÂ¥75ÃÂ¢ÃÂÃÂ80% Dixon pass + judge agreement good enough to pre-filter ÃÂ¢ÃÂÃÂ governed-lane intake starts (W4ÃÂ¢ÃÂÃÂ5, ~15ÃÂ¢ÃÂÃÂ20 approvals/day toward two disjoint 30-question sets per level). NO-GO cuts scope (single level / smaller pool), never the date." },
       { title: "UAT ÃÂ¢ÃÂÃÂ Sep 10ÃÂ¢ÃÂÃÂ13 (K2/K3 deep)", project: "tpc-online-platform", owner: "both", note: "Feature freeze Sep 4; dry run Sep 7ÃÂ¢ÃÂÃÂ9; invite waves ~10 families each from the Season 2 base (invites out ~Aug 24). Pass = K2 completes 10q unaided ÃÂÃÂ· parents understand the report ÃÂÃÂ· zero quota red. Kid micro-tests (Aug 24ÃÂ¢ÃÂÃÂ30, Sep 1ÃÂ¢ÃÂÃÂ6) and a W5 dress-rehearsal load test precede it (D12)." },
-      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "PR #124 is live: tested aggregation, real rolling Practice evidence, real refType=set Mock history/Result drill-in, minimum-data and sync guards, explicit Official sample, and TopBar return. Dixon's later direct-main f4ea76a challenge graphs are also live as Pages f7335a1; they do not affect Practice integration, while their synthetic cohort/ranking values need separate D5/E1 review. Accuracy trend and topic/domain 7d/30d/all work stays in Dixon's lane. Cross-device completeness stays WS8-04; no new backend call or Sheets change." },
-      { title: "WS6.1 ÃÂ¢ÃÂÃÂ pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit and first-time-user default ÃÂ¢ÃÂÃÂ WS6.1-11 pilot. Split from WS6.2 on 2026-07-31 when the UI review moved to Max; the two now run as separate lanes." },
+      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "Real rolling Practice evidence, refType=set Mock history/Result drill-in, minimum-data and sync guards are live. PR #141 now labels every hardcoded challenge cohort/ranking value as bilingual sample data; this resolves the immediate claim breach but does not settle the final report format or authorize real ranking. Accuracy trend and topic/domain 7d/30d/all work stays in Dixon's lane; signed-in production Report UAT remains open." },
+      { title: "WS6.1 - pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical work before real users: pilot-scale concurrency/write-contention proof, fallback audit, accuracy consistency and first-time-user evidence -> WS6.1-11. WS6.1-28 latest-version exposure/accuracy telemetry is complete and live; the Aug 3 transient UAT overlap is useful evidence but does not close the concurrency task." },
       { title: "WS6.2 ÃÂ¢ÃÂÃÂ UI review", project: "tpc-online-platform", owner: "max", note: "Reassigned to Max 2026-07-31, matching his UI-in-general scope. Pilot-relevant pass: notify/validation classes, whole-app screen-by-screen review, bilingual copy, glyph/colour/button consistency, Home layout, button UAT, young-learner usability and the Log abnormal-activity banner. Five tasks stay held until after the pilot. WS6.2-07 still confirms UID/display-field scope with Max first." },
       { title: "WS7-06 + WS9-00 ÃÂ¢ÃÂÃÂ report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the SheetsÃÂ¢ÃÂÃÂAffinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
     ],
     blocked: [
-      { title: "PR #70 offline harness - not release-ready", project: "tpc-online-platform", owner: "max", note: "The branch now records an experimental 7-slot batch and useful visual-prompt deltas, but the original blockers remain: promised frozen production contracts/seeds/rubric are absent; review HTML still embeds model-controlled content unsafely; child CLIs inherit the parent environment/workspace; agreement reporting is mislabeled; and visual-judge rules conflict. The new exchange helper also copies review/manifest/report artifacts into a sibling repo and runs git add/commit/push without safe batchId, trusted-repo/branch, clean-tree or explicit-approval gates; external-past-paper intake needs real rights/T&C governance, not provenance alone. Keep unmerged until fail-closed." },
+      { title: "Open merge lanes #134/#135/#136", project: "tpc-online-platform", owner: "both", note: "Do not merge by ancestry alone. #134 is a conflicting draft that touches held Phase 2/3 Notifications/Test scheduling and needs an explicit routing decision. #135 is a conflicting fixed-set report lane whose unmerged tree briefly served production; merge or close it, then redeploy only from merged main. #136 is conflicting and incomplete, retains a demo-only switch, covers only part of the bilingual consoles and still needs reviewed translations. Older remote branches are stale/superseded snapshots, not merge candidates." },
       { title: "pyramid-site ÃÂ¢ÃÂÃÂ paused for UAT sprint", project: "pyramid-site", owner: "max", note: "Hero parallax parity, scoring/report graphics absorb, deploy, CDN photo export (ASSET_GATHER ÃÂÃÂ§B/ÃÂÃÂ§E) ÃÂ¢ÃÂÃÂ all parked by D10 until after UAT; resume ~mid-Sep." },
     ],
   },
@@ -198,7 +198,8 @@ window.TPC_DASHBOARD = {
         { label: "WS3.2 ÃÂÃÂ· Close-out (B1/B4/C1/C3, prod, auth, tests)", state: "done" },
         { label: "WS4.1 ÃÂÃÂ· Question engine",           state: "done" },
         { label: "WS4.3 ÃÂÃÂ· Save/session integrity", state: "done" },
-        { label: "WS6.1-18ÃÂ¢ÃÂÃÂ¦21 ÃÂÃÂ· Backend hardening / reliability / observability / tests", state: "done" },
+        { label: "WS6.1-18...21 - Backend hardening / reliability / observability / tests", state: "done" },
+        { label: "WS6.1-28 - Latest-version exposure and accuracy evidence (migration + live proof)", state: "done" },
         { label: "WS5.1 ÃÂÃÂ· Admin UI & content platform", state: "active" },
         { label: "Question Set Builder readability + balanced demo (PR #132 live)", state: "done" },
         { label: "Dixon ÃÂÃÂ· Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
@@ -215,7 +216,7 @@ window.TPC_DASHBOARD = {
       items: [
         { label: "WS6.2-19 ÃÂÃÂ· Result metric visualization + spacing (PR #130 live)", state: "done" },
         { label: "Founder redesign lane ÃÂ¢ÃÂÃÂ K2-self-operable learner UI (freeze Aug 21, D10)", state: "active" },
-        { label: "Adjacent learner polish ÃÂ¢ÃÂÃÂ edge-to-edge tabs + Profile-only language (fe88f41 source-only)", state: "active" },
+        { label: "Adjacent learner polish - edge-to-edge tabs + Profile-only language (df7dbca / bd4f511 live)", state: "done" },
         { label: "WS6.2-01 ÃÂÃÂ· Notify-layer message classes + form vs field validation", state: "todo" },
         { label: "WS6.2-02 ÃÂÃÂ· Whole-app screen-by-screen review", state: "todo" },
         { label: "WS6.2-03 ÃÂÃÂ· Bilingual labels, buttons and copy", state: "todo" },
@@ -238,7 +239,7 @@ window.TPC_DASHBOARD = {
         { label: "WS5.2-02f ÃÂÃÂ· Independent judge persistence/UI and obsolete server evaluator removal", state: "done" },
         { label: "WS5.2-04 ÃÂÃÂ· Treasure curation, matched comparison and activation", state: "hold" },
         { label: "WS5.3 ÃÂÃÂ· Visual factory ÃÂ¢ÃÂÃÂ scene-spec ÃÂ¢ÃÂÃÂ SVG (PoC done: 7 archetypes K2ÃÂ¢ÃÂÃÂP6)", state: "active" },
-        { label: "Offline recipe harness ÃÂÃÂ· PR #70 blocked on contract/privacy/calibration correctness before any real batch; GO/NO-GO target Aug 21-23 (D11)", state: "active" },
+        { label: "Offline recipe harness - PR #70 safety blockers fixed and merged; calibration / GO-NO-GO evidence remains active (D11)", state: "active" },
         { label: "Recurring AI factories (WS5.2-01f/01g evidence-gated auto-approval ÃÂÃÂ· WS5.3-05 illustrative-asset generator)", state: "hold" },
       ],
     },
@@ -254,6 +255,7 @@ window.TPC_DASHBOARD = {
         { label: "WS6.3-04 ÃÂÃÂ· Minimum-data guards and sync states", state: "done" },
         { label: "WS6.3-05 ÃÂÃÂ· Report test coverage", state: "active" },
         { label: "WS6.3-06 - Integrate hub with real Practice/Mock history and explicit Official sample", state: "done" },
+        { label: "ReportHub sample boundary - bilingual demo labels pinned by PR #141; final format/ranking still open", state: "done" },
       ],
     },
     {
@@ -265,6 +267,7 @@ window.TPC_DASHBOARD = {
         { label: "WS9-00 ÃÂÃÂ· $99 report MVP (E1 north-star)", state: "todo" },
         { label: "WS7 ÃÂÃÂ· Test Mode + ranking (gated on E1/E2)", state: "todo"   },
         { label: "WS8 ÃÂÃÂ· Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
+        { label: "WS6.1-02/-03 - Accepted Phase 2/3 bookmark loop design (PR #138 docs)", state: "hold" },
         { label: "WS9-01+ ÃÂÃÂ· Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "WS10 ÃÂÃÂ· Advanced question interactions & visual renderers (ex-WS4.4: class-A visual model, tap/hotspot, mini-games, open numeric)", state: "hold" },
         { label: "WS7-16 datastore decision + WS7-13 adapter parity (Sheets ÃÂ¢ÃÂÃÂ Firestore/Supabase)", state: "todo" },
@@ -343,6 +346,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-04", who: "Natalie + Codex (GPT-5); Claude output evaluated", project: "tpc-online-platform",
+      summary: "AUG 3 DAILY CLOSEOUT (published only after the 20 most recent other TPC Codex tasks all ended task_complete). DELIVERY -- WS4.2 core stayed closed while adjacent releases completed governed QuestionSet approval/builder/history behavior, edge-to-edge learner tabs and Profile-only language, active-Quiz/Result review, real Practice/Mock reporting, latest-version exposure/accuracy telemetry, Result scoring visuals, FedCM hardening and the hardened offline recipe harness. Current production is Cloud Run tpc-api-points0803 from backend d1160c1 and frontend df7dbca on Pages bd4f511 through workflow 30824219824; frontend gate 722/722 across 36 files plus the 106-module build, backend 576/576 and lint 0 errors/15 existing warnings. DATA -- production remains one intentionally published dummy mock plus seven drafts; replace or unpublish it before public launch. OPERATIONS -- the 10:28 UTC Sheets alert was a transient overlapping-UAT event on an old revision: all 58 reads succeeded first attempt, no quota/retry/429/5xx or duplicate write occurred, the current revision was not implicated, and no rollback was needed; serialize production UAT/polling before reducing replay, append and ledger-read amplification. MERGE AUDIT -- safe bookmark Phase 2/3 design PR #138 merged; docs closeout PR #145 merged platform main at bc114140. PRs #134/#135/#136 remain deliberately unmerged: held Notifications/Test scope, a conflicting report lane whose unmerged tree briefly served production, and an incomplete/conflicting demo-bilingual lane. Older remote branches are stale or superseded snapshots, not ancestry-merge candidates. DOCS -- 30 tracked Markdown files are synchronized to the live release; 0 broken relative links, balanced fences, 386 unique roadmap checklist IDs and a Markdown-only clean diff. CRITICAL EVALUATION -- Codex was strongest at integration boundaries, regression gates, live evidence, incident attribution and documentation truth; Claude was strongest at fast learner-UX iteration, visual exploration and harness prototyping. The combined output moved features unusually quickly, but release discipline lagged the feature velocity: overlapping production sessions, one unmerged tree serving traffic, direct-to-main episodes, stale branches and three conflicting open lanes are the clearest warning. The product is materially closer to pilot-ready, but official K2/K3 content, serialized load evidence, signed-in Report UAT, fallback/accessibility review and dummy-content removal remain launch gates rather than polish." },
     { date: "2026-08-03", who: "Max + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "EVENING WRAP — merge audit closed and everything landed on main. Natalie-side audit of the harness PR raised 7 findings (XSS in the review page, unfrozen contracts, CLI env/cwd, fake agreement metric, spec contradiction, non-fail-closed exchange, external-seed rights); all fixed same-day with regression tests, and the audit response is on the PR. Four PRs merged under the founder mandate with rollback safety: #140 FD namespace rename, #141 ReportHub sample-data labelling (Max ruled relabel-as-explicit-sample on the ranking breach — bilingual demo banner + flagged ranking metric + 4 pinning tests, live-verified), #142 batch-payload untrack cleanup, #70 the hardened harness lane. FD38 ratified by Max + Natalie: every seed — TPC 歷屆 or external — stays internal forever, only derived questions ship; external-seed hold lifted for Dixon. Dixon submitted his first review round (7/7 with teacher-grade notes; caught the chart-label mismatch the judge scored 87 — judge-human agreement honestly 0.29, threshold work continues). Batch 2 ran with deltas d1–d5: 12/12 generated, validator mechanically screened 5 real defects (an arithmetic error, two archetype-contract violations, two missing fields) before any human time. Frontend 722/722. Production deploy of merged main awaits Max approval." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
