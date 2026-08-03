@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-03",
-    updatedBy: "Natalie + Codex (GPT-5)",
+    updatedBy: "Natalie + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard Â· light theme. Â· Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). Â· Reports (æ·±åº¦å ±å): reports/ â periodic commissioned deep-dives.",
   },
 
@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Public Pages 3e2a170 serves application source 38ee384 (PR #73): expandable at-end question review plus full-screen Result/Briefing are live. Exactly one dummy 30-question/15-minute mock is intentionally published for pre-launch use; 7 sets are draft, and the dummy must be unpublished or replaced before launch. Pending head fe88f41 adds edge-to-edge learner tabs and Profile-only language selection but is not merged or deployed.",
+      next:  "Public Pages 1feca6f serves settled frontend source dc3a30d; Cloud Run tpc-api-combined0803 remains the backend. Exactly one dummy 30-question/15-minute mock is intentionally published for pre-launch use; 7 sets are draft, and the dummy must be unpublished or replaced before launch. Source-only candidate d7e2f09 adds ordered selected-question visibility to every Question Bank set row; it needs a separate PR/release and authenticated live smoke.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite Â· backend in cloud-run/",
-      next:  "Private main is synchronized through docs merge 5543917. Cloud Run tpc-api-ws42align0731 serves 100% from b91684e; public Pages serves application source 38ee384 as Pages 3e2a170. Final pre-launch data state is 1 published dummy mock + 7 draft sets. Pending learner UI head fe88f41 is source-only; review/merge/deploy/live verification remain. The account-language backend and Customers migration remain undeployed.",
+      next:  "Private main is e14d577. Cloud Run tpc-api-combined0803 serves 100% from backend source 4ab4eed; public Pages serves frontend source dc3a30d as Pages 1feca6f. Final pre-launch data state is 1 published dummy mock + 7 draft sets. Question-set member-visibility candidate d7e2f09 is source-only: not pushed, merged, deployed or live-smoked. The account-language backend and Customers migration remain undeployed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -151,7 +151,7 @@ window.TPC_DASHBOARD = {
    * --------------------------------------------------------------------- */
   board: {
     now: [
-      { title: "Bounded official content â exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "Shared handoff: Max owns bounded WS5.2 generation and keeps each candidate at status=review with independent-judge evidence; Natalie owns explicit human approval and WS5.1-04 exact-version QuestionSets. Do not count calibration or smoke rows as official content. Treasure remains held under WS5.2-04." },
+      { title: "Bounded official content â exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "Shared handoff: Max owns bounded WS5.2 generation and keeps each candidate at status=review with independent-judge evidence; Natalie owns explicit human approval and WS5.1-04 exact-version QuestionSets. Source-only candidate d7e2f09 restores ordered selected-question visibility for every set row but still needs a separate PR/release. Do not count calibration or smoke rows as official content. Treasure remains held under WS5.2-04." },
       { title: "Learner UI design sprint â ç­é¡ç«é¢ first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
       { title: "WS4.2 adjacent polish + launch gate", project: "tpc-online-platform", owner: "max", note: "Live core is complete on PR #73. Review pending source-only head fe88f41 for edge-to-edge Home/Practice/Report/Bookmarks and the accepted Profile-only language rule; retain keyboard/focus/ARIA, narrow/zoomed bilingual and phone/tablet safe-area checks. Before official launch, replace or unpublish the sole dummy mock." },
     ],
@@ -340,6 +340,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "QUESTION BANK SET VISIBILITY (SOURCE ONLY): the Sets list previously showed only each set's question count, so admins could not inspect which questions were selected—especially for published/read-only sets. Candidate d7e2f09, rebased on private main e14d577, adds a collapsible View questions control to every set row and shows all members in saved order with question text, domain/topic, lifecycle status, version and ineligibility warnings. Verification passed 656/656 frontend tests and the 100-module build. Nothing was pushed, merged or deployed; Pages remains 1feca6f from frontend source dc3a30d, and any publication must be a separate release." },
     { date: "2026-08-03", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "PROFILE LOCK + SETTINGS REDESIGN: students can no longer change 年級 or 地區 after sign-up, with NO self-correction path — an admin corrects mistakes through the 用戶 console. The backend is the authority: upsertUser rejects a changed yearLevel/region on a non-admin row (level_locked/region_locked), while unchanged resubmits still pass, a blank legacy field may be filled once, and admin rows stay editable. Cloud Run tpc-api-profilelock0803 is live at 100% traffic (ping 200, unauthenticated upsert rejected, zero errors after cutover). Settings was also rebuilt as an identity card over 個人資料/偏好設定/帳戶 row groups — every row reads label → value → affordance, editable rows carry 更改 and locked rows a lock glyph (refs TestGorilla/SHL grouped panes, Kahoot identity header). Backend 552/552, frontend 623/623. PR #82 (lock) and PR #85 (redesign) merged; Pages d264a32 from source 25af7fe." },
     { date: "2026-08-03", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
