@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "WS6.1-28 latest-version question performance is source-complete and locally verified. Next gate is the additive Questions/Results workbook migration, matching backend/frontend deployment, and authenticated live proof; do not describe the new metrics as live before those steps pass.",
+      next:  "PR #124 real-data Practice/Mock Report integration is live. Run signed-in Report UAT when an authenticated browser is available. Dixon's direct-main f4ea76a graph follow-up remains source-only and off Pages pending separate D5/E1 review.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite ÃÂ· backend in cloud-run/",
-      next:  "Private source now projects current-version-only question exposure and accuracy, with exact attempt-version stamping and Question Bank metrics. Run migrate:question-performance against both workbooks before deploying the matching source, then live-smoke idempotent starts, submissions, and version rollover.",
+      next:  "Current-version question metrics and PR #124 Report integration are live. Next platform evidence is authenticated question-performance start/submission/version-rollover proof plus signed-in Report UAT; no Report backend or Sheets work is owed.",
     },
     {
       id:    "entrance-qr-scan",
@@ -158,7 +158,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "Recipe GO/NO-GO Ã¢ÂÂ Aug 21Ã¢ÂÂ23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at Ã¢ÂÂ¥75Ã¢ÂÂ80% Dixon pass + judge agreement good enough to pre-filter Ã¢ÂÂ governed-lane intake starts (W4Ã¢ÂÂ5, ~15Ã¢ÂÂ20 approvals/day toward two disjoint 30-question sets per level). NO-GO cuts scope (single level / smaller pool), never the date." },
       { title: "UAT Ã¢ÂÂ Sep 10Ã¢ÂÂ13 (K2/K3 deep)", project: "tpc-online-platform", owner: "both", note: "Feature freeze Sep 4; dry run Sep 7Ã¢ÂÂ9; invite waves ~10 families each from the Season 2 base (invites out ~Aug 24). Pass = K2 completes 10q unaided ÃÂ· parents understand the report ÃÂ· zero quota red. Kid micro-tests (Aug 24Ã¢ÂÂ30, Sep 1Ã¢ÂÂ6) and a W5 dress-rehearsal load test precede it (D12)." },
-      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "Parallel lane Ã¢ÂÂ does not displace the shadow feedback proof. Dixon (intern) is implementing; Max and Natalie stay accountable. Frontend only, on the existing WS3.1-06 Report screen: extract aggregation into a tested reportStats.js, then accuracy trend, topic/domain breakdown with a 7d/30d/all filter, local past-attempt review in the History drill-in, minimum-data guards, and test coverage. Cross-device completeness stays WS8-04; WS8-01, WS8-10, WS8-12 and WS9-00 remain excluded and unassigned." },
+      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "PR #124 is live: tested aggregation, real rolling Practice evidence, real refType=set Mock history/Result drill-in, minimum-data and sync guards, explicit Official sample, and TopBar return. Dixon's later direct-main f4ea76a challenge graphs do not affect Practice integration and remain source-only/off Pages; their synthetic cohort/ranking values need separate D5/E1 review. Accuracy trend and topic/domain 7d/30d/all work stays in Dixon's lane. Cross-device completeness stays WS8-04; no new backend call or Sheets change." },
       { title: "WS6.1 Ã¢ÂÂ pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical polish before real users: accuracy consistency, R8/concurrency smoke, fallback audit and first-time-user default Ã¢ÂÂ WS6.1-11 pilot. Split from WS6.2 on 2026-07-31 when the UI review moved to Max; the two now run as separate lanes." },
       { title: "WS6.2 Ã¢ÂÂ UI review", project: "tpc-online-platform", owner: "max", note: "Reassigned to Max 2026-07-31, matching his UI-in-general scope. Pilot-relevant pass: notify/validation classes, whole-app screen-by-screen review, bilingual copy, glyph/colour/button consistency, Home layout, button UAT, young-learner usability and the Log abnormal-activity banner. Five tasks stay held until after the pilot. WS6.2-07 still confirms UID/display-field scope with Max first." },
       { title: "WS7-06 + WS9-00 Ã¢ÂÂ report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the SheetsÃ¢ÂÂAffinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -243,14 +243,15 @@ window.TPC_DASHBOARD = {
     {
       project: "tpc-online-platform",
       owner:   "both",
-      title:   "Report tab enhancements (WS6.3) Ã¢ÂÂ Dixon implementing",
+      title:   "Report tab enhancements (WS6.3) - real-data integration live; Dixon graphs source-only",
       items: [
-        { label: "WS6.3-00 ÃÂ· Extract Report aggregation into a tested src/lib/reportStats.js", state: "todo" },
+        { label: "WS6.3-00 ÃÂ· Extract Report aggregation into a tested src/lib/reportStats.js", state: "done" },
         { label: "WS6.3-01 ÃÂ· Accuracy trend over time (session-level, cross-device-safe fields)", state: "todo" },
         { label: "WS6.3-02 ÃÂ· Topic/domain breakdown + 7d/30d/all time filter", state: "todo" },
-        { label: "WS6.3-03 ÃÂ· Local past-attempt review in the History drill-in", state: "todo" },
-        { label: "WS6.3-04 ÃÂ· Minimum-data guards and sync states", state: "todo" },
-        { label: "WS6.3-05 ÃÂ· Report test coverage", state: "todo" },
+        { label: "WS6.3-03 ÃÂ· Local past-attempt review in the History drill-in", state: "done" },
+        { label: "WS6.3-04 ÃÂ· Minimum-data guards and sync states", state: "done" },
+        { label: "WS6.3-05 ÃÂ· Report test coverage", state: "active" },
+        { label: "WS6.3-06 - Integrate hub with real Practice/Mock history and explicit Official sample", state: "done" },
       ],
     },
     {
@@ -340,6 +341,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "REPORT REAL-DATA INTEGRATION - LIVE. PR #124 merged as source 0f446e9fc5891eed43b63d944580ab51a7e93260 and first deployed as Pages da8836a20963ad7680ca73ed2d08a57c0f5c0415 through workflow 30803833341. The immediately following coordinated PR #125 retains it in current source 0c062b5811d16ccf693350c35adfe0a8c74bf6af / Pages eb10e9093ccd1370123f8b6e3f62f96d6dd2b29b / workflow 30804009875. Practice now uses rolling hydrated learner answers; Mock uses real refType=set history and reopens the existing Result drill-in; Official remains an explicit sample with no ranking; report subpages reuse the TopBar return arrow. Current combined gates pass 707/707 frontend tests across 34 files and the 104-module build; local browser QA covered the hub, Official sample and return arrow, while signed-in production Report UAT is not claimed. No backend action, Cloud Run deploy, Sheets read/write or schema change. Dixon's later direct-main graph commit f4ea76a is source-only and off Pages pending separate synthetic cohort/ranking review; it does not affect the live Practice integration." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
       summary: "QUESTION CREATION ACTION HIERARCHY (SOURCE ONLY): candidate c206e64 moves New manual question and the gated New AI question from the page-level Question Bank header into a dedicated action row inside the active question subtab. Both controls remain available in Needs review/All questions, remain fully visible at 1280px, and disappear in Sets. Browser tab-transition proof passed; focused admin tests pass 139/139, full frontend 699/699, and the 103-module build passes. No platform push, merge, production write or deployment was performed." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
