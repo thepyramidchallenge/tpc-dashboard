@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Public Pages 1feca6f serves settled frontend source dc3a30d; Cloud Run tpc-api-combined0803 remains the backend. Exactly one dummy 30-question/15-minute mock is intentionally published for pre-launch use; 7 sets are draft, and the dummy must be unpublished or replaced before launch. Source-only candidate 7d93cd1 adds ordered selected-question visibility to every Question Bank set row; it needs a separate PR/release and authenticated live smoke.",
+      next:  "WS6.1-28 latest-version question performance is source-complete and locally verified. Next gate is the additive Questions/Results workbook migration, matching backend/frontend deployment, and authenticated live proof; do not describe the new metrics as live before those steps pass.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite Â· backend in cloud-run/",
-      next:  "Private main is e1a18d2. Cloud Run tpc-api-combined0803 serves 100% from backend source 4ab4eed; public Pages serves frontend source dc3a30d as Pages 1feca6f. Final pre-launch data state is 1 published dummy mock + 7 draft sets. Question-set member-visibility candidate 7d93cd1 is source-only: not pushed, merged, deployed or live-smoked. The account-language backend and Customers migration remain undeployed.",
+      next:  "Private source now projects current-version-only question exposure and accuracy, with exact attempt-version stamping and Question Bank metrics. Run migrate:question-performance against both workbooks before deploying the matching source, then live-smoke idempotent starts, submissions, and version rollover.",
     },
     {
       id:    "entrance-qr-scan",
@@ -340,6 +340,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "QUESTION PERFORMANCE (SOURCE ONLY): Natalie chose latest-version-only aggregates. WS6.1-28 now records deterministic, uid-free per-question/version start evidence, stamps the exact graded questionVersion on Attempts, and projects only the current version's exposure, submitted, correct and derived accuracy values onto Questions; approval resets the projection and late older-version submissions are excluded. Question Bank shows sortable Exposure and Accuracy with correct/submitted plus a low-sample label. An additive, idempotent Questions/Results migration and templates are ready. Local gates pass: backend 567/567, lint 0 errors (15 existing warnings), frontend 657/657, and 100-module build. No workbook migration, deployment, production write or live smoke was performed." },
     { date: "2026-08-03", who: "Natalie + Claude (Fable 5)", project: "tpc-online-platform",
       summary: "SETTINGS LAYOUT FIX: Natalie flagged the redesigned Settings page as still ugly, and at desktop width she was right — the page held no measure, so rows stretched the full viewport stage with each label a screen-width from its value and hairlines running edge to edge; it read as a spreadsheet. Settings now keeps a 620px column and each group (個人資料/偏好設定/帳戶) sits in a bordered card matching Home's container language. Root cause worth remembering: the .app--shell/.app--fullscreen rules reset .screen to max-width:none later in the cascade, which silently defeated the first max-width attempt — per-screen measures must be restated after those blocks. Also fixed the settings language pill clipping its selected option's corners. 655/655 tests; verified at 1280 and 375. PR #96 merged as e1a18d2, deployed as Pages 6a3ed01; docs via PR #97." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
