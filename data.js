@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "PR #124 real-data Practice/Mock Report integration is live and retained in current source f4ea76a / Pages f7335a1. Run signed-in Report UAT when an authenticated browser is available; Dixon's now-live synthetic cohort/ranking graph claims still need separate D5/E1 review.",
+      next:  "Result visual refinement is live from source bea240a / Pages 3ad247d; keep signed-in Report UAT serialized and continue the WS6.2 screen review. The inherited PostCSS audit finding remains open.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -153,7 +153,7 @@ window.TPC_DASHBOARD = {
     now: [
       { title: "Bounded official content Ã¢ÂÂ exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "Shared handoff: Max owns bounded WS5.2 generation and keeps each candidate at status=review with independent-judge evidence; Natalie owns explicit human approval and WS5.1-04 exact-version QuestionSets. Source-only candidate 7d93cd1 restores ordered selected-question visibility for every set row but still needs a separate PR/release. Do not count calibration or smoke rows as official content. Treasure remains held under WS5.2-04." },
       { title: "Learner UI design sprint Ã¢ÂÂ Ã§Â­ÂÃ©Â¡ÂÃ§ÂÂ«Ã©ÂÂ¢ first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
-      { title: "WS4.2 adjacent polish + launch gate", project: "tpc-online-platform", owner: "max", note: "Live core is complete on PR #73. Review pending source-only head fe88f41 for edge-to-edge Home/Practice/Report/Bookmarks and the accepted Profile-only language rule; retain keyboard/focus/ARIA, narrow/zoomed bilingual and phone/tablet safe-area checks. Before official launch, replace or unpublish the sole dummy mock." },
+      { title: "WS4.2 adjacent polish + launch gate", project: "tpc-online-platform", owner: "max", note: "Result metrics are now live through PR #130 with aligned score/distribution bars, explicit unanswered handling and overflow-safe spacing. Continue the remaining whole-app WS6.2 review, keyboard/focus/ARIA and narrow/zoomed bilingual checks. Before official launch, replace or unpublish the sole dummy mock." },
     ],
     next: [
       { title: "Recipe GO/NO-GO Ã¢ÂÂ Aug 21Ã¢ÂÂ23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at Ã¢ÂÂ¥75Ã¢ÂÂ80% Dixon pass + judge agreement good enough to pre-filter Ã¢ÂÂ governed-lane intake starts (W4Ã¢ÂÂ5, ~15Ã¢ÂÂ20 approvals/day toward two disjoint 30-question sets per level). NO-GO cuts scope (single level / smaller pool), never the date." },
@@ -212,6 +212,7 @@ window.TPC_DASHBOARD = {
       owner:   "max",
       title:   "UI review (WS6.2) Ã¢ÂÂ pilot-relevant pass",
       items: [
+        { label: "WS6.2-19 ÃÂ· Result metric visualization + spacing (PR #130 live)", state: "done" },
         { label: "Founder redesign lane Ã¢ÂÂ K2-self-operable learner UI (freeze Aug 21, D10)", state: "active" },
         { label: "Adjacent learner polish Ã¢ÂÂ edge-to-edge tabs + Profile-only language (fe88f41 source-only)", state: "active" },
         { label: "WS6.2-01 ÃÂ· Notify-layer message classes + form vs field validation", state: "todo" },
@@ -341,6 +342,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "RESULT METRIC VISUAL REFINEMENT - LIVE. PR #130 merged as frontend source bea240a291dff0695158334762529bd55bf64ceb and deployed as Pages 3ad247dd1febcff1643a8ca3a91383e8022d3c67 through successful workflow 30807887729. The full-screen Result now separates difficulty-weighted score from count-based outcomes: one aligned score progress bar, one correct/incorrect/unanswered distribution bar, completion shown separately, explicit legacy unanswered handling, restrained teal/coral/neutral colours and a non-shrinking summary section with balanced spacing. Exact-source release gates passed 712/712 frontend tests across 34 files and the 105-module build; public HTML and fingerprinted CSS/JS assets returned HTTP 200. No backend, schema, Sheets or authenticated production-data action occurred. The inherited high-severity PostCSS development-dependency advisory remains separately open." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
       summary: "REPORT REAL-DATA INTEGRATION - LIVE. PR #124 merged as source 0f446e9fc5891eed43b63d944580ab51a7e93260 and first deployed as Pages da8836a20963ad7680ca73ed2d08a57c0f5c0415 through workflow 30803833341. Current source f4ea76a98e556aace2117280b1610832672ad83d retains it as Pages f7335a1482f632515cde817a7a6e2cd9fd43b7ba through workflow 30804330057 and also includes Dixon's challenge graphs. Practice uses rolling hydrated learner answers; Mock uses real refType=set history and reopens the existing Result drill-in; report subpages reuse the TopBar return arrow. Current combined gates pass 707/707 frontend tests across 34 files and the 104-module build; signed-in production Report UAT is not claimed. No backend action, Cloud Run deploy, Sheets read/write or schema change. Dixon's graph code does not affect Practice integration, while its synthetic cohort/ranking claims still need separate D5/E1 review." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
