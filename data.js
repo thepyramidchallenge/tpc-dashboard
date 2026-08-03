@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Result visual refinement is live from source bea240a / Pages 3ad247d; keep signed-in Report UAT serialized and continue the WS6.2 screen review. The inherited PostCSS audit finding remains open.",
+      next:  "Question Set Builder readability is live from source dd8ea89 / Pages d0adf49 through PR #132; continue bounded official-content approval and exact-version QuestionSets. The inherited PostCSS audit finding remains open.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite ÃÂ· backend in cloud-run/",
-      next:  "Current-version question metrics and PR #124 Report integration are live. Next platform evidence is authenticated question-performance start/submission/version-rollover proof plus signed-in Report UAT; no Report backend or Sheets work is owed.",
+      next:  "PR #132 is merged and live: the compact Question Set Builder, scrollable panes and balanced 10-concept demo passed 718/718 tests and live-asset readback. Next remains bounded official content and signed-in Report UAT; no backend or Sheets change shipped in this release.",
     },
     {
       id:    "entrance-qr-scan",
@@ -200,6 +200,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 ÃÂ· Save/session integrity", state: "done" },
         { label: "WS6.1-18Ã¢ÂÂ¦21 ÃÂ· Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS5.1 ÃÂ· Admin UI & content platform", state: "active" },
+        { label: "Question Set Builder readability + balanced demo (PR #132 live)", state: "done" },
         { label: "Dixon ÃÂ· Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
         { label: "Full-review gate ÃÂ· 10 P1/P2 risks remediated and regression register retained", state: "done" },
         { label: "WS4.2 ÃÂ· Mock / fixed 30-question set", state: "done" },
@@ -342,6 +343,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "QUESTION SET BUILDER READABILITY - LIVE. PR #132 merged as frontend source dd8ea89228466d3e984ccdf33fcb381b8852453a and deployed as Pages d0adf49b29e64548c4c9145cefc39a10fc271a87. The builder now uses a compact master/detail layout with independently scrolling Question Library and Selected Set panes, collapsed advanced filters, compact bilingual preview controls, a narrow-screen pane switcher and a wrapping concept grid. Development-only K2/K3 inventory is spread across all 10 concepts, so a 30-question recommendation selects exactly three per concept and interleaves all 10 before repeating. Exact-source gates passed 718/718 tests across 35 files and the 106-module build; public HTML and the matching main/Admin/demo-fixture/CSS bundles returned HTTP 200. No backend, schema, Sheets or authenticated production-data action occurred." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
       summary: "RESULT METRIC VISUAL REFINEMENT - LIVE. PR #130 merged as frontend source bea240a291dff0695158334762529bd55bf64ceb and deployed as Pages 3ad247dd1febcff1643a8ca3a91383e8022d3c67 through successful workflow 30807887729. The full-screen Result now separates difficulty-weighted score from count-based outcomes: one aligned score progress bar, one correct/incorrect/unanswered distribution bar, completion shown separately, explicit legacy unanswered handling, restrained teal/coral/neutral colours and a non-shrinking summary section with balanced spacing. Exact-source release gates passed 712/712 frontend tests across 34 files and the 105-module build; public HTML and fingerprinted CSS/JS assets returned HTTP 200. No backend, schema, Sheets or authenticated production-data action occurred. The inherited high-severity PostCSS development-dependency advisory remains separately open." },
     { date: "2026-08-03", who: "Natalie + Codex", project: "tpc-online-platform",
