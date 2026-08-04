@@ -1,5 +1,11 @@
 {
   "domains": ["pricing", "platform", "live", "trust", "growth", "brand", "content", "ops", "workspace"],
   "moduleDocRoots": ["../tpc-online-platform-admin/docs"],
-  "changelogWarnAt": 40
+  "changelogWarnAt": 40,
+  "_cjkFloors": "Minimum CJK characters per file (check 6). Set ~60% of the real count so normal edits never trip it. Lower a floor only in the same commit as a deliberate removal.",
+  "cjkFloors": {
+    "data.js": 100,
+    "index.html": 50,
+    "business/CONSTITUTION.md": 12
+  }
 }

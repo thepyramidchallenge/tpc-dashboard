@@ -65,9 +65,23 @@ rendering. If the page shows an error banner, re-check the last thing you edited
 Business Space entries follow the schema incl. the required `Domain:` tag;
 every `D#/H#/E#/Q#` reference — including in module-repo docs — points to an
 entry that exists; `business/INDEX.md` is fresh; module folders contain no
-ledger files — D8 governance). CI (`.github/workflows/check.yml`) runs the
-same check on every push. Scripts are shared with `tf-dashboard` — 改 script
-記得兩邊 sync.
+ledger files — D8 governance; **no mojibake** (double-encoded text) and **no
+CJK collapse** — the two text-integrity guards, see below). CI
+(`.github/workflows/check.yml`) runs the same check on every push. Scripts are
+shared with `tf-dashboard` — 改 script 記得兩邊 sync.
+
+**Two text-integrity guards, and why both exist.** On 2026-08-03 a `perl -pi`
+one-liner without `-CSD` re-encoded `data.js` on every write; the public
+dashboard served byte soup while every other check stayed green. Guard 5
+catches text that was **corrupted** (double-encoding leaves telltale byte
+pairs). Guard 6 catches text that simply **disappeared** — a writer that
+substitutes `?`, an over-broad replace, an ASCII save — by holding each file
+in `lint-config.json` → `cjkFloors` above a minimum CJK count. Floors sit
+around 60% of the real count, so ordinary editing never trips them; if you
+deliberately remove a lot of Chinese, lower the floor in the same commit.
+**Never edit a CJK-bearing file with `perl -pi`/`sed -i`** — use the editor
+tooling or Node with explicit `'utf8'` on both read and write; treat perl's
+`Wide character in print` as a hard stop, not a cosmetic warning.
 
 **After editing any `business/*.md`:** run `node scripts/build-index.js` to
 regenerate `business/INDEX.md` (auto-generated navigation — never hand-edit).

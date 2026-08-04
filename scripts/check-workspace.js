@@ -419,6 +419,32 @@ function encodingScan(dir) {
 }
 encodingScan(ROOT);
 
+/* --- 6 · CJK content floor — catches LOSS, not just corruption ----------- */
+/* Section 5 catches text that got double-encoded (it leaves telltale byte
+ * pairs). It cannot catch Chinese that simply DISAPPEARED: a tool that writes
+ * '?' for un-encodable characters, a regex replace that eats a block, an
+ * editor saving as ASCII. Those leave clean files with missing content, and
+ * every other check here still passes.
+ *
+ * So: each file listed in lint-config.json `cjkFloors` must still contain at
+ * least that many CJK characters. Floors sit well under the real count, so
+ * ordinary editing never trips them; only a collapse does. If you genuinely
+ * removed a lot of Chinese, lower the floor in the SAME commit — that edit is
+ * the deliberate acknowledgement this check exists to force. */
+const CJK_RE = /[㐀-鿿豈-﫿]/g;
+const FLOORS = CONFIG.cjkFloors && typeof CONFIG.cjkFloors === 'object' ? CONFIG.cjkFloors : {};
+for (const [relF, floor] of Object.entries(FLOORS)) {
+  const full = path.join(ROOT, relF);
+  if (!fs.existsSync(full)) { warn(`cjkFloors lists ${relF}, which does not exist — drop it from scripts/lint-config.json`); continue; }
+  if (typeof floor !== 'number' || floor < 0) { err(`cjkFloors[${relF}]: floor must be a non-negative number`); continue; }
+  const count = (fs.readFileSync(full, 'utf8').match(CJK_RE) || []).length;
+  if (count < floor) {
+    err(`${relF}: CJK content collapsed — ${count} Chinese character(s), floor is ${floor}. `
+      + `Something dropped or replaced the Chinese text (a writer that cannot encode it, or an over-broad replace). `
+      + `Restore it from git rather than re-typing. If the removal was intentional, lower the floor in scripts/lint-config.json in this commit.`);
+  }
+}
+
 /* --- report -------------------------------------------------------------- */
 const rel = path.basename(ROOT);
 if (warnings.length) {
