@@ -27,6 +27,15 @@ update `data.js`:
    architecture changed** (new service, new link, a migration that happened).
 7. **Changelog** — **prepend** one line:
    `{ date, who, project, summary }` (newest first; `project: ""` = workspace-wide).
+   Use the script rather than editing by hand — it takes the prose from a file or
+   stdin, so none of it has to survive shell quoting:
+   `node scripts/add-changelog.js --who "…" --project <id> --summary-file entry.md`
+   It stamps `meta.updated`, checks the project id and the date ordering, and
+   refuses to write if the result would not evaluate or would contain mojibake.
+   **Never assemble the entry with a `perl`/`sed` one-liner.** On 2026-08-03 a
+   `perl -0pi -e` carrying `\x{2014}` escapes without `-CSD` re-encoded the whole
+   of this repo's `data.js` as Latin-1 — three times — and took the archive with
+   it. That is what `check-workspace.js` check 5 now guards.
 8. **Commit & push** — this folder is its own **standalone repo**
    (`thepyramidchallenge/tpc-dashboard`): `git add -A && git commit -m "…" && git push`.
    GitHub Pages redeploys automatically; reload the page to verify.
