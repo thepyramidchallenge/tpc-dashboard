@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-04",
-    updatedBy: "Natalie + Claude (Opus 5)",
+    updatedBy: "Dixon (initiator) + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -272,7 +272,7 @@ window.TPC_DASHBOARD = {
         { label: "WS9-00 · $99 report MVP (E1 north-star)", state: "todo" },
         { label: "WS7 · Test Mode + ranking (gated on E1/E2)", state: "todo"   },
         { label: "WS8 · Reporting v2 & adaptive (gated on E1/E2)", state: "todo"   },
-        { label: "WS6.1-02/-03 - Accepted Phase 2/3 bookmark loop design (PR #138 docs)", state: "hold" },
+        { label: "WS6.1-02/-03 - Accepted Phase 2/3 bookmark loop design (PR #138 docs); Dixon-initiated private sandbox validates interactions only, production tasks remain held", state: "hold" },
         { label: "WS9-01+ · Subscription + payments (gated on E1/E2)", state: "todo"   },
         { label: "WS10 · Advanced question interactions & visual renderers (ex-WS4.4: class-A visual model, tap/hotspot, mini-games, open numeric)", state: "hold" },
         { label: "WS7-16 datastore decision + WS7-13 adapter parity (Sheets → Firestore/Supabase)", state: "todo" },
@@ -351,6 +351,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-04", who: "Dixon (initiator) + Codex; Claude design record retained", project: "tpc-online-platform",
+      summary: "BOOKMARK UX SANDBOX — PRIVATE DESIGN EVIDENCE, NOT PRODUCTION. Dixon initiated the sandbox build from the five-platform bookmark UX that Natalie accepted with Claude and merged as PR #138 / 398fe4f. The private Sites sandbox demonstrates topic/type grouping, expandable bilingual question review with answer/explanation, preset reason chips, five-second removal Undo, an instructional empty state, calm flashcards and a bookmark-sourced Practice preview with child-controlled removal after a correct answer. Codex delegated the first implementation to a builder agent named luna_max on the available coding model, then caught and fixed an answer-option mismatch by separating the display answer from the canonical correct option; starter-only tests were replaced with two bookmark contract checks and the build passed. A generated social card was rejected because it invented visual content, so it was not shipped. The sandbox is local/sample-state UI only: no TPC platform source, auth, Cloud Run, Sheets, cross-device persistence or production deployment changed. WS6.1-02/-03 and WS8-04/-06/-11/-12 remain held/open; dashboard focus and system map are unchanged." },
     { date: "2026-08-04", who: "Natalie + Claude (Opus 5)", project: "tpc-online-platform",
       summary: "DASHBOARD TRUTH CORRECTION: the live page was asserting four things that production contradicts. It said PRs #134/#135 still needed routing (#134 merged 09:07, #135 closed and replaced by #149); it said the Chinese-only Admin change was unmerged with no PR and that \"the consoles remain bilingual in production\" (PRs #155/48a56d3 and #157/6098f819 merged and are live — the exact opposite of what the page claimed); and it pinned the release boundary at Pages 5871539 with Cloud Run tpc-api-points0803 serving d1160c1. Verified current truth: Pages serves 098d243c from source a2c24301 (PR #173), and Cloud Run tpc-api-pcmp5ccf serves 100% while tpc-api-lv092f8dd — PR #171's legacy version-zero fix — is Ready at 0% awaiting smoke and cutover. The stale board card is replaced by the actual open sequence: smoke, conditional cutover, repeat the fixed-set completion UAT that failed on legacy version-zero snapshots, merge draft PR #168 last. Two items the prior status sweep omitted are now recorded: PR #174 (retire the duplicate legacy exposure count — a production schema mutation in the same exposure area as the cutover) and the reclassification of claude/admin-chinese-only-wip from \"do not merge, 42 failures\" to superseded by #155/#157. Worktree hygiene restated with measured counts: 73 worktrees, 8 dirty, 6 with tracked changes, one of which is the primary checkout and therefore not quarantinable. No platform code, task status or scope changed." },
     { date: "2026-08-04", who: "Natalie + Claude (Opus 5)", project: "tpc-online-platform",
