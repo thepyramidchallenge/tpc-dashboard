@@ -368,6 +368,57 @@ for (const rel of CONFIG.moduleDocRoots || []) {
   if (!readmeSeen) warn(`module root ${rel}: no README.md at its top level — add one with a "Governing decisions" section`);
 }
 
+/* --- 5 · text encoding — mojibake / double-encoding guard ---------------- */
+/* A UTF-8 file re-read as Latin-1 and rewritten silently turns an em-dash into
+ * three junk characters and CJK into byte soup. The known trigger is a perl
+ * one-liner carrying a \x{...} escape without -CSD: the escape upgrades the
+ * slurped byte string, so the whole file gets re-encoded on write. It is
+ * invisible in a diff summary, it compounds on every later write, and the only
+ * signal perl gives is "Wide character in print" on stderr. Catch it here.
+ *
+ * C1 controls (U+0080-U+009F) and C2/C3-prefixed pairs never occur in clean
+ * UTF-8 prose. Both patterns are \u-escaped so this file stays pure ASCII and
+ * cannot flag itself. */
+const ENC_BAD = /[\u0080-\u009F]|[\u00C2\u00C3][\u0080-\u00BF]/;
+const ENC_BAD_G = /[\u0080-\u009F]|[\u00C2\u00C3][\u0080-\u00BF]/g;
+const ENC_EXT = new Set(['.js', '.md', '.html', '.json', '.css']);
+const ENC_SKIP_DIR = new Set(['.git', 'node_modules', 'dist', 'build', '.next', '.vercel']);
+
+function encodingScan(dir) {
+  let entries;
+  try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { return; }
+  for (const ent of entries) {
+    const full = path.join(dir, ent.name);
+    if (ent.isDirectory()) {
+      if (!ENC_SKIP_DIR.has(ent.name)) encodingScan(full);
+      continue;
+    }
+    if (!ENC_EXT.has(path.extname(ent.name))) continue;
+    let text;
+    try { text = fs.readFileSync(full, 'utf8'); } catch (e) { continue; }
+    if (!ENC_BAD.test(text)) continue;
+
+    const relF = path.relative(ROOT, full);
+    const lines = text.split('\n');
+    let hits = 0, firstLine = 0, sample = '';
+    for (let i = 0; i < lines.length; i++) {
+      const m = lines[i].match(ENC_BAD_G);
+      if (!m) continue;
+      hits += m.length;
+      if (!firstLine) {
+        firstLine = i + 1;
+        const j = lines[i].search(ENC_BAD);
+        sample = lines[i].slice(Math.max(0, j - 32), j + 24)
+          .replace(/[\u0080-\u009F]|[\u00C2\u00C3][\u0080-\u00BF]/g, '\uFFFD');
+      }
+    }
+    err(`${relF}: mojibake — ${hits} double-encoded sequence(s), first at line ${firstLine} near "${sample}". `
+      + `This file was read as Latin-1 and rewritten. Do NOT edit it further: every write adds another layer. `
+      + `Repair by decoding it back, then re-run this check. If a perl one-liner did it, pass -CSD.`);
+  }
+}
+encodingScan(ROOT);
+
 /* --- report -------------------------------------------------------------- */
 const rel = path.basename(ROOT);
 if (warnings.length) {
