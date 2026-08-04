@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-04",
-    updatedBy: "Natalie + Codex",
+    updatedBy: "Natalie + Claude (Opus 5)",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -50,12 +50,16 @@ window.TPC_DASHBOARD = {
 
   /* --- people / ownership 分工 ------------------------------------------
    * Who owns what. `owner` fields elsewhere (projects, roadmap, board) must
-   * use one of these keys. Split: Max = pyramid-site + UI in general, plus
+   * use one of these keys. Split: Max = learner UI/UX (WS6.2), plus
    * the WS5.2 question factory and WS5.3 asset factory (reassigned
-   * 2026-07-31, after Natalie closed WS5.2 to GO) and the WS6.2 UI review
-   * (reassigned the same day);
-   * Natalie = the rest of the learning platform (data layer, content,
-   * QuestionSets, WS6.1 pilot).
+   * 2026-07-31, after Natalie closed WS5.2 to GO), generation ops and the
+   * paused pyramid-site;
+   * Natalie = the rest of the learning platform (data layer, integrity,
+   * backend, human approval, admin platform, WS6.1 pilot);
+   * Dixon = the WS6.3 report tab lane end-to-end, per Max's 2026-08-01 D10
+   * ruling (ownership is lean and trust-based; the intern owns the lane
+   * rather than being supervised per checkpoint). The WS6.3-06d D5/E1
+   * ranking-language review is the one carve-out and stays with Max.
    * --------------------------------------------------------------------- */
   owners: {
     max:     { name: "Max",     zh: "Max",     scope: "Learner UI/UX (WS6.2) · question & asset factories (WS5.2 · WS5.3) · generation ops · pyramid-site (paused) / 學生端UI、出題及素材工廠、生成營運 (D10)", color: "#1f7a96" },
@@ -158,7 +162,7 @@ window.TPC_DASHBOARD = {
     next: [
       { title: "Recipe GO/NO-GO — Aug 21–23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at ≥75–80% Dixon pass + judge agreement good enough to pre-filter → governed-lane intake starts (W4–5, ~15–20 approvals/day toward two disjoint 30-question sets per level). NO-GO cuts scope (single level / smaller pool), never the date." },
       { title: "UAT — Sep 10–13 (K2/K3 deep)", project: "tpc-online-platform", owner: "both", note: "Feature freeze Sep 4; dry run Sep 7–9; invite waves ~10 families each from the Season 2 base (invites out ~Aug 24). Pass = K2 completes 10q unaided · parents understand the report · zero quota red. Kid micro-tests (Aug 24–30, Sep 1–6) and a W5 dress-rehearsal load test precede it (D12)." },
-      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "both", note: "Real rolling Practice evidence, refType=set Mock history/Result drill-in, minimum-data and sync guards are live. PR #141 now labels every hardcoded challenge cohort/ranking value as bilingual sample data; this resolves the immediate claim breach but does not settle the final report format or authorize real ranking. Accuracy trend and topic/domain 7d/30d/all work stays in Dixon's lane; signed-in production Report UAT remains open." },
+      { title: "WS6.3 report tab enhancements", project: "tpc-online-platform", owner: "dixon", note: "Dixon owns this lane end-to-end under Max's 2026-08-01 D10 ruling. Real rolling Practice evidence, refType=set Mock history/Result drill-in, minimum-data and sync guards are live. PR #141 now labels every hardcoded challenge cohort/ranking value as bilingual sample data; this resolves the immediate claim breach but does not settle the final report format or authorize real ranking. Remaining functional work is WS6.3-01 accuracy trend and WS6.3-02 topic/domain 7d/30d/all, with WS6.3-05 coverage. Carve-out: WS6.3-06d, the D5/E1 review of the synthetic cohort-average and percentile claims, stays routed to Max and is not Dixon's to settle. Signed-in production Report UAT remains open." },
       { title: "WS6.1 - pilot-gating polish", project: "tpc-online-platform", owner: "natalie", note: "Do only launch-critical work before real users: pilot-scale concurrency/write-contention proof, fallback audit, accuracy consistency and first-time-user evidence -> WS6.1-11. WS6.1-28 latest-version exposure/accuracy telemetry is complete and live; the Aug 3 transient UAT overlap is useful evidence but does not close the concurrency task." },
       { title: "WS6.2 — UI review", project: "tpc-online-platform", owner: "max", note: "WS6.2-20b is the live blocker: the cross-tab layout system, the top-bar page title and the 模擬測驗/套題 → 模擬賽 rename reached production on 2026-08-04 without his review, so production is running an unreviewed UI lane. Reassigned to Max 2026-07-31, matching his UI-in-general scope. Pilot-relevant pass: notify/validation classes, whole-app screen-by-screen review, bilingual copy, glyph/colour/button consistency, Home layout, button UAT, young-learner usability and the Log abnormal-activity banner. Five tasks stay held until after the pilot. WS6.2-07 still confirms UID/display-field scope with Max first." },
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
@@ -246,7 +250,7 @@ window.TPC_DASHBOARD = {
     },
     {
       project: "tpc-online-platform",
-      owner:   "both",
+      owner:   "dixon",
       title:   "Report tab enhancements (WS6.3) - real-data integration and Dixon graphs live",
       items: [
         { label: "WS6.3-00 · Extract Report aggregation into a tested src/lib/reportStats.js", state: "done" },
@@ -347,6 +351,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-04", who: "Natalie + Claude (Opus 5)", project: "tpc-online-platform",
+      summary: "OWNERSHIP: WS6.3 report tab enhancements now display under Dixon on the board and roadmap. The dixon owner key already existed with \"WS6.3 reports + question review\" as its scope, but no card in the file ever used it — both WS6.3 entries still carried the interim owner: \"both\" from 2026-07-31, when Natalie kept accountability with the principals and named Dixon only in the card text. Max's 2026-08-01 D10 ruling settled that question the other way (ownership is lean and trust-based; Dixon owns WS6.3 end-to-end and is encouraged to take further features), so the cards were inconsistent with both the ruling and the owners registry. Flipping them makes the badge match the ruling. One carve-out is written into the note so the ownership change does not silently transfer it: WS6.3-06d, the D5/E1 review of the synthetic cohort-average and percentile claims, stays routed to Max. Exclusions are unchanged — cross-device completeness stays WS8-04, and WS8-01, WS8-10, WS8-12 and WS9-00 remain unassigned. Dashboard presentation only: no platform code, task status, scope or roadmap ID changed." },
     { date: "2026-08-04", who: "Natalie + Claude", project: "tpc-online-platform",
       summary: "RELEASE-BOUNDARY INTEGRITY MERGED: PR #152 landed as cf5258e and supersedes the earlier local Codex candidate. prototype-v0.2/scripts/check-docs.mjs now checks encoding against the exact revision being published and blocks deploy on corruption; its corrupted fixture is built from character codes so the self-test cannot poison the tracked tree. After publication, the boundary mode reports attributed source/Pages/revision claims across three-line wrapped windows, compares backend claims only when --backend is supplied, and remains advisory because Pages already changed; --strict provides the pre-merge failure mode. Validation covered the clean tree, 12 stale frontend lines under a different pair, isolated stale-backend detection and an exit-1 corrupted fixture. WS6.1-30 is done with WS6.1-30a owning the boundary reporter. PR #147 also closed the frontend dependency audit, independently confirmed by prototype-v0.2 npm audit reporting 0 vulnerabilities. No deployment occurred as part of these merges." },
     { date: "2026-08-04", who: "Natalie + Codex", project: "tpc-online-platform",
