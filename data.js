@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-04",
-    updatedBy: "Natalie + Claude (Opus 5)",
+    updatedBy: "Natalie + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -92,7 +92,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Public frontend source 4da0506 / Pages 5871539 is live as of 2026-08-04, carrying PR #136's cross-tab layout system (one page frame, one type scale, the page title moved into the top bar, console actions moved into their sub-tab rows) and the 模擬測驗/套題 → 模擬賽 rename, gated on 729/729 tests and the 107-module build; Cloud Run tpc-api-points0803 still serves backend d1160c1, unchanged. That layout lane has NOT been reviewed by Max (WS6.2-20b). The Chinese-only admin console change is decided but NOT merged and has no PR — 42 of 722 assertions still fail on claude/admin-chinese-only-wip — so the consoles remain bilingual in production. Continue bounded official-content approval, pilot-scale concurrency evidence and the launch replacement/unpublish action for the dummy mock. The inherited PostCSS audit finding remains open.",
+      next:  "The current public frontend boundary has one canonical owner in the private platform handoff rather than being recopied across workspace prose. Pages carries PR #136's cross-tab layout system (one page frame, one type scale, the page title moved into the top bar, console actions moved into their sub-tab rows) and the 模擬測驗/套題 → 模擬賽 rename, gated on 729/729 tests and the 107-module build; Cloud Run tpc-api-points0803 still serves backend d1160c1, unchanged. That layout lane has NOT been reviewed by Max (WS6.2-20b). The Chinese-only admin console change is decided but NOT merged and has no PR — 42 of 722 assertions still fail on claude/admin-chinese-only-wip — so the consoles remain bilingual in production. Continue bounded official-content approval, pilot-scale concurrency evidence and the launch replacement/unpublish action for the dummy mock. The inherited PostCSS audit finding remains open.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -104,7 +104,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private main is synchronized through docs-only closeout PR #145 / bc114140; current product release remains frontend df7dbca / Pages bd4f511 and backend d1160c1. PRs #134, #135 and #136 remain unmerged because of held scope, conflicts and incomplete demo/bilingual work. Next remains bounded official content, pilot reliability and signed-in Report UAT.",
+      next:  "Private main is synchronized through docs-only PR #151. WS6.1-30 release-integrity source is complete locally at db23f41 but is not pushed, merged or deployed: it adds the tracked-text encoding guard, one canonical current frontend boundary, a live gh-pages comparison and a post-publication deploy gate. PRs #134 and #135 still need deliberate routing; PR #136 is merged and its layout lane is live. Next remains bounded official content, pilot reliability and signed-in Report UAT.",
     },
     {
       id:    "entrance-qr-scan",
@@ -153,7 +153,7 @@ window.TPC_DASHBOARD = {
     now: [
       { title: "Bounded official content -> exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "The governed set workflow, readable 30-question builder and latest-version performance evidence are live. Max owns bounded WS5.2 generation; Natalie owns explicit human approval and WS5.1-04 QuestionSets. Production still has one intentionally published pre-launch dummy plus seven drafts; do not count demo/calibration rows as official content, and replace or unpublish the dummy before launch. Treasure remains held under WS5.2-04." },
       { title: "Learner UI design sprint — 答題畫面 first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
-      { title: "Pilot reliability + release discipline", project: "tpc-online-platform", owner: "natalie", note: "WS4.2 core and adjacent learner polish are live through frontend df7dbca / Pages bd4f511. The Aug 3 Sheets alert was a transient overlap of production UAT/admin reads on an old revision, not a quota/backend failure: all 58 reads succeeded first attempt and no rollback was needed. Serialize production tests and polling, then reduce replay/append/ledger read amplification before the pilot-scale concurrency gate." },
+      { title: "Pilot reliability + release discipline", project: "tpc-online-platform", owner: "natalie", note: "WS4.2 core and adjacent learner polish are live. WS6.1-30 release-integrity source is complete locally but not merged: it detects bilingual-text corruption, centralizes current frontend release truth and distinguishes a successful Pages push from incomplete release documentation. The Aug 3 Sheets alert was a transient overlap of production UAT/admin reads on an old revision, not a quota/backend failure: all 58 reads succeeded first attempt and no rollback was needed. Serialize production tests and polling, then reduce replay/append/ledger read amplification before the pilot-scale concurrency gate." },
     ],
     next: [
       { title: "Recipe GO/NO-GO — Aug 21–23", project: "tpc-online-platform", owner: "max", note: "Gate (D11): two consecutive 30q holdout validation batches at ≥75–80% Dixon pass + judge agreement good enough to pre-filter → governed-lane intake starts (W4–5, ~15–20 approvals/day toward two disjoint 30-question sets per level). NO-GO cuts scope (single level / smaller pool), never the date." },
@@ -164,7 +164,7 @@ window.TPC_DASHBOARD = {
       { title: "WS7-06 + WS9-00 — report validation (E1)", project: "tpc-online-platform", owner: "natalie", note: "Business tier starts after engineering substrate exists. Co-ship WS7-06 log-only integrity with the first online challenge/report path, then WS9-00 $99 one-off report MVP via the Sheets→Affinity pipeline. Full WS7/WS8/WS9-01+ remains gated on E1/E2." },
     ],
     blocked: [
-      { title: "Open merge lanes #134/#135/#136", project: "tpc-online-platform", owner: "both", note: "Do not merge by ancestry alone. #134 is a conflicting draft that touches held Phase 2/3 Notifications/Test scheduling and needs an explicit routing decision. #135 is a conflicting fixed-set report lane whose unmerged tree briefly served production; merge or close it, then redeploy only from merged main. #136 is conflicting and incomplete, retains a demo-only switch, covers only part of the bilingual consoles and still needs reviewed translations. Older remote branches are stale/superseded snapshots, not merge candidates." },
+      { title: "Open merge lanes #134/#135", project: "tpc-online-platform", owner: "both", note: "Do not merge by ancestry alone. #134 is a conflicting draft that touches held Phase 2/3 Notifications/Test scheduling and needs an explicit routing decision. #135 is a conflicting fixed-set report lane whose unmerged tree briefly served production; merge or close it, then redeploy only from merged main. #136 is merged and live. Older remote branches are stale/superseded snapshots, not merge candidates." },
       { title: "pyramid-site — paused for UAT sprint", project: "pyramid-site", owner: "max", note: "Hero parallax parity, scoring/report graphics absorb, deploy, CDN photo export (ASSET_GATHER §B/§E) — all parked by D10 until after UAT; resume ~mid-Sep." },
     ],
   },
@@ -200,6 +200,7 @@ window.TPC_DASHBOARD = {
         { label: "WS4.3 · Save/session integrity", state: "done" },
         { label: "WS6.1-18...21 - Backend hardening / reliability / observability / tests", state: "done" },
         { label: "WS6.1-28 - Latest-version exposure and accuracy evidence (migration + live proof)", state: "done" },
+        { label: "WS6.1-30 - Repository encoding + canonical release-boundary integrity gate (source complete locally; merge pending)", state: "active" },
         { label: "WS5.1 · Admin UI & content platform", state: "active" },
         { label: "Question Set Builder readability + balanced demo (PR #132 live)", state: "done" },
         { label: "Dixon · Learner zh-HK/en UI (frontend live; header selector removed)", state: "done" },
@@ -346,6 +347,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-04", who: "Natalie + Codex", project: "tpc-online-platform",
+      summary: "RELEASE-BOUNDARY INTEGRITY (SOURCE COMPLETE, NOT PUSHED/MERGED/DEPLOYED): WS6.1-30 now has a zero-dependency repository checker wired into cloud-run npm run lint. It rejects tracked C1/common Latin-1→UTF-8 mojibake, enforces one machine-readable current frontend source/Pages owner in AGENT_HANDOFF while allowing historical release SHAs, and compares that marker with public gh-pages through npm run check:release. deploy.sh prints the previous and new full SHA receipts and, after publishing, fails clearly as Pages published / release documentation incomplete when the marker is stale; a safe writer changes only that marker, so operators do not mistake the failure for rollback or redeploy a docs-only follow-up. Validation: 7 focused integrity tests, backend 582/582, frontend 729/729, 107-module build, lint 0 errors/15 existing warnings, live public-boundary comparison, shell syntax and diff checks. Local platform commit db23f41 on codex/release-integrity-gate; no production or public Pages state changed." },
     { date: "2026-08-04", who: "Natalie + Claude (Opus 5)", project: "tpc-online-platform",
       summary: "LAYOUT RELEASE + DEPLOY: every tab had drifted onto its own page frame, type scale, headline and vertical rhythm — five CSS rules competed over the page width, so at a 1920px window content began on three different left edges (270 / 371 / 801, a 531px jump between Report and Settings). PR #136 replaced them with one token frame and one type scale where heading level decides size, moved the page title into the top bar as the real h1, moved each console's actions into its sub-tab row, and renamed 模擬測驗/套題 → 模擬賽 (75 replacements, i18n resources included so both locales moved together). Measured after the change: all eight tabs start content at +24px with a 14px rhythm and 24px padding. Merged as ba01aeb and deployed to Pages ffad818; a follow-up deploy then published source 4da0506 as Pages 5871539, gated on 729/729 frontend tests and the 107-module build. NOT reviewed by Max (WS6.2-20b) — production is running an unreviewed UI lane, and deployed is not accepted. Separately, the Chinese-only admin-console decision is implemented on a branch but NOT merged and has no PR: 42 of 722 assertions still name changed copy, so the admin consoles are still bilingual in production." },
     { date: "2026-08-04", who: "Natalie + Codex (GPT-5); Claude output evaluated", project: "tpc-online-platform",
