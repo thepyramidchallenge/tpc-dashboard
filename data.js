@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-08-04",
-    updatedBy: "Dixon (owner) + Codex",
+    updated:   "2026-08-05",
+    updatedBy: "Max + Cursor Grok",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -156,7 +156,7 @@ window.TPC_DASHBOARD = {
   board: {
     now: [
       { title: "Bounded official content -> exact-version QuestionSets", project: "tpc-online-platform", owner: "both", note: "The governed set workflow, readable 30-question builder and latest-version performance evidence are live. Max owns bounded WS5.2 generation; Natalie owns explicit human approval and WS5.1-04 QuestionSets. Production still has one intentionally published pre-launch dummy plus seven drafts; do not count demo/calibration rows as official content, and replace or unpublish the dummy before launch. Treasure remains held under WS5.2-04." },
-      { title: "Learner UI design sprint — 答題畫面 first", project: "tpc-online-platform", owner: "max", note: "K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
+      { title: "Learner UI design sprint — 答題畫面 first", project: "tpc-online-platform", owner: "max", note: "Local demo now has 14 visual design fixtures and ?demo=1&visual=1 for an image-only practice pool. K2-self-operable single interface (Funexpected bar): audio/demonstration over reading, big targets, parent shell gated, settings streamlined, 429 kid-friendly retry state. Design freeze Aug 21; feeds the WS6.2 review lane." },
       { title: "Pilot reliability + release discipline", project: "tpc-online-platform", owner: "natalie", note: "WS4.2 core and adjacent learner polish are live. WS6.1-30 is merged through PR #152: exact-revision encoding failure blocks publication, while the post-publication boundary reporter distinguishes a successful Pages push from incomplete release documentation and supports --strict before merge. The Aug 3 Sheets alert was a transient overlap of production UAT/admin reads on an old revision, not a quota/backend failure: all 58 reads succeeded first attempt and no rollback was needed. Serialize production tests and polling, then reduce replay/append/ledger read amplification before the pilot-scale concurrency gate." },
     ],
     next: [
@@ -352,6 +352,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-05", who: "Max + Cursor Grok", project: "tpc-online-platform",
+      summary: "ANSWERING-UI FIXTURES + DEMO VISUAL POOL (source only, branch feat/answering-ui-revamp). Expanded demo design fixtures to fixture_vq01–vq14: kept the original seven from harness batch 20260803-1227 and added seven validator-pass questions from batch 20260803-2215 (q01/q02/q05/q07/q08/q09/q12) via a generalized inject-fixtures.js BATCHES list. Demo URL ?demo=1&visual=1 now restricts the practice pool to those fixtures across all levels (repeats when the pool is shorter than the requested count); inert outside DEV demo mode. Governed 40-question bank untouched. Frontend 803/803 across 38 files. Not pushed or deployed — Max can redesign the 答題畫面 against image-dominant sessions locally." },
     { date: "2026-08-04", who: "Dixon (owner) + Codex", project: "tpc-online-platform",
       summary: "WS6.3-07 DESIGN RECONCILIATION — DRAFT, NOT IMPLEMENTED. The stale codex/ws63-empty-mock-report-design branch was nine commits behind current main d0e9b90 and had no unique commits, so none of it was merged or cherry-picked. Draft PR #177 manually transplants only its three WS6.3-07 documentation hunks (+131/-3): the Mock report no-evidence state priority, bilingual copy, desktop/mobile wireframes, accessibility rules and later implementation/test contract. The PR is based on exact current main, all six CI checks pass, and the change classifier confirms docs-only. Product approval and frontend implementation remain open; no deployment or production state changed. The eight dirty platform worktrees remain quarantined and untouched. An older unmerged branch's historical reuse of the WS6.3-07 label is superseded by WS6.1-31 and is not part of PR #177." },
     { date: "2026-08-04", who: "Natalie + Claude (Opus 5)", project: "tpc-online-platform",
