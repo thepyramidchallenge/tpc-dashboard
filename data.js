@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-07",
-    updatedBy: "Codex",
+    updatedBy: "Max + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -96,7 +96,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "The 2026-08-07 Academy visual release is LIVE from application source 7e6a53b as public Pages cd4eda9. Workflow 31158836059 completed successfully and HTTP/live-HTML readback serves index-C3AFfMpm.js plus index-CstKOGuq.css; the atmosphere WebP and far-star SVG both return 200 under the project subpath. This supersedes b178936/2ec1bed, whose root-absolute /img/home/ URLs worked on localhost but 404ed on GitHub Pages and hid the sky art. The release includes the full Academy visual language and finished living-observatory 我的星空 with Visual Lab, telemetry, acquisition HUD, living completed/unresolved glow, animated guides and independently controlled background-star blinking. Frontend 856/856 and the 125-module build passed; backend tpc-api-lvpc9b1e47e remains unchanged at 100%. Continue bounded official-content approval, pilot-scale concurrency evidence and replacement/unpublication of the sole dummy mock before launch.",
+      next:  "The 2026-08-07 Academy visual release is LIVE from application source 0f7a9b7 as public Pages dccfde3. Workflow 31160423711 completed successfully and HTTP/live-HTML readback serves index-FSefjiCz.js plus index-CstKOGuq.css; the atmosphere WebP remains healthy under the project subpath. Glow Stars now default to 4× blink frequency, 2× blink intensity and 1.5× density (41 independently timed stars), while the development-only Visual Lab can tune density live from 0.25× through a real 4× population of 108 stars. This retains the Pages BASE_URL asset fix, full Academy visual language, telemetry, acquisition HUD, completed/unresolved glow and animated guides. Frontend 856/856 and the 125-module build passed; backend tpc-api-lvpc9b1e47e remains unchanged at 100%. Continue bounded official-content approval, pilot-scale concurrency evidence and replacement/unpublication of the sole dummy mock before launch.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -108,7 +108,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private origin/main is 231379f after the Academy UI/rebranding release plus its documented Pages-subpath hotfix; application source 7e6a53b is the exact deployed frontend revision. The fix routes the approved atmosphere and far-star assets through Vite BASE_URL instead of root-absolute /img/home/ paths and adds a deploy-time rejection guard for recurrence. The permanent development-only Visual Lab, shared-camera living observatory, two instrument variants, acquisition HUD, independent glow, configurable guide dashes and Glow Stars blink controls remain intact. Frontend 856/856, production build, npm audit, encoding and live asset-readback gates passed. Public workflow 31158836059 is green. Open product lanes remain official K2/K3 content, pilot reliability and signed-in Report UAT.",
+      next:  "Private origin/main is 4538e02 after the Academy release documentation update; application source 0f7a9b7 is the exact deployed frontend revision. The permanent development-only Visual Lab now controls Glow Stars blink frequency, blink intensity and true population density up to 4× / 108 stars; the live baseline is 4× / 2× / 1.5×. The shared-camera living observatory, two instrument variants, acquisition HUD, independent glow, configurable guide dashes and Vite BASE_URL asset guard remain intact. Frontend 856/856, the 125-module production build, npm audit, encoding and live bundle gates passed. Public workflow 31160423711 is green. Open product lanes remain official K2/K3 content, pilot reliability and signed-in Report UAT.",
     },
     {
       id:    "entrance-qr-scan",
@@ -351,6 +351,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-07", who: "Max + Codex", project: "tpc-online-platform",
+      summary: "GLOW STAR LIFE PASS — LIVE AND VERIFIED. Max set the public 我的星空 ambient-star baseline to 4× blink frequency and 2× blink intensity, while Codex added a registry-driven Glow Stars Density control. The default is 1.5× / 41 independently timed stars; the developer-only Visual Lab can tune live from 0.25× to a true 4× population of 108 deterministic stars without reload, opacity tricks or duplicated screen-fixed layers. Application source 0f7a9b7 deployed as Pages dccfde3 through successful workflow 31160423711; live HTML serves index-FSefjiCz.js / index-CstKOGuq.css and the published JS contains the 4 / 2 / 1.5 baseline. The approved atmosphere asset remains HTTP 200. Gates passed twice through the committed deploy path: 856/856 tests across 44 files, 125-module build, zero npm audit vulnerabilities, encoding check and Pages-subpath asset guard. Private main 4538e02 records the exact release boundary; backend and data state were unchanged." },
     { date: "2026-08-07", who: "Daily Wrap Up · Codex; Claude output evaluated", project: "tpc-online-platform",
       summary: "VERIFIED DAILY WRAP — NO PLATFORM BEHAVIOR CHANGE. Scheduled window: 2026-08-06 00:31–2026-08-07 00:31 HKT. Platform main advanced only by Claude-co-authored documentation commit c083eb45, which reclassified stale release-boundary claims across eight Markdown files and left check-docs.mjs reporting zero conflicting current pairs; git diff --check is clean. At the scheduled cutoff, production was frontend source d4a9c13 on Pages 225d321 and backend source 1a9cf97 on tpc-api-rp1a9cf97c in legacy ReportProjections mode. No Codex implementation completed in the window. Claude's C · Cosmos iteration was tested in a working tree but remained uncommitted and undeployed at cutoff, so it is not counted as completed. The milestone was only boundedly complete: official K2/K3 content, live UI acceptance, serialized pilot/load evidence, signed-in Report UAT and dummy-mock retirement still gated launch. The post-cutoff Academy release is already recorded separately and is not re-summarized here. Next product step remains bounded official-content approval followed by serialized pilot proof." },
     { date: "2026-08-07", who: "Max + Codex", project: "tpc-online-platform",
