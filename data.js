@@ -23,7 +23,7 @@ window.TPC_DASHBOARD = {
   /* --- header / standup ------------------------------------------------- */
   meta: {
     updated:   "2026-08-07",
-    updatedBy: "Max + Codex",
+    updatedBy: "Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -351,6 +351,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-07", who: "Daily Wrap Up · Codex; Claude output evaluated", project: "tpc-online-platform",
+      summary: "VERIFIED DAILY WRAP — NO PLATFORM BEHAVIOR CHANGE. Scheduled window: 2026-08-06 00:31–2026-08-07 00:31 HKT. Platform main advanced only by Claude-co-authored documentation commit c083eb45, which reclassified stale release-boundary claims across eight Markdown files and left check-docs.mjs reporting zero conflicting current pairs; git diff --check is clean. At the scheduled cutoff, production was frontend source d4a9c13 on Pages 225d321 and backend source 1a9cf97 on tpc-api-rp1a9cf97c in legacy ReportProjections mode. No Codex implementation completed in the window. Claude's C · Cosmos iteration was tested in a working tree but remained uncommitted and undeployed at cutoff, so it is not counted as completed. The milestone was only boundedly complete: official K2/K3 content, live UI acceptance, serialized pilot/load evidence, signed-in Report UAT and dummy-mock retirement still gated launch. The post-cutoff Academy release is already recorded separately and is not re-summarized here. Next product step remains bounded official-content approval followed by serialized pilot proof." },
     { date: "2026-08-07", who: "Max + Codex", project: "tpc-online-platform",
       summary: "ACADEMY LIVING-OBSERVATORY RELEASE — LIVE AND VERIFIED. The final visual sprint is merged to private main: application source b178936, followed by docs-only release record 2be9a6c. Public Pages artifact 2ec1bed completed workflow 31155153060 successfully; HTTP 200 and live HTML/JS readback confirmed index-Dst4Zpam.js / index-Df0ZpXyZ.css and the new blinkFrequency/blinkIntensity code. The finished 我的星空 keeps the approved raster as a non-stretched world-space atmosphere layer under shared-camera parallax, then adds painterly chromatic nebula, independent background life, two technical observatory variants with live camera/time telemetry, responsive centring, animated unresolved guide dashes, multi-layer completed and unresolved constellation bloom, slow line-energy travel, and a premium star-acquisition HUD replacing the crosshair. A permanent development-only Visual Lab now tunes registered layers live, including atmosphere hue, nebula colour, observatory variant/thickness, guide dash length/gap/speed, completed/unresolved glow, and Glow Stars blink frequency/intensity; it exports complete JSON or a baseline-relative AI prompt. Background stars ship at 2× frequency and 1.5× blink intensity while remaining independently timed and reduced-motion-safe. Final clean-source gates: 856/856 frontend tests across 44 files, 125-module production build, zero npm audit vulnerabilities and clean encoding. The prior pending-release board card is closed; backend traffic and data were unchanged." },
     { date: "2026-08-07", who: "Max + Codex", project: "tpc-online-platform",
