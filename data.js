@@ -22,8 +22,8 @@ window.TPC_DASHBOARD = {
 
   /* --- header / standup ------------------------------------------------- */
   meta: {
-    updated:   "2026-08-07",
-    updatedBy: "Natalie + Codex",
+    updated:   "2026-08-08",
+    updatedBy: "Max + Codex",
     note:      "Live at thepyramidchallenge.github.io/tpc-dashboard · light theme. · Business Space (the *why*): business/ (CONSTITUTION + decisions/hypotheses/experiments). · Reports (深度報告): reports/ — periodic commissioned deep-dives.",
   },
 
@@ -96,7 +96,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform",
       run:   "cd tpc-online-platform/prototype-v0.2 && npm install && npm run dev   # Vite local URL",
-      next:  "Current live boundary: frontend source 12e71ccb is Pages 47b2412a through successful workflow 31171742272, serving index-D1QRQhM-.js and index-Dr7wGXCG.css; backend source 5552ba16 is tpc-api-fm5552ba16 at 100%, digest sha256:552224c7e9da6511a70950b27e1c44bb998f6e4075b3b95635837573b71b0d23, with PRACTICE_COMPARISON_ENABLED=true and max-instances=1. PR #204's bilingual recovery UI plus PR #209's non-destructive draft-preservation fix are live; WS6.1-13 is closed. Remaining launch gates are approved official K2/K3 content, real WS6.1-10/11/29 human/device evidence, and replacement/unpublication of the sole dummy mock.",
+      next:  "Current live boundary: frontend source 12e71ccb is Pages 47b2412a through successful workflow 31171742272, serving index-D1QRQhM-.js and index-Dr7wGXCG.css; live bundle readback confirms Glow Stars defaults of 4× blink frequency, 2× blink intensity and 4× density / 108 independently timed stars, with the development-only Visual Lab retaining its 0.25×–4× density control. Backend source 5552ba16 is tpc-api-fm5552ba16 at 100%, digest sha256:552224c7e9da6511a70950b27e1c44bb998f6e4075b3b95635837573b71b0d23, with PRACTICE_COMPARISON_ENABLED=true and max-instances=1. PR #204's bilingual recovery UI plus PR #209's non-destructive draft-preservation fix are live; WS6.1-13 is closed. Remaining launch gates are approved official K2/K3 content, real WS6.1-10/11/29 human/device evidence, and replacement/unpublication of the sole dummy mock.",
     },
     {
       id:    "tpc-online-platform-admin",
@@ -108,7 +108,7 @@ window.TPC_DASHBOARD = {
       health: "active",
       repo:  "github.com/thepyramidchallenge/tpc-online-platform-admin",
       run:   "cd tpc-online-platform-admin/prototype-v0.2 && npm install && npm run dev   # Vite · backend in cloud-run/",
-      next:  "Private main is f40c97f after PR #197. Backend source 5552ba16 is live on tpc-api-fm5552ba16 at 100%; frontend source 65a9089e is live as Pages 5cf82d9. PRs #180 and #197 leave automated merges exact-head-CI-gated but remove mandatory non-author approval; CODEOWNERS is advisory. Native branch protection is unavailable on the current private-Free plan, so direct pushes/manual merges remain possible. The PR #197 transition itself was not exact-head green: 0f0c2b0 had six successful checks, then final head 983f33a added main with zero check runs before manual merge. The durable fix is a paid branch rule requiring pull requests, the exact CI jobs, an up-to-date branch, and no direct/force-push/delete bypass.",
+      next:  "Private main readback is e9fc227 after PR #215's inactive ReportProjections G0 operator-broker prerequisites. Backend source 5552ba16 is live on tpc-api-fm5552ba16 at 100%; frontend source 12e71ccb is live as Pages 47b2412a and retains the Glow Stars 4× / 2× / 4× baseline plus the 0.25×–4× development-only density control. PRs #180 and #197 leave automated merges exact-head-CI-gated but remove mandatory non-author approval; CODEOWNERS is advisory. Native branch protection is unavailable on the current private-Free plan, so direct pushes/manual merges remain possible. The durable fix remains a paid branch rule requiring pull requests, exact CI jobs, an up-to-date branch and no direct/force-push/delete bypass.",
     },
     {
       id:    "entrance-qr-scan",
@@ -355,6 +355,8 @@ window.TPC_DASHBOARD = {
    * project "" = cross-cutting / workspace.
    * --------------------------------------------------------------------- */
   changelog: [
+    { date: "2026-08-08", who: "Max + Codex", project: "tpc-online-platform",
+      summary: "GLOW STAR DENSITY 4× PRESET — LIVE AND VERIFIED. Max promoted the 我的星空 Glow Stars density baseline from 1.5× / 41 stars to the Visual Lab maximum of 4× / 108 independently timed stars; blink frequency remains 4× and blink intensity remains 2×. The control still tunes live from 0.25× to 4× and Reset now returns to 4×. The change was safely rebased over concurrent merged privacy/report work without force-pushing main. It first deployed in application source 65a9089 as Pages 5cf82d9 through successful workflow 31162004352; the newer current release source 12e71ccb / Pages 47b2412a retains it, and live index-D1QRQhM-.js readback confirms blinkFrequency:4, blinkIntensity:2 and density:4. Post-rebase gates passed: 858/858 tests across 44 files, 125-module production build, zero npm audit vulnerabilities, encoding check and Pages-subpath asset guard. Backend and data state were unchanged by this visual release." },
     { date: "2026-08-07", who: "Natalie + Codex", project: "tpc-online-platform",
       summary: "WS6.1-13 CLOSED AFTER FIX-FORWARD. PR #209 merged as exact source 12e71ccb and is live as Pages 47b2412a through successful workflow 31171742272. The invalid-question leave action now checkpoints local work and keeps the server draft untouched; real-App coverage proves the same draft identity and an existing answer survive leave/resume while the explicit pause-menu discard remains destructive. Exact-head CI and the detached release both passed 877/877 frontend tests across 47 files, audit 0, 127-module build and encoding. Released-build smoke then passed normal 390×844 zh-HK Home, the 390×844 English global boundary and the 1280×720 zh-HK invalid-question recovery: recovery cards received focus, raw markers stayed out of learner UI, the draft remained stable, discard calls stayed at zero and exact local/live JS/CSS hashes matched. No backend, Sheets, cohort, QuestionSet or traffic change. WS6.1-10/11/29 human/device evidence remains open." },
     { date: "2026-08-07", who: "Natalie + Codex", project: "tpc-online-platform",
